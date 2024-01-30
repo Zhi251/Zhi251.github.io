@@ -150,16 +150,13 @@
 		<section id="comments" class="comments">
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="/js/md5.min.js"></script> 
 <div id="gitalk-container"></div>
 <script>
-var gitalkConfig = {"enable":true,"clientID":"a5d7fbf7598366da6c6d","clientSecret":"55bbba32bf5c425d62e4562e6e0cdc1069f302ae","repo":"Zhi251.github.io","owner":"","admin":["Zhi251"],"id":"location.pathname","distractionFreeMode":true}
-gitalkConfig.id=md5(location.pathname)
-var gitalk = new Gitalk(gitalkConfig)
-  
-  gitalk.render('gitalk-container')
+  var gitalkConfig = {"enable":true,"clientID":"a5d7fbf7598366da6c6d","clientSecret":"55bbba32bf5c425d62e4562e6e0cdc1069f302ae","repo":"Zhi251.github.io","owner":"","admin":["Zhi251"],"id":"location.pathname","distractionFreeMode":true};
+  var gitalk = new Gitalk(gitalkConfig);
+  gitalk.render('gitalk-container');
+</script>
 
-  </script>
 		</section>
 	
 	</div> <!-- col-md-9/col-md-12 -->
