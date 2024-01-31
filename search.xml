@@ -20,13 +20,13 @@
       
         <tags>
             
-            <tag> 筆記 </tag>
-            
             <tag> Udemy </tag>
             
             <tag> 道德黑客 </tag>
             
             <tag> 自學 </tag>
+            
+            <tag> 筆記 </tag>
             
         </tags>
       
@@ -36,8 +36,8 @@
     
     <entry>
       <title>Firebase(NOSQL)串接</title>
-      <link href="/2023/12/10/Firebase-NOSQL-%E4%B8%B2%E6%8E%A5/"/>
-      <url>/2023/12/10/Firebase-NOSQL-%E4%B8%B2%E6%8E%A5/</url>
+      <link href="/2023/12/10/Firebase%20NOSQL%E4%B8%B2%E6%8E%A5/"/>
+      <url>/2023/12/10/Firebase%20NOSQL%E4%B8%B2%E6%8E%A5/</url>
       
         <content type="html"><![CDATA[<h1 id="Firebase"><a href="#Firebase" class="headerlink" title="Firebase"></a>Firebase</h1><h2 id="網址-https-firebase-google-com"><a href="#網址-https-firebase-google-com" class="headerlink" title="網址:https://firebase.google.com/"></a>網址:<a href="https://firebase.google.com/">https://firebase.google.com/</a></h2><h2 id="建立專案"><a href="#建立專案" class="headerlink" title="建立專案"></a>建立專案</h2><h3 id="新增專案"><a href="#新增專案" class="headerlink" title="新增專案"></a>新增專案</h3><p><img src="/%5Cphoto%5Cfirebase%5C1.jpg" alt="1"></p><h3 id="設定專案名稱"><a href="#設定專案名稱" class="headerlink" title="設定專案名稱"></a>設定專案名稱</h3><p><img src="/%5Cphoto%5Cfirebase%5C2.jpg" alt="2"></p><h3 id="關閉GA"><a href="#關閉GA" class="headerlink" title="關閉GA"></a>關閉GA</h3><p><img src="/%5Cphoto%5Cfirebase%5C3.jpg" alt="3"></p><h3 id="建立即時資料庫"><a href="#建立即時資料庫" class="headerlink" title="建立即時資料庫"></a>建立即時資料庫</h3><p><img src="/%5Cphoto%5Cfirebase%5C4.jpg" alt="4"></p><p><img src="/%5Cphoto%5Cfirebase%5C5.jpg" alt="5"></p><p><img src="/%5Cphoto%5Cfirebase%5C6.jpg" alt="6"></p><h3 id="建立檔案資料庫"><a href="#建立檔案資料庫" class="headerlink" title="建立檔案資料庫"></a>建立檔案資料庫</h3><p><img src="/%5Cphoto%5Cfirebase%5C7.jpg" alt="7"></p><p><img src="/%5Cphoto%5Cfirebase%5C8.jpg" alt="8"></p><p><img src="/%5Cphoto%5Cfirebase%5C9.jpg" alt="9"></p><p>設定授權登陸</p><p><img src="/%5Cphoto%5Cfirebase%5C10.jpg" alt="10"></p><h4 id="選擇google"><a href="#選擇google" class="headerlink" title="選擇google"></a>選擇google</h4><p><img src="/%5Cphoto%5Cfirebase%5C11.jpg" alt="11"></p><p><img src="/%5Cphoto%5Cfirebase%5C12.jpg" alt="12"></p><h3 id="安裝Node-js"><a href="#安裝Node-js" class="headerlink" title="安裝Node.js"></a>安裝Node.js</h3><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><blockquote><p>在桌面創建資料夾<br>進入資料夾開啟終端機<br>輸入下列指令:<br>1.npm init &#x2F;&#x2F;初始化(按Enter直到結束)<br><img src="/%5Cphoto%5Cfirebase%5C13.jpg" alt="13"><br>2.npm install -g –save-dev firebase-tools &#x2F;&#x2F;安裝工具</p></blockquote><h3 id="登陸firebase"><a href="#登陸firebase" class="headerlink" title="登陸firebase"></a>登陸firebase</h3><blockquote><p>firebase login<br><img src="/%5Cphoto%5Cfirebase%5C14.jpg" alt="14"></p></blockquote><h3 id="初始firebase環境"><a href="#初始firebase環境" class="headerlink" title="初始firebase環境"></a>初始firebase環境</h3><blockquote><p>firebase init hosting<br><img src="/%5Cphoto%5Cfirebase%5C15.jpg" alt="15"><br>y<br><img src="/%5Cphoto%5Cfirebase%5C16.jpg" alt="16"><br>Use an existing project  &#x2F;&#x2F;使用現有專案<br><img src="/%5Cphoto%5Cfirebase%5C17.jpg" alt="17"><br>選擇之前創的專案名<br><img src="/%5Cphoto%5Cfirebase%5C18.jpg" alt="18"><br>public<br>y<br>n<br><img src="/%5Cphoto%5Cfirebase%5C19.jpg" alt="19"></p></blockquote><blockquote><p><strong>note:</strong><br>出現Firebase initialization complete!即為成功</p></blockquote><blockquote><p>輸入firebase deploy &#x2F;&#x2F;部屬託管到firebase<br><img src="/%5Cphoto%5Cfirebase%5C20.jpg" alt="20"></p></blockquote><h3 id="設定firebase設定檔案及測試"><a href="#設定firebase設定檔案及測試" class="headerlink" title="設定firebase設定檔案及測試"></a>設定firebase設定檔案及測試</h3><blockquote><p>將firebase_init-master資料夾的所有檔案丟入專案資料夾的public裡<br><img src="/%5Cphoto%5Cfirebase%5C21.jpg" alt="21"></p></blockquote><blockquote><p><strong>由於預設firebase.js URL有誤無法開啟須改網址</strong></p><p>將連結改為以下程式碼</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script defer src=&quot;https://www.gstatic.com/firebasejs/8.0.1/firebase-app-compat.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;!-- include only the Firebase features as you need --&gt;</span><br><span class="line">    &lt;script defer src=&quot;https://www.gstatic.com/firebasejs/8.0.1/firebase-auth-compat.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script defer src=&quot;https://www.gstatic.com/firebasejs/8.0.1/firebase-database-compat.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script defer src=&quot;https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore-compat.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script defer src=&quot;https://www.gstatic.com/firebasejs/8.0.1/firebase-functions-compat.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script defer src=&quot;https://www.gstatic.com/firebasejs/8.0.1/firebase-messaging-compat.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script defer src=&quot;https://www.gstatic.com/firebasejs/8.0.1/firebase-storage-compat.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script defer src=&quot;https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics-compat.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script defer src=&quot;/https://www.gstatic.com/firebasejs/8.0.1/firebase-remote-config-compat.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script defer src=&quot;https://www.gstatic.com/firebasejs/8.0.1/firebase-performance-compat.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure><h3 id="設定init-firebase-js"><a href="#設定init-firebase-js" class="headerlink" title="設定init-firebase.js"></a>設定init-firebase.js</h3><p><img src="/%5Cphoto%5Cfirebase%5C22.jpg" alt="22"></p><blockquote><p>將project id改為自己的專屬id<br>將api更改<br><img src="/%5Cphoto%5Cfirebase%5C23.jpg" alt="23"><br><img src="/%5Cphoto%5Cfirebase%5C24.jpg" alt="24"></p></blockquote><h3 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h3><p><img src="/%5Cphoto%5Cfirebase%5C25.jpg" alt="25"></p>]]></content>
       
@@ -51,13 +51,13 @@
       
         <tags>
             
+            <tag> 筆記 </tag>
+            
             <tag> 網頁設計 </tag>
             
             <tag> firebase </tag>
             
             <tag> NOSQL </tag>
-            
-            <tag> 筆記 </tag>
             
         </tags>
       
