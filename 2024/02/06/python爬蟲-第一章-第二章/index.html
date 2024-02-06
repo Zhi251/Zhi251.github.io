@@ -1,0 +1,536 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>python爬蟲(第一章,第二章) | Zhi的筆記部落格</title>
+  <meta name="author" content="Zhi">
+  
+  <meta name="description" content="python爬蟲-json和csv資料格式">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="python爬蟲(第一章,第二章)"/>
+  <meta property="og:site_name" content="Zhi的筆記部落格"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="Zhi的筆記部落格" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/prism.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-70812759-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-70812759-1');
+</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Zhi的筆記部落格</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>歷程
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>分類
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>標籤
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>關於Zhi
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> python爬蟲(第一章,第二章)</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> python爬蟲-json和csv資料格式
+		 </div> <!-- alert -->
+	  		
+
+	  <h1 id="python網路爬蟲-一、二"><a href="#python網路爬蟲-一、二" class="headerlink" title="python網路爬蟲(一、二)"></a>python網路爬蟲(一、二)</h1><h2 id="資料格式"><a href="#資料格式" class="headerlink" title="資料格式"></a><strong>資料格式</strong></h2><h3 id="python-json格式"><a href="#python-json格式" class="headerlink" title="python-&gt;json格式"></a><strong>python-&gt;json格式</strong></h3><h4 id="dumps"><a href="#dumps" class="headerlink" title="dumps()"></a><strong>dumps()</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">list1=[1,2,3,4,5]</span><br><span class="line">tuple1=(6,7,8,9,10)</span><br><span class="line">dict1=&#123;&quot;aaaa&quot;:123&#125;</span><br><span class="line">str1=&quot;123456&quot;</span><br><span class="line">a=1</span><br><span class="line">b=1.2</span><br><span class="line">c=1456789876567898765567876222222222222222222222222222222</span><br><span class="line">T=True</span><br><span class="line">F=False</span><br><span class="line">d=None</span><br><span class="line">print(json.dumps(list1))</span><br><span class="line">print(json.dumps(tuple1))</span><br><span class="line">print(json.dumps(str1))</span><br><span class="line">print(json.dumps(dict1))</span><br><span class="line">print(json.dumps(a))</span><br><span class="line">print(json.dumps(b))</span><br><span class="line">print(json.dumps(c))</span><br><span class="line">print(json.dumps(T))</span><br><span class="line">print(json.dumps(d))</span><br><span class="line">print(json.dumps(F))</span><br></pre></td></tr></table></figure>
+<h4 id="python-json格式-1"><a href="#python-json格式-1" class="headerlink" title="python-&gt;json格式"></a><strong>python-&gt;json格式</strong></h4><table>
+<thead>
+<tr>
+<th>python資料</th>
+<th>JSON資料</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dict</td>
+<td>object</td>
+</tr>
+<tr>
+<td>list,tuple</td>
+<td>array</td>
+</tr>
+<tr>
+<td>str,unicode</td>
+<td>string</td>
+</tr>
+<tr>
+<td>int,float,long</td>
+<td>nuumber</td>
+</tr>
+<tr>
+<td>True</td>
+<td>true</td>
+</tr>
+<tr>
+<td>False</td>
+<td>false</td>
+</tr>
+<tr>
+<td>None</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">obj1=[&#123;&#x27;name&#x27;:&#x27;ray&#x27;,&#x27;Age&#x27;:20,&#x27;size&#x27;:&#x27;L&#x27;&#125;]</span><br><span class="line">jobj1=json.dumps(obj1)</span><br><span class="line">print(obj1)</span><br><span class="line">print(jobj1)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>note:</strong></p>
+<ol>
+<li>json字串是用雙引號</li>
+</ol>
+</blockquote>
+<h4 id="dumps-的sort-key參數"><a href="#dumps-的sort-key參數" class="headerlink" title="dumps()的sort_key參數"></a><strong>dumps()的sort_key參數</strong></h4><blockquote>
+<p>轉成json時，鍵排序</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">obj1=[&#123;&#x27;a&#x27;:1,&#x27;c&#x27;:2,&#x27;d&#x27;:3,&#x27;b&#x27;:4&#125;]</span><br><span class="line">jobj1=json.dumps(obj1)</span><br><span class="line">jobj1_sort=json.dumps(obj1,sort_keys=True)</span><br><span class="line">print(jobj1)</span><br><span class="line">print(jobj1_sort)</span><br></pre></td></tr></table></figure>
+<h4 id="dumps-的indent參數"><a href="#dumps-的indent參數" class="headerlink" title="dumps()的indent參數"></a><strong>dumps()的indent參數</strong></h4><blockquote>
+<p>轉成json時，設定縮排使其容易閱讀</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">obj1=[&#123;&#x27;a&#x27;:1,&#x27;c&#x27;:2,&#x27;d&#x27;:3,&#x27;b&#x27;:4&#125;]</span><br><span class="line">jobj1_indent=json.dumps(obj1,indent=True)</span><br><span class="line">print(jobj1_indent)</span><br></pre></td></tr></table></figure>
+<h3 id="json-python格式"><a href="#json-python格式" class="headerlink" title="json-&gt;python格式"></a><strong>json-&gt;python格式</strong></h3><h4 id="loads"><a href="#loads" class="headerlink" title="loads()"></a><strong>loads()</strong></h4><table>
+<thead>
+<tr>
+<th>JSON資料</th>
+<th>python資料</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>object</td>
+<td>dict</td>
+</tr>
+<tr>
+<td>array</td>
+<td>list</td>
+</tr>
+<tr>
+<td>string</td>
+<td>unicode</td>
+</tr>
+<tr>
+<td>nuumber(int)</td>
+<td>int,long</td>
+</tr>
+<tr>
+<td>nuumber(real)</td>
+<td>float</td>
+</tr>
+<tr>
+<td>true</td>
+<td>True</td>
+</tr>
+<tr>
+<td>false</td>
+<td>False</td>
+</tr>
+<tr>
+<td>null</td>
+<td>None</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">jobj1=&#x27;&#123;&quot;a&quot;:1,&quot;c&quot;:2,&quot;d&quot;:3,&quot;b&quot;:4&#125;&#x27;</span><br><span class="line">obj1=json.loads(jobj1)</span><br><span class="line">print(obj1)</span><br><span class="line">print(type(obj1))</span><br></pre></td></tr></table></figure>
+<h4 id="每個JSON文件只能放一個JSON物件，要放多個物件，可用一個父JSON包含"><a href="#每個JSON文件只能放一個JSON物件，要放多個物件，可用一個父JSON包含" class="headerlink" title="每個JSON文件只能放一個JSON物件，要放多個物件，可用一個父JSON包含"></a><strong>每個JSON文件只能放一個JSON物件，要放多個物件，可用一個父JSON包含</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">jobj1=&#x27;&#123;&quot;A&quot;:[&#123;&quot;a&quot;:1&#125;,&#123;&quot;b&quot;:2&#125;]&#125;&#x27;</span><br><span class="line">obj1=json.loads(jobj1)</span><br><span class="line">print(obj1)</span><br><span class="line">print(obj1[&quot;A&quot;])</span><br><span class="line">print(obj1[&quot;A&quot;][1])</span><br><span class="line">print(obj1[&quot;A&quot;][1][&quot;b&quot;])</span><br></pre></td></tr></table></figure>
+<h4 id="將字典寫入json"><a href="#將字典寫入json" class="headerlink" title="將字典寫入json"></a><strong>將字典寫入json</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">dict1=&#123;&#x27;a&#x27;:1,&#x27;c&#x27;:2,&#x27;d&#x27;:3,&#x27;b&#x27;:4&#125;</span><br><span class="line">fn=&quot;將字典寫入json檔.json&quot;</span><br><span class="line">with open(fn,&#x27;w&#x27;) as f:</span><br><span class="line">    json.dump(dict1,f,sort_keys=True,indent=True)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>寫入中文時，encoding&#x3D;’utf-8’，且indent&#x3D;2, ensure_ascii&#x3D;False</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line"></span><br><span class="line">objlist = [&#123;&quot;日本&quot;:&quot;Japan&quot;, &quot;首都&quot;:&quot;Tykyo&quot;&#125;,</span><br><span class="line">           &#123;&quot;美州&quot;:&quot;USA&quot;, &quot;首都&quot;:&quot;Washington&quot;&#125;]</span><br><span class="line"></span><br><span class="line">fn = &#x27;out1_9_2.json&#x27;</span><br><span class="line">with open(fn, &#x27;w&#x27;, encoding=&#x27;utf-8&#x27;) as fnObj:</span><br><span class="line">    json.dump(objlist, fnObj, indent=2, ensure_ascii=False)</span><br></pre></td></tr></table></figure>
+<h4 id="讀取json檔案"><a href="#讀取json檔案" class="headerlink" title="讀取json檔案"></a><strong>讀取json檔案</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">      </span><br><span class="line">fn = &#x27;out1_9.json&#x27;</span><br><span class="line">with open(fn, &#x27;r&#x27;) as fnObj:</span><br><span class="line">    data = json.load(fnObj)</span><br><span class="line"></span><br><span class="line">print(data)</span><br><span class="line">print(type(data))</span><br></pre></td></tr></table></figure>
+<h4 id="應用"><a href="#應用" class="headerlink" title="應用"></a><strong>應用</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">fn=&#x27;login.json&#x27;</span><br><span class="line">user=input(&quot;輸入使用者名稱 : &quot;)</span><br><span class="line">with open(fn,&#x27;w&#x27;,encoding=&#x27;utf-8&#x27;) as file:</span><br><span class="line">    json.dump(user,file,ensure_ascii=False)</span><br><span class="line">    print(&quot;%s 歡迎使用本系統。&quot;%user)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">fn=&#x27;login.json&#x27;</span><br><span class="line">with open(fn,&#x27;r&#x27;,encoding=&#x27;utf-8&#x27;) as file:</span><br><span class="line">    login=json.load(file)</span><br><span class="line">    print(&quot;%s 歡迎回來&quot; %login)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">fn=&#x27;login_ch1_13_2.json&#x27;</span><br><span class="line">try:</span><br><span class="line">    with open(fn,&#x27;r&#x27;,encoding=&#x27;utf-8&#x27;) as file:</span><br><span class="line">        login=json.load(file)</span><br><span class="line">        loginu=input(&quot;請輸入帳號 : &quot;)</span><br><span class="line">except Exception:</span><br><span class="line">    with open(fn,&#x27;w&#x27;,encoding=&#x27;utf-8&#x27;) as file:</span><br><span class="line">        login=input(&quot;新增帳號 : &quot;)</span><br><span class="line">        json.dump(login,file,ensure_ascii=False)</span><br><span class="line">        print(&quot;帳號已新增&quot;)</span><br><span class="line">else:</span><br><span class="line">    if loginu==login:</span><br><span class="line">        print(&quot;%s 歡迎回來&quot;%login)</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;使用者名稱錯誤&quot;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="應用-建立世界地圖"><a href="#應用-建立世界地圖" class="headerlink" title="應用(建立世界地圖)"></a><strong>應用(建立世界地圖)</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pygal.maps.world</span><br><span class="line">worldmap=pygal.maps.world.World()</span><br><span class="line">worldmap.title=&#x27;world map&#x27;</span><br><span class="line">worldmap.add(&#x27;Asia&#x27;,[&#x27;jp&#x27;,&#x27;cn&#x27;,&#x27;tw&#x27;])</span><br><span class="line">worldmap.render_to_file(&#x27;out1_18_2.svg&#x27;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">import pygal.maps.world</span><br><span class="line">from pygal.maps.world import COUNTRIES</span><br><span class="line">fn=&#x27;populations.json&#x27;</span><br><span class="line">def getcode(CountryName):</span><br><span class="line">    for a,b in COUNTRIES.items():</span><br><span class="line">        if b==CountryName:</span><br><span class="line">            return a</span><br><span class="line">    return None</span><br><span class="line">with open(fn,&#x27;r&#x27;) as file:</span><br><span class="line">    datas=json.load(file)</span><br><span class="line">dict1=&#123;&#125;</span><br><span class="line">for data in datas:</span><br><span class="line">    if data[&#x27;Year&#x27;]==&#x27;2010&#x27;:</span><br><span class="line">        CountryName=data[&#x27;Country Name&#x27;]</span><br><span class="line">        Year=data[&#x27;Year&#x27;]</span><br><span class="line">        n=int(float(data[&#x27;Numbers&#x27;]))</span><br><span class="line">        wcode=getcode(CountryName)</span><br><span class="line">        if wcode!=None:</span><br><span class="line">            dict1[wcode]=n</span><br><span class="line"></span><br><span class="line">worldmap=pygal.maps.world.World()</span><br><span class="line">worldmap.title=&#x27;2010人口分布&#x27;</span><br><span class="line">worldmap.add(&#x27;2010&#x27;,dict1)</span><br><span class="line">worldmap.render_to_file(&#x27;out1_21_2.svg&#x27;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">import pygal.maps.world</span><br><span class="line">from pygal.maps.world import COUNTRIES</span><br><span class="line">fn=&#x27;populations.json&#x27;</span><br><span class="line">def getcode(a):</span><br><span class="line">    for x,y in COUNTRIES.items():</span><br><span class="line">        if y==a:</span><br><span class="line">            return x</span><br><span class="line">    return None</span><br><span class="line">with open(fn,&#x27;r&#x27;) as file:</span><br><span class="line">    datas=json.load(file)</span><br><span class="line">dict1=&#123;&#125;</span><br><span class="line">dict2=&#123;&#125;</span><br><span class="line">for data in datas:</span><br><span class="line">    if data[&#x27;Year&#x27;]==&#x27;2010&#x27;:</span><br><span class="line">        a=data[&#x27;Country Name&#x27;]</span><br><span class="line">        b=int(float(data[&#x27;Numbers&#x27;]))</span><br><span class="line">        c=getcode(a)</span><br><span class="line">        if c!=None:</span><br><span class="line">            if b&gt;=100000000:</span><br><span class="line">                dict1[c]=b</span><br><span class="line">            else:</span><br><span class="line">                dict2[c]=b</span><br><span class="line"></span><br><span class="line">worldmap=pygal.maps.world.World()</span><br><span class="line">worldmap.title=&#x27;2010&#x27;</span><br><span class="line">worldmap.add(&#x27;&gt;=100000000&#x27;,dict1)</span><br><span class="line">worldmap.add(&#x27;&lt;100000000&#x27;,dict2)</span><br><span class="line">worldmap.render_to_file(&#x27;out1_22_2.svg&#x27;)</span><br></pre></td></tr></table></figure>
+<h3 id="csv"><a href="#csv" class="headerlink" title="csv"></a><strong>csv</strong></h3><h4 id="檔案開啟-reader"><a href="#檔案開啟-reader" class="headerlink" title="檔案開啟(reader())"></a>檔案開啟(reader())</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;csvReport.csv&#x27;</span><br><span class="line">with open(fn,&#x27;r&#x27;) as file:</span><br><span class="line">    datas=csv.reader(file)#指定跌代對象</span><br><span class="line">    pdata=list(datas)</span><br><span class="line">print(datas)</span><br><span class="line">print(pdata)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>或者用for迴圈列印</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;csvReport.csv&#x27;</span><br><span class="line">with open(fn,&#x27;r&#x27;) as file:</span><br><span class="line">    p=csv.reader(file)</span><br><span class="line">    for data in p:</span><br><span class="line">        print(data)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>或者用for列印串列內容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;csvReport.csv&#x27;</span><br><span class="line">with open(fn,&#x27;r&#x27;) as file:</span><br><span class="line">    p=csv.reader(file)</span><br><span class="line">    datas=list(p)</span><br><span class="line">for data in datas:</span><br><span class="line">    print(data)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用串列索引讀取csv</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;csvReport.csv&#x27;</span><br><span class="line">with open(fn,&#x27;r&#x27;) as file:</span><br><span class="line">    p=csv.reader(file)</span><br><span class="line">    datas=list(p)</span><br><span class="line">print(datas[0][0],datas[0][1])</span><br><span class="line">print(datas[1][0],datas[1][1])</span><br><span class="line">print(datas[3][0],datas[3][1])</span><br></pre></td></tr></table></figure>
+<h4 id="檔案開啟-dictreader"><a href="#檔案開啟-dictreader" class="headerlink" title="檔案開啟(dictreader())"></a>檔案開啟(dictreader())</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;csvPeople.csv&#x27;</span><br><span class="line">with open(fn,&#x27;r&#x27;) as file:</span><br><span class="line">    dict1=csv.DictReader(file)</span><br><span class="line">    for data in dict1:</span><br><span class="line">        print(data)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>將檔案中的file name與last name印出來</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;csvPeople.csv&#x27;</span><br><span class="line">with open(fn,&#x27;r&#x27;) as file:</span><br><span class="line">    p=csv.DictReader(file)</span><br><span class="line">    print(p)</span><br><span class="line">    for data in p:</span><br><span class="line">        print(data[&#x27;first_name&#x27;],data[&#x27;last_name&#x27;])</span><br></pre></td></tr></table></figure>
+<h4 id="寫入csv檔-writer"><a href="#寫入csv檔-writer" class="headerlink" title="寫入csv檔(writer)"></a>寫入csv檔(writer)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;out2_7_2.csv&#x27;</span><br><span class="line">with open(fn,&#x27;w&#x27;,newline=&#x27;&#x27;) as file:</span><br><span class="line">    writefile=csv.writer(file)</span><br><span class="line">    writefile.writerow([&#x27;name&#x27;,&#x27;age&#x27;,&#x27;high&#x27;])</span><br><span class="line">    writefile.writerow([&#x27;a&#x27;,&#x27;14&#x27;,&#x27;100&#x27;])</span><br><span class="line">    writefile.writerow([&#x27;b&#x27;,&#x27;18&#x27;,&#x27;200&#x27;])</span><br><span class="line">    writefile.writerow([&#x27;c&#x27;,&#x27;16&#x27;,&#x27;150&#x27;])</span><br></pre></td></tr></table></figure>
+<h4 id="複製csv檔"><a href="#複製csv檔" class="headerlink" title="複製csv檔"></a>複製csv檔</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">rn=input(&#x27;複製檔案名:&#x27;)</span><br><span class="line">wn=input(&#x27;輸出檔案名:&#x27;)</span><br><span class="line">try:</span><br><span class="line">    with open(rn,&#x27;r&#x27;) as file:</span><br><span class="line">        p=csv.reader(file)</span><br><span class="line">        datas=list(p)</span><br><span class="line">except:</span><br><span class="line">    print(&quot;未找到複製的檔案&quot;)</span><br><span class="line">else:</span><br><span class="line">    with open(wn,&#x27;w&#x27;,newline=&#x27;&#x27;) as file:</span><br><span class="line">        writefile=csv.writer(file)</span><br><span class="line">        for data in datas:</span><br><span class="line">            writefile.writerow(data)</span><br></pre></td></tr></table></figure>
+<h4 id="delimiter改變csv的分隔符號"><a href="#delimiter改變csv的分隔符號" class="headerlink" title="delimiter改變csv的分隔符號"></a>delimiter改變csv的分隔符號</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;out2_9_2.csv&#x27;</span><br><span class="line">with open(fn,&#x27;w&#x27;,newline=&#x27;&#x27;) as file:</span><br><span class="line">    writefile=csv.writer(file,delimiter=&#x27;\t&#x27;)</span><br><span class="line">    writefile.writerow([&#x27;name&#x27;,&#x27;age&#x27;,&#x27;high&#x27;])</span><br><span class="line">    writefile.writerow([&#x27;a&#x27;,&#x27;14&#x27;,&#x27;100&#x27;])</span><br><span class="line">    writefile.writerow([&#x27;b&#x27;,&#x27;18&#x27;,&#x27;200&#x27;])</span><br><span class="line">    writefile.writerow([&#x27;c&#x27;,&#x27;16&#x27;,&#x27;200&#x27;])</span><br></pre></td></tr></table></figure>
+<h4 id="寫入csv檔-dictwrite"><a href="#寫入csv檔-dictwrite" class="headerlink" title="寫入csv檔(dictwrite)"></a>寫入csv檔(dictwrite)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;out2_10_2.csv&#x27;</span><br><span class="line">list1=[&#x27;name&#x27;,&#x27;age&#x27;,&#x27;high&#x27;]</span><br><span class="line">with open(fn,&#x27;w&#x27;,newline=&#x27;&#x27;) as file:</span><br><span class="line">    writefile=csv.DictWriter(file,fieldnames=list1)</span><br><span class="line">    writefile.writeheader()</span><br><span class="line">    writefile.writerow(&#123;&#x27;name&#x27;:&#x27;a&#x27;,&#x27;age&#x27;:&#x27;18&#x27;,&#x27;high&#x27;:&#x27;100&#x27;&#125;)</span><br><span class="line">    writefile.writerow(&#123;&#x27;name&#x27;:&#x27;b&#x27;,&#x27;age&#x27;:&#x27;14&#x27;,&#x27;high&#x27;:&#x27;200&#x27;&#125;)</span><br><span class="line">    writefile.writerow(&#123;&#x27;name&#x27;:&#x27;c&#x27;,&#x27;age&#x27;:&#x27;16&#x27;,&#x27;high&#x27;:&#x27;150&#x27;&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>或用for輸入串列資料</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;out2_11_3.csv&#x27;</span><br><span class="line">listd=[&#123;&#x27;name&#x27;:&#x27;a&#x27;,&#x27;age&#x27;:&#x27;18&#x27;,&#x27;high&#x27;:&#x27;100&#x27;&#125;,&#123;&#x27;name&#x27;:&#x27;b&#x27;,&#x27;age&#x27;:&#x27;14&#x27;,&#x27;high&#x27;:&#x27;200&#x27;&#125;,&#123;&#x27;name&#x27;:&#x27;c&#x27;,&#x27;age&#x27;:&#x27;16&#x27;,&#x27;high&#x27;:&#x27;150&#x27;&#125;,&#123;&#x27;name&#x27;:&#x27;d&#x27;,&#x27;age&#x27;:&#x27;19&#x27;,&#x27;high&#x27;:&#x27;300&#x27;&#125;]</span><br><span class="line">listh=[&#x27;name&#x27;,&#x27;age&#x27;,&#x27;high&#x27;]</span><br><span class="line">with open(fn,&#x27;w&#x27;,newline=&#x27;&#x27;) as file:</span><br><span class="line">    writefile=csv.DictWriter(file,fieldnames=listh)</span><br><span class="line">    writefile.writeheader()</span><br><span class="line">    for data in listd:</span><br><span class="line">        writefile.writerow(data)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>writerows寫法:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;out2_11_3.csv&#x27;</span><br><span class="line">listd=[&#123;&#x27;name&#x27;:&#x27;a&#x27;,&#x27;age&#x27;:&#x27;18&#x27;,&#x27;high&#x27;:&#x27;100&#x27;&#125;,&#123;&#x27;name&#x27;:&#x27;b&#x27;,&#x27;age&#x27;:&#x27;14&#x27;,&#x27;high&#x27;:&#x27;200&#x27;&#125;,&#123;&#x27;name&#x27;:&#x27;c&#x27;,&#x27;age&#x27;:&#x27;16&#x27;,&#x27;high&#x27;:&#x27;150&#x27;&#125;,&#123;&#x27;name&#x27;:&#x27;d&#x27;,&#x27;age&#x27;:&#x27;19&#x27;,&#x27;high&#x27;:&#x27;300&#x27;&#125;]</span><br><span class="line">listh=[&#x27;name&#x27;,&#x27;age&#x27;,&#x27;high&#x27;]</span><br><span class="line">with open(fn,&#x27;w&#x27;,newline=&#x27;&#x27;) as file:</span><br><span class="line">    writefile=csv.DictWriter(file,fieldnames=listh)</span><br><span class="line">    writefile.writeheader()</span><br><span class="line">    writefile.writerows(listd)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>中文寫法:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;out2_11_4.csv&#x27;</span><br><span class="line">listd=[&#123;&#x27;名字&#x27;:&#x27;小名&#x27;,&#x27;年齡&#x27;:&#x27;20&#x27;,&#x27;身高&#x27;:&#x27;100&#x27;&#125;,&#123;&#x27;名字&#x27;:&#x27;小華&#x27;,&#x27;年齡&#x27;:&#x27;21&#x27;,&#x27;身高&#x27;:&#x27;150&#x27;&#125;,&#123;&#x27;名字&#x27;:&#x27;小立&#x27;,&#x27;年齡&#x27;:&#x27;22&#x27;,&#x27;身高&#x27;:&#x27;200&#x27;&#125;]</span><br><span class="line">listh=[&#x27;名字&#x27;,&#x27;年齡&#x27;,&#x27;身高&#x27;]</span><br><span class="line">with open(fn,&#x27;w&#x27;,encoding=&#x27;utf-8&#x27;,newline=&#x27;&#x27;) as file:</span><br><span class="line">    writefile=csv.DictWriter(file,fieldnames=listh)</span><br><span class="line">    writefile.writeheader()</span><br><span class="line">    for data in listd:</span><br><span class="line">        writefile.writerow(data)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>中文讀取:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;out2_11_4.csv&#x27;</span><br><span class="line">with open(fn,&#x27;r&#x27;,encoding=&#x27;utf-8&#x27;) as file:</span><br><span class="line">    datas=csv.DictReader(file)</span><br><span class="line">    for data in datas:</span><br><span class="line">        print(data)</span><br></pre></td></tr></table></figure>
+<h4 id="csv專案-使用csv繪製氣象圖表"><a href="#csv專案-使用csv繪製氣象圖表" class="headerlink" title="csv專案(使用csv繪製氣象圖表)"></a>csv專案(使用csv繪製氣象圖表)</h4><blockquote>
+<p>讀取檔案資料(標題):</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;TaipeiWeatherJan.csv&#x27;</span><br><span class="line">with open(fn) as file:</span><br><span class="line">    datas=csv.reader(file)</span><br><span class="line">    header=next(datas)</span><br><span class="line">    print(header)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>列出標題相對索引</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;TaipeiWeatherJan.csv&#x27;</span><br><span class="line">with open(fn) as file:</span><br><span class="line">    datas=csv.reader(file)</span><br><span class="line">    heard=next(datas)</span><br><span class="line">    for data in enumerate(heard):</span><br><span class="line">        print(data)</span><br><span class="line">    for n,d in enumerate(heard):</span><br><span class="line">        print(n,d)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>讀取最高溫和最低溫</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">fn=&#x27;TaipeiWeatherJan.csv&#x27;</span><br><span class="line">with open(fn) as file:</span><br><span class="line">    datas=csv.reader(file)</span><br><span class="line">    heard=next(datas)</span><br><span class="line">    lowTemps=[]</span><br><span class="line">    highTemps=[]</span><br><span class="line">    for data in datas:</span><br><span class="line">        lowTemps.append(data[3])</span><br><span class="line">        highTemps.append(data[1])</span><br><span class="line">print(&#x27;高溫:&#x27;,highTemps)</span><br><span class="line">print(&#x27;低溫:&#x27;,lowTemps)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>繪製最低溫圖</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">fn=&#x27;TaipeiWeatherJan.csv&#x27;</span><br><span class="line">with open(fn) as file:</span><br><span class="line">    datas=csv.reader(file)</span><br><span class="line">    header=next(datas)</span><br><span class="line">    lowTemps=[]</span><br><span class="line">    for data in datas:</span><br><span class="line">        lowTemps.append(int(data[3]))</span><br><span class="line">plt.plot(lowTemps)</span><br><span class="line">plt.title(&#x27;Weather Report, Jan. 2017&#x27;,fontsize=24)</span><br><span class="line">plt.xlabel(&#x27;&#x27;,fontsize=14)</span><br><span class="line">plt.ylabel(&#x27;Temperature(c)&#x27;,fontsize=14)</span><br><span class="line">plt.tick_params(axis=&#x27;both&#x27;,labelsize=12,color=&#x27;red&#x27;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>設定繪圖區大小</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">fn=&#x27;TaipeiWeatherJan.csv&#x27;</span><br><span class="line">with open(fn) as file:</span><br><span class="line">    datas=csv.reader(file)</span><br><span class="line">    header=next(datas)</span><br><span class="line">    lowTemps=[]</span><br><span class="line">    for data in datas:</span><br><span class="line">        lowTemps.append(int(data[3]))</span><br><span class="line">plt.figure(dpi=80,figsize=(12,15)) #長:80*12 寬:80*15 </span><br><span class="line">plt.plot(lowTemps)</span><br><span class="line">plt.title(&quot;Weather Report, Jan. 2017&quot;,fontsize=24)</span><br><span class="line">plt.xlabel(&#x27;&#x27;,fontsize=12)</span><br><span class="line">plt.ylabel(&#x27;Temperature (C)&#x27;,fontsize=12)</span><br><span class="line">plt.tick_params(axis=&#x27;both&#x27;,labelsize=14,color=&#x27;red&#x27;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>日期格式</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from datetime import datetime</span><br><span class="line"></span><br><span class="line">date=datetime.strptime(&#x27;2024/02/05 20:30:30&#x27;,&#x27;%Y/%m/%d %H:%M:%S&#x27;)</span><br><span class="line">print(date)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在圖表上加入日期格式</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from datetime import datetime</span><br><span class="line"></span><br><span class="line">fn=&#x27;TaipeiWeatherJan.csv&#x27;</span><br><span class="line">with open(fn) as file:</span><br><span class="line">    datas=csv.reader(file)</span><br><span class="line">    header=next(datas)</span><br><span class="line">    date=[]</span><br><span class="line">    lowTemps=[]</span><br><span class="line">    for data in datas:</span><br><span class="line">        lowTemps.append(int(data[3]))</span><br><span class="line">        date.append(datetime.strptime(data[0],&#x27;%Y/%m/%d&#x27;))</span><br><span class="line">plt.figure(dpi=80,figsize=(12,8))</span><br><span class="line">plt.plot(date,lowTemps)</span><br><span class="line">plt.title(&#x27;Weather Report, Jan. 2017&#x27;,fontsize=24)</span><br><span class="line">plt.xlabel(&#x27;&#x27;,fontsize=12)</span><br><span class="line">plt.ylabel(&#x27;Temperature (C)&#x27;,fontsize=12)</span><br><span class="line">plt.tick_params(axis=&#x27;both&#x27;,labelsize=14,color=&#x27;red&#x27;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>日期旋轉</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from datetime import datetime</span><br><span class="line"></span><br><span class="line">fn=&#x27;TaipeiWeatherJan.csv&#x27;</span><br><span class="line">with open(fn) as file:</span><br><span class="line">    datas=csv.reader(file)</span><br><span class="line">    header=next(datas)</span><br><span class="line">    lowTemps=[]</span><br><span class="line">    date=[]</span><br><span class="line">    for data in datas:</span><br><span class="line">        lowTemps.append(int(data[3]))</span><br><span class="line">        date.append(datetime.strptime(data[0],&#x27;%Y/%m/%d&#x27;))</span><br><span class="line">fig=plt.figure(dpi=80,figsize=(12,8))</span><br><span class="line">plt.plot(date,lowTemps)</span><br><span class="line">fig.autofmt_xdate() #可用rotation=n 來設定度數</span><br><span class="line">plt.title(&#x27;Weather Report, Jan. 2017&#x27;,fontsize=24)</span><br><span class="line">plt.xlabel(&#x27;&#x27;,fontsize=12)</span><br><span class="line">plt.ylabel(&#x27;Temperature (C)&#x27;,fontsize=12)</span><br><span class="line">plt.tick_params(axis=&#x27;both&#x27;,labelsize=14,color=&#x27;red&#x27;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>繪製高低溫圖</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from datetime import datetime</span><br><span class="line"></span><br><span class="line">fn=&#x27;TaipeiWeatherJan.csv&#x27;</span><br><span class="line">with open(fn) as file:</span><br><span class="line">    datas=csv.reader(file)</span><br><span class="line">    header=next(datas)</span><br><span class="line">    lowTemps=[]</span><br><span class="line">    highTemps=[]</span><br><span class="line">    date=[]</span><br><span class="line">    for data in datas:</span><br><span class="line">        try:</span><br><span class="line">            a=int(data[3])</span><br><span class="line">            b=int(data[1])</span><br><span class="line">        except:</span><br><span class="line">            print(&#x27;有缺值&#x27;)</span><br><span class="line">        else:</span><br><span class="line">            lowTemps.append(a)</span><br><span class="line">            highTemps.append(b)</span><br><span class="line">            date.append(datetime.strptime(data[0],&#x27;%Y/%m/%d&#x27;))</span><br><span class="line">fig=plt.figure(dpi=80,figsize=(12,8))</span><br><span class="line">plt.plot(date,highTemps,color=&#x27;r&#x27;)</span><br><span class="line">plt.plot(date,lowTemps,color=&#x27;b&#x27;)</span><br><span class="line">fig.autofmt_xdate(rotation=60)</span><br><span class="line">plt.title(&#x27;Weather Report, Jan. 2017&#x27;,fontsize=24,color=&#x27;b&#x27;)</span><br><span class="line">plt.xlabel(&#x27;&#x27;,fontsize=12)</span><br><span class="line">plt.ylabel(&#x27;Temperature (C)&#x27;,fontsize=12)</span><br><span class="line">plt.tick_params(axis=&#x27;both&#x27;,labelsize=14,color=&#x27;red&#x27;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>填滿中間區塊</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from datetime import datetime</span><br><span class="line"></span><br><span class="line">fn=&#x27;TaipeiWeatherJan.csv&#x27;</span><br><span class="line">with open(fn) as file:</span><br><span class="line">    datas=csv.reader(file)</span><br><span class="line">    header=next(datas)</span><br><span class="line">    lowTemps=[]</span><br><span class="line">    highTemps=[]</span><br><span class="line">    date=[]</span><br><span class="line">    for data in datas:</span><br><span class="line">        try:</span><br><span class="line">            a=int(data[3])</span><br><span class="line">            b=int(data[1])</span><br><span class="line">        except:</span><br><span class="line">            print(&#x27;有缺值&#x27;)</span><br><span class="line">        else:</span><br><span class="line">            lowTemps.append(a)</span><br><span class="line">            highTemps.append(b)</span><br><span class="line">            date.append(datetime.strptime(data[0],&#x27;%Y/%m/%d&#x27;))</span><br><span class="line">fig=plt.figure(dpi=80,figsize=(12,8))</span><br><span class="line">plt.plot(date,highTemps,color=&#x27;r&#x27;)</span><br><span class="line">plt.plot(date,lowTemps,color=&#x27;b&#x27;)</span><br><span class="line">plt.fill_between(date,highTemps,lowTemps,color=&#x27;y&#x27;,alpha=0.1) #alpha透明度0.1</span><br><span class="line">fig.autofmt_xdate(rotation=60)</span><br><span class="line">plt.title(&#x27;Weather Report, Jan. 2017&#x27;,fontsize=24,color=&#x27;b&#x27;)</span><br><span class="line">plt.xlabel(&#x27;&#x27;,fontsize=12)</span><br><span class="line">plt.ylabel(&#x27;Temperature (C)&#x27;,fontsize=12)</span><br><span class="line">plt.tick_params(axis=&#x27;both&#x27;,labelsize=14,color=&#x27;red&#x27;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h3 id="pickle"><a href="#pickle" class="headerlink" title="pickle"></a><strong>pickle</strong></h3><blockquote>
+<p>寫入</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import pickle</span><br><span class="line">data=&#123;</span><br><span class="line">    &#x27;name&#x27;:&#x27;a&#x27;,</span><br><span class="line">    &#x27;age&#x27;:&#x27;20&#x27;,</span><br><span class="line">    &#x27;high&#x27;:200,</span><br><span class="line">    &#x27;data&#x27;:[1,2,3,4,5,6,67]</span><br><span class="line">&#125;</span><br><span class="line">fn=&#x27;ch2_23_2.dat&#x27;</span><br><span class="line">with open(fn,&#x27;wb&#x27;) as file:</span><br><span class="line">    pickle.dump(data,file)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>讀取</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pickle</span><br><span class="line">fn=&#x27;ch2_23_2.dat&#x27;</span><br><span class="line">with open(fn,&#x27;rb&#x27;) as file:</span><br><span class="line">    datas=pickle.load(file)</span><br><span class="line">    print(datas)</span><br><span class="line">    print(datas[&#x27;data&#x27;][2])</span><br></pre></td></tr></table></figure>
+
+<h3 id="python與Microsoft-Excel"><a href="#python與Microsoft-Excel" class="headerlink" title="python與Microsoft Excel"></a><strong>python與Microsoft Excel</strong></h3><h4 id="安裝模組"><a href="#安裝模組" class="headerlink" title="安裝模組"></a>安裝模組</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install xlwt</span><br></pre></td></tr></table></figure>
+<h4 id="基本功能-寫入"><a href="#基本功能-寫入" class="headerlink" title="基本功能(寫入)"></a>基本功能(寫入)</h4><blockquote>
+<p>建立活頁簿</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">活頁簿物件=xlwt.Workbook</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>建立工作表</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">工作物件=活頁簿物件.add_sheet(sheet,cell_overwrite_ok=True)   #第二個參數為True，表示可以重設Excel的儲存格內容</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>將資料寫入儲存格</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">工作物件.write(row,col,data)   #將data寫入(row,col)位置</span><br></pre></td></tr></table></figure>
+<h4 id="實作-寫入"><a href="#實作-寫入" class="headerlink" title="實作(寫入)"></a>實作(寫入)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import xlwt</span><br><span class="line">fn=&#x27;out2_25_2.xls&#x27;</span><br><span class="line">data=[&#x27;iphone 13&#x27;,&#x27;iphone 14&#x27;,&#x27;iphone 15&#x27;]</span><br><span class="line">price=[&#x27;10000&#x27;,&#x27;20000&#x27;,&#x27;30000&#x27;]</span><br><span class="line">excel=xlwt.Workbook()</span><br><span class="line">sh=excel.add_sheet(&#x27;phone&#x27;,cell_overwrite_ok=True)</span><br><span class="line">for i in range(len(data)):</span><br><span class="line">    sh.write(0,i,data[i])</span><br><span class="line">for j in range(len(price)):</span><br><span class="line">    sh.write(1,j,price[j])</span><br><span class="line">excel.save(fn)</span><br></pre></td></tr></table></figure>
+<h4 id="基本功能-讀取"><a href="#基本功能-讀取" class="headerlink" title="基本功能(讀取)"></a>基本功能(讀取)</h4><blockquote>
+<p>開啟excel檔案供讀取</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">活頁簿件=xlrd.open.workbook()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>建立工作物件</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">工作物件=活頁簿物件.sheet()[index]   #上述傳回指定工作表的物件</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>傳回工作表row數</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">row=工作表物件.nrows</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>傳回工作表的col數</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cols=工作表物件.ncols</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>讀取某rows的數據</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list_data=工作表物件.row_valies(rows)  #將指定工作表的rows的值已串列格式回傳給list_data</span><br></pre></td></tr></table></figure>
+<h4 id="實作-讀取"><a href="#實作-讀取" class="headerlink" title="實作(讀取)"></a>實作(讀取)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import xlrd</span><br><span class="line"></span><br><span class="line">fn=&#x27;out2_25_2.xls&#x27;</span><br><span class="line">excel=xlrd.open_workbook(fn)</span><br><span class="line">sh=excel.sheets()[0]</span><br><span class="line">n=sh.nrows</span><br><span class="line">for i in range(n):</span><br><span class="line">    print(sh.row_values(i))</span><br></pre></td></tr></table></figure>
+	  <div class="article-footer-copyright">
+    Zhi筆記部落格
+</div>
+
+	</div>
+
+	
+	
+	<div>
+  	<center>
+
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2024/01/25/Ethical Hacking/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	<!--
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+</section>
+
+-->
+	
+	
+	
+		<section id="comments" class="comments">
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+  var gitalkConfig = {"enable":true,"clientID":"a5d7fbf7598366da6c6d","clientSecret":"55bbba32bf5c425d62e4562e6e0cdc1069f302ae","repo":"Zhi251.github.io","owner":"","admin":[""],"id":"location.pathname","distractionFreeMode":true};
+  var gitalk = new Gitalk(gitalkConfig);
+  gitalk.render('gitalk-container');
+</script>
+
+		</section>
+	
+	</div> <!-- col-md-9/col-md-12 -->
+
+
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2024-02-06 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/python網路爬蟲/">python網路爬蟲<span>1</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/筆記/">筆記<span>3</span></a></li> <li><a href="/tags/python/">python<span>1</span></a></li> <li><a href="/tags/網路爬蟲/">網路爬蟲<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">Contents</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#python%E7%B6%B2%E8%B7%AF%E7%88%AC%E8%9F%B2-%E4%B8%80%E3%80%81%E4%BA%8C"><span class="toc-article-text">python網路爬蟲(一、二)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E8%B3%87%E6%96%99%E6%A0%BC%E5%BC%8F"><span class="toc-article-text">資料格式</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#python-json%E6%A0%BC%E5%BC%8F"><span class="toc-article-text">python-&gt;json格式</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#dumps"><span class="toc-article-text">dumps()</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#python-json%E6%A0%BC%E5%BC%8F-1"><span class="toc-article-text">python-&gt;json格式</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#dumps-%E7%9A%84sort-key%E5%8F%83%E6%95%B8"><span class="toc-article-text">dumps()的sort_key參數</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#dumps-%E7%9A%84indent%E5%8F%83%E6%95%B8"><span class="toc-article-text">dumps()的indent參數</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#json-python%E6%A0%BC%E5%BC%8F"><span class="toc-article-text">json-&gt;python格式</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#loads"><span class="toc-article-text">loads()</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E6%AF%8F%E5%80%8BJSON%E6%96%87%E4%BB%B6%E5%8F%AA%E8%83%BD%E6%94%BE%E4%B8%80%E5%80%8BJSON%E7%89%A9%E4%BB%B6%EF%BC%8C%E8%A6%81%E6%94%BE%E5%A4%9A%E5%80%8B%E7%89%A9%E4%BB%B6%EF%BC%8C%E5%8F%AF%E7%94%A8%E4%B8%80%E5%80%8B%E7%88%B6JSON%E5%8C%85%E5%90%AB"><span class="toc-article-text">每個JSON文件只能放一個JSON物件，要放多個物件，可用一個父JSON包含</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%B0%87%E5%AD%97%E5%85%B8%E5%AF%AB%E5%85%A5json"><span class="toc-article-text">將字典寫入json</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E8%AE%80%E5%8F%96json%E6%AA%94%E6%A1%88"><span class="toc-article-text">讀取json檔案</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E6%87%89%E7%94%A8"><span class="toc-article-text">應用</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E6%87%89%E7%94%A8-%E5%BB%BA%E7%AB%8B%E4%B8%96%E7%95%8C%E5%9C%B0%E5%9C%96"><span class="toc-article-text">應用(建立世界地圖)</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#csv"><span class="toc-article-text">csv</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E6%AA%94%E6%A1%88%E9%96%8B%E5%95%9F-reader"><span class="toc-article-text">檔案開啟(reader())</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E6%AA%94%E6%A1%88%E9%96%8B%E5%95%9F-dictreader"><span class="toc-article-text">檔案開啟(dictreader())</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%AF%AB%E5%85%A5csv%E6%AA%94-writer"><span class="toc-article-text">寫入csv檔(writer)</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E8%A4%87%E8%A3%BDcsv%E6%AA%94"><span class="toc-article-text">複製csv檔</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#delimiter%E6%94%B9%E8%AE%8Acsv%E7%9A%84%E5%88%86%E9%9A%94%E7%AC%A6%E8%99%9F"><span class="toc-article-text">delimiter改變csv的分隔符號</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%AF%AB%E5%85%A5csv%E6%AA%94-dictwrite"><span class="toc-article-text">寫入csv檔(dictwrite)</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#csv%E5%B0%88%E6%A1%88-%E4%BD%BF%E7%94%A8csv%E7%B9%AA%E8%A3%BD%E6%B0%A3%E8%B1%A1%E5%9C%96%E8%A1%A8"><span class="toc-article-text">csv專案(使用csv繪製氣象圖表)</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#pickle"><span class="toc-article-text">pickle</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#python%E8%88%87Microsoft-Excel"><span class="toc-article-text">python與Microsoft Excel</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%AE%89%E8%A3%9D%E6%A8%A1%E7%B5%84"><span class="toc-article-text">安裝模組</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD-%E5%AF%AB%E5%85%A5"><span class="toc-article-text">基本功能(寫入)</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%AF%A6%E4%BD%9C-%E5%AF%AB%E5%85%A5"><span class="toc-article-text">實作(寫入)</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD-%E8%AE%80%E5%8F%96"><span class="toc-article-text">基本功能(讀取)</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%AF%A6%E4%BD%9C-%E8%AE%80%E5%8F%96"><span class="toc-article-text">實作(讀取)</span></a></li></ol></li></ol></li></ol></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+		
+
+	</div>
+	
+		
+
+</div><!-- row -->
+
+<!--
+ -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <!--
+<p>
+  
+  &copy; 2024 Zhi's Blog
+  
+      powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.Theme <a href="https://github.com/Ares-X/hexo-theme-freemind.bithack" target="_blank">freemind.bithack</a>  
+</p>
+//於底下添加沒用的版本訊息
+--->
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+</body>
+   </html>

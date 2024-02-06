@@ -131,6 +131,77 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2024/02/06/python爬蟲-第一章-第二章/" title="python爬蟲-json和csv資料格式">python爬蟲(第一章,第二章)</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2024-02-06  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="python網路爬蟲-一、二"><a href="#python網路爬蟲-一、二" class="headerlink" title="python網路爬蟲(一、二)"></a>python網路爬蟲(一、二)</h1><h2 id="資料格式"><a href="#資料格式" class="headerlink" title="資料格式"></a><strong>資料格式</strong></h2><h3 id="python-json格式"><a href="#python-json格式" class="headerlink" title="python-&gt;json格式"></a><strong>python-&gt;json格式</strong></h3><h4 id="dumps"><a href="#dumps" class="headerlink" title="dumps()"></a><strong>dumps()</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">list1=[1,2,3,4,5]</span><br><span class="line">tuple1=(6,7,8,9,10)</span><br><span class="line">dict1=&#123;&quot;aaaa&quot;:123&#125;</span><br><span class="line">str1=&quot;123456&quot;</span><br><span class="line">a=1</span><br><span class="line">b=1.2</span><br><span class="line">c=1456789876567898765567876222222222222222222222222222222</span><br><span class="line">T=True</span><br><span class="line">F=False</span><br><span class="line">d=None</span><br><span class="line">print(json.dumps(list1))</span><br><span class="line">print(json.dumps(tuple1))</span><br><span class="line">print(json.dumps(str1))</span><br><span class="line">print(json.dumps(dict1))</span><br><span class="line">print(json.dumps(a))</span><br><span class="line">print(json.dumps(b))</span><br><span class="line">print(json.dumps(c))</span><br><span class="line">print(json.dumps(T))</span><br><span class="line">print(json.dumps(d))</span><br><span class="line">print(json.dumps(F))</span><br></pre></td></tr></table></figure>
+<h4 id="python-json格式-1"><a href="#python-json格式-1" class="headerlink" title="python-&gt;json格式"></a><strong>python-&gt;json格式</strong></h4><table>
+<thead>
+<tr>
+<th>python資料</th>
+<th>JSON資料</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dict</td>
+<td>object</td>
+</tr>
+<tr>
+<td>list,tuple</td>
+<td>array</td>
+</tr>
+<tr>
+<td>str,unicode</td>
+<td>string</td>
+</tr>
+<tr>
+<td>int,float,long</td>
+<td>nuumber</td>
+</tr>
+<tr>
+<td>True</td>
+<td>true</td>
+</tr>
+<tr>
+<td>False</td>
+<td>false</td>
+</tr>
+<tr>
+<td>None</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">obj1=[&#123;&#x27;name&#x27;:&#x27;ray&#x27;,&#x27;Age&#x27;:20,&#x27;size&#x27;:&#x27;L&#x27;&#125;]</span><br><span class="line">jobj1=json.dumps(obj1)</span><br><span class="line">print(obj1)</span><br><span class="line">print(jobj1)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>note:</strong></p>
+<ol>
+<li>json字串是用雙引號</li>
+</ol>
+</blockquote>
+<h4 id="dumps-的sort-key參數"><a href="#dumps-的sort-key參數" class="headerlink" title="dumps()的sort_key參數"></a><strong>dumps()的sort_key參數</strong></h4>
+	
+	</div>
+  <a type="button" href="/2024/02/06/python爬蟲-第一章-第二章/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2024/01/25/Ethical Hacking/" title="Udemy道德黑客筆記">Learn Ethical Hacking From Scratch</a>
 		</h3>
 		</div>
@@ -230,6 +301,8 @@
 		
 			<li><a href="/categories/Udemy/">Udemy<span>1</span></a></li>
 		
+			<li><a href="/categories/python網路爬蟲/">python網路爬蟲<span>1</span></a></li>
+		
 			<li><a href="/categories/網頁設計/">網頁設計<span>1</span></a></li>
 		
 		</ul>
@@ -243,17 +316,21 @@
 		
 			<li><a href="/tags/NOSQL/">NOSQL<span>1</span></a></li>
 		
-			<li><a href="/tags/筆記/">筆記<span>2</span></a></li>
+			<li><a href="/tags/筆記/">筆記<span>3</span></a></li>
 		
-			<li><a href="/tags/道德黑客/">道德黑客<span>1</span></a></li>
+			<li><a href="/tags/Udemy/">Udemy<span>1</span></a></li>
+		
+			<li><a href="/tags/python/">python<span>1</span></a></li>
 		
 			<li><a href="/tags/自學/">自學<span>1</span></a></li>
 		
 			<li><a href="/tags/firebase/">firebase<span>1</span></a></li>
 		
-			<li><a href="/tags/網頁設計/">網頁設計<span>1</span></a></li>
+			<li><a href="/tags/網路爬蟲/">網路爬蟲<span>1</span></a></li>
 		
-			<li><a href="/tags/Udemy/">Udemy<span>1</span></a></li>
+			<li><a href="/tags/道德黑客/">道德黑客<span>1</span></a></li>
+		
+			<li><a href="/tags/網頁設計/">網頁設計<span>1</span></a></li>
 		
 		 
 		</ul>
@@ -265,6 +342,10 @@
 <div class="widget">
   <h4>Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2024/02/06/python爬蟲-第一章-第二章/"  title="python爬蟲-json和csv資料格式" ><i class="fa fa-file-o"></i>python爬蟲(第一章,第二章)</a>
+      </li>
     
       <li>
         <a href="/2024/01/25/Ethical Hacking/"  title="Udemy道德黑客筆記" ><i class="fa fa-file-o"></i>Learn Ethical Hacking From ...</a>
