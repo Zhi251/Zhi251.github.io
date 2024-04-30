@@ -131,6 +131,51 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2024/04/29/Red-Team-Password-Attacks/" title="紅隊密碼攻擊-tryhackme">Red Team Password Attacks</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2024-04-29  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="密碼攻擊"><a href="#密碼攻擊" class="headerlink" title="密碼攻擊"></a>密碼攻擊</h1><h2 id="密碼攻擊技術"><a href="#密碼攻擊技術" class="headerlink" title="密碼攻擊技術"></a>密碼攻擊技術</h2><blockquote>
+<p>密碼破解是一種用於從加密或雜湊資料到明文資料發現密碼的技術。攻擊者可能會從受感染的電腦取得加密或雜湊的密碼，或透過網路傳輸資料來擷取它們。一旦獲得密碼，攻擊者就可以利用密碼攻擊技術，使用各種工具破解這些雜湊密碼。</p>
+</blockquote>
+<ul>
+<li>密碼猜測<blockquote>
+<p>密碼猜測是一種針對在線協定和服務的攻擊方法。它通常涉及到向網站或服務發送多次登入請求，每次請求嘗試不同的密碼組合。<br>耗時性：這種方法通常是耗時的，因為攻擊者需要反覆嘗試直到找到正確的密碼。<br>可檢測性：由於每次嘗試都需要發送新的請求，這種攻擊容易被系統偵測到。系統可以通過分析來自同一來源的頻繁登入嘗試來識別攻擊。<br>對策：為防止密碼猜測，許多系統會實施帳戶鎖定政策或延遲回應策略，當檢測到多次失敗的登入嘗試時暫時鎖定帳戶或增加回應時間。</p>
+</blockquote>
+</li>
+<li>密碼破解<blockquote>
+<p>密碼破解則是在本地或由攻擊者控制的系統上執行的一種技術。通常涉及到使用先進的計算技術和算法在沒有在線交互的情況下嘗試破解密碼。<br>資源密集：這種方法可能需要大量的計算資源，尤其是當使用如GPU加速的密碼破解軟件時。<br>離線執行：與密碼猜測不同，密碼破解通常在攻擊者的控制環境中離線進行，這意味著它不依賴於對目標系統的在線請求，減少了被偵測的風險。<br>使用場景：當攻擊者獲得了密碼的哈希值（例如通過數據泄漏或系統入侵）時，他們可能會使用密碼破解技術來嘗試恢復原始的明文密碼。。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="密碼分析-1-預設、弱、洩漏、組合和用戶名單字列表"><a href="#密碼分析-1-預設、弱、洩漏、組合和用戶名單字列表" class="headerlink" title="密碼分析 1 -(預設、弱、洩漏、組合和用戶名單字列表)"></a>密碼分析 1 -(預設、弱、洩漏、組合和用戶名單字列表)</h2><h3 id="默認預設密碼"><a href="#默認預設密碼" class="headerlink" title="默認預設密碼"></a>默認預設密碼</h3><h4 id="參考網站"><a href="#參考網站" class="headerlink" title="參考網站"></a>參考網站</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://cirt.net/passwords">default-password-1</a></li>
+<li><a target="_blank" rel="noopener" href="https://default-password.info/">default-password-2</a></li>
+<li><a target="_blank" rel="noopener" href="https://datarecovery.com/rd/default-passwords/">default-password-3</a></li>
+</ul>
+<h3 id="弱密码"><a href="#弱密码" class="headerlink" title="弱密码"></a>弱密码</h3><h4 id="參考網站-1"><a href="#參考網站-1" class="headerlink" title="參考網站"></a>參考網站</h4>
+	
+	</div>
+  <a type="button" href="/2024/04/29/Red-Team-Password-Attacks/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2024/04/25/Red-Team-Weaponization/" title="紅隊武器化-tryhackme">Red Team Weaponization</a>
 		</h3>
 		</div>
@@ -393,6 +438,8 @@
 		
 			<li><a href="/categories/紅隊偵查/">紅隊偵查<span>1</span></a></li>
 		
+			<li><a href="/categories/紅隊密碼攻擊/">紅隊密碼攻擊<span>1</span></a></li>
+		
 			<li><a href="/categories/紅隊武器化/">紅隊武器化<span>1</span></a></li>
 		
 			<li><a href="/categories/網頁設計/">網頁設計<span>1</span></a></li>
@@ -406,31 +453,33 @@
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/攻擊階段-武器化/">攻擊階段-武器化<span>1</span></a></li>
+			<li><a href="/tags/道德黑客/">道德黑客<span>4</span></a></li>
+		
+			<li><a href="/tags/攻擊階段-偵查/">攻擊階段-偵查<span>1</span></a></li>
 		
 			<li><a href="/tags/網路爬蟲/">網路爬蟲<span>1</span></a></li>
 		
 			<li><a href="/tags/python/">python<span>1</span></a></li>
 		
-			<li><a href="/tags/tryhackme/">tryhackme<span>2</span></a></li>
+			<li><a href="/tags/筆記/">筆記<span>6</span></a></li>
+		
+			<li><a href="/tags/自學/">自學<span>4</span></a></li>
+		
+			<li><a href="/tags/firebase/">firebase<span>1</span></a></li>
+		
+			<li><a href="/tags/紅隊/">紅隊<span>3</span></a></li>
+		
+			<li><a href="/tags/網頁設計/">網頁設計<span>1</span></a></li>
+		
+			<li><a href="/tags/攻擊階段-初訪問密碼攻擊/">攻擊階段-初訪問密碼攻擊<span>1</span></a></li>
+		
+			<li><a href="/tags/攻擊階段-武器化/">攻擊階段-武器化<span>1</span></a></li>
 		
 			<li><a href="/tags/Udemy/">Udemy<span>1</span></a></li>
 		
 			<li><a href="/tags/NOSQL/">NOSQL<span>1</span></a></li>
 		
-			<li><a href="/tags/firebase/">firebase<span>1</span></a></li>
-		
-			<li><a href="/tags/筆記/">筆記<span>5</span></a></li>
-		
-			<li><a href="/tags/紅隊/">紅隊<span>2</span></a></li>
-		
-			<li><a href="/tags/攻擊階段-偵查/">攻擊階段-偵查<span>1</span></a></li>
-		
-			<li><a href="/tags/自學/">自學<span>3</span></a></li>
-		
-			<li><a href="/tags/網頁設計/">網頁設計<span>1</span></a></li>
-		
-			<li><a href="/tags/道德黑客/">道德黑客<span>3</span></a></li>
+			<li><a href="/tags/tryhackme/">tryhackme<span>3</span></a></li>
 		
 		 
 		</ul>
@@ -442,6 +491,10 @@
 <div class="widget">
   <h4>Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2024/04/29/Red-Team-Password-Attacks/"  title="紅隊密碼攻擊-tryhackme" ><i class="fa fa-file-o"></i>Red Team Password Attacks</a>
+      </li>
     
       <li>
         <a href="/2024/04/25/Red-Team-Weaponization/"  title="紅隊武器化-tryhackme" ><i class="fa fa-file-o"></i>Red Team Weaponization</a>
@@ -457,10 +510,6 @@
     
       <li>
         <a href="/2024/01/25/Ethical Hacking/"  title="Udemy道德黑客筆記" ><i class="fa fa-file-o"></i>Learn Ethical Hacking From ...</a>
-      </li>
-    
-      <li>
-        <a href="/2023/12/10/Firebase NOSQL串接/"  title="112上網頁設計課報告筆記" ><i class="fa fa-file-o"></i>Firebase(NOSQL)串接</a>
       </li>
     
   </ul>
