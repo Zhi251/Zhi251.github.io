@@ -110,13 +110,16 @@
                 </div>
             </div>
 
-            <label for="agentName">填寫主機名:</label>
+            <label for="agentName">填寫公司名:</label>
             <input type="text" id="agentName" placeholder="請輸入主機名" required>
             
             <label for="group">填寫群組:</label>
             <input type="text" id="group" placeholder="請輸入群組名稱" required>
             
-            <button type="button" onclick="generateScript()">生成腳本並下載</button>
+            <label for="scriptCount">輸入產生腳本的數量:</label>
+            <input type="number" id="scriptCount" min="1" value="1" required>
+            
+            <button type="button" onclick="generateScripts()">生成腳本並下載</button>
         </form>
 
         <div class="output" id="scriptOutput"></div>
@@ -141,51 +144,57 @@
             document.getElementById('windowsOptions').style.display = 'none';
         });
 
-        function generateScript() {
+        function generateScripts() {
             const os = document.querySelector('input[name="os"]:checked').value;
             const agentName = document.getElementById('agentName').value;
             const group = document.getElementById('group').value;
+            const scriptCount = parseInt(document.getElementById('scriptCount').value, 10);
             
-            let script = '';
-            let fileName = '';
+            for (let i = 1; i <= scriptCount; i++) {
+                let script = '';
+                let fileName = '';
+                const index = String(i).padStart(3, '0');
+                const hostName = `HOOST_${index}_${agentName}`;
 
-            if (os === 'windows') {
-                const windowsScript = `$webclient = New-Object System.Net.WebClient\n$webclient.DownloadFile("https://packages.wazuh.com/4.x/windows/wazuh-agent-4.7.4-1.msi", "$env:TEMP\\wazuh-agent.msi")\nmsiexec.exe /i $env:TEMP\\wazuh-agent.msi /q WAZUH_MANAGER='wazuh.aixsoar.com' WAZUH_AGENT_GROUP='${group}' WAZUH_AGENT_NAME='${agentName}' WAZUH_REGISTRATION_SERVER='wazuh.aixsoar.com'\nStart-Sleep -Seconds 10\nNET START WazuhSvc`;
-                script = windowsScript;
-                fileName = 'install_script.ps1';
-            } else if (os === 'linux' || os === 'macos') {
-                if (os === 'linux') {
+                if (os === 'windows') {
+                    script = `$webclient = New-Object System.Net.WebClient\n$webclient.DownloadFile("https://packages.wazuh.com/4.x/windows/wazuh-agent-4.7.4-1.msi", "$env:TEMP\\wazuh-agent.msi")\nmsiexec.exe /i $env:TEMP\\wazuh-agent.msi /q WAZUH_MANAGER='wazuh.aixsoar.com' WAZUH_AGENT_GROUP='${group}' WAZUH_AGENT_NAME='${hostName}' WAZUH_REGISTRATION_SERVER='wazuh.aixsoar.com'\nStart-Sleep -Seconds 10\nNET START WazuhSvc`;
+                    fileName = `${hostName}_Windows.ps1`;
+                } else if (os === 'linux') {
                     const linuxPackage = document.querySelector('input[name="linuxPackage"]:checked').value;
                     if (linuxPackage === 'rpm_amd64') {
-                        script = `curl -o wazuh-agent-4.7.4-1.x86_64.rpm https://packages.wazuh.com/4.x/yum/wazuh-agent-4.7.4-1.x86_64.rpm && sudo WAZUH_MANAGER='wazuh.aixsoar.com' WAZUH_AGENT_GROUP='${group}' WAZUH_AGENT_NAME='${agentName}' rpm -ihv wazuh-agent-4.7.4-1.x86_64.rpm\nsudo systemctl daemon-reload\nsudo systemctl enable wazuh-agent\nsudo systemctl start wazuh-agent`;
+                        script = `curl -o wazuh-agent-4.7.4-1.x86_64.rpm https://packages.wazuh.com/4.x/yum/wazuh-agent-4.7.4-1.x86_64.rpm && sudo WAZUH_MANAGER='wazuh.aixsoar.com' WAZUH_AGENT_GROUP='${group}' WAZUH_AGENT_NAME='${hostName}' rpm -ihv wazuh-agent-4.7.4-1.x86_64.rpm\nsudo systemctl daemon-reload\nsudo systemctl enable wazuh-agent\nsudo systemctl start wazuh-agent`;
                     } else if (linuxPackage === 'rpm_aarch64') {
-                        script = `curl -o wazuh-agent-4.7.4-1.aarch64.rpm https://packages.wazuh.com/4.x/yum/wazuh-agent-4.7.4-1.aarch64.rpm && sudo WAZUH_MANAGER='wazuh.aixsoar.com' WAZUH_AGENT_GROUP='${group}' WAZUH_AGENT_NAME='${agentName}' rpm -ihv wazuh-agent-4.7.4-1.aarch64.rpm\nsudo systemctl daemon-reload\nsudo systemctl enable wazuh-agent\nsudo systemctl start wazuh-agent`;
+                        script = `curl -o wazuh-agent-4.7.4-1.aarch64.rpm https://packages.wazuh.com/4.x/yum/wazuh-agent-4.7.4-1.aarch64.rpm && sudo WAZUH_MANAGER='wazuh.aixsoar.com' WAZUH_AGENT_GROUP='${group}' WAZUH_AGENT_NAME='${hostName}' rpm -ihv wazuh-agent-4.7.4-1.aarch64.rpm\nsudo systemctl daemon-reload\nsudo systemctl enable wazuh-agent\nsudo systemctl start wazuh-agent`;
                     } else if (linuxPackage === 'deb_amd64') {
-                        script = `wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.7.4-1_amd64.deb && sudo WAZUH_MANAGER='wazuh.aixsoar.com' WAZUH_AGENT_GROUP='${group}' WAZUH_AGENT_NAME='${agentName}' dpkg -i ./wazuh-agent_4.7.4-1_amd64.deb\nsudo systemctl daemon-reload\nsudo systemctl enable wazuh-agent\nsudo systemctl start wazuh-agent`;
+                        script = `wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.7.4-1_amd64.deb && sudo WAZUH_MANAGER='wazuh.aixsoar.com' WAZUH_AGENT_GROUP='${group}' WAZUH_AGENT_NAME='${hostName}' dpkg -i ./wazuh-agent_4.7.4-1_amd64.deb\nsudo systemctl daemon-reload\nsudo systemctl enable wazuh-agent\nsudo systemctl start wazuh-agent`;
                     } else if (linuxPackage === 'deb_aarch64') {
-                        script = `wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.7.4-1_arm64.deb && sudo WAZUH_MANAGER='wazuh.aixsoar.com' WAZUH_AGENT_GROUP='${group}' WAZUH_AGENT_NAME='${agentName}' dpkg -i ./wazuh-agent_4.7.4-1_arm64.deb\nsudo systemctl daemon-reload\nsudo systemctl enable wazuh-agent\nsudo systemctl start wazuh-agent`;
+                        script = `wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.7.4-1_arm64.deb && sudo WAZUH_MANAGER='wazuh.aixsoar.com' WAZUH_AGENT_GROUP='${group}' WAZUH_AGENT_NAME='${hostName}' dpkg -i ./wazuh-agent_4.7.4-1_arm64.deb\nsudo systemctl daemon-reload\nsudo systemctl enable wazuh-agent\nsudo systemctl start wazuh-agent`;
                     }
+                    fileName = `${hostName}_Linux.sh`;
                 } else if (os === 'macos') {
                     const macPackage = document.querySelector('input[name="macPackage"]:checked').value;
                     if (macPackage === 'intel') {
-                        script = `curl -so wazuh-agent.pkg https://packages.wazuh.com/4.x/macos/wazuh-agent-4.7.4-1.intel64.pkg && echo "WAZUH_MANAGER='wazuh.aixsoar.com' && WAZUH_AGENT_GROUP='${group}' && WAZUH_AGENT_NAME='${agentName}'" > /tmp/wazuh_envs && sudo installer -pkg ./wazuh-agent.pkg -target /\nsudo /Library/Ossec/bin/wazuh-control start`;
+                        script = `curl -so wazuh-agent.pkg https://packages.wazuh.com/4.x/macos/wazuh-agent-4.7.4-1.intel64.pkg && echo "WAZUH_MANAGER='wazuh.aixsoar.com' && WAZUH_AGENT_GROUP='${group}' && WAZUH_AGENT_NAME='${hostName}'" > /tmp/wazuh_envs && sudo installer -pkg ./wazuh-agent.pkg -target /\nsudo /Library/Ossec/bin/wazuh-control start`;
                     } else if (macPackage === 'apple_silicon') {
-                        script = `curl -so wazuh-agent.pkg https://packages.wazuh.com/4.x/macos/wazuh-agent-4.7.4-1.arm64.pkg && echo "WAZUH_MANAGER='wazuh.aixsoar.com' && WAZUH_AGENT_GROUP='${group}' && WAZUH_AGENT_NAME='${agentName}'" > /tmp/wazuh_envs && sudo installer -pkg ./wazuh-agent.pkg -target /\nsudo /Library/Ossec/bin/wazuh-control start`;
+                        script = `curl -so wazuh-agent.pkg https://packages.wazuh.com/4.x/macos/wazuh-agent-4.7.4-1.arm64.pkg && echo "WAZUH_MANAGER='wazuh.aixsoar.com' && WAZUH_AGENT_GROUP='${group}' && WAZUH_AGENT_NAME='${hostName}'" > /tmp/wazuh_envs && sudo installer -pkg ./wazuh-agent.pkg -target /\nsudo /Library/Ossec/bin/wazuh-control start`;
                     }
+                    fileName = `${hostName}_macOS.sh`;
                 }
-                fileName = 'install_script.sh';
+
+                downloadFile(script, fileName);
             }
+        }
 
-            document.getElementById('scriptOutput').textContent = script;
-
-            // 下載腳本
-            const blob = new Blob([script], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
+        function downloadFile(content, fileName) {
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
+            a.style.display = 'none';
             a.href = url;
             a.download = fileName;
+            document.body.appendChild(a);
             a.click();
-            URL.revokeObjectURL(url);
+            window.URL.revokeObjectURL(url);
         }
     </script>
 </body>
