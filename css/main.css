@@ -2652,6 +2652,414 @@ mjx-container::-webkit-scrollbar {
   background-color: var(--red-1);
 }
 
+.gitalk-comment {
+  color: var(--color-default);
+}
+
+.gt-header-comment .gt-header-preview.markdown-body h2,
+.gt-header-comment .gt-header-preview.markdown-body h1,
+.gt-comment-content .gt-comment-body.markdown-body h2,
+.gt-comment-content .gt-comment-body.markdown-body h1 {
+  border-bottom: none;
+}
+
+.gt-header-comment .gt-header-preview.markdown-body table,
+.gt-comment-content .gt-comment-body.markdown-body table {
+  display: table;
+}
+
+.gt-header-comment .gt-header-preview.markdown-body table tr,
+.gt-comment-content .gt-comment-body.markdown-body table tr {
+  background-color: transparent !important;
+  border: none;
+}
+
+.gt-header-comment .gt-header-preview.markdown-body table th,
+.gt-comment-content .gt-comment-body.markdown-body table th {
+  border: none;
+  border-bottom: 3px solid var(--color-border);
+}
+
+.gt-header-comment .gt-header-preview.markdown-body table td,
+.gt-comment-content .gt-comment-body.markdown-body table td {
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.gt-header-textarea {
+  background-color: var(--red-6) !important;
+  color: var(--color-default);
+}
+
+.gt-container .gt-header-comment {
+  width: 100%;
+}
+
+.gt-container .gt-header-preview,
+.gt-container .gt-comment-content {
+  background-color: var(--color-wrap) !important;
+}
+
+.gt-container .gt-comment-content:hover {
+  box-shadow: none !important;
+}
+
+.gt-container .gt-popup {
+  background-color: var(--color-wrap) !important;
+}
+
+.gt-header-preview.markdown-body,
+.gt-comment-content .gt-comment-body.markdown-body {
+  color: var(--color-default) !important;
+}
+
+.gt-header-preview.markdown-body h1,
+.gt-comment-content .gt-comment-body.markdown-body h1 {
+  font-size: 2.25em;
+}
+
+.gt-header-preview.markdown-body h2,
+.gt-comment-content .gt-comment-body.markdown-body h2 {
+  font-size: 1.75em;
+  position: relative;
+}
+
+.gt-header-preview.markdown-body h2:before,
+.gt-comment-content .gt-comment-body.markdown-body h2:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  border-bottom: 1px solid var(--color-h2-border);
+  bottom: -15px;
+  box-sizing: unset;
+  transition: 1s;
+}
+
+.gt-header-preview.markdown-body h2:after,
+.gt-comment-content .gt-comment-body.markdown-body h2:after {
+  content: "";
+  position: absolute;
+  background: var(--color-h2-after);
+  width: 1em;
+  height: 7px;
+  bottom: -18px;
+  left: 0;
+  border-radius: 8px;
+  box-shadow: var(--shadow-red-6-shadow);
+  transition: 0.3s;
+}
+
+.gt-header-preview.markdown-body h2:hover:after,
+.gt-comment-content .gt-comment-body.markdown-body h2:hover:after {
+  width: 3em;
+}
+
+.gt-header-preview.markdown-body h3,
+.gt-comment-content .gt-comment-body.markdown-body h3 {
+  font-size: 1.5em;
+}
+
+.gt-header-preview.markdown-body h4,
+.gt-comment-content .gt-comment-body.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.gt-header-preview.markdown-body h5,
+.gt-comment-content .gt-comment-body.markdown-body h5 {
+  font-size: 1em;
+}
+
+.gt-header-preview.markdown-body h6,
+.gt-comment-content .gt-comment-body.markdown-body h6 {
+  font-size: 1em;
+  color: var(--grey-9);
+}
+
+.gt-header-preview.markdown-body hr,
+.gt-comment-content .gt-comment-body.markdown-body hr {
+  margin: 12px 0;
+  opacity: 0.3;
+  height: 4px;
+  background-image: linear-gradient(to right, var(--red-0) 50%, transparent 0%);
+  background-size: 50px 4px;
+  background-repeat: repeat-x;
+  border: none;
+  filter: drop-shadow(0px 0px 2px var(--red-1));
+  transition: opacity 0.3s, color 0.3s;
+}
+
+.gt-header-preview.markdown-body hr:hover,
+.gt-comment-content .gt-comment-body.markdown-body hr:hover {
+  opacity: 0.5;
+}
+
+.gt-header-preview.markdown-body strong,
+.gt-comment-content .gt-comment-body.markdown-body strong {
+  font-weight: bold;
+}
+
+.gt-header-preview.markdown-body em,
+.gt-header-preview.markdown-body cite,
+.gt-comment-content .gt-comment-body.markdown-body em,
+.gt-comment-content .gt-comment-body.markdown-body cite {
+  font-style: italic;
+}
+
+.gt-header-preview.markdown-body sup,
+.gt-header-preview.markdown-body sub,
+.gt-comment-content .gt-comment-body.markdown-body sup,
+.gt-comment-content .gt-comment-body.markdown-body sub {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.gt-header-preview.markdown-body sup,
+.gt-comment-content .gt-comment-body.markdown-body sup {
+  top: -0.5em;
+}
+
+.gt-header-preview.markdown-body sub,
+.gt-comment-content .gt-comment-body.markdown-body sub {
+  bottom: -0.2em;
+}
+
+.gt-header-preview.markdown-body small,
+.gt-comment-content .gt-comment-body.markdown-body small {
+  font-size: 0.85em;
+}
+
+.gt-header-preview.markdown-body acronym,
+.gt-header-preview.markdown-body abbr,
+.gt-comment-content .gt-comment-body.markdown-body acronym,
+.gt-comment-content .gt-comment-body.markdown-body abbr {
+  text-decoration: none;
+  border-bottom: 1px dotted;
+}
+
+.gt-header-preview.markdown-body ul,
+.gt-header-preview.markdown-body ol,
+.gt-header-preview.markdown-body dl,
+.gt-comment-content .gt-comment-body.markdown-body ul,
+.gt-comment-content .gt-comment-body.markdown-body ol,
+.gt-comment-content .gt-comment-body.markdown-body dl {
+  margin: 0 20px;
+  line-height: 1.67;
+}
+
+.gt-header-preview.markdown-body ul ul,
+.gt-header-preview.markdown-body ul ol,
+.gt-header-preview.markdown-body ol ul,
+.gt-header-preview.markdown-body ol ol,
+.gt-comment-content .gt-comment-body.markdown-body ul ul,
+.gt-comment-content .gt-comment-body.markdown-body ul ol,
+.gt-comment-content .gt-comment-body.markdown-body ol ul,
+.gt-comment-content .gt-comment-body.markdown-body ol ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.gt-header-preview.markdown-body ul,
+.gt-comment-content .gt-comment-body.markdown-body ul {
+  list-style: disc;
+}
+
+.gt-header-preview.markdown-body ol,
+.gt-comment-content .gt-comment-body.markdown-body ol {
+  list-style: decimal;
+}
+
+.gt-header-preview.markdown-body dt,
+.gt-comment-content .gt-comment-body.markdown-body dt {
+  font-weight: bold;
+}
+
+.gt-header-preview.markdown-body p,
+.gt-header-preview.markdown-body table,
+.gt-comment-content .gt-comment-body.markdown-body p,
+.gt-comment-content .gt-comment-body.markdown-body table {
+  line-height: 1.67;
+  margin: 16px 0;
+}
+
+.gt-header-preview.markdown-body h1,
+.gt-header-preview.markdown-body h2,
+.gt-header-preview.markdown-body h3,
+.gt-header-preview.markdown-body h4,
+.gt-header-preview.markdown-body h5,
+.gt-header-preview.markdown-body h6,
+.gt-comment-content .gt-comment-body.markdown-body h1,
+.gt-comment-content .gt-comment-body.markdown-body h2,
+.gt-comment-content .gt-comment-body.markdown-body h3,
+.gt-comment-content .gt-comment-body.markdown-body h4,
+.gt-comment-content .gt-comment-body.markdown-body h5,
+.gt-comment-content .gt-comment-body.markdown-body h6 {
+  font-weight: bold;
+  line-height: 1.2em;
+  margin: 1.2em 0 0.75em;
+}
+
+.gt-header-preview.markdown-body h2,
+.gt-comment-content .gt-comment-body.markdown-body h2 {
+  margin-bottom: 40px;
+}
+
+.gt-header-preview.markdown-body a,
+.gt-comment-content .gt-comment-body.markdown-body a {
+  color: var(--color-link);
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.gt-header-preview.markdown-body a:hover,
+.gt-comment-content .gt-comment-body.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.gt-header-preview.markdown-body li,
+.gt-comment-content .gt-comment-body.markdown-body li {
+  margin: 8px 0;
+}
+
+.gt-header-preview.markdown-body li:hover::marker,
+.gt-comment-content .gt-comment-body.markdown-body li:hover::marker {
+  transition: color 0.2s;
+  color: var(--red-1);
+}
+
+.gt-header-preview.markdown-body img,
+.gt-header-preview.markdown-body video,
+.gt-comment-content .gt-comment-body.markdown-body img,
+.gt-comment-content .gt-comment-body.markdown-body video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.gt-header-preview.markdown-body table,
+.gt-comment-content .gt-comment-body.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.gt-header-preview.markdown-body th,
+.gt-comment-content .gt-comment-body.markdown-body th {
+  font-weight: bold;
+  border-bottom: 3px solid var(--color-border);
+  padding-bottom: 8px;
+}
+
+.gt-header-preview.markdown-body td,
+.gt-comment-content .gt-comment-body.markdown-body td {
+  border-bottom: 1px solid var(--color-border);
+  padding: 8px 0;
+}
+
+.gt-header-preview.markdown-body blockquote,
+.gt-comment-content .gt-comment-body.markdown-body blockquote {
+  background: var(--red-5-5);
+  border-left: 6px var(--red-4) solid !important;
+  margin: 28px 0 !important;
+  border-radius: 10px;
+  transition: 0.3s;
+  display: flow-root;
+  padding: 0 12px !important;
+  box-shadow: var(--shadow-meta);
+}
+
+.gt-header-preview.markdown-body blockquote:hover,
+.gt-comment-content .gt-comment-body.markdown-body blockquote:hover {
+  box-shadow: var(--shadow-meta-hover);
+}
+
+.gt-header-preview.markdown-body blockquote footer,
+.gt-comment-content .gt-comment-body.markdown-body blockquote footer {
+  font-size: 14px;
+  margin: 24px 0;
+}
+
+.gt-header-preview.markdown-body blockquote footer cite:before,
+.gt-comment-content .gt-comment-body.markdown-body blockquote footer cite:before {
+  content: "—";
+  padding: 0 8px;
+}
+
+.gt-header-preview.markdown-body details,
+.gt-comment-content .gt-comment-body.markdown-body details {
+  padding: 16px 12px;
+  border-radius: 10px;
+  background-color: var(--red-5-5);
+  box-shadow: var(--shadow-meta);
+  transition: 0.3s;
+}
+
+.gt-header-preview.markdown-body details:hover,
+.gt-comment-content .gt-comment-body.markdown-body details:hover {
+  box-shadow: var(--shadow-meta-hover);
+}
+
+.gt-header-preview.markdown-body summary,
+.gt-comment-content .gt-comment-body.markdown-body summary {
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: var(--cursor-pointer) !important;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.gt-header-preview.markdown-body summary:hover,
+.gt-comment-content .gt-comment-body.markdown-body summary:hover {
+  background-color: var(--red-5);
+}
+
+.gt-header-preview.markdown-body details[open] summary,
+.gt-comment-content .gt-comment-body.markdown-body details[open] summary {
+  background-color: var(--red-5);
+}
+
+.gt-header-preview.markdown-body details[open] summary:hover,
+.gt-comment-content .gt-comment-body.markdown-body details[open] summary:hover {
+  background-color: var(--red-5);
+}
+
+.gt-header-preview.markdown-body details p,
+.gt-comment-content .gt-comment-body.markdown-body details p {
+  margin: 20px 0 0;
+  padding: 12px;
+  background-color: var(--color-footer-background);
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.gt-header-preview.markdown-body hr,
+.gt-comment-content .gt-comment-body.markdown-body hr {
+  border-style: none !important;
+  background-color: transparent !important;
+}
+
+.gt-header-preview.markdown-body pre,
+.gt-header-preview.markdown-body code,
+.gt-comment-content .gt-comment-body.markdown-body pre,
+.gt-comment-content .gt-comment-body.markdown-body code {
+  font-family: "Menlo", "Monaco", "Consolas", "monospace", "Menlo", "Monaco", "Consolas", "monospace", "Menlo", "Monaco", "Consolas", "monospace" !important;
+  font-size: 15px !important;
+  transition: 0.3s;
+  word-break: break-word;
+}
+
+.gt-header-preview.markdown-body code:not(pre code),
+.gt-comment-content .gt-comment-body.markdown-body code:not(pre code) {
+  background: var(--color-code-background) !important;
+  padding: 1px 4px !important;
+  border-radius: 6px !important;
+  color: var(--color-link) !important;
+}
+
 @media screen and (min-width: 960px) {
   #mobile-nav {
     display: none;
