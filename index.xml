@@ -96,5 +96,48 @@ Unordered List (ul)
       
     </item>
     
+    
+
+    <item>
+      <title>Docker安裝方法(linux)</title>
+      <link>https://www.zhienw.com/post/docker_install_doc/</link>
+      <pubDate>Sun, 04 Jan 2026 14:14:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/docker_install_doc/</guid>
+      <description>
+        <![CDATA[<h1>Docker安裝方法(linux)</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="安裝步驟">
+<a class="header-anchor" href="#%e5%ae%89%e8%a3%9d%e6%ad%a5%e9%a9%9f"></a>
+安裝步驟
+</h2><h3 id="install-docker--docker-compose-plugin">
+<a class="header-anchor" href="#install-docker--docker-compose-plugin"></a>
+Install Docker &amp; Docker Compose plugin
+</h3><blockquote>
+<p>更新套件清單</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get update
+</span></span></code></pre></div><blockquote>
+<p>安裝必要工具(憑證與下載工具)</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get install ca-certificates curl
+</span></span></code></pre></div><blockquote>
+<p>建立 APT 金鑰存放目錄</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo install -m <span class="m">0755</span> -d /etc/apt/keyrings
+</span></span></code></pre></div><blockquote>
+<p>下載 Docker 官方 GPG 金鑰</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+</span></span></code></pre></div><blockquote>
+<p>設定金鑰為所有人可讀</p>
+        
+        <hr><p>本文2026-01-04首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2025-01-04</p>]]>
+      </description>
+      
+        <category>docker</category>
+      
+    </item>
+    
   </channel>
 </rss>

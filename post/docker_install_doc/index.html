@@ -8,11 +8,11 @@
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
 /><title>
-  彙整 | Zhi Chen
+  Docker安裝方法(linux) | Zhi Chen
 </title>
 <meta
   name="description"
-  content="在自己的世界努力演出"
+  content="ubuntu Docker安裝方法"
 /><script>
   window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://www.zhienw.com/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
   
@@ -37,24 +37,24 @@
     crossorigin="anonymous"
   /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
 <meta property="og:type" content="website" />
-  <meta property="og:title" content="彙整 | Zhi Chen" />
+  <meta property="og:title" content="Docker安裝方法(linux) | Zhi Chen" />
   <meta
     property="og:description"
-    content="在自己的世界努力演出"
+    content="ubuntu Docker安裝方法"
   />
-  <meta property="og:url" content="https://www.zhienw.com/archives/" />
+  <meta property="og:url" content="https://www.zhienw.com/post/docker_install_doc/" />
   <meta
     property="og:site_name"
     content="zhi旅程"
   />
   <meta
     property="og:image"
-    content="/"
+    content="/images/post_docker_install/cover.png"
   />
   <meta property="article:author" content="Zhi Chen" />
-  <meta property="article:published_time" content="2022-07-26T21:46:25&#43;08:00" />
-  <meta property="article:modified_time" content="2022-07-26T21:46:25&#43;08:00" /><meta name="twitter:card" content="summary" />
-  <meta name="twitter:image" content="/" /><link rel="alternate" type="application/rss+xml" href="https://www.zhienw.com/archives/index.xml" title="zhi旅程">
+  <meta property="article:published_time" content="2026-01-04T14:14:52&#43;08:00" />
+  <meta property="article:modified_time" content="2025-01-04T14:14:52&#43;08:00" /><meta property="article:tag" content="dockerinstall_doc" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/images/post_docker_install/cover.png" />
 <link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.a3d425fa522308c948cc7f2e76386070dd8842851bbd3870ffeb7780bcfa390e.css" />
 <link
     rel="preload"
@@ -133,23 +133,38 @@
         <a class="main-nav-link" href="/link">連結</a>
       </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
   </nav>
-  <nav id="sub-nav" aria-label="Secondary navigation"><a id="nav-rss-link" class="nav-icon" href="/archives/index.xml" title="RSS 訂閱" aria-label="RSS 訂閱" target="_blank"></a></nav></div>
-<header id="header" aria-label="Site header"><picture><source media="(max-width: 479px)" srcset="/images/banner-600w.webp"><source media="(max-width: 799px)" srcset="/images/banner-800w.webp"><source media="(min-width: 800px)" srcset="/images/banner.webp"><img  fetchpriority="high" src="/images/banner.webp" alt=""></picture><img alt="" style="visibility: hidden;"><div id="header-outer">
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav></div>
+<header id="header" aria-label="Site header"><picture></picture>
+    <img  fetchpriority="high" src="/images/post_docker_install/cover.png" alt="Docker安裝方法(linux)"><div id="header-outer">
     <div id="header-title"><span id="logo">
-            <h1 data-aos="slide-up">彙整</h1>
+            <h1 data-aos="slide-up">Docker安裝方法(linux)</h1>
           </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
   </div>
 </header><div id="content"
           aria-label="Page content"
           class="sidebar-left"
-            ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container "><meting-js
+            ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><meting-js
         theme="var(--color-link)"
         id="17632140526"server="netease"type="playlist"fixed="false"loop="all"order="list"preload="auto"volume="0.7"mutex="true"list-folded="true">
       </meting-js><div class="sidebar-wrapper">
     <div
       class="sidebar-wrap"
       data-aos="fade-up"
-    ><div class="sidebar-author">
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目錄</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#安裝步驟">安裝步驟</a>
+      <ul>
+        <li><a href="#install-docker--docker-compose-plugin">Install Docker &amp; Docker Compose plugin</a></li>
+        <li><a href="#設定普通用戶也可使用">設定普通用戶也可使用</a></li>
+      </ul>
+    </li>
+    <li><a href="#測試-docker">測試 docker</a></li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
   <img
     data-src="/avatar/avatar.webp"
     data-sizes="auto"
@@ -232,178 +247,147 @@
       <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
       <div class="sidebar-menu-link">連結</div>
     </div></div>
-</div>
-  </div><div class="sidebar-widget"><div class="widget-wrapper">
-    <div
-      class="widget-wrap"
-      data-aos="fade-up"
-    >
-      <div style="display: flex; justify-content: space-between;">
-        <h3 class="widget-title">分類</h3></div>
-      <div class="widget">
-        <ul class="category-list"><li class="category-list-item">
-                <a class="category-list-link" href="/categories/docker/" 
-                  title="Docker"
-                  >Docker</a
-                >
-              </li><li class="category-list-item">
-                <a class="category-list-link" href="/categories/markdown/" 
-                  title="Markdown"
-                  >Markdown</a
-                >
-              </li></ul>
-      </div>
-    </div>
-  </div><div class="widget-wrapper">
-    <div
-      class="widget-wrap"
-      data-aos="fade-up"
-    >
-      <div style="display: flex; justify-content: space-between;">
-        <h3 class="widget-title">標籤</h3></div>
-      <div class="widget">
-        <ul class="tag-list" itemprop="keywords"><li class="tag-item">
-                <a
-                  class="tag-link"
-                  href="/tags/docker/"
-                  aria-label="Tag: Docker"
-                  title="Docker"
-                >
-                  Docker
-                </a>
-              </li><li class="tag-item">
-                <a
-                  class="tag-link"
-                  href="/tags/install_doc/"
-                  aria-label="Tag: Install_doc"
-                  title="Install_doc"
-                >
-                  Install_doc
-                </a>
-              </li><li class="tag-item">
-                <a
-                  class="tag-link"
-                  href="/tags/markdown/"
-                  aria-label="Tag: Markdown"
-                  title="Markdown"
-                >
-                  Markdown
-                </a>
-              </li></ul>
-      </div>
-    </div>
-  </div><div class="widget-wrapper">
+</div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
   <div
-    class="widget-wrap"
+    class="article-inner"
     data-aos="fade-up"
   >
-    <h3 class="widget-title">標籤雲</h3><div class="widget tagcloud"><a
-            style="font-size:10px"
-            href="/tags/docker/"
-            aria-label="Tag: Docker"
-            >Docker</a
-          ><a
-            style="font-size:10px"
-            href="/tags/install_doc/"
-            aria-label="Tag: Install_doc"
-            >Install_doc</a
-          ><a
-            style="font-size:10px"
-            href="/tags/markdown/"
-            aria-label="Tag: Markdown"
-            >Markdown</a
-          ></div>
-  </div>
-</div><div class="widget-wrapper">
-    <div
-      class="widget-wrap"
-      data-aos="fade-up"
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2026-01-04 14:14:52 &#43;0800 CST" itemprop="datePublished"
+      >2026-01-04</time
     >
-      <h3 class="widget-title">最新文章</h3>
-      <div class="widget">
-        <ul><li>
-              <a href="/post/docker_install_doc/" title="Docker安裝方法(linux)">Docker安裝方法(linux)</a>
-            </li><li>
-              <a href="/post/markdown_basic_elements/" title="Markdown Basic Elements">Markdown Basic Elements</a>
-            </li></ul>
-      </div>
-    </div>
-  </div></div></div></aside>
-<section id="main" aria-label="Main content"><div
-    class="archives-outer-wrap"
+    <time style="display: none;" id="post-update-time"
+      >2025-01-04</time
+    >
+  </span><span
+      class="article-date-link icon-calendar-plus"
+      data-aos="zoom-in"
+    >
+      <time datetime="2025-01-04 14:14:52 &#43;0800 CST" itemprop="dateModified"
+        >2025-01-04</time
+      >
+    </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/docker"
+      data-aos="zoom-in"
+      >DOCKER</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="安裝步驟">
+<a class="header-anchor" href="#%e5%ae%89%e8%a3%9d%e6%ad%a5%e9%a9%9f"></a>
+安裝步驟
+</h2><h3 id="install-docker--docker-compose-plugin">
+<a class="header-anchor" href="#install-docker--docker-compose-plugin"></a>
+Install Docker &amp; Docker Compose plugin
+</h3><blockquote>
+<p>更新套件清單</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get update
+</span></span></code></pre></div><blockquote>
+<p>安裝必要工具(憑證與下載工具)</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get install ca-certificates curl
+</span></span></code></pre></div><blockquote>
+<p>建立 APT 金鑰存放目錄</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo install -m <span class="m">0755</span> -d /etc/apt/keyrings
+</span></span></code></pre></div><blockquote>
+<p>下載 Docker 官方 GPG 金鑰</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+</span></span></code></pre></div><blockquote>
+<p>設定金鑰為所有人可讀</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chmod a+r /etc/apt/keyrings/docker.asc
+</span></span></code></pre></div><blockquote>
+<p>新增 Docker 官方套件庫</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu </span><span class="k">$(</span>. /etc/os-release <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">UBUNTU_CODENAME</span><span class="k">:-</span><span class="nv">$VERSION_CODENAME</span><span class="si">}</span><span class="s2">&#34;</span><span class="k">)</span><span class="s2"> stable&#34;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+</span></span></code></pre></div><blockquote>
+<p>再次更新套件清單（包含 Docker）</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get update
+</span></span></code></pre></div><blockquote>
+<p>安裝 docker</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+</span></span></code></pre></div><h3 id="設定普通用戶也可使用">
+<a class="header-anchor" href="#%e8%a8%ad%e5%ae%9a%e6%99%ae%e9%80%9a%e7%94%a8%e6%88%b6%e4%b9%9f%e5%8f%af%e4%bd%bf%e7%94%a8"></a>
+設定普通用戶也可使用
+</h3><blockquote>
+<p>把指定的使用者加入 docker 使用者群組</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo usermod -aG docker &lt;你的使用者名稱&gt;
+</span></span></code></pre></div><blockquote>
+<p>加入的群組權限立刻生效</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">newgrp docker
+</span></span></code></pre></div><h2 id="測試-docker">
+<a class="header-anchor" href="#%e6%b8%ac%e8%a9%a6-docker"></a>
+測試 docker
+</h2><blockquote>
+<p>測試是否能將 hello-world docker image 跑起來</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo docker run hello-world
+</span></span></code></pre></div></div>
+    <footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/docker"
+        rel="tag"
+        >DOCKER</a
+      >
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/install_doc"
+        rel="tag"
+        >INSTALL_DOC</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
     data-aos="fade-up"
-  ><div class="tag-wrap"><div
-      class="archives-tag-list-item"
-      data-aos="zoom-in"
-    >
-      <a class="archives-tag-list-link" href="/tags/docker/"
-        >Docker</a
-      >
-    </div><div
-      class="archives-tag-list-item"
-      data-aos="zoom-in"
-    >
-      <a class="archives-tag-list-link" href="/tags/install_doc/"
-        >Install_doc</a
-      >
-    </div><div
-      class="archives-tag-list-item"
-      data-aos="zoom-in"
-    >
-      <a class="archives-tag-list-link" href="/tags/markdown/"
-        >Markdown</a
-      >
+  ><div class="article-nav-link-wrap left"><img
+            data-src="/images/banner.webp"
+            data-sizes="auto"
+            alt="Markdown Basic Elements"
+            class="lazyload"
+          /><a
+          href="/post/markdown_basic_elements/"
+          aria-label="前一篇:Markdown Basic Elements"
+          title="前一篇:Markdown Basic Elements"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">Markdown Basic Elements</h3>
+      </div></nav></article><section id="comments" data-aos="fade-up">
+<div class="comment-header"><h2 class="comment-title">說些什麼吧！</h2>
+  <div class="comment-selector">
+    <div class="comment-selector-wrap"><div class="selector-item" data-selector="gitalk">
+          <span>gitalk</span>
+        </div></div>
+  </div>
+</div>
+
+<div class="comment-content"><div class="comment gitalk-comment" data-aos="fade-up"
+     id="gitalk-comment">
     </div></div>
-<div class="category-wrap"><div
-      class="archives-category-list-item"
-      data-aos="zoom-in"
-    >
-      <a class="archives-category-list-link" href="/categories/docker/"
-        >Docker</a
-      >
-    </div><div
-      class="archives-category-list-item"
-      data-aos="zoom-in"
-    >
-      <a class="archives-category-list-link" href="/categories/markdown/"
-        >Markdown</a
-      >
-    </div></div><section class="archives-wrap" data-aos="fade-up">
-    <div class="archive-year-wrap">
-      <span class="archive-year">2026</span>
-    </div>
-    <ul><li class="archive-article">
-          <div class="archive-article-date">
-            <span>
-              <time
-                class="dt-published"
-                datetime="2026-01-04 14:14:52 &#43;0800 CST"
-                itemprop="datePublished"
-                >2026-01</time
-              >
-            </span>
-          </div><a class="archive-article-title" href="/post/docker_install_doc/"
-              >Docker安裝方法(linux)</a
-            ></li></ul>
-  </section><section class="archives-wrap" data-aos="fade-up">
-    <div class="archive-year-wrap">
-      <span class="archive-year">2025</span>
-    </div>
-    <ul><li class="archive-article">
-          <div class="archive-article-date">
-            <span>
-              <time
-                class="dt-published"
-                datetime="2025-12-31 20:12:52 &#43;0800 CST"
-                itemprop="datePublished"
-                >2025-12</time
-              >
-            </span>
-          </div><a class="archive-article-title" href="/post/markdown_basic_elements/"
-              >Markdown Basic Elements</a
-            ></li></ul>
-  </section></div><nav id="page-nav" aria-label="Pagination navigation" data-aos="fade-up"><span class="page-number current">1</span></nav>
-</section>
+</section></section>
         </div><footer id="footer" aria-label="Site footer">
   <div style="width: 100%; overflow: hidden">
     <div class="footer-line"></div>
@@ -418,7 +402,21 @@
             <div class="arrow-up"></div>
           </div><div id="mask" class="hide"></div>
       </div><nav id="mobile-nav" aria-label="Mobile navigation">
-  <div class="sidebar-wrap"><div class="sidebar-author">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目錄</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#安裝步驟">安裝步驟</a>
+      <ul>
+        <li><a href="#install-docker--docker-compose-plugin">Install Docker &amp; Docker Compose plugin</a></li>
+        <li><a href="#設定普通用戶也可使用">設定普通用戶也可使用</a></li>
+      </ul>
+    </li>
+    <li><a href="#測試-docker">測試 docker</a></li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
   <img
     data-src="/avatar/avatar.webp"
     data-sizes="auto"
@@ -501,7 +499,10 @@
       <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
       <div class="sidebar-menu-link">連結</div>
     </div></div>
-</div></nav>
+</div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
 </div><script
     src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
     integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
@@ -535,10 +536,10 @@
   <div><script data-pjax>
         window.REIMU_POST = {
           author: "Zhi Chen",
-          title: "",
-          url: "https:\/\/www.zhienw.com\/archives\/",
-          description: "",
-          cover: "https:\/\/www.zhienw.com\/images\/banner.webp",
+          title: "Docker安裝方法(linux)",
+          url: "https:\/\/www.zhienw.com\/post\/docker_install_doc\/",
+          description: "ubuntu Docker安裝方法",
+          cover: "https:\/\/www.zhienw.com\/images\/post_docker_install\/cover.png",
         };
       </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
           if (_$$(`${gallery} ${children}`).length > 0) {
@@ -717,7 +718,28 @@
     }
   };
   loadComments();
-</script></div>
+</script><script
+    src="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.js"
+    data-pjaxintegrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc&#43;T1b2N&#43;teh/OJfpU0jr6" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.22/dist/contrib/auto-render.min.js"
+    data-pjaxintegrity="sha384-hCXGrW6PitJEwbkoStFjeJxv&#43;fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script><script data-pjax>
+          var renderMath = () => {
+            if (!window.renderMathInElement) return;
+            window.renderMathInElement(_$("article"), {
+              delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "\\[", right: "\\]", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+              ],
+            });
+          };
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", renderMath, { once: true });
+          } else {
+            renderMath();
+          }
+        </script></div>
 </div><script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then((registrations) => {
