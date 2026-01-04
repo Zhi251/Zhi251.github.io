@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>zhi旅程</title>
-    <link>https://www.zhienw.com/algolia.json</link>
+    <title>Markdown on zhi旅程</title>
+    <link>https://www.zhienw.com/tags/markdown/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Wed, 31 Dec 2025 20:12:52 +0800</lastBuildDate>
     
     
-    <atom:link href="https://www.zhienw.com/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://www.zhienw.com/tags/markdown/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
