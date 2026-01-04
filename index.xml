@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zhi旅程</title>
+    <link>https://www.zhienw.com/algolia.json</link>
+    <description>Recent content from zhi旅程</description>
+    <generator>Hugo</generator>
+    <language>zh-tw</language>
+    
+    <managingEditor>ray784523@zhienw.com (Zhi Chen)</managingEditor>
+    <webMaster>ray784523@zhienw.com (Zhi Chen)</webMaster>
+    
+    <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
+    
+    <lastBuildDate></lastBuildDate>
+    
+    
+    <atom:link href="https://www.zhienw.com/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+  </channel>
+</rss>
