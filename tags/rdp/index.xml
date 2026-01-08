@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>RDP on zhi旅程</title>
-    <link>https://www.zhienw.com/tags/rdp/</link>
+    <link>http://localhost:1313/tags/rdp/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Wed, 08 Jan 2025 20:14:52 +0800</lastBuildDate>
     
     
-    <atom:link href="https://www.zhienw.com/tags/rdp/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="http://localhost:1313/tags/rdp/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>SSH Local Port Forwarding RDP Access via Bastion Host</title>
-      <link>https://www.zhienw.com/post/rdp_access_via_bastion_host/</link>
+      <link>http://localhost:1313/post/rdp_access_via_bastion_host/</link>
       <pubDate>Thu, 08 Jan 2026 20:14:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/rdp_access_via_bastion_host/</guid>
+      <guid>http://localhost:1313/post/rdp_access_via_bastion_host/</guid>
       <description>
         <![CDATA[<h1>SSH Local Port Forwarding RDP Access via Bastion Host</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -47,7 +47,7 @@
 <p>其他資訊：直接 Enter</p>
 <p><strong>在自己本機先創建一組金鑰</strong></p>
         
-        <hr><p>本文2026-01-08首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2025-01-08</p>]]>
+        <hr><p>本文2026-01-08首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2025-01-08</p>]]>
       </description>
       
         <category>Secure Network Access Control</category>
