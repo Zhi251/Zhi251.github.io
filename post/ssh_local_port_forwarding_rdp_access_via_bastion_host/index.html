@@ -8,11 +8,11 @@
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
 /><title>
-  Docker | Zhi Chen
+  SSH Local Port Forwarding RDP Access via Bastion Host | Zhi Chen
 </title>
 <meta
   name="description"
-  content="在自己的世界努力演出"
+  content="使用 SSH Local Port Forwarding 技術，透過雲端 Bastion Host 建立安全通道，使使用者得以在不直接暴露 RDP 服務的情況下，安全存取內部主機。"
 /><script>
   window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://www.zhienw.com/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
   
@@ -37,24 +37,24 @@
     crossorigin="anonymous"
   /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
 <meta property="og:type" content="website" />
-  <meta property="og:title" content="Docker | Zhi Chen" />
+  <meta property="og:title" content="SSH Local Port Forwarding RDP Access via Bastion Host | Zhi Chen" />
   <meta
     property="og:description"
-    content="在自己的世界努力演出"
+    content="使用 SSH Local Port Forwarding 技術，透過雲端 Bastion Host 建立安全通道，使使用者得以在不直接暴露 RDP 服務的情況下，安全存取內部主機。"
   />
-  <meta property="og:url" content="https://www.zhienw.com/categories/docker/" />
+  <meta property="og:url" content="https://www.zhienw.com/post/ssh_local_port_forwarding_rdp_access_via_bastion_host/" />
   <meta
     property="og:site_name"
     content="zhi旅程"
   />
   <meta
     property="og:image"
-    content="/"
+    content="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/cover.webp"
   />
   <meta property="article:author" content="Zhi Chen" />
-  <meta property="article:published_time" content="2026-01-04T14:14:52&#43;08:00" />
-  <meta property="article:modified_time" content="2025-01-04T14:14:52&#43;08:00" /><meta name="twitter:card" content="summary" />
-  <meta name="twitter:image" content="/" /><link rel="alternate" type="application/rss+xml" href="https://www.zhienw.com/categories/docker/index.xml" title="zhi旅程">
+  <meta property="article:published_time" content="2026-01-08T20:14:52&#43;08:00" />
+  <meta property="article:modified_time" content="2025-01-08T20:14:52&#43;08:00" /><meta property="article:tag" content="SSH Local Port ForwardingRDP" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/cover.webp" />
 <link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.a3d425fa522308c948cc7f2e76386070dd8842851bbd3870ffeb7780bcfa390e.css" />
 <link
     rel="preload"
@@ -133,23 +133,48 @@
         <a class="main-nav-link" href="/link">連結</a>
       </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
   </nav>
-  <nav id="sub-nav" aria-label="Secondary navigation"><a id="nav-rss-link" class="nav-icon" href="/categories/docker/index.xml" title="RSS 訂閱" aria-label="RSS 訂閱" target="_blank"></a></nav></div>
-<header id="header" aria-label="Site header"><picture><source media="(max-width: 479px)" srcset="/images/banner-600w.webp"><source media="(max-width: 799px)" srcset="/images/banner-800w.webp"><source media="(min-width: 800px)" srcset="/images/banner.webp"><img  fetchpriority="high" src="/images/banner.webp" alt="Docker"></picture><img alt="Docker" style="visibility: hidden;"><div id="header-outer">
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav></div>
+<header id="header" aria-label="Site header"><picture></picture>
+    <img  fetchpriority="high" src="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/cover.webp" alt="SSH Local Port Forwarding RDP Access via Bastion Host"><div id="header-outer">
     <div id="header-title"><span id="logo">
-            <h1 data-aos="slide-up">Category</h1>
-          </span><h2 id="subtitle-wrap" data-aos="slide-down"><span id="subtitle">Docker</span></h2></div>
+            <h1 data-aos="slide-up">SSH Local Port Forwarding RDP Access via Bastion Host</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
   </div>
 </header><div id="content"
           aria-label="Page content"
           class="sidebar-left"
-            ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container "><meting-js
+            ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><meting-js
         theme="var(--color-link)"
         id="17632140526"server="netease"type="playlist"fixed="false"loop="all"order="list"preload="auto"volume="0.7"mutex="true"list-folded="true">
       </meting-js><div class="sidebar-wrapper">
     <div
       class="sidebar-wrap"
       data-aos="fade-up"
-    ><div class="sidebar-author">
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目錄</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#架構圖">架構圖</a></li>
+    <li><a href="#雲端主機設定">雲端主機設定</a>
+      <ul>
+        <li><a href="#使用者帳號建立專門用來-ssh-rdp">使用者帳號建立(專門用來 SSH RDP)</a></li>
+        <li><a href="#限制-rdp-tunnel-帳號能力">限制 rdp-tunnel 帳號能力</a></li>
+        <li><a href="#設定-server-自動將特定-port-流量轉發到公司-firewall">設定 server 自動將特定 port 流量轉發到公司 firewall</a></li>
+        <li><a href="#進階限制">進階限制</a></li>
+      </ul>
+    </li>
+    <li><a href="#firewall-設定">Firewall 設定</a>
+      <ul>
+        <li><a href="#設定-port-forwarding">設定 port forwarding</a></li>
+        <li><a href="#設定-ip-來源位置">設定 ip 來源位置</a></li>
+        <li><a href="#設定防火牆政策">設定防火牆政策</a></li>
+      </ul>
+    </li>
+    <li><a href="#內網主機設定">內網主機設定</a></li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
   <img
     data-src="/avatar/avatar.webp"
     data-sizes="auto"
@@ -232,217 +257,214 @@
       <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
       <div class="sidebar-menu-link">連結</div>
     </div></div>
-</div>
-  </div><div class="sidebar-widget"><div class="widget-wrapper">
-    <div
-      class="widget-wrap"
-      data-aos="fade-up"
-    >
-      <div style="display: flex; justify-content: space-between;">
-        <h3 class="widget-title">分類</h3></div>
-      <div class="widget">
-        <ul class="category-list"><li class="category-list-item">
-                <a class="category-list-link" href="/categories/docker/" 
-                  title="Docker"
-                  >Docker</a
-                >
-              </li><li class="category-list-item">
-                <a class="category-list-link" href="/categories/markdown/" 
-                  title="Markdown"
-                  >Markdown</a
-                >
-              </li><li class="category-list-item">
-                <a class="category-list-link" href="/categories/secure-network-access-control/" 
-                  title="Secure Network Access Control"
-                  >Secure Network Access Control</a
-                >
-              </li></ul>
-      </div>
-    </div>
-  </div><div class="widget-wrapper">
-    <div
-      class="widget-wrap"
-      data-aos="fade-up"
-    >
-      <div style="display: flex; justify-content: space-between;">
-        <h3 class="widget-title">標籤</h3></div>
-      <div class="widget">
-        <ul class="tag-list" itemprop="keywords"><li class="tag-item">
-                <a
-                  class="tag-link"
-                  href="/tags/docker/"
-                  aria-label="Tag: Docker"
-                  title="Docker"
-                >
-                  Docker
-                </a>
-              </li><li class="tag-item">
-                <a
-                  class="tag-link"
-                  href="/tags/install_doc/"
-                  aria-label="Tag: Install_doc"
-                  title="Install_doc"
-                >
-                  Install_doc
-                </a>
-              </li><li class="tag-item">
-                <a
-                  class="tag-link"
-                  href="/tags/markdown/"
-                  aria-label="Tag: Markdown"
-                  title="Markdown"
-                >
-                  Markdown
-                </a>
-              </li><li class="tag-item">
-                <a
-                  class="tag-link"
-                  href="/tags/rdp/"
-                  aria-label="Tag: RDP"
-                  title="RDP"
-                >
-                  RDP
-                </a>
-              </li><li class="tag-item">
-                <a
-                  class="tag-link"
-                  href="/tags/ssh-local-port-forwarding/"
-                  aria-label="Tag: SSH Local Port Forwarding"
-                  title="SSH Local Port Forwarding"
-                >
-                  SSH Local Port Forwarding
-                </a>
-              </li></ul>
-      </div>
-    </div>
-  </div><div class="widget-wrapper">
+</div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
   <div
-    class="widget-wrap"
+    class="article-inner"
     data-aos="fade-up"
   >
-    <h3 class="widget-title">標籤雲</h3><div class="widget tagcloud"><a
-            style="font-size:10px"
-            href="/tags/docker/"
-            aria-label="Tag: Docker"
-            >Docker</a
-          ><a
-            style="font-size:10px"
-            href="/tags/install_doc/"
-            aria-label="Tag: Install_doc"
-            >Install_doc</a
-          ><a
-            style="font-size:10px"
-            href="/tags/markdown/"
-            aria-label="Tag: Markdown"
-            >Markdown</a
-          ><a
-            style="font-size:10px"
-            href="/tags/rdp/"
-            aria-label="Tag: RDP"
-            >RDP</a
-          ><a
-            style="font-size:10px"
-            href="/tags/ssh-local-port-forwarding/"
-            aria-label="Tag: SSH Local Port Forwarding"
-            >SSH Local Port Forwarding</a
-          ></div>
-  </div>
-</div><div class="widget-wrapper">
-    <div
-      class="widget-wrap"
-      data-aos="fade-up"
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2026-01-08 20:14:52 &#43;0800 CST" itemprop="datePublished"
+      >2026-01-08</time
     >
-      <h3 class="widget-title">最新文章</h3>
-      <div class="widget">
-        <ul><li>
-              <a href="/post/ssh_local_port_forwarding_rdp_access_via_bastion_host/" title="SSH Local Port Forwarding RDP Access via Bastion Host">SSH Local Port Forwarding RDP Access via Bastion Host</a>
-            </li><li>
-              <a href="/post/docker_install_doc/" title="Docker安裝方法(linux)">Docker安裝方法(linux)</a>
-            </li><li>
-              <a href="/post/markdown_basic_elements/" title="Markdown Basic Elements">Markdown Basic Elements</a>
-            </li></ul>
-      </div>
-    </div>
-  </div></div></div></aside>
-<section id="main" aria-label="Main content"><div
-    class="archives-outer-wrap"
-    data-aos="fade-up"
-  ><div class="tag-wrap"><div
-      class="archives-tag-list-item"
+    <time style="display: none;" id="post-update-time"
+      >2025-01-08</time
+    >
+  </span><span
+      class="article-date-link icon-calendar-plus"
       data-aos="zoom-in"
     >
-      <a class="archives-tag-list-link" href="/tags/docker/"
-        >Docker</a
+      <time datetime="2025-01-08 20:14:52 &#43;0800 CST" itemprop="dateModified"
+        >2025-01-08</time
       >
-    </div><div
-      class="archives-tag-list-item"
+    </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/secure-network-access-control"
       data-aos="zoom-in"
-    >
-      <a class="archives-tag-list-link" href="/tags/install_doc/"
-        >Install_doc</a
+      >SECURE NETWORK ACCESS CONTROL</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="架構圖">
+<a class="header-anchor" href="#%e6%9e%b6%e6%a7%8b%e5%9c%96"></a>
+架構圖
+</h2><p><img src="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/SCD.webp" alt="image"></p>
+<h2 id="雲端主機設定">
+<a class="header-anchor" href="#%e9%9b%b2%e7%ab%af%e4%b8%bb%e6%a9%9f%e8%a8%ad%e5%ae%9a"></a>
+雲端主機設定
+</h2><h3 id="使用者帳號建立專門用來-ssh-rdp">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8%e8%80%85%e5%b8%b3%e8%99%9f%e5%bb%ba%e7%ab%8b%e5%b0%88%e9%96%80%e7%94%a8%e4%be%86-ssh-rdp"></a>
+使用者帳號建立(專門用來 SSH RDP)
+</h3><p><strong>新增一個使用者</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#雲端server</span>
+</span></span><span class="line"><span class="cl">adduser rdp-tunnel
+</span></span></code></pre></div><p>密碼：先隨意設一個，之後會停用密碼登入</p>
+<p>其他資訊：直接 Enter</p>
+<p><strong>在自己本機先創建一組金鑰</strong></p>
+<p>linux 使用</p>
+<p>passphrase：可空白（方便）或自己決定</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#本地端</span>
+</span></span><span class="line"><span class="cl">ssh-keygen -t ed25519 -f rdp_key
+</span></span></code></pre></div><p>powershell 使用</p>
+<p>passphrase：可空白（方便）或自己決定</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ps1" data-lang="ps1"><span class="line"><span class="cl"><span class="c">#本地端</span>
+</span></span><span class="line"><span class="cl"><span class="nb">ssh-keygen</span> <span class="n">-t</span> <span class="n">ed25519</span> <span class="o">-f</span> <span class="n">rdp_key</span>
+</span></span></code></pre></div><p><strong>印出顯示公鑰並複製</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c">#本地端</span>
+</span></span><span class="line"><span class="cl"><span class="nb">type </span><span class="n">rdp_key</span><span class="p">.</span><span class="py">pub</span>
+</span></span></code></pre></div><p><strong>在雲端主機建立 .ssh 目錄</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#雲端server</span>
+</span></span><span class="line"><span class="cl">mkdir -p /home/rdp-tunnel/.ssh
+</span></span><span class="line"><span class="cl">chmod <span class="m">700</span> /home/rdp-tunnel/.ssh
+</span></span></code></pre></div><p><strong>在雲端主機貼上之前複製的公鑰</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#雲端server</span>
+</span></span><span class="line"><span class="cl">nano /home/rdp-tunnel/.ssh/authorized_keys
+</span></span></code></pre></div><p>貼上複製的一整行 ssh-ed25519 &hellip;</p>
+<p><strong>本機 PowerShell 驗證</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c">#本地端</span>
+</span></span><span class="line"><span class="cl"><span class="n">ssh</span> <span class="n">-i</span> <span class="n">rdp_key</span> <span class="nb">rdp-tunnel</span><span class="nv">@cloud_server_IP</span>
+</span></span></code></pre></div><p>可以登入</p>
+<h3 id="限制-rdp-tunnel-帳號能力">
+<a class="header-anchor" href="#%e9%99%90%e5%88%b6-rdp-tunnel-%e5%b8%b3%e8%99%9f%e8%83%bd%e5%8a%9b"></a>
+限制 rdp-tunnel 帳號能力
+</h3><p><strong>編輯 ssh 設定</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#雲端server</span>
+</span></span><span class="line"><span class="cl">nano /etc/ssh/sshd_config
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#下面加上</span>
+</span></span><span class="line"><span class="cl">Match User rdp-tunnel
+</span></span><span class="line"><span class="cl">    AllowTcpForwarding yes
+</span></span><span class="line"><span class="cl">    X11Forwarding no
+</span></span><span class="line"><span class="cl">    PermitTTY no
+</span></span><span class="line"><span class="cl">    ForceCommand /bin/false
+</span></span></code></pre></div><p><strong>重啟 ssh</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#雲端server</span>
+</span></span><span class="line"><span class="cl">systemctl restart ssh
+</span></span></code></pre></div><p><strong>本機 PowerShell 驗證</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c">#本地端</span>
+</span></span><span class="line"><span class="cl"><span class="n">ssh</span> <span class="n">-i</span> <span class="n">rdp_key</span> <span class="nb">rdp-tunnel</span><span class="nv">@cloud_server_IP</span>
+</span></span></code></pre></div><p>無法登入</p>
+<h3 id="設定-server-自動將特定-port-流量轉發到公司-firewall">
+<a class="header-anchor" href="#%e8%a8%ad%e5%ae%9a-server-%e8%87%aa%e5%8b%95%e5%b0%87%e7%89%b9%e5%ae%9a-port-%e6%b5%81%e9%87%8f%e8%bd%89%e7%99%bc%e5%88%b0%e5%85%ac%e5%8f%b8-firewall"></a>
+設定 server 自動將特定 port 流量轉發到公司 firewall
+</h3><p><strong>安裝 socat</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#雲端server</span>
+</span></span><span class="line"><span class="cl">sudo apt install socat
+</span></span></code></pre></div><p><strong>建立 systemd 服務</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#雲端server</span>
+</span></span><span class="line"><span class="cl">sudo nano /etc/systemd/system/rdp-forward.service
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#貼上</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>Unit<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Description</span><span class="o">=</span>RDP Port Forward
+</span></span><span class="line"><span class="cl"><span class="nv">After</span><span class="o">=</span>network.target
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>Service<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/socat 127.0.0.1:13337,bind<span class="o">=</span>127.0.0.1,fork TCP:公司公網防火牆ip:20000
+</span></span><span class="line"><span class="cl"><span class="nv">Restart</span><span class="o">=</span>always
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>Install<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+</span></span></code></pre></div><p><strong>啟用服務</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#雲端server</span>
+</span></span><span class="line"><span class="cl">sudo pkill socat
+</span></span><span class="line"><span class="cl">sudo systemctl daemon-reload
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> --now rdp-forward
+</span></span></code></pre></div><h3 id="進階限制">
+<a class="header-anchor" href="#%e9%80%b2%e9%9a%8e%e9%99%90%e5%88%b6"></a>
+進階限制
+</h3><p><strong>限制 rdp-tunnel 只能映射 13337</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#雲端server</span>
+</span></span><span class="line"><span class="cl">sudo nano /home/rdp-tunnel/.ssh/authorized_keys
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#前面加上</span>
+</span></span><span class="line"><span class="cl"><span class="nv">permitopen</span><span class="o">=</span><span class="s2">&#34;127.0.0.1:13337&#34;</span>,no-agent-forwarding,no-X11-forwarding,no-pty ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... rdp-tunnel-key
+</span></span></code></pre></div><p><strong>重啟 ssh</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#雲端server</span>
+</span></span><span class="line"><span class="cl">sudo systemctl restart ssh
+</span></span></code></pre></div><h2 id="firewall-設定">
+<a class="header-anchor" href="#firewall-%e8%a8%ad%e5%ae%9a"></a>
+Firewall 設定
+</h2><h3 id="設定-port-forwarding">
+<a class="header-anchor" href="#%e8%a8%ad%e5%ae%9a-port-forwarding"></a>
+設定 port forwarding
+</h3><p><img src="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/1.webp" alt="image"></p>
+<p><strong>設定虛擬 ip</strong></p>
+<p><img src="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/2.webp" alt="image"></p>
+<h3 id="設定-ip-來源位置">
+<a class="header-anchor" href="#%e8%a8%ad%e5%ae%9a-ip-%e4%be%86%e6%ba%90%e4%bd%8d%e7%bd%ae"></a>
+設定 ip 來源位置
+</h3><p><img src="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/3.webp" alt="image">
+<strong>位置物件 ip</strong>
+<img src="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/4.webp" alt="image"></p>
+<h3 id="設定防火牆政策">
+<a class="header-anchor" href="#%e8%a8%ad%e5%ae%9a%e9%98%b2%e7%81%ab%e7%89%86%e6%94%bf%e7%ad%96"></a>
+設定防火牆政策
+</h3><p><img src="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/5.webp" alt="image">
+<strong>設定防火牆政策</strong>
+<img src="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/6.webp" alt="image"></p>
+<h2 id="內網主機設定">
+<a class="header-anchor" href="#%e5%85%a7%e7%b6%b2%e4%b8%bb%e6%a9%9f%e8%a8%ad%e5%ae%9a"></a>
+內網主機設定
+</h2><p><strong>開啟 RDP</strong>
+<img src="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/RDP_setup.webp" alt="image"></p>
+</div>
+    <footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/ssh-local-port-forwarding"
+        rel="tag"
+        >SSH LOCAL PORT FORWARDING</a
       >
-    </div><div
-      class="archives-tag-list-item"
-      data-aos="zoom-in"
-    >
-      <a class="archives-tag-list-link" href="/tags/markdown/"
-        >Markdown</a
-      >
-    </div><div
-      class="archives-tag-list-item"
-      data-aos="zoom-in"
-    >
-      <a class="archives-tag-list-link" href="/tags/rdp/"
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/rdp"
+        rel="tag"
         >RDP</a
       >
-    </div><div
-      class="archives-tag-list-item"
-      data-aos="zoom-in"
-    >
-      <a class="archives-tag-list-link" href="/tags/ssh-local-port-forwarding/"
-        >SSH Local Port Forwarding</a
-      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+            data-src="/images/post_docker_install/cover.webp"
+            data-sizes="auto"
+            alt="Docker安裝方法(linux)"
+            class="lazyload"
+          /><a
+          href="/post/docker_install_doc/"
+          aria-label="前一篇:Docker安裝方法(linux)"
+          title="前一篇:Docker安裝方法(linux)"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">Docker安裝方法(linux)</h3>
+      </div></nav></article><section id="comments" data-aos="fade-up">
+<div class="comment-header"><h2 class="comment-title">說些什麼吧！</h2>
+  <div class="comment-selector">
+    <div class="comment-selector-wrap"><div class="selector-item" data-selector="gitalk">
+          <span>gitalk</span>
+        </div></div>
+  </div>
+</div>
+
+<div class="comment-content"><div class="comment gitalk-comment" data-aos="fade-up"
+     id="gitalk-comment">
     </div></div>
-<div class="category-wrap"><div
-      class="archives-category-list-item"
-      data-aos="zoom-in"
-    >
-      <a class="archives-category-list-link" href="/categories/docker/"
-        >Docker</a
-      >
-    </div><div
-      class="archives-category-list-item"
-      data-aos="zoom-in"
-    >
-      <a class="archives-category-list-link" href="/categories/markdown/"
-        >Markdown</a
-      >
-    </div><div
-      class="archives-category-list-item"
-      data-aos="zoom-in"
-    >
-      <a class="archives-category-list-link" href="/categories/secure-network-access-control/"
-        >Secure Network Access Control</a
-      >
-    </div></div><section class="archives-wrap" data-aos="fade-up">
-    <div class="archive-year-wrap">
-      <span class="archive-year">2026</span>
-    </div>
-    <ul><li class="archive-article">
-          <div class="archive-article-date">
-            <span>
-              <time
-                class="dt-published"
-                datetime="2026-01-04 14:14:52 &#43;0800 CST"
-                itemprop="datePublished"
-                >2026-01</time
-              >
-            </span>
-          </div><a class="archive-article-title" href="/post/docker_install_doc/"
-              >Docker安裝方法(linux)</a
-            ></li></ul>
-  </section></div><nav id="page-nav" aria-label="Pagination navigation" data-aos="fade-up"><span class="page-number current">1</span></nav>
-</section>
+</section></section>
         </div><footer id="footer" aria-label="Site footer">
   <div style="width: 100%; overflow: hidden">
     <div class="footer-line"></div>
@@ -457,7 +479,31 @@
             <div class="arrow-up"></div>
           </div><div id="mask" class="hide"></div>
       </div><nav id="mobile-nav" aria-label="Mobile navigation">
-  <div class="sidebar-wrap"><div class="sidebar-author">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目錄</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#架構圖">架構圖</a></li>
+    <li><a href="#雲端主機設定">雲端主機設定</a>
+      <ul>
+        <li><a href="#使用者帳號建立專門用來-ssh-rdp">使用者帳號建立(專門用來 SSH RDP)</a></li>
+        <li><a href="#限制-rdp-tunnel-帳號能力">限制 rdp-tunnel 帳號能力</a></li>
+        <li><a href="#設定-server-自動將特定-port-流量轉發到公司-firewall">設定 server 自動將特定 port 流量轉發到公司 firewall</a></li>
+        <li><a href="#進階限制">進階限制</a></li>
+      </ul>
+    </li>
+    <li><a href="#firewall-設定">Firewall 設定</a>
+      <ul>
+        <li><a href="#設定-port-forwarding">設定 port forwarding</a></li>
+        <li><a href="#設定-ip-來源位置">設定 ip 來源位置</a></li>
+        <li><a href="#設定防火牆政策">設定防火牆政策</a></li>
+      </ul>
+    </li>
+    <li><a href="#內網主機設定">內網主機設定</a></li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
   <img
     data-src="/avatar/avatar.webp"
     data-sizes="auto"
@@ -540,7 +586,10 @@
       <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
       <div class="sidebar-menu-link">連結</div>
     </div></div>
-</div></nav>
+</div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
 </div><script
     src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
     integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
@@ -574,10 +623,10 @@
   <div><script data-pjax>
         window.REIMU_POST = {
           author: "Zhi Chen",
-          title: "Docker",
-          url: "https:\/\/www.zhienw.com\/categories\/docker\/",
-          description: "",
-          cover: "https:\/\/www.zhienw.com\/images\/banner.webp",
+          title: "SSH Local Port Forwarding RDP Access via Bastion Host",
+          url: "https:\/\/www.zhienw.com\/post\/ssh_local_port_forwarding_rdp_access_via_bastion_host\/",
+          description: "使用 SSH Local Port Forwarding 技術，透過雲端 Bastion Host 建立安全通道，使使用者得以在不直接暴露 RDP 服務的情況下，安全存取內部主機。",
+          cover: "https:\/\/www.zhienw.com\/images\/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host\/cover.webp",
         };
       </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
           if (_$$(`${gallery} ${children}`).length > 0) {
@@ -756,7 +805,28 @@
     }
   };
   loadComments();
-</script></div>
+</script><script
+    src="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.js"
+    data-pjaxintegrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc&#43;T1b2N&#43;teh/OJfpU0jr6" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.22/dist/contrib/auto-render.min.js"
+    data-pjaxintegrity="sha384-hCXGrW6PitJEwbkoStFjeJxv&#43;fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script><script data-pjax>
+          var renderMath = () => {
+            if (!window.renderMathInElement) return;
+            window.renderMathInElement(_$("article"), {
+              delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "\\[", right: "\\]", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+              ],
+            });
+          };
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", renderMath, { once: true });
+          } else {
+            renderMath();
+          }
+        </script></div>
 </div><script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then((registrations) => {

@@ -99,6 +99,41 @@ Unordered List (ul)
     
 
     <item>
+      <title>SSH Local Port Forwarding RDP Access via Bastion Host</title>
+      <link>https://www.zhienw.com/post/ssh_local_port_forwarding_rdp_access_via_bastion_host/</link>
+      <pubDate>Thu, 08 Jan 2026 20:14:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/ssh_local_port_forwarding_rdp_access_via_bastion_host/</guid>
+      <description>
+        <![CDATA[<h1>SSH Local Port Forwarding RDP Access via Bastion Host</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="架構圖">
+<a class="header-anchor" href="#%e6%9e%b6%e6%a7%8b%e5%9c%96"></a>
+架構圖
+</h2><p><img src="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/SCD.webp" alt="image"></p>
+<h2 id="雲端主機設定">
+<a class="header-anchor" href="#%e9%9b%b2%e7%ab%af%e4%b8%bb%e6%a9%9f%e8%a8%ad%e5%ae%9a"></a>
+雲端主機設定
+</h2><h3 id="使用者帳號建立專門用來-ssh-rdp">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8%e8%80%85%e5%b8%b3%e8%99%9f%e5%bb%ba%e7%ab%8b%e5%b0%88%e9%96%80%e7%94%a8%e4%be%86-ssh-rdp"></a>
+使用者帳號建立(專門用來 SSH RDP)
+</h3><p><strong>新增一個使用者</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#雲端server</span>
+</span></span><span class="line"><span class="cl">adduser rdp-tunnel
+</span></span></code></pre></div><p>密碼：先隨意設一個，之後會停用密碼登入</p>
+<p>其他資訊：直接 Enter</p>
+<p><strong>在自己本機先創建一組金鑰</strong></p>
+        
+        <hr><p>本文2026-01-08首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2025-01-08</p>]]>
+      </description>
+      
+        <category>Secure Network Access Control</category>
+      
+    </item>
+    
+    
+
+    <item>
       <title>Docker安裝方法(linux)</title>
       <link>https://www.zhienw.com/post/docker_install_doc/</link>
       <pubDate>Sun, 04 Jan 2026 14:14:52 &#43;0800</pubDate>
