@@ -100,10 +100,10 @@ Unordered List (ul)
 
     <item>
       <title>SSH Local Port Forwarding RDP Access via Bastion Host</title>
-      <link>https://www.zhienw.com/post/ssh_port_forwarding_rdp_access_via_bastion_host/</link>
+      <link>https://www.zhienw.com/post/rdp_access_via_bastion_host/</link>
       <pubDate>Thu, 08 Jan 2026 20:14:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/ssh_port_forwarding_rdp_access_via_bastion_host/</guid>
+      <guid>https://www.zhienw.com/post/rdp_access_via_bastion_host/</guid>
       <description>
         <![CDATA[<h1>SSH Local Port Forwarding RDP Access via Bastion Host</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
