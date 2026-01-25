@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SSH Local Port Forwarding on zhi旅程</title>
-    <link>http://localhost:1313/tags/ssh-local-port-forwarding/</link>
+    <link>https://www.zhienw.com/tags/ssh-local-port-forwarding/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -12,10 +12,10 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Wed, 08 Jan 2025 20:14:52 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 25 Jan 2025 20:14:52 +0800</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/tags/ssh-local-port-forwarding/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://www.zhienw.com/tags/ssh-local-port-forwarding/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>SSH Local Port Forwarding RDP Access via Bastion Host</title>
-      <link>http://localhost:1313/post/rdp_access_via_bastion_host/</link>
+      <link>https://www.zhienw.com/post/rdp_access_via_bastion_host/</link>
       <pubDate>Thu, 08 Jan 2026 20:14:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/rdp_access_via_bastion_host/</guid>
+      <guid>https://www.zhienw.com/post/rdp_access_via_bastion_host/</guid>
       <description>
         <![CDATA[<h1>SSH Local Port Forwarding RDP Access via Bastion Host</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -45,9 +45,10 @@
 </span></span><span class="line"><span class="cl">adduser rdp-tunnel
 </span></span></code></pre></div><p>密碼：先隨意設一個，之後會停用密碼登入</p>
 <p>其他資訊：直接 Enter</p>
+<p><img src="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/7.webp" alt="image"></p>
 <p><strong>在自己本機先創建一組金鑰</strong></p>
         
-        <hr><p>本文2026-01-08首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2025-01-08</p>]]>
+        <hr><p>本文2026-01-08首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2025-01-25</p>]]>
       </description>
       
         <category>Secure Network Access Control</category>
