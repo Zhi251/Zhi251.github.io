@@ -12,12 +12,43 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Sun, 06 Apr 2025 01:11:52 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 06 Apr 2025 20:01:11 +0800</lastBuildDate>
     
     
     <atom:link href="https://www.zhienw.com/tags/ca-certificate/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>ESXI憑證安裝</title>
+      <link>https://www.zhienw.com/post/esxi_certificate/</link>
+      <pubDate>Mon, 06 Apr 2026 16:58:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/esxi_certificate/</guid>
+      <description>
+        <![CDATA[<h1>ESXI憑證安裝</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="建立憑證">
+<a class="header-anchor" href="#%e5%bb%ba%e7%ab%8b%e6%86%91%e8%ad%89"></a>
+建立憑證
+</h2><p>使用certbot 簽一個憑證</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo certbot certonly <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --dns-cloudflare <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --dns-cloudflare-credentials /root/.secrets/cloudflare.ini <span class="se">\
+</span></span></span><span class="line"><span class="cl">  -d esxi.example.com <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --key-type rsa <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --force-renewal
+</span></span></code></pre></div><blockquote>
+<p>ertbot 2.0 之后<strong>預設已經改為產生 ECDSA (ECC) 憑證</strong>。然而 <strong>esxi使用的是rsa</strong> ,所以產生指令時要加要加 <strong>&ndash;key-type rsa</strong></p>
+        
+        <hr><p>本文2026-04-06首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2025-04-06</p>]]>
+      </description>
+      
+        <category>CA Certificate</category>
+      
+    </item>
     
     
 
