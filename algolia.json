@@ -1,5 +1,23 @@
 [
   {
+    "objectID": "74171188979ef59ce42f5cb9e755bcc59a356a49",
+    "permalink": "/post/hidden_cipher_1/",
+    "title": "Hidden Cipher 1 writeup","content": " 下載題目檔案並解壓縮 wget https://challenge-files.picoctf.net/c_candy_mountain/f5d1512f23cbc508176c2477979297a2c98c523829d0d5453bf2f7fa343ce3ec/hiddencipher.zip unzip hiddencipher -d hiddencipher/ 查看檔案 查看檔案內容及類型\ncat flag.txt file hiddencipher 嘗試執行檔案\n./hiddencipher 得到加密flag\nHere your encrypted flag:\n235a201d70201548251358110c552f135409 嘗試用upx解壓縮二進制檔案 使用內建工具upx解壓縮\nupx -d hiddencipher 使用 ida 進行靜態分析 發現程式去開啟讀入flag.txt內容 發限有一個get_secret的函數,查看此函數，取得金鑰S3Cr3t 發現他對flag做xor加密 利用cyberchef網站解密 使用xor模組將加密flag與key進行xor計算 取得flag\npicoCTF{fake_flag} 解題 開啟題目主機,並用nc連線取得加密的flag 取得加密flag\n235a201d702015483b1d412b265d3313501f0c072d135f0d2002302d0a406a0a701756102e 使用之前取得的金鑰對其做xor 取得flag\npicoCTF{xor_unpack_4nalys1s_94993eed} 提交flag ","date": "2026-04-15 10:59:52",
+    "updated": "2026-04-15 10:49:52"
+  }, 
+  {
+    "objectID": "c33b504d7e71e5e682ab8194be46fcc926f6eb1c",
+    "permalink": "/post/vault-door-training_writeup/",
+    "title": "vault-door-training writeup","content": " 下載題目相關檔案 下載VaultDoorTraining.java\nwget https://challenge-files.picoctf.net/c_fickle_tempest/d7b689cc9023793c28c50d477d174931581f04eee4a8b7de4bb6162e50b89fe1/VaultDoorTraining.java 使用IDE開啟檔案查看 使用 intelliJ 開啟VaultDoorTraining.java 程式邏輯 graph LR %% 定義樣式 classDef start_end fill:#f96,stroke:#333,stroke-width:2px; classDef process fill:#fff,stroke:#333,stroke-width:1px; classDef logic fill:#e1f5fe,stroke:#01579b,stroke-width:2px; classDef decision fill:#fff9c4,stroke:#fbc02d,stroke-width:2px; Start([開始]) --\u003e Input[讀取 userInput] subgraph 使用者輸入 Input --\u003e Sub[\"擷取大括號內字串 (input.substring)\"] end Sub --\u003e Check{\"checkPassword 驗證密碼\"} subgraph 判斷 Check -- \"正確\" --\u003e Success[\"印出 Access granted.\"] Check -- \"錯誤\" --\u003e Fail[\"印出 Access denied!\"] end Success --\u003e End([結束]) Fail --\u003e End %% 套用樣式 class Start,End start_end; class Input,Sub,Success,Fail process; class Check decision; 首先程式要我們輸入一個密碼 程式會將使用者輸入的密碼開頭\u0026rsquo;picoCTF{\u0026lsquo;及最後一個字元去除 接著呼叫checkPassword進行比對 我們從checkPassword函數可以看到比對的正確密碼 接著我們把前面去除的\u0026rsquo;picoCTF{\u0026lsquo;及\u0026rsquo;}\u0026lsquo;加上即可獲得正確flag ","date": "2026-04-15 10:05:52",
+    "updated": "2026-04-15 10:49:52"
+  }, 
+  {
+    "objectID": "4f329a4d30d8021eb6bb446dff31bfb97ebe2d3c",
+    "permalink": "/post/transformation_writeup/",
+    "title": "Transformation writeup","content": " 下載題目相關檔案 下載enc\nwget https://challenge-files.picoctf.net/c_wily_courier/cf5ced5f34c97a432d29849d8d6bbb4d45c6529180abb364ec5b794896e1805f/enc 查看檔案enc 查看檔案enc類型\nfile enc 用vscode開啟檔案enc,查看其內容,疑似是某編碼 使用解碼網站嘗試破解 網站：\nhttps://toolbox.itsec.tamu.edu 使用magic自動猜測編碼方式,並嘗試破解 發現他是用\u0026rsquo;UTF-16BE (1201)\u0026lsquo;進行編碼 提交flag 提交獲取到的flag ","date": "2026-04-15 09:26:52",
+    "updated": "2026-04-15 10:00:52"
+  }, 
+  {
     "objectID": "f57a22b6136af975b91c8d96bb159b674c309f34",
     "permalink": "/post/esxi_certificate/",
     "title": "ESXI憑證安裝","content": " 建立憑證 使用certbot 簽一個憑證\nsudo certbot certonly \\ --dns-cloudflare \\ --dns-cloudflare-credentials /root/.secrets/cloudflare.ini \\ -d esxi.example.com \\ --key-type rsa \\ --force-renewal ertbot 2.0 之后預設已經改為產生 ECDSA (ECC) 憑證。然而 esxi使用的是rsa ,所以產生指令時要加要加 \u0026ndash;key-type rsa\n開啟ESXI shell 開啟ssh登入 備份原本憑證 備份原先憑證及私鑰以防萬一\nssh root@[esxi主機IP] cp /etc/vmware/ssl/rui.crt /etc/vmware/ssl/rui.crt.bak cp /etc/vmware/ssl/rui.key /etc/vmware/ssl/rui.key.bak 利用scp傳入憑證 進入儲存憑證的地方，並利用scp將憑證傳輸到esxi server\nscp fullchain.pem root@[esxi主機IP]:/etc/vmware/ssl/rui.crt scp privkey.pem root@[esxi主機IP]:/etc/vmware/ssl/rui.key 重啟 esxi server 重啟esxi伺服器，並確認是否成功安裝新憑證\n/sbin/services.sh restart /etc/init.d/hostd status /etc/init.d/vpxa status 關閉Esxi ssh 關閉ssh登入 ","date": "2026-04-06 16:58:52",

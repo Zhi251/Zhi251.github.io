@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reverse on zhi旅程</title>
+    <link>https://www.zhienw.com/tags/reverse/</link>
+    <description>Recent content from zhi旅程</description>
+    <generator>Hugo</generator>
+    <language>zh-tw</language>
+    
+    <managingEditor>ray784523@zhienw.com (Zhi Chen)</managingEditor>
+    <webMaster>ray784523@zhienw.com (Zhi Chen)</webMaster>
+    
+    <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
+    
+    <lastBuildDate>Wed, 15 Apr 2026 10:49:52 +0800</lastBuildDate>
+    
+    
+    <atom:link href="https://www.zhienw.com/tags/reverse/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>vault-door-training writeup</title>
+      <link>https://www.zhienw.com/post/vault-door-training_writeup/</link>
+      <pubDate>Wed, 15 Apr 2026 10:05:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/vault-door-training_writeup/</guid>
+      <description>
+        <![CDATA[<h1>vault-door-training writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="下載題目相關檔案">
+<a class="header-anchor" href="#%e4%b8%8b%e8%bc%89%e9%a1%8c%e7%9b%ae%e7%9b%b8%e9%97%9c%e6%aa%94%e6%a1%88"></a>
+下載題目相關檔案
+</h2><p><strong>下載VaultDoorTraining.java</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wget https://challenge-files.picoctf.net/c_fickle_tempest/d7b689cc9023793c28c50d477d174931581f04eee4a8b7de4bb6162e50b89fe1/VaultDoorTraining.java
+</span></span></code></pre></div><h2 id="使用ide開啟檔案查看">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8ide%e9%96%8b%e5%95%9f%e6%aa%94%e6%a1%88%e6%9f%a5%e7%9c%8b"></a>
+使用IDE開啟檔案查看
+</h2><p><strong>使用 intelliJ 開啟VaultDoorTraining.java</strong>
+<img src="/images/vault-door-training/6.webp" alt="image"></p>
+        
+        <hr><p>本文2026-04-15首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Hidden Cipher 1 writeup</title>
+      <link>https://www.zhienw.com/post/hidden_cipher_1/</link>
+      <pubDate>Wed, 15 Apr 2026 10:59:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/hidden_cipher_1/</guid>
+      <description>
+        <![CDATA[<h1>Hidden Cipher 1 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="下載題目檔案並解壓縮">
+<a class="header-anchor" href="#%e4%b8%8b%e8%bc%89%e9%a1%8c%e7%9b%ae%e6%aa%94%e6%a1%88%e4%b8%a6%e8%a7%a3%e5%a3%93%e7%b8%ae"></a>
+下載題目檔案並解壓縮
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wget https://challenge-files.picoctf.net/c_candy_mountain/f5d1512f23cbc508176c2477979297a2c98c523829d0d5453bf2f7fa343ce3ec/hiddencipher.zip
+</span></span><span class="line"><span class="cl">unzip hiddencipher -d hiddencipher/
+</span></span></code></pre></div><p><img src="/images/Hidden_Cipher_1/1.webp" alt="image"></p>
+<h2 id="查看檔案">
+<a class="header-anchor" href="#%e6%9f%a5%e7%9c%8b%e6%aa%94%e6%a1%88"></a>
+查看檔案
+</h2><p>查看檔案內容及類型</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat flag.txt
+</span></span><span class="line"><span class="cl">file hiddencipher
+</span></span></code></pre></div><p>嘗試執行檔案</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">./hiddencipher 
+</span></span></code></pre></div><p><img src="/images/Hidden_Cipher_1/2.webp" alt="image">
+得到加密flag</p>
+<blockquote>
+<p>Here your encrypted flag:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">235a201d70201548251358110c552f135409
+</span></span></code></pre></div></blockquote>
+<h2 id="嘗試用upx解壓縮二進制檔案">
+<a class="header-anchor" href="#%e5%98%97%e8%a9%a6%e7%94%a8upx%e8%a7%a3%e5%a3%93%e7%b8%ae%e4%ba%8c%e9%80%b2%e5%88%b6%e6%aa%94%e6%a1%88"></a>
+嘗試用upx解壓縮二進制檔案
+</h2><p>使用內建工具upx解壓縮</p>
+        
+        <hr><p>本文2026-04-15首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Transformation writeup</title>
+      <link>https://www.zhienw.com/post/transformation_writeup/</link>
+      <pubDate>Wed, 15 Apr 2026 09:26:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/transformation_writeup/</guid>
+      <description>
+        <![CDATA[<h1>Transformation writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="下載題目相關檔案">
+<a class="header-anchor" href="#%e4%b8%8b%e8%bc%89%e9%a1%8c%e7%9b%ae%e7%9b%b8%e9%97%9c%e6%aa%94%e6%a1%88"></a>
+下載題目相關檔案
+</h2><p><strong>下載enc</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wget https://challenge-files.picoctf.net/c_wily_courier/cf5ced5f34c97a432d29849d8d6bbb4d45c6529180abb364ec5b794896e1805f/enc
+</span></span></code></pre></div><p><img src="/images/Transformation_writeup/1.webp" alt="image"></p>
+<h2 id="查看檔案enc">
+<a class="header-anchor" href="#%e6%9f%a5%e7%9c%8b%e6%aa%94%e6%a1%88enc"></a>
+查看檔案enc
+</h2><p><strong>查看檔案enc類型</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">file enc
+</span></span></code></pre></div><p><img src="/images/Transformation_writeup/2.webp" alt="image">
+<strong>用vscode開啟檔案enc,查看其內容,疑似是某編碼</strong>
+<img src="/images/Transformation_writeup/3.webp" alt="image"></p>
+<h2 id="使用解碼網站嘗試破解">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8%e8%a7%a3%e7%a2%bc%e7%b6%b2%e7%ab%99%e5%98%97%e8%a9%a6%e7%a0%b4%e8%a7%a3"></a>
+使用解碼網站嘗試破解
+</h2><p><strong>網站：</strong></p>
+        
+        <hr><p>本文2026-04-15首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+  </channel>
+</rss>

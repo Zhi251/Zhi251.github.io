@@ -2,14 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.zhienw.com/categories/</loc>
+    <lastmod>2026-04-15T10:49:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zhienw.com/post/hidden_cipher_1/</loc>
+    <lastmod>2026-04-15T10:49:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zhienw.com/categories/picoctf/</loc>
+    <lastmod>2026-04-15T10:49:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zhienw.com/tags/picoctf/</loc>
+    <lastmod>2026-04-15T10:49:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zhienw.com/tags/reverse/</loc>
+    <lastmod>2026-04-15T10:49:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zhienw.com/tags/</loc>
+    <lastmod>2026-04-15T10:49:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zhienw.com/tags/writeup/</loc>
+    <lastmod>2026-04-15T10:49:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zhienw.com/</loc>
+    <lastmod>2026-04-15T10:49:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zhienw.com/post/vault-door-training_writeup/</loc>
+    <lastmod>2026-04-15T10:49:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zhienw.com/post/transformation_writeup/</loc>
+    <lastmod>2026-04-15T10:00:52+08:00</lastmod>
+  </url><url>
     <loc>https://www.zhienw.com/categories/ca-certificate/</loc>
     <lastmod>2025-04-06T20:01:11+08:00</lastmod>
   </url><url>
     <loc>https://www.zhienw.com/tags/ca-certificate/</loc>
     <lastmod>2025-04-06T20:01:11+08:00</lastmod>
-  </url><url>
-    <loc>https://www.zhienw.com/categories/</loc>
-    <lastmod>2025-12-31T20:12:52+08:00</lastmod>
   </url><url>
     <loc>https://www.zhienw.com/tags/esxi/</loc>
     <lastmod>2025-04-06T20:01:11+08:00</lastmod>
@@ -19,12 +46,6 @@
   </url><url>
     <loc>https://www.zhienw.com/tags/self-signed-certificate/</loc>
     <lastmod>2025-04-06T20:01:11+08:00</lastmod>
-  </url><url>
-    <loc>https://www.zhienw.com/tags/</loc>
-    <lastmod>2025-12-31T20:12:52+08:00</lastmod>
-  </url><url>
-    <loc>https://www.zhienw.com/</loc>
-    <lastmod>2026-01-04T07:08:52+08:00</lastmod>
   </url><url>
     <loc>https://www.zhienw.com/post/signerserver/</loc>
     <lastmod>2025-04-06T01:11:52+08:00</lastmod>
