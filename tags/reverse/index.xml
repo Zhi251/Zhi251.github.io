@@ -12,12 +12,128 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Wed, 15 Apr 2026 10:49:52 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2026 12:38:52 +0800</lastBuildDate>
     
     
     <atom:link href="https://www.zhienw.com/tags/reverse/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>Bypass Me writeup</title>
+      <link>https://www.zhienw.com/post/bypass_me/</link>
+      <pubDate>Mon, 20 Apr 2026 11:30:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/bypass_me/</guid>
+      <description>
+        <![CDATA[<h1>Bypass Me writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="獲取與查看題目">
+<a class="header-anchor" href="#%e7%8d%b2%e5%8f%96%e8%88%87%e6%9f%a5%e7%9c%8b%e9%a1%8c%e7%9b%ae"></a>
+獲取與查看題目
+</h2><p><strong>連接題目主機</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl"><span class="c1">#題目提供連線方法</span>
+</span></span><span class="line"><span class="cl">ssh ctf-player@foggy-cliff.picoctf.net -p <span class="m">56563</span>
+</span></span><span class="line"><span class="cl">ls
+</span></span></code></pre></div><p><img src="/images/Bypass_me/1.webp" alt="image">
+<strong>查看題目</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">file bypassme.bin
+</span></span><span class="line"><span class="cl">./bypassme.bin
+</span></span></code></pre></div><p><img src="/images/Bypass_me/2.webp" alt="image">
+<strong>下載題目用做後續分析</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">scp -P 56563 ctf-player@foggy-cliff.picoctf.net:bypassme.bin ./
+</span></span></code></pre></div><p><img src="/images/Bypass_me/3.webp" alt="image"></p>
+<h2 id="使用-ida-進行靜態分析">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8-ida-%e9%80%b2%e8%a1%8c%e9%9d%9c%e6%85%8b%e5%88%86%e6%9e%90"></a>
+使用 IDA 進行靜態分析
+</h2><p><strong>點選 yes</strong>
+<img src="/images/Bypass_me/4.webp" alt="image">
+<strong>程式選擇密碼儲存位置,並發現有一個函數_Z15decode_passwordPc</strong>
+<img src="/images/Bypass_me/5.webp" alt="image">
+<strong>發現程式有一個字串組合</strong></p>
+        
+        <hr><p>本文2026-04-20首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-20</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Hidden Cipher 2 writeup</title>
+      <link>https://www.zhienw.com/post/hidden_cipher_2/</link>
+      <pubDate>Sat, 18 Apr 2026 11:00:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/hidden_cipher_2/</guid>
+      <description>
+        <![CDATA[<h1>Hidden Cipher 2 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="下載題目檔案並解壓縮">
+<a class="header-anchor" href="#%e4%b8%8b%e8%bc%89%e9%a1%8c%e7%9b%ae%e6%aa%94%e6%a1%88%e4%b8%a6%e8%a7%a3%e5%a3%93%e7%b8%ae"></a>
+下載題目檔案並解壓縮
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">wget https://challenge-files.picoctf.net/c_crystal_peak/c7f9577a9dc6a571ae25ca36c6158841b1678576557bbc2be59b33b4f67b8cf9/hiddencipher2.zip
+</span></span><span class="line"><span class="cl">unzip hiddencipher2.zip -d hiddencipher2/
+</span></span></code></pre></div><p><img src="/images/Hidden_Cipher_2/1.webp" alt="image"></p>
+<h2 id="查看檔案">
+<a class="header-anchor" href="#%e6%9f%a5%e7%9c%8b%e6%aa%94%e6%a1%88"></a>
+查看檔案
+</h2><p><strong>查看檔案內容及類型</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">cat flag.txt
+</span></span><span class="line"><span class="cl">file hiddencipher2
+</span></span></code></pre></div><p><img src="/images/Hidden_Cipher_2/2.webp" alt="image">
+<strong>嘗試執行檔案</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">./hiddencipher 
+</span></span><span class="line"><span class="cl"><span class="c1"># 回答問題</span>
+</span></span></code></pre></div><p><img src="/images/Hidden_Cipher_2/3.webp" alt="image">
+<strong>得到加密flag</strong></p>
+<blockquote>
+<p>Encoded flag values:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-TEXT" data-lang="TEXT"><span class="line"><span class="cl">6720, 6300, 5940, 6660, 4020, 5040, 4200, 7380, 6120, 5820, 6420, 6060, 5700, 6120, 6480, 5820, 6180, 7500
+</span></span></code></pre></div></blockquote>
+<h2 id="使用-ida-進行靜態分析">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8-ida-%e9%80%b2%e8%a1%8c%e9%9d%9c%e6%85%8b%e5%88%86%e6%9e%90"></a>
+使用 ida 進行靜態分析
+</h2><p><strong>發現程式生成一個數學題目,列印並讀取使用者輸入</strong>
+<img src="/images/Hidden_Cipher_2/4.webp" alt="image">
+<strong>發現程式比對正確答案</strong>
+<img src="/images/Hidden_Cipher_2/5.webp" alt="image">
+<strong>發現程式去開啟讀入flag.txt內容</strong>
+<img src="/images/Hidden_Cipher_2/6.webp" alt="image">
+<strong>發限有一個encode_flag的函數,要對flag加密</strong>
+<img src="/images/Hidden_Cipher_2/7.webp" alt="image">
+<strong>發限有一個encode_flag的函數,用數學題答案對flag進行相乘加密</strong>
+<img src="/images/Hidden_Cipher_2/8.webp" alt="image"></p>
+        
+        <hr><p>本文2026-04-18首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-20</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Gatekeeper writeup</title>
+      <link>https://www.zhienw.com/post/gatekeeper/</link>
+      <pubDate>Mon, 20 Apr 2026 12:39:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/gatekeeper/</guid>
+      <description>
+        <![CDATA[<h1>Gatekeeper writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          
+        
+        <hr><p>本文2026-04-20首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
     
     
 

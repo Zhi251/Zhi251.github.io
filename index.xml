@@ -12,7 +12,7 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Wed, 15 Apr 2026 10:49:52 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 22 Apr 2026 23:50:52 +0800</lastBuildDate>
     
     
     <atom:link href="https://www.zhienw.com/index.xml" rel="self" type="application/rss&#43;xml" />
@@ -22,69 +22,31 @@
     
 
     <item>
-      <title>vault-door-training writeup</title>
-      <link>https://www.zhienw.com/post/vault-door-training_writeup/</link>
-      <pubDate>Wed, 15 Apr 2026 10:05:52 &#43;0800</pubDate>
+      <title>Inspect HTML writeup</title>
+      <link>https://www.zhienw.com/post/inspect_html/</link>
+      <pubDate>Wed, 22 Apr 2026 23:30:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/vault-door-training_writeup/</guid>
+      <guid>https://www.zhienw.com/post/inspect_html/</guid>
       <description>
-        <![CDATA[<h1>vault-door-training writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>Inspect HTML writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="下載題目相關檔案">
-<a class="header-anchor" href="#%e4%b8%8b%e8%bc%89%e9%a1%8c%e7%9b%ae%e7%9b%b8%e9%97%9c%e6%aa%94%e6%a1%88"></a>
-下載題目相關檔案
-</h2><p><strong>下載VaultDoorTraining.java</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wget https://challenge-files.picoctf.net/c_fickle_tempest/d7b689cc9023793c28c50d477d174931581f04eee4a8b7de4bb6162e50b89fe1/VaultDoorTraining.java
-</span></span></code></pre></div><h2 id="使用ide開啟檔案查看">
-<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8ide%e9%96%8b%e5%95%9f%e6%aa%94%e6%a1%88%e6%9f%a5%e7%9c%8b"></a>
-使用IDE開啟檔案查看
-</h2><p><strong>使用 intelliJ 開啟VaultDoorTraining.java</strong>
-<img src="/images/vault-door-training/6.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-15首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Hidden Cipher 1 writeup</title>
-      <link>https://www.zhienw.com/post/hidden_cipher_1/</link>
-      <pubDate>Wed, 15 Apr 2026 10:59:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/hidden_cipher_1/</guid>
-      <description>
-        <![CDATA[<h1>Hidden Cipher 1 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="下載題目檔案並解壓縮">
-<a class="header-anchor" href="#%e4%b8%8b%e8%bc%89%e9%a1%8c%e7%9b%ae%e6%aa%94%e6%a1%88%e4%b8%a6%e8%a7%a3%e5%a3%93%e7%b8%ae"></a>
-下載題目檔案並解壓縮
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wget https://challenge-files.picoctf.net/c_candy_mountain/f5d1512f23cbc508176c2477979297a2c98c523829d0d5453bf2f7fa343ce3ec/hiddencipher.zip
-</span></span><span class="line"><span class="cl">unzip hiddencipher -d hiddencipher/
-</span></span></code></pre></div><p><img src="/images/Hidden_Cipher_1/1.webp" alt="image"></p>
-<h2 id="查看檔案">
-<a class="header-anchor" href="#%e6%9f%a5%e7%9c%8b%e6%aa%94%e6%a1%88"></a>
-查看檔案
-</h2><p>查看檔案內容及類型</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat flag.txt
-</span></span><span class="line"><span class="cl">file hiddencipher
-</span></span></code></pre></div><p>嘗試執行檔案</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">./hiddencipher 
-</span></span></code></pre></div><p><img src="/images/Hidden_Cipher_1/2.webp" alt="image">
-得到加密flag</p>
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目網頁</strong>
+<img src="/images/Inspect_HTML/1.webp" alt="image">
+<strong>發現源始碼裡有flag</strong>
+<img src="/images/Inspect_HTML/2.webp" alt="image"></p>
 <blockquote>
-<p>Here your encrypted flag:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">235a201d70201548251358110c552f135409
+<p>取得flag</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{1n5p3t0r_0f_h7ml_fd5d57bd}
 </span></span></code></pre></div></blockquote>
-<h2 id="嘗試用upx解壓縮二進制檔案">
-<a class="header-anchor" href="#%e5%98%97%e8%a9%a6%e7%94%a8upx%e8%a7%a3%e5%a3%93%e7%b8%ae%e4%ba%8c%e9%80%b2%e5%88%b6%e6%aa%94%e6%a1%88"></a>
-嘗試用upx解壓縮二進制檔案
-</h2><p>使用內建工具upx解壓縮</p>
+<h2 id="提交flag">
+<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
+提交flag
+</h2><p><img src="/images/Inspect_HTML/3.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-15首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
+        <hr><p>本文2026-04-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -94,34 +56,31 @@
     
 
     <item>
-      <title>Transformation writeup</title>
-      <link>https://www.zhienw.com/post/transformation_writeup/</link>
-      <pubDate>Wed, 15 Apr 2026 09:26:52 &#43;0800</pubDate>
+      <title>Local Authority writeup</title>
+      <link>https://www.zhienw.com/post/local_authority/</link>
+      <pubDate>Wed, 22 Apr 2026 23:00:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/transformation_writeup/</guid>
+      <guid>https://www.zhienw.com/post/local_authority/</guid>
       <description>
-        <![CDATA[<h1>Transformation writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>Local Authority writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="下載題目相關檔案">
-<a class="header-anchor" href="#%e4%b8%8b%e8%bc%89%e9%a1%8c%e7%9b%ae%e7%9b%b8%e9%97%9c%e6%aa%94%e6%a1%88"></a>
-下載題目相關檔案
-</h2><p><strong>下載enc</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wget https://challenge-files.picoctf.net/c_wily_courier/cf5ced5f34c97a432d29849d8d6bbb4d45c6529180abb364ec5b794896e1805f/enc
-</span></span></code></pre></div><p><img src="/images/Transformation_writeup/1.webp" alt="image"></p>
-<h2 id="查看檔案enc">
-<a class="header-anchor" href="#%e6%9f%a5%e7%9c%8b%e6%aa%94%e6%a1%88enc"></a>
-查看檔案enc
-</h2><p><strong>查看檔案enc類型</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">file enc
-</span></span></code></pre></div><p><img src="/images/Transformation_writeup/2.webp" alt="image">
-<strong>用vscode開啟檔案enc,查看其內容,疑似是某編碼</strong>
-<img src="/images/Transformation_writeup/3.webp" alt="image"></p>
-<h2 id="使用解碼網站嘗試破解">
-<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8%e8%a7%a3%e7%a2%bc%e7%b6%b2%e7%ab%99%e5%98%97%e8%a9%a6%e7%a0%b4%e8%a7%a3"></a>
-使用解碼網站嘗試破解
-</h2><p><strong>網站：</strong></p>
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目網頁</strong>
+<img src="/images/Local_Authority/1.webp" alt="image">
+<strong>隨意填寫表單並送出</strong>
+<img src="/images/Local_Authority/2.webp" alt="image">
+<strong>查看原始碼,發現他是本地驗證</strong>
+<img src="/images/Local_Authority/3.webp" alt="image">
+<strong>發現他驗證成功後會執行的java script指令</strong>
+<img src="/images/Local_Authority/4.webp" alt="image">
+<strong>使用主控台手動執行驗證成功後會執行的java script指令</strong>
+<img src="/images/Local_Authority/5.webp" alt="image">
+<strong>順利登入取得flag</strong>
+<img src="/images/Local_Authority/6.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-15首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
+        <hr><p>本文2026-04-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -131,236 +90,277 @@
     
 
     <item>
-      <title>Markdown Basic Elements</title>
-      <link>https://www.zhienw.com/post/markdown_basic_elements/</link>
-      <pubDate>Wed, 31 Dec 2025 20:12:52 &#43;0800</pubDate>
+      <title>Bookmarklet writeup</title>
+      <link>https://www.zhienw.com/post/bookmarklet/</link>
+      <pubDate>Wed, 22 Apr 2026 22:30:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/markdown_basic_elements/</guid>
+      <guid>https://www.zhienw.com/post/bookmarklet/</guid>
       <description>
-        <![CDATA[<h1>Markdown Basic Elements</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>Bookmarklet writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="markdown-基本元素">
-<a class="header-anchor" href="#markdown-%e5%9f%ba%e6%9c%ac%e5%85%83%e7%b4%a0"></a>
-Markdown 基本元素
-</h2><h3 id="标题">
-<a class="header-anchor" href="#%e6%a0%87%e9%a2%98"></a>
-标题
-</h3><h1 id="h1">
-<a class="header-anchor" href="#h1"></a>
-H1
-</h1><h2 id="h2">
-<a class="header-anchor" href="#h2"></a>
-H2
-</h2><h3 id="h3">
-<a class="header-anchor" href="#h3"></a>
-H3
-</h3><h4 id="h4">
-<a class="header-anchor" href="#h4"></a>
-H4
-</h4><h5 id="h5">
-<a class="header-anchor" href="#h5"></a>
-H5
-</h5><h6 id="h6">
-<a class="header-anchor" href="#h6"></a>
-H6
-</h6><h3 id="强调">
-<a class="header-anchor" href="#%e5%bc%ba%e8%b0%83"></a>
-强调
-</h3><p>Emphasis, aka italics, with <em>asterisks</em> or <em>underscores</em>.</p>
-<p>Strong emphasis, aka bold, with <strong>asterisks</strong> or <strong>underscores</strong>.</p>
-<p>Combined emphasis with <strong>asterisks and <em>underscores</em></strong>.</p>
-<p>Strikethrough uses two tildes. <del>Scratch this.</del></p>
-<h3 id="列表">
-<a class="header-anchor" href="#%e5%88%97%e8%a1%a8"></a>
-列表
-</h3><h4 id="definition-list-dl">
-<a class="header-anchor" href="#definition-list-dl"></a>
-Definition List (dl)
-</h4><!-- raw HTML omitted -->
-<h4 id="ordered-list-ol">
-<a class="header-anchor" href="#ordered-list-ol"></a>
-Ordered List (ol)
-</h4><ol>
-<li>List Item 1</li>
-<li>List Item 2</li>
-<li>List Item 3</li>
-</ol>
-<h4 id="unordered-list-ul">
-<a class="header-anchor" href="#unordered-list-ul"></a>
-Unordered List (ul)
-</h4><ul>
-<li>List Item 1</li>
-<li>List Item 2</li>
-<li>List Item 3</li>
-</ul>
-<h3 id="段落">
-<a class="header-anchor" href="#%e6%ae%b5%e8%90%bd"></a>
-段落
-</h3><p>Lorem ipsum dolor sit amet, <a href="">test link</a> consectetur adipiscing elit. <strong>Strong text</strong> pellentesque ligula commodo viverra vehicula. <em>Italic text</em> at ullamcorper enim. Morbi a euismod nibh. <!-- raw HTML omitted -->Underline text<!-- raw HTML omitted --> non elit nisl. <del>Deleted text</del> tristique, sem id condimentum tempus, metus lectus venenatis mauris, sit amet semper lorem felis a eros. Fusce egestas nibh at sagittis auctor. Sed ultricies ac arcu quis molestie. Donec dapibus nunc in nibh egestas, vitae volutpat sem iaculis. Curabitur sem tellus, elementum nec quam id, fermentum laoreet mi. Ut mollis ullamcorper turpis, vitae facilisis velit ultricies sit amet. Etiam laoreet dui odio, id tempus justo tincidunt id. Phasellus scelerisque nunc sed nunc ultricies accumsan.</p>
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目網頁</strong>
+<img src="/images/Bookmarklet/1.webp" alt="image">
+<strong>發現一個欄位,將欄位拉大</strong>
+<img src="/images/Bookmarklet/2.webp" alt="image">
+<strong>將程式複製到主控台執行</strong>
+<img src="/images/Bookmarklet/3.webp" alt="image">
+<strong>alert印出flag</strong>
+<img src="/images/Bookmarklet/4.webp" alt="image"></p>
+<blockquote>
+<p>取得flag</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{p@g3_turn3r_e8b2d43b}
+</span></span></code></pre></div></blockquote>
+<h2 id="提交flag">
+<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
+提交flag
+</h2><p><img src="/images/Bookmarklet/5.webp" alt="image"></p>
         
-        <hr><p>本文2025-12-31首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2025-12-31</p>]]>
+        <hr><p>本文2026-04-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
       </description>
       
-        <category>markdown</category>
+        <category>picoctf</category>
       
     </item>
     
     
 
     <item>
-      <title>ESXI憑證安裝</title>
-      <link>https://www.zhienw.com/post/esxi_certificate/</link>
-      <pubDate>Mon, 06 Apr 2026 16:58:52 &#43;0800</pubDate>
+      <title>IntroToBurp writeup</title>
+      <link>https://www.zhienw.com/post/introtoburp/</link>
+      <pubDate>Wed, 22 Apr 2026 21:50:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/esxi_certificate/</guid>
+      <guid>https://www.zhienw.com/post/introtoburp/</guid>
       <description>
-        <![CDATA[<h1>ESXI憑證安裝</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>IntroToBurp writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="建立憑證">
-<a class="header-anchor" href="#%e5%bb%ba%e7%ab%8b%e6%86%91%e8%ad%89"></a>
-建立憑證
-</h2><p>使用certbot 簽一個憑證</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo certbot certonly <span class="se">\
-</span></span></span><span class="line"><span class="cl">  --dns-cloudflare <span class="se">\
-</span></span></span><span class="line"><span class="cl">  --dns-cloudflare-credentials /root/.secrets/cloudflare.ini <span class="se">\
-</span></span></span><span class="line"><span class="cl">  -d esxi.example.com <span class="se">\
-</span></span></span><span class="line"><span class="cl">  --key-type rsa <span class="se">\
-</span></span></span><span class="line"><span class="cl">  --force-renewal
-</span></span></code></pre></div><blockquote>
-<p>ertbot 2.0 之后<strong>預設已經改為產生 ECDSA (ECC) 憑證</strong>。然而 <strong>esxi使用的是rsa</strong> ,所以產生指令時要加要加 <strong>&ndash;key-type rsa</strong></p>
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>開啟burp suite</strong>
+<img src="/images/IntroToBurp/1.webp" alt="image">
+<strong>打開題目網頁</strong>
+<img src="/images/IntroToBurp/2.webp" alt="image">
+<strong>輸入表單內容,並送出</strong>
+<img src="/images/IntroToBurp/3.webp" alt="image">
+<strong>進到opt驗證網頁</strong>
+<img src="/images/IntroToBurp/4.webp" alt="image">
+<strong>設定攔截</strong>
+<img src="/images/IntroToBurp/5.webp" alt="image">
+<strong>隨意填寫opt內容,並送出</strong>
+<img src="/images/IntroToBurp/6.webp" alt="image">
+<strong>查看抓包內容</strong>
+<img src="/images/IntroToBurp/7.webp" alt="image">
+<strong>更改封包裡opt key,並送出</strong>
+<img src="/images/IntroToBurp/8.webp" alt="image">
+<strong>發現網頁噴出錯誤訊息flag</strong>
+<img src="/images/IntroToBurp/9.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-06首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2025-04-06</p>]]>
+        <hr><p>本文2026-04-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
       </description>
       
-        <category>CA Certificate</category>
+        <category>picoctf</category>
       
     </item>
     
     
 
     <item>
-      <title>自簽憑證服務器架設( 使用Cloudflare驗證 )</title>
-      <link>https://www.zhienw.com/post/signerserver/</link>
-      <pubDate>Mon, 06 Apr 2026 01:05:52 &#43;0800</pubDate>
+      <title>Unminify writeup</title>
+      <link>https://www.zhienw.com/post/unminify/</link>
+      <pubDate>Wed, 22 Apr 2026 21:36:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/signerserver/</guid>
+      <guid>https://www.zhienw.com/post/unminify/</guid>
       <description>
-        <![CDATA[<h1>自簽憑證服務器架設( 使用Cloudflare驗證 )</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>Unminify writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="架構圖">
-<a class="header-anchor" href="#%e6%9e%b6%e6%a7%8b%e5%9c%96"></a>
-架構圖
-</h2><pre class="mermaid">
-  sequenceDiagram
-    participant Ubuntu as 💻 Ubuntu 本機<br>(Certbot)
-    participant LE as 🛡️ Let's Encrypt<br>(憑證機構)
-    participant CF as ☁️ Cloudflare<br>(DNS 伺服器)
-
-    Ubuntu->>LE: 1️⃣ 發起憑證申請 (example.com)
-    LE-->>Ubuntu: 2️⃣ 要求 DNS-01 驗證<br>(給予 _acme-challenge TXT 隨機碼)
-    
-    rect rgb(251, 255, 3)
-    Note over Ubuntu,CF: 自動化 DNS 驗證階段
-    Ubuntu->>CF: 3️⃣ 透過 API 新增 TXT 紀錄
-    Ubuntu->>LE: 4️⃣ 通知驗證：我設定好了，請查驗
-    LE->>CF: 5️⃣ 查詢網域的 TXT 紀錄
-    CF-->>LE: 回傳 TXT 紀錄內容
-    end
-
-    LE-->>Ubuntu: 6️⃣ 核對無誤，驗證通過！<br>正式核發 SSL/TLS 憑證
-    
-    Ubuntu->>CF: 7️⃣ 透過 API 刪除 TXT 紀錄 (自動清理)
-    Note over Ubuntu: 8️⃣ 憑證存檔於本機<br>/etc/letsencrypt/live/
-</pre><h2 id="安裝-certbot">
-<a class="header-anchor" href="#%e5%ae%89%e8%a3%9d-certbot"></a>
-安裝 certbot
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt update
-</span></span><span class="line"><span class="cl">sudo apt install certbot python3-certbot-dns-cloudflare -y
-</span></span></code></pre></div><p><img src="/images/SignerServer/1.webp" alt="image"></p>
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目網頁</strong>
+<img src="/images/Unminify/1.webp" alt="image">
+<strong>在網頁原始碼找到flag</strong>
+<img src="/images/Unminify/2.webp" alt="image"></p>
+<blockquote>
+<p>取得flag</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{pr3tty_c0d3_51d374f0}
+</span></span></code></pre></div></blockquote>
+<h2 id="提交flag">
+<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
+提交flag
+</h2><p><img src="/images/Unminify/3.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-06首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2025-04-06</p>]]>
+        <hr><p>本文2026-04-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
       </description>
       
-        <category>CA Certificate</category>
+        <category>picoctf</category>
       
     </item>
     
     
 
     <item>
-      <title>SSH Local Port Forwarding RDP Access via Bastion Host</title>
-      <link>https://www.zhienw.com/post/rdp_access_via_bastion_host/</link>
-      <pubDate>Thu, 08 Jan 2026 20:14:52 &#43;0800</pubDate>
+      <title>WebDecode writeup</title>
+      <link>https://www.zhienw.com/post/webdecode/</link>
+      <pubDate>Tue, 21 Apr 2026 21:10:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/rdp_access_via_bastion_host/</guid>
+      <guid>https://www.zhienw.com/post/webdecode/</guid>
       <description>
-        <![CDATA[<h1>SSH Local Port Forwarding RDP Access via Bastion Host</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>WebDecode writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="架構圖">
-<a class="header-anchor" href="#%e6%9e%b6%e6%a7%8b%e5%9c%96"></a>
-架構圖
-</h2><p><img src="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/SCD.webp" alt="image"></p>
-<h2 id="雲端主機設定">
-<a class="header-anchor" href="#%e9%9b%b2%e7%ab%af%e4%b8%bb%e6%a9%9f%e8%a8%ad%e5%ae%9a"></a>
-雲端主機設定
-</h2><h3 id="使用者帳號建立專門用來-ssh-rdp">
-<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8%e8%80%85%e5%b8%b3%e8%99%9f%e5%bb%ba%e7%ab%8b%e5%b0%88%e9%96%80%e7%94%a8%e4%be%86-ssh-rdp"></a>
-使用者帳號建立(專門用來 SSH RDP)
-</h3><p><strong>新增一個使用者</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#雲端server</span>
-</span></span><span class="line"><span class="cl">adduser rdp-tunnel
-</span></span></code></pre></div><p>密碼：先隨意設一個，之後會停用密碼登入</p>
-<p>其他資訊：直接 Enter</p>
-<p><img src="/images/post_SSH_Local_Port_Forwarding_RDP_Access_via_Bastion_Host/7.webp" alt="image"></p>
-<p><strong>在自己本機先創建一組金鑰</strong></p>
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目網頁</strong>
+<img src="/images/WebDecode/1.webp" alt="image">
+<strong>在網頁About頁面的原始碼中發現一個奇怪的字串</strong>
+<img src="/images/WebDecode/2.webp" alt="image">
+<strong>使用網站將cookie base64解碼</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">toolbox</span><span class="o">.</span><span class="n">itsec</span><span class="o">.</span><span class="n">tamu</span><span class="o">.</span><span class="n">edu</span>
+</span></span></code></pre></div><p><img src="/images/WebDecode/3.webp" alt="image"></p>
+<blockquote>
+<p>取得flag</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{web_succ3ssfully_d3c0ded_1f832615}
+</span></span></code></pre></div></blockquote>
+<h2 id="提交flag">
+<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
+提交flag
+</h2><p><img src="/images/WebDecode/4.webp" alt="image"></p>
         
-        <hr><p>本文2026-01-08首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2025-01-25</p>]]>
+        <hr><p>本文2026-04-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-21</p>]]>
       </description>
       
-        <category>Secure Network Access Control</category>
+        <category>picoctf</category>
       
     </item>
     
     
 
     <item>
-      <title>Docker安裝方法(linux)</title>
-      <link>https://www.zhienw.com/post/docker_install_doc/</link>
-      <pubDate>Sun, 04 Jan 2026 14:14:52 &#43;0800</pubDate>
+      <title>Cookie Monster Secret Recipe writeup</title>
+      <link>https://www.zhienw.com/post/cookie_monster_secret_recipe/</link>
+      <pubDate>Tue, 21 Apr 2026 20:40:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/docker_install_doc/</guid>
+      <guid>https://www.zhienw.com/post/cookie_monster_secret_recipe/</guid>
       <description>
-        <![CDATA[<h1>Docker安裝方法(linux)</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>Cookie Monster Secret Recipe writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="安裝步驟">
-<a class="header-anchor" href="#%e5%ae%89%e8%a3%9d%e6%ad%a5%e9%a9%9f"></a>
-安裝步驟
-</h2><h3 id="install-docker--docker-compose-plugin">
-<a class="header-anchor" href="#install-docker--docker-compose-plugin"></a>
-Install Docker &amp; Docker Compose plugin
-</h3><blockquote>
-<p>更新套件清單</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get update
-</span></span></code></pre></div><blockquote>
-<p>安裝必要工具(憑證與下載工具)</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get install ca-certificates curl
-</span></span></code></pre></div><blockquote>
-<p>建立 APT 金鑰存放目錄</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo install -m <span class="m">0755</span> -d /etc/apt/keyrings
-</span></span></code></pre></div><blockquote>
-<p>下載 Docker 官方 GPG 金鑰</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-</span></span></code></pre></div><blockquote>
-<p>設定金鑰為所有人可讀</p>
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目網頁</strong>
+<img src="/images/Cookie_Monster_Secret_Recipe/1.webp" alt="image">
+<strong>隨便輸入一組帳密</strong>
+<img src="/images/Cookie_Monster_Secret_Recipe/2.webp" alt="image">
+<strong>查看cookie</strong>
+<img src="/images/Cookie_Monster_Secret_Recipe/3.webp" alt="image">
+<strong>使用網站將cookie base64解碼</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">toolbox</span><span class="o">.</span><span class="n">itsec</span><span class="o">.</span><span class="n">tamu</span><span class="o">.</span><span class="n">edu</span>
+</span></span></code></pre></div><p><img src="/images/Cookie_Monster_Secret_Recipe/4.webp" alt="image"></p>
+<blockquote>
+<p>取得flag</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{c00k1e_m0nster_l0ves_c00kies_B3AD94C2}
+</span></span></code></pre></div></blockquote>
+<h2 id="提交flag">
+<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
+提交flag
+</h2><p><img src="/images/Cookie_Monster_Secret_Recipe/5.webp" alt="image"></p>
         
-        <hr><p>本文2026-01-04首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2025-01-04</p>]]>
+        <hr><p>本文2026-04-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-21</p>]]>
       </description>
       
-        <category>docker</category>
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>head-dump writeup</title>
+      <link>https://www.zhienw.com/post/head-dump/</link>
+      <pubDate>Tue, 21 Apr 2026 20:00:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/head-dump/</guid>
+      <description>
+        <![CDATA[<h1>head-dump writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="what-is-heap-dump堆疊轉儲">
+<a class="header-anchor" href="#what-is-heap-dump%e5%a0%86%e7%96%8a%e8%bd%89%e5%84%b2"></a>
+What is heap-dump（堆疊轉儲）?
+</h2><p>Heap Dump為一個執行中的程式進行「記憶體瞬間快照」,記錄了在某個特定時間點，程式的記憶體（Heap）裡到底裝了哪些東西。這就像是你在玩遊戲時突然按下「暫停」，並把當時場景上所有的角色、道具、數值全部記錄下來存成檔案。
+開發者通常在遇到以下情況時，會去「拍這張記憶體快照」：</p>
+        
+        <hr><p>本文2026-04-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-21</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>SSIT_1 writeup</title>
+      <link>https://www.zhienw.com/post/ssit_1/</link>
+      <pubDate>Tue, 21 Apr 2026 11:00:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/ssit_1/</guid>
+      <description>
+        <![CDATA[<h1>SSIT_1 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="what-is-ssitserver-side-template-injection">
+<a class="header-anchor" href="#what-is-ssitserver-side-template-injection"></a>
+What is SSIT(Server-Side Template Injection)?
+</h2><p>SSTI（Server-Side Template Injection，伺服器端模板注入）是一種網頁應用程式的安全漏洞。有些網頁框架常使用模板引擎（如 Jinja2、Twig、Freemarker 等）來動態產生 HTML。模板引擎允許在 HTML 中嵌入變數與邏輯。利用SSTI 漏洞可以進行以下攻擊</p>
+        
+        <hr><p>本文2026-04-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-21</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Bypass Me writeup</title>
+      <link>https://www.zhienw.com/post/bypass_me/</link>
+      <pubDate>Mon, 20 Apr 2026 11:30:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/bypass_me/</guid>
+      <description>
+        <![CDATA[<h1>Bypass Me writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="獲取與查看題目">
+<a class="header-anchor" href="#%e7%8d%b2%e5%8f%96%e8%88%87%e6%9f%a5%e7%9c%8b%e9%a1%8c%e7%9b%ae"></a>
+獲取與查看題目
+</h2><p><strong>連接題目主機</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl"><span class="c1">#題目提供連線方法</span>
+</span></span><span class="line"><span class="cl">ssh ctf-player@foggy-cliff.picoctf.net -p <span class="m">56563</span>
+</span></span><span class="line"><span class="cl">ls
+</span></span></code></pre></div><p><img src="/images/Bypass_me/1.webp" alt="image">
+<strong>查看題目</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">file bypassme.bin
+</span></span><span class="line"><span class="cl">./bypassme.bin
+</span></span></code></pre></div><p><img src="/images/Bypass_me/2.webp" alt="image">
+<strong>下載題目用做後續分析</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">scp -P 56563 ctf-player@foggy-cliff.picoctf.net:bypassme.bin ./
+</span></span></code></pre></div><p><img src="/images/Bypass_me/3.webp" alt="image"></p>
+<h2 id="使用-ida-進行靜態分析">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8-ida-%e9%80%b2%e8%a1%8c%e9%9d%9c%e6%85%8b%e5%88%86%e6%9e%90"></a>
+使用 IDA 進行靜態分析
+</h2><p><strong>點選 yes</strong>
+<img src="/images/Bypass_me/4.webp" alt="image">
+<strong>程式選擇密碼儲存位置,並發現有一個函數_Z15decode_passwordPc</strong>
+<img src="/images/Bypass_me/5.webp" alt="image">
+<strong>發現程式有一個字串組合</strong></p>
+        
+        <hr><p>本文2026-04-20首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-20</p>]]>
+      </description>
+      
+        <category>picoctf</category>
       
     </item>
     

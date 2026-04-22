@@ -1,5 +1,77 @@
 [
   {
+    "objectID": "62a0b4d370d198b9e875984665d3816ad884e3b1",
+    "permalink": "/post/inspect_html/",
+    "title": "Inspect HTML writeup","content": " 解題 打開題目網頁 發現源始碼裡有flag 取得flag\npicoCTF{1n5p3t0r_0f_h7ml_fd5d57bd} 提交flag ","date": "2026-04-22 23:30:52",
+    "updated": "2026-04-22 23:50:52"
+  }, 
+  {
+    "objectID": "dcc343288b78d9ee4852a1dfc8ee67eda432be7a",
+    "permalink": "/post/local_authority/",
+    "title": "Local Authority writeup","content": " 解題 打開題目網頁 隨意填寫表單並送出 查看原始碼,發現他是本地驗證 發現他驗證成功後會執行的java script指令 使用主控台手動執行驗證成功後會執行的java script指令 順利登入取得flag 取得flag\npicoCTF{j5_15_7r4n5p4r3n7_a8788e61} 提交flag ","date": "2026-04-22 23:00:52",
+    "updated": "2026-04-22 23:30:52"
+  }, 
+  {
+    "objectID": "6987278fd142ef8cb0b9e0f96812a7df5cbb2776",
+    "permalink": "/post/bookmarklet/",
+    "title": "Bookmarklet writeup","content": " 解題 打開題目網頁 發現一個欄位,將欄位拉大 將程式複製到主控台執行 alert印出flag 取得flag\npicoCTF{p@g3_turn3r_e8b2d43b} 提交flag ","date": "2026-04-22 22:30:52",
+    "updated": "2026-04-22 22:50:52"
+  }, 
+  {
+    "objectID": "f32724e2e5785d69ca8ee1e930ed6922ae350816",
+    "permalink": "/post/introtoburp/",
+    "title": "IntroToBurp writeup","content": " 解題 開啟burp suite 打開題目網頁 輸入表單內容,並送出 進到opt驗證網頁 設定攔截 隨意填寫opt內容,並送出 查看抓包內容 更改封包裡opt key,並送出 發現網頁噴出錯誤訊息flag 取得flag\npicoCTF{#0TP_Bypvss_SuCc3$S_b3fa4f1a} 提交flag ","date": "2026-04-22 21:50:52",
+    "updated": "2026-04-22 22:10:52"
+  }, 
+  {
+    "objectID": "8df5cfff2f78bc2ada46135d1f46a0810124c4a4",
+    "permalink": "/post/unminify/",
+    "title": "Unminify writeup","content": " 解題 打開題目網頁 在網頁原始碼找到flag 取得flag\npicoCTF{pr3tty_c0d3_51d374f0} 提交flag ","date": "2026-04-22 21:36:52",
+    "updated": "2026-04-22 21:50:52"
+  }, 
+  {
+    "objectID": "2104b7c296e26bd9bd7547a80788c1ab56d16548",
+    "permalink": "/post/webdecode/",
+    "title": "WebDecode writeup","content": " 解題 打開題目網頁 在網頁About頁面的原始碼中發現一個奇怪的字串 使用網站將cookie base64解碼\nhttps://toolbox.itsec.tamu.edu 取得flag\npicoCTF{web_succ3ssfully_d3c0ded_1f832615} 提交flag ","date": "2026-04-21 21:10:52",
+    "updated": "2026-04-21 21:34:52"
+  }, 
+  {
+    "objectID": "3d9d36f0a6444193cafcd372572a9490c5749799",
+    "permalink": "/post/cookie_monster_secret_recipe/",
+    "title": "Cookie Monster Secret Recipe writeup","content": " 解題 打開題目網頁 隨便輸入一組帳密 查看cookie 使用網站將cookie base64解碼\nhttps://toolbox.itsec.tamu.edu 取得flag\npicoCTF{c00k1e_m0nster_l0ves_c00kies_B3AD94C2} 提交flag ","date": "2026-04-21 20:40:52",
+    "updated": "2026-04-21 21:00:52"
+  }, 
+  {
+    "objectID": "782ce1890786480a808f150442717d94ce22e8bf",
+    "permalink": "/post/head-dump/",
+    "title": "head-dump writeup","content": " What is heap-dump（堆疊轉儲）? Heap Dump為一個執行中的程式進行「記憶體瞬間快照」,記錄了在某個特定時間點，程式的記憶體（Heap）裡到底裝了哪些東西。這就像是你在玩遊戲時突然按下「暫停」，並把當時場景上所有的角色、道具、數值全部記錄下來存成檔案。 開發者通常在遇到以下情況時，會去「拍這張記憶體快照」：\n找出記憶體洩漏:如果程式佔用的記憶體只增不減（就像水桶破了洞），最後會導致當機。透過 Heap Dump，你可以檢查是哪個物件「佔著茅坑不拉屎」，明明沒在用了卻一直留在記憶體裡。 效能診斷:如果你發現記憶體裡塞滿了幾百萬個重複的字串，這代表程式寫得不夠有效率，可以優化。 安全與數位鑑識:許多敏感資訊（密碼、金鑰）在程式執行時會以明文存在記憶體中。即使檔案被刪除了，只要程式還在跑，就能從 Heap Dump 中把這些「證據」撈出來。 解題 打開題目網頁 探測每一個網頁的連結等,發現有一個API swagger UI的介面 進入此網頁,發現有一個API可以獲取heapdump 獲取heapdump檔案 從檔案中找到flag\ngrep -aoE \u0026#34;picoCTF\\{.*?\\}\u0026#34; heapdump-1776763637557.heapsnapshot 取得flag\npicoCTF{Pat!3nt_15_Th3_K3y_8df117c1} 提交flag ","date": "2026-04-21 20:00:52",
+    "updated": "2026-04-21 20:30:52"
+  }, 
+  {
+    "objectID": "d1882489f5046a9e4dc2a1650f2f9373a194ebee",
+    "permalink": "/post/ssit_1/",
+    "title": "SSIT_1 writeup","content": " What is SSIT(Server-Side Template Injection)? SSTI（Server-Side Template Injection，伺服器端模板注入）是一種網頁應用程式的安全漏洞。有些網頁框架常使用模板引擎（如 Jinja2、Twig、Freemarker 等）來動態產生 HTML。模板引擎允許在 HTML 中嵌入變數與邏輯。利用SSTI 漏洞可以進行以下攻擊\n讀取伺服器上的敏感檔案(如設定檔、密碼) 遠端程式碼執行（RCE） 獲取環境變數存取資料庫等 SSIT檢測 graph LR %% 節點定義 Start([SSIT測試]) --\u003e P1[\"${7*7}\"] %% 第一大分支：以 $ 開頭 P1 -- \"得到 49\" --\u003e P2[\"a{*comment*}b\"] P2 -- \"得到 ab\" --\u003e E1[\"Smarty (PHP)\"] P2 -- \"原樣輸出\" --\u003e P3[\"${'z'.join('ab')}\"] P3 -- \"得到 azb\" --\u003e E2[\"Mako (Python)\"] P3 -- \"報錯/原樣\" --\u003e E3[\"Java / JSTL\"] %% 第二大分支：以 {{ 開頭 P1 -- \"原樣輸出\" --\u003e P4[\"{{7*7}}\"] P4 -- \"得到 49\" --\u003e P5[\"{{7*'7'}}\"] %% Jinja2 與 Twig 的區分 P5 -- \"得到 7777777\" --\u003e E4[\"Jinja2 (Python)\"] P5 -- \"得到 49\" --\u003e E5[\"Twig (PHP)\"] P5 -- \"報錯\" --\u003e E6[\"其他 Python 引擎\"] %% 第三大分支：其他標籤 P4 -- \"原樣輸出\" --\u003e P6[\"\u003c%= 7*7 %\u003e\"] P6 -- \"得到 49\" --\u003e E7[\"ERB (Ruby)\"] P6 -- \"原樣輸出\" --\u003e End[\"未發現漏洞 / 未知\"] %% 樣式美化 (讓它更像截圖中的色塊) style Start fill:#3498db,color:#fff,stroke-width:0px style P1 fill:#3498db,color:#fff,stroke-width:0px style P2 fill:#3498db,color:#fff,stroke-width:0px style P3 fill:#3498db,color:#fff,stroke-width:0px style P4 fill:#3498db,color:#fff,stroke-width:0px style P5 fill:#3498db,color:#fff,stroke-width:0px style P6 fill:#3498db,color:#fff,stroke-width:0px style E1 fill:#2ecc71,color:#fff,stroke-width:0px style E2 fill:#2ecc71,color:#fff,stroke-width:0px style E3 fill:#2ecc71,color:#fff,stroke-width:0px style E4 fill:#2ecc71,color:#fff,stroke-width:0px style E5 fill:#2ecc71,color:#fff,stroke-width:0px style E7 fill:#2ecc71,color:#fff,stroke-width:0px style End fill:#e74c3c,color:#fff,stroke-width:0px 解題 檢測 打開題目網頁 對其進行SSIT漏洞測試,發現該網站使用的是jinja2(python)的腳本引擎 對其進行模板注入 獲取該使用者帳號id\n{{request.application.__globals__.__builtins__.__import__(\u0026#39;os\u0026#39;).popen(\u0026#39;id\u0026#39;).read()}} request — Jinja2 模板中預設可存取的 Flask request 物件，代表當前的 HTTP 請求。 .application — 從 request 取得 Flask 應用程式實例（即 Flask app 物件）。 .globals — 存取該應用程式物件所屬函式的全域變數字典。這是 Python 函式物件的內建屬性，包含了該模組作用域中所有的全域名稱。 .builtins — 從全域變數字典中取得 Python 的內建函式集合，包含 print、open、import 等核心函式。 .import(\u0026lsquo;os\u0026rsquo;) — 呼叫內建的 import 函式來動態載入 os 模組。這是關鍵的一步，因為 os 模組提供了與作業系統互動的能力。 .popen(\u0026lsquo;id\u0026rsquo;) — 呼叫 os.popen()，在伺服器上開啟一個子行程執行系統指令 id（Linux/Unix 指令，回傳當前使用者的 UID、GID 等資訊）。 .read() — 讀取指令的輸出結果，讓它顯示在網頁回應中。 查看目錄\n{{request.application.__globals__.__builtins__.__import__(\u0026#39;os\u0026#39;).popen(\u0026#39;ls\u0026#39;).read()}} 查看flag\n{{request.application.__globals__.__builtins__.__import__(\u0026#39;os\u0026#39;).popen(\u0026#39;cat flag\u0026#39;).read()}} 提交flag 參考網站 https://onsecurity.io/article/server-side-template-injection-with-jinja2/ https://portswigger.net/web-security/server-side-template-injection ","date": "2026-04-21 11:00:52",
+    "updated": "2026-04-21 12:34:52"
+  }, 
+  {
+    "objectID": "34c1cede95f33addd1a369ab281c10646c05249b",
+    "permalink": "/post/gatekeeper/",
+    "title": "Gatekeeper writeup","content": "","date": "2026-04-20 12:39:52",
+    "updated": "2026-04-15 12:38:52"
+  }, 
+  {
+    "objectID": "83015dc818534b49c3e12410ee8df788aba4efc8",
+    "permalink": "/post/bypass_me/",
+    "title": "Bypass Me writeup","content": " 獲取與查看題目 連接題目主機\n#題目提供連線方法 ssh ctf-player@foggy-cliff.picoctf.net -p 56563 ls 查看題目\nfile bypassme.bin ./bypassme.bin 下載題目用做後續分析\nscp -P 56563 ctf-player@foggy-cliff.picoctf.net:bypassme.bin ./ 使用 IDA 進行靜態分析 點選 yes 程式選擇密碼儲存位置,並發現有一個函數_Z15decode_passwordPc 發現程式有一個字串組合\n0C9CFF9D8CFDADFF9h 0D8DFh 0CFh 發現程式將這個字串與0FFFFFFAAh進行xor 使用網站進行解碼,獲取正確密碼 解密網站\nhttps://toolbox.itsec.tamu.edu/ 使用網站計算正確密碼 執行程式並輸入密碼 執行並輸入密碼\n./bypassme.bin 取得flag\npicoCTF{d3bugg3r_p0w3r_is_4w3s0m3_9df7c6a6} 提交flag ","date": "2026-04-20 11:30:52",
+    "updated": "2026-04-20 12:38:52"
+  }, 
+  {
+    "objectID": "124416268af5e051553ed6f28839b31b9e78976f",
+    "permalink": "/post/hidden_cipher_2/",
+    "title": "Hidden Cipher 2 writeup","content": " 下載題目檔案並解壓縮 wget https://challenge-files.picoctf.net/c_crystal_peak/c7f9577a9dc6a571ae25ca36c6158841b1678576557bbc2be59b33b4f67b8cf9/hiddencipher2.zip unzip hiddencipher2.zip -d hiddencipher2/ 查看檔案 查看檔案內容及類型\ncat flag.txt file hiddencipher2 嘗試執行檔案\n./hiddencipher # 回答問題 得到加密flag\nEncoded flag values:\n6720, 6300, 5940, 6660, 4020, 5040, 4200, 7380, 6120, 5820, 6420, 6060, 5700, 6120, 6480, 5820, 6180, 7500 使用 ida 進行靜態分析 發現程式生成一個數學題目,列印並讀取使用者輸入 發現程式比對正確答案 發現程式去開啟讀入flag.txt內容 發限有一個encode_flag的函數,要對flag加密 發限有一個encode_flag的函數,用數學題答案對flag進行相乘加密 寫一個python程式解密 #密文 encode=[6720, 6300, 5940, 6660, 4020, 5040, 4200, 7380, 6120, 5820, 6420, 6060, 5700, 6120, 6480, 5820, 6180, 7500] #答案 key=60 s=\u0026#34;\u0026#34; for i in encode: s+=chr(i//key) print(s) 取得flag\npicoCTF{fake_flag} 解題 開啟題目主機,並用nc連線取得加密的flag 取得加密flag\n7840, 7350, 6930, 7770, 4690, 5880, 4900, 8610, 7630, 3640, 8120, 7280, 6650, 6860, 3570, 7280, 3430, 7700, 7000, 6650, 6930, 3430, 7840, 7280, 3570, 7980, 6650, 6790, 7070, 6930, 3780, 3500, 3850, 3640, 6860, 8750 使用之前python程式進行解密 取得flag\npicoCTF{m4th_b3h1nd_c1ph3r_aec6274b} 提交flag ","date": "2026-04-18 11:00:52",
+    "updated": "2026-04-20 10:34:52"
+  }, 
+  {
     "objectID": "74171188979ef59ce42f5cb9e755bcc59a356a49",
     "permalink": "/post/hidden_cipher_1/",
     "title": "Hidden Cipher 1 writeup","content": " 下載題目檔案並解壓縮 wget https://challenge-files.picoctf.net/c_candy_mountain/f5d1512f23cbc508176c2477979297a2c98c523829d0d5453bf2f7fa343ce3ec/hiddencipher.zip unzip hiddencipher -d hiddencipher/ 查看檔案 查看檔案內容及類型\ncat flag.txt file hiddencipher 嘗試執行檔案\n./hiddencipher 得到加密flag\nHere your encrypted flag:\n235a201d70201548251358110c552f135409 嘗試用upx解壓縮二進制檔案 使用內建工具upx解壓縮\nupx -d hiddencipher 使用 ida 進行靜態分析 發現程式去開啟讀入flag.txt內容 發限有一個get_secret的函數,查看此函數，取得金鑰S3Cr3t 發現他對flag做xor加密 利用cyberchef網站解密 使用xor模組將加密flag與key進行xor計算 取得flag\npicoCTF{fake_flag} 解題 開啟題目主機,並用nc連線取得加密的flag 取得加密flag\n235a201d702015483b1d412b265d3313501f0c072d135f0d2002302d0a406a0a701756102e 使用之前取得的金鑰對其做xor 取得flag\npicoCTF{xor_unpack_4nalys1s_94993eed} 提交flag ","date": "2026-04-15 10:59:52",
