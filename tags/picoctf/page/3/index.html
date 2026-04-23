@@ -1,0 +1,863 @@
+<!doctype html>
+<html
+  lang="zh-tw" 
+  data-theme-mode="auto"
+  >
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  Picoctf | Zhi Chen
+</title>
+<meta
+  name="description"
+  content="拿著腳本的神"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"http://localhost:1313/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="Picoctf | Zhi Chen" />
+  <meta
+    property="og:description"
+    content="拿著腳本的神"
+  />
+  <meta property="og:url" content="http://localhost:1313/tags/picoctf/" />
+  <meta
+    property="og:site_name"
+    content="zhi旅程"
+  />
+  <meta
+    property="og:image"
+    content="/"
+  />
+  <meta property="article:author" content="Zhi Chen" />
+  <meta property="article:published_time" content="2026-04-23T13:45:52&#43;08:00" />
+  <meta property="article:modified_time" content="2026-04-23T13:47:52&#43;08:00" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/" /><link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/picoctf/index.xml" title="zhi旅程">
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.css"
+    integrity="sha384-5TcZemv2l/9On385z///&#43;d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/gitalk@1.8.0/dist/gitalk.css"
+    integrity="sha384-X7z7PUv2B67D8sPJyzDyGZSco1ADwmdI7ed4eCGtTKkClfyDFpPL9WgAn9XVr/Io" crossorigin="anonymous"/><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css"
+    integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj&#43;vDDLIL&#43;xBGQU/voDBY5XE2lVh" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><img src="/images/witch.png" alt="loading" /></div><div class="loading-word">在資安領域掙扎中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章沒有找到對應的語言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="home icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/">首頁</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="archives icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/archives">歸檔</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="about icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/about">關於</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/link">連結</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"><a id="nav-rss-link" class="nav-icon" href="/tags/picoctf/index.xml" title="RSS 訂閱" aria-label="RSS 訂閱" target="_blank"></a></nav></div>
+<header id="header" aria-label="Site header"><picture><source media="(max-width: 479px)" srcset="/images/banner-600w.webp"><source media="(max-width: 799px)" srcset="/images/banner-800w.webp"><source media="(min-width: 800px)" srcset="/images/banner.webp"><img  fetchpriority="high" src="/images/banner.webp" alt="Picoctf"></picture><img alt="Picoctf" style="visibility: hidden;"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">Tag</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"><span id="subtitle">Picoctf</span></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          class="sidebar-left"
+            ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container "><meting-js
+        theme="var(--color-link)"
+        id="17632140526"server="netease"type="playlist"fixed="false"loop="all"order="list"preload="auto"volume="0.7"mutex="true"list-folded="true">
+      </meting-js><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="Zhi Chen"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Zhi Chen</div>
+  <div class="sidebar-description">拿著腳本的神</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">28</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分類</div>
+    <div class="sidebar-state-number">
+      5
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>標籤</div>
+    <div class="sidebar-state-number">12</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discordapp.com/users/gha00000"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:ray784523@zhienw.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/zhi251"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首頁"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首頁</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="歸檔"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">歸檔</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="關於"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">關於</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/link"
+        aria-label="連結"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">連結</div>
+    </div></div>
+</div>
+  </div><div class="sidebar-widget"><div class="widget-wrapper">
+    <div
+      class="widget-wrap"
+      data-aos="fade-up"
+    >
+      <div style="display: flex; justify-content: space-between;">
+        <h3 class="widget-title">分類</h3></div>
+      <div class="widget">
+        <ul class="category-list"><li class="category-list-item">
+                <a class="category-list-link" href="/categories/ca-certificate/" 
+                  title="CA Certificate"
+                  >CA Certificate</a
+                >
+              </li><li class="category-list-item">
+                <a class="category-list-link" href="/categories/docker/" 
+                  title="Docker"
+                  >Docker</a
+                >
+              </li><li class="category-list-item">
+                <a class="category-list-link" href="/categories/markdown/" 
+                  title="Markdown"
+                  >Markdown</a
+                >
+              </li><li class="category-list-item">
+                <a class="category-list-link" href="/categories/picoctf/" 
+                  title="Picoctf"
+                  >Picoctf</a
+                >
+              </li><li class="category-list-item">
+                <a class="category-list-link" href="/categories/secure-network-access-control/" 
+                  title="Secure Network Access Control"
+                  >Secure Network Access Control</a
+                >
+              </li></ul>
+      </div>
+    </div>
+  </div><div class="widget-wrapper">
+    <div
+      class="widget-wrap"
+      data-aos="fade-up"
+    >
+      <div style="display: flex; justify-content: space-between;">
+        <h3 class="widget-title">標籤</h3><a class="widget-link" href="/tags/">查看更多</a></div>
+      <div class="widget">
+        <ul class="tag-list" itemprop="keywords"><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/ca-certificate/"
+                  aria-label="Tag: CA Certificate"
+                  title="CA Certificate"
+                >
+                  CA Certificate
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/docker/"
+                  aria-label="Tag: Docker"
+                  title="Docker"
+                >
+                  Docker
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/esxi/"
+                  aria-label="Tag: Esxi"
+                  title="Esxi"
+                >
+                  Esxi
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/install_doc/"
+                  aria-label="Tag: Install_doc"
+                  title="Install_doc"
+                >
+                  Install_doc
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/markdown/"
+                  aria-label="Tag: Markdown"
+                  title="Markdown"
+                >
+                  Markdown
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/picoctf/"
+                  aria-label="Tag: Picoctf"
+                  title="Picoctf"
+                >
+                  Picoctf
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/rdp/"
+                  aria-label="Tag: RDP"
+                  title="RDP"
+                >
+                  RDP
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/reverse/"
+                  aria-label="Tag: Reverse"
+                  title="Reverse"
+                >
+                  Reverse
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/self-signed-certificate/"
+                  aria-label="Tag: Self-Signed Certificate"
+                  title="Self-Signed Certificate"
+                >
+                  Self-Signed Certificate
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/ssh-local-port-forwarding/"
+                  aria-label="Tag: SSH Local Port Forwarding"
+                  title="SSH Local Port Forwarding"
+                >
+                  SSH Local Port Forwarding
+                </a>
+              </li></ul>
+      </div>
+    </div>
+  </div><div class="widget-wrapper">
+  <div
+    class="widget-wrap"
+    data-aos="fade-up"
+  >
+    <h3 class="widget-title">標籤雲</h3><div class="widget tagcloud"><a
+            style="font-size:10px"
+            href="/tags/ca-certificate/"
+            aria-label="Tag: CA Certificate"
+            >CA Certificate</a
+          ><a
+            style="font-size:10px"
+            href="/tags/docker/"
+            aria-label="Tag: Docker"
+            >Docker</a
+          ><a
+            style="font-size:10px"
+            href="/tags/esxi/"
+            aria-label="Tag: Esxi"
+            >Esxi</a
+          ><a
+            style="font-size:10px"
+            href="/tags/install_doc/"
+            aria-label="Tag: Install_doc"
+            >Install_doc</a
+          ><a
+            style="font-size:10px"
+            href="/tags/markdown/"
+            aria-label="Tag: Markdown"
+            >Markdown</a
+          ><a
+            style="font-size:10px"
+            href="/tags/picoctf/"
+            aria-label="Tag: Picoctf"
+            >Picoctf</a
+          ><a
+            style="font-size:10px"
+            href="/tags/rdp/"
+            aria-label="Tag: RDP"
+            >RDP</a
+          ><a
+            style="font-size:10px"
+            href="/tags/reverse/"
+            aria-label="Tag: Reverse"
+            >Reverse</a
+          ><a
+            style="font-size:10px"
+            href="/tags/self-signed-certificate/"
+            aria-label="Tag: Self-Signed Certificate"
+            >Self-Signed Certificate</a
+          ><a
+            style="font-size:10px"
+            href="/tags/ssh-local-port-forwarding/"
+            aria-label="Tag: SSH Local Port Forwarding"
+            >SSH Local Port Forwarding</a
+          ><a
+            style="font-size:10px"
+            href="/tags/web-exploitation/"
+            aria-label="Tag: Web Exploitation"
+            >Web Exploitation</a
+          ><a
+            style="font-size:10px"
+            href="/tags/writeup/"
+            aria-label="Tag: Writeup"
+            >Writeup</a
+          ></div>
+  </div>
+</div><div class="widget-wrapper">
+    <div
+      class="widget-wrap"
+      data-aos="fade-up"
+    >
+      <h3 class="widget-title">最新文章</h3>
+      <div class="widget">
+        <ul><li>
+              <a href="/post/where_are_the_robots/" title="where are the robots writeup">where are the robots writeup</a>
+            </li><li>
+              <a href="/post/insp3ct0r/" title="Insp3ct0r writeup">Insp3ct0r writeup</a>
+            </li><li>
+              <a href="/post/logon/" title="logon writeup">logon writeup</a>
+            </li><li>
+              <a href="/post/dont-use-client-side/" title="dont-use-client-side writeup">dont-use-client-side writeup</a>
+            </li><li>
+              <a href="/post/get_ahead/" title="GET aHEAD writeup">GET aHEAD writeup</a>
+            </li></ul>
+      </div>
+    </div>
+  </div></div></div></aside>
+<section id="main" aria-label="Main content"><div
+    class="archives-outer-wrap"
+    data-aos="fade-up"
+  ><section class="archives-wrap" data-aos="fade-up">
+    <div class="archive-year-wrap">
+      <span class="archive-year">2026</span>
+    </div>
+    <ul><li class="archive-article">
+          <div class="archive-article-date">
+            <span>
+              <time
+                class="dt-published"
+                datetime="2026-04-15 10:59:52 &#43;0800 CST"
+                itemprop="datePublished"
+                >2026-04</time
+              >
+            </span>
+          </div><a class="archive-article-title" href="/post/hidden_cipher_1/"
+              >Hidden Cipher 1 writeup</a
+            ></li><li class="archive-article">
+          <div class="archive-article-date">
+            <span>
+              <time
+                class="dt-published"
+                datetime="2026-04-15 10:05:52 &#43;0800 CST"
+                itemprop="datePublished"
+                >2026-04</time
+              >
+            </span>
+          </div><a class="archive-article-title" href="/post/vault-door-training_writeup/"
+              >vault-door-training writeup</a
+            ></li><li class="archive-article">
+          <div class="archive-article-date">
+            <span>
+              <time
+                class="dt-published"
+                datetime="2026-04-15 09:26:52 &#43;0800 CST"
+                itemprop="datePublished"
+                >2026-04</time
+              >
+            </span>
+          </div><a class="archive-article-title" href="/post/transformation_writeup/"
+              >Transformation writeup</a
+            ></li></ul>
+  </section></div><nav id="page-nav" aria-label="Pagination navigation" data-aos="fade-up"><a class="extend prev" rel="prev" href="/tags/picoctf/page/2/">
+      &laquo;
+      上一頁</a><a class="page-number" href="/tags/picoctf/">1</a><a class="page-number" href="/tags/picoctf/page/2/">2</a><span class="page-number current">3</span></nav>
+</section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2025-2026<span class="footer-info-sep rotate"></span>
+      Zhi Chen
+    </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="Zhi Chen"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Zhi Chen</div>
+  <div class="sidebar-description">拿著腳本的神</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">28</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分類</div>
+    <div class="sidebar-state-number">
+      5
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>標籤</div>
+    <div class="sidebar-state-number">12</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discordapp.com/users/gha00000"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:ray784523@zhienw.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/zhi251"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首頁"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首頁</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="歸檔"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">歸檔</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="關於"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">關於</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/link"
+        aria-label="連結"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">連結</div>
+    </div></div>
+</div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" ></script><script src="/js/aos.js" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "Zhi Chen",
+          title: "Picoctf",
+          url: "http:\/\/localhost:1313\/tags\/picoctf\/",
+          description: "",
+          cover: "http:\/\/localhost:1313\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script><script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+  var commentConfigKeys = ['valine', 'waline', 'twikoo', 'gitalk', 'giscus'];
+  var commentConfig = {gitalk: {
+      enable: true,
+      load: () => {
+        const container = document.querySelector('.gitalk-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        const script = loadScript(
+          'https:\/\/npm.webcache.cn\/gitalk@1.8.0\/dist\/gitalk.min.js',
+          !'webcache|gitalk@1.8.0\/dist\/gitalk.min.js'.startsWith('local') ? 'sha384-kspnZUWBoSWwoJHa0hBCXYbHGbhvU\/lcEH5O8eVbSDhbPwsiVUTp\/aGX\/z\/5EuMA' : undefined
+        );
+        script.onload = () => {
+          if ( false ) {
+            
+            const md5Script = loadScript(
+              'https:\/\/npm.webcache.cn\/blueimp-md5@2.19.0\/js\/md5.min.js',
+              !'webcache|blueimp-md5@2.19.0\/js\/md5.min.js'.startsWith('local') ? 'sha384-JmVtRz6RWiXnA14QbIOJzPuU3MidULOpBP66deeLLyyoF4Tr\/gZlbkHkL6vTthxH' : undefined
+            );
+            md5Script.onload = initGitalk;
+            document.head.appendChild(md5Script);
+          } else {
+            
+            initGitalk();
+          }
+        };
+        document.head.appendChild(script);
+
+        function initGitalk() {
+          let gitalk = new Gitalk({
+            clientID: 'Ov23liVVZivLwOTicsZy',
+            clientSecret: '057b213568c12232da732f30598c8bbe5999d32f',
+            repo: 'Zhi251.github.io',
+            owner: 'Zhi251',
+            admin: JSON.parse("[\"Zhi251\"]"),
+            id: location.pathname,
+            distractionFreeMode: false,
+            language: document.documentElement.lang || 'en',
+          });
+          gitalk.render('gitalk-comment');
+        }
+      }
+    },};
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig?.[key]?.enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig?.[sys]?.enable) || '';
+    }
+  }
+
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false
+    };
+
+    
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      
+      const commentType = item.getAttribute('data-selector');
+
+      
+      hideAllComments();
+
+      
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          
+          changeActiveCommentItems(item);
+        });
+      }
+
+      
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script></div>
+</div><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script
+    src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js"
+    integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr&#43;h5UfruuRL/aORyw&#43;5&#43;HZoU6e" crossorigin="anonymous"></script><script>
+    if (window.matchMedia('(max-width: 959px)').matches) {
+      const meting = _$('meting-js');
+      if (meting) {
+        meting.setAttribute('fixed', 'true');
+        const aside = meting.parentNode?.parentNode;
+        if (aside?.tagName === 'ASIDE') {
+          meting.parentNode.removeChild(meting);
+          document.body.appendChild(meting);
+        }
+      }
+    }
+  </script><script
+    src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js"
+    integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8&#43;0maanw1S/IyB&#43;Y4JG&#43;ZDU7GpKE8" crossorigin="anonymous"></script></body>
+</html>

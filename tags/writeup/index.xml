@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Writeup on zhi旅程</title>
-    <link>https://www.zhienw.com/tags/writeup/</link>
+    <link>http://localhost:1313/tags/writeup/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -12,21 +12,374 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Wed, 22 Apr 2026 23:50:52 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 23 Apr 2026 13:47:52 +0800</lastBuildDate>
     
     
-    <atom:link href="https://www.zhienw.com/tags/writeup/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="http://localhost:1313/tags/writeup/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
     
 
     <item>
+      <title>where are the robots writeup</title>
+      <link>http://localhost:1313/post/where_are_the_robots/</link>
+      <pubDate>Thu, 23 Apr 2026 13:45:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/where_are_the_robots/</guid>
+      <description>
+        <![CDATA[<h1>where are the robots writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目網頁</strong>
+<img src="/images/where_are_the_robots/1.webp" alt="image">
+<strong>查看robots.txt</strong>
+<img src="/images/where_are_the_robots/2.webp" alt="image">
+<strong>發現robots.txt有一個網頁資訊,查看/cc6b1.html</strong>
+<img src="/images/where_are_the_robots/3.webp" alt="image">
+<strong>發現flag</strong>
+<img src="/images/where_are_the_robots/4.webp" alt="image"></p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{ca1cu1at1ng_Mach1n3s_cc6b1}
+</span></span></code></pre></div></blockquote>
+<h2 id="提交flag">
+<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
+提交flag
+</h2><p><img src="/images/where_are_the_robots/5.webp" alt="image"></p>
+        
+        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Insp3ct0r writeup</title>
+      <link>http://localhost:1313/post/insp3ct0r/</link>
+      <pubDate>Thu, 23 Apr 2026 13:35:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/insp3ct0r/</guid>
+      <description>
+        <![CDATA[<h1>Insp3ct0r writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目網頁</strong>
+<img src="/images/Insp3ct0r/1.webp" alt="image">
+<strong>發現html程式碼中有部分flag</strong>
+<img src="/images/Insp3ct0r/2.webp" alt="image">
+<strong>發現css程式碼中有部分flag</strong>
+<img src="/images/Insp3ct0r/3.webp" alt="image">
+<strong>發現java script程式碼中有部分flag</strong>
+<img src="/images/Insp3ct0r/4.webp" alt="image"></p>
+<blockquote>
+<p>取得flag</p>
+        
+        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>logon writeup</title>
+      <link>http://localhost:1313/post/logon/</link>
+      <pubDate>Thu, 23 Apr 2026 13:00:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/logon/</guid>
+      <description>
+        <![CDATA[<h1>logon writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目網頁</strong>
+<img src="/images/logon/1.webp" alt="image">
+<strong>使用弱密碼嘗試登入</strong></p>
+<blockquote>
+<p>admin / password</p>
+</blockquote>
+<p><img src="/images/logon/2.webp" alt="image">
+<strong>查看網頁cookie</strong>
+<img src="/images/logon/3.webp" alt="image">
+<strong>將cookie中admin的值改成True並重新整理</strong>
+<img src="/images/logon/4.webp" alt="image">
+<img src="/images/logon/5.webp" alt="image"></p>
+<blockquote>
+<p>取得flag</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{th3_c0nsp1r4cy_l1v3s_4d184b0d}
+</span></span></code></pre></div></blockquote>
+<h2 id="提交flag">
+<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
+提交flag
+</h2><p><img src="/images/logon/6.webp" alt="image"></p>
+        
+        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>dont-use-client-side writeup</title>
+      <link>http://localhost:1313/post/dont-use-client-side/</link>
+      <pubDate>Thu, 23 Apr 2026 12:30:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/dont-use-client-side/</guid>
+      <description>
+        <![CDATA[<h1>dont-use-client-side writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目網頁</strong>
+<img src="/images/dont_use_client_side/1.webp" alt="image">
+<strong>查看網頁源始碼,發現html程式碼中一個java script的程式碼在檢查密碼</strong>
+<img src="/images/dont_use_client_side/2.webp" alt="image">
+<strong>將密碼照順序拼起來,取得flag</strong></p>
+<blockquote>
+<p>取得flag</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{no_clients_plz_2eb02b45}
+</span></span></code></pre></div></blockquote>
+<h2 id="提交flag">
+<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
+提交flag
+</h2><p><img src="/images/dont_use_client_side/3.webp" alt="image"></p>
+        
+        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>GET aHEAD writeup</title>
+      <link>http://localhost:1313/post/get_ahead/</link>
+      <pubDate>Thu, 23 Apr 2026 12:00:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/get_ahead/</guid>
+      <description>
+        <![CDATA[<h1>GET aHEAD writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="http-常見請求方法">
+<a class="header-anchor" href="#http-%e5%b8%b8%e8%a6%8b%e8%ab%8b%e6%b1%82%e6%96%b9%e6%b3%95"></a>
+HTTP 常見請求方法
+</h2><p>HTTP 定義了一組請求方法，用於指示請求的目的，以及當請求成功時預期的結果。這些請求方法有時被稱為 HTTP 動詞。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">方法 (Method)</th>
+          <th style="text-align: center">   安全 (Safe)   </th>
+          <th style="text-align: center">   冪等 (Idempotent)   </th>
+          <th style="text-align: center">   可快取 (Cacheable)   </th>
+          <th style="text-align: left">用途描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>GET</strong></td>
+          <td style="text-align: center">是</td>
+          <td style="text-align: center">是</td>
+          <td style="text-align: center">是</td>
+          <td style="text-align: left">請求指定資源的表示。只應檢索數據，不應包含請求內容。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>HEAD</strong></td>
+          <td style="text-align: center">是</td>
+          <td style="text-align: center">是</td>
+          <td style="text-align: center">是</td>
+          <td style="text-align: left">要求與 GET 相同的回應，但不包括回應主體 (Body)。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>OPTIONS</strong></td>
+          <td style="text-align: center">是</td>
+          <td style="text-align: center">是</td>
+          <td style="text-align: center">否</td>
+          <td style="text-align: left">描述目標資源的通信選項（如允許哪些 HTTP 方法）。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>TRACE</strong></td>
+          <td style="text-align: center">是</td>
+          <td style="text-align: center">是</td>
+          <td style="text-align: center">否</td>
+          <td style="text-align: left">在目標資源的路徑上執行消息回送測試。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>PUT</strong></td>
+          <td style="text-align: center">否</td>
+          <td style="text-align: center">是</td>
+          <td style="text-align: center">否</td>
+          <td style="text-align: left">用請求內容替換目標資源的所有當前表示。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>DELETE</strong></td>
+          <td style="text-align: center">否</td>
+          <td style="text-align: center">是</td>
+          <td style="text-align: center">否</td>
+          <td style="text-align: left">刪除指定的資源。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>POST</strong></td>
+          <td style="text-align: center">否</td>
+          <td style="text-align: center">否</td>
+          <td style="text-align: center">條件的*</td>
+          <td style="text-align: left">將實體提交給指定資源，通常導致狀態變化或副作用。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>PATCH</strong></td>
+          <td style="text-align: center">否</td>
+          <td style="text-align: center">否</td>
+          <td style="text-align: center">條件的*</td>
+          <td style="text-align: left">對資源應用部分修改。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>CONNECT</strong></td>
+          <td style="text-align: center">否</td>
+          <td style="text-align: center">否</td>
+          <td style="text-align: center">否</td>
+          <td style="text-align: left">與目標資源識別的伺服器建立隧道。</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>開啟burp suite</strong>
+<img src="/images/GET_aHEAD/1.webp" alt="image">
+<strong>開啟網頁</strong>
+<img src="/images/GET_aHEAD/2.webp" alt="image">
+<strong>設定攔截</strong>
+<img src="/images/GET_aHEAD/3.webp" alt="image">
+<strong>查看點選Choose Blue時的封包</strong>
+<img src="/images/GET_aHEAD/4.webp" alt="image">
+<strong>查看點選Choose Red時的封包</strong>
+<img src="/images/GET_aHEAD/5.webp" alt="image">
+<strong>發現他好像是用Http請求方法回傳對應結果,我們將封包轉到Repeater測試</strong>
+<img src="/images/GET_aHEAD/6.webp" alt="image">
+<strong>我們嘗試其他種方法,如HEAD,即可取得flag</strong>
+<img src="/images/GET_aHEAD/7.webp" alt="image"></p>
+        
+        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Scavenger Hunt writeup</title>
+      <link>http://localhost:1313/post/scavenger_hunt/</link>
+      <pubDate>Thu, 23 Apr 2026 11:30:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/scavenger_hunt/</guid>
+      <description>
+        <![CDATA[<h1>Scavenger Hunt writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="what-is-robotstxt-">
+<a class="header-anchor" href="#what-is-robotstxt-"></a>
+what is robots.txt ?
+</h2><p>robots.txt是一個放在網站根目錄的純文字檔案，用來告訴搜尋引擎爬蟲（如 Googlebot）哪些頁面可以抓取、哪些不行。這是一種「君子協定」,爬蟲可以選擇忽略它。常見用途包括：</p>
+        
+        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Cookies writeup</title>
+      <link>http://localhost:1313/post/cookies/</link>
+      <pubDate>Thu, 23 Apr 2026 10:30:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/cookies/</guid>
+      <description>
+        <![CDATA[<h1>Cookies writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目網頁</strong>
+<img src="/images/Cookies/1.webp" alt="image">
+<strong>查看網頁cookie</strong>
+<img src="/images/Cookies/2.webp" alt="image">
+<strong>嘗試改變cookie值,重新整理,發現其頁面會跟著cookie的值有所改變</strong>
+<img src="/images/Cookies/3.webp" alt="image">
+<strong>繼續改變cookie值,0&hellip;.</strong>
+<img src="/images/Cookies/4.webp" alt="image"></p>
+        
+        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Includes writeup</title>
+      <link>http://localhost:1313/post/includes/</link>
+      <pubDate>Thu, 23 Apr 2026 08:30:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/includes/</guid>
+      <description>
+        <![CDATA[<h1>Includes writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目網頁</strong>
+<img src="/images/Includes/1.webp" alt="image">
+<strong>使用瀏覽器工具檢視原始碼</strong>
+<img src="/images/Includes/2.webp" alt="image">
+<strong>發現java script程式碼中有部分flag</strong>
+<img src="/images/Includes/3.webp" alt="image">
+<strong>發現css程式碼中有部分flag</strong>
+<img src="/images/Includes/4.webp" alt="image"></p>
+<blockquote>
+<p>取得flag</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{1nclu51v17y_1of2_f7w_2of2_b8f4b022}
+</span></span></code></pre></div></blockquote>
+<h2 id="提交flag">
+<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
+提交flag
+</h2><p><img src="/images/Includes/5.webp" alt="image"></p>
+        
+        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
       <title>Inspect HTML writeup</title>
-      <link>https://www.zhienw.com/post/inspect_html/</link>
+      <link>http://localhost:1313/post/inspect_html/</link>
       <pubDate>Wed, 22 Apr 2026 23:30:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/inspect_html/</guid>
+      <guid>http://localhost:1313/post/inspect_html/</guid>
       <description>
         <![CDATA[<h1>Inspect HTML writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -46,7 +399,7 @@
 提交flag
 </h2><p><img src="/images/Inspect_HTML/3.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
+        <hr><p>本文2026-04-22首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -57,10 +410,10 @@
 
     <item>
       <title>Local Authority writeup</title>
-      <link>https://www.zhienw.com/post/local_authority/</link>
+      <link>http://localhost:1313/post/local_authority/</link>
       <pubDate>Wed, 22 Apr 2026 23:00:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/local_authority/</guid>
+      <guid>http://localhost:1313/post/local_authority/</guid>
       <description>
         <![CDATA[<h1>Local Authority writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -80,284 +433,7 @@
 <strong>順利登入取得flag</strong>
 <img src="/images/Local_Authority/6.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Bookmarklet writeup</title>
-      <link>https://www.zhienw.com/post/bookmarklet/</link>
-      <pubDate>Wed, 22 Apr 2026 22:30:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/bookmarklet/</guid>
-      <description>
-        <![CDATA[<h1>Bookmarklet writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>打開題目網頁</strong>
-<img src="/images/Bookmarklet/1.webp" alt="image">
-<strong>發現一個欄位,將欄位拉大</strong>
-<img src="/images/Bookmarklet/2.webp" alt="image">
-<strong>將程式複製到主控台執行</strong>
-<img src="/images/Bookmarklet/3.webp" alt="image">
-<strong>alert印出flag</strong>
-<img src="/images/Bookmarklet/4.webp" alt="image"></p>
-<blockquote>
-<p>取得flag</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{p@g3_turn3r_e8b2d43b}
-</span></span></code></pre></div></blockquote>
-<h2 id="提交flag">
-<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
-提交flag
-</h2><p><img src="/images/Bookmarklet/5.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>IntroToBurp writeup</title>
-      <link>https://www.zhienw.com/post/introtoburp/</link>
-      <pubDate>Wed, 22 Apr 2026 21:50:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/introtoburp/</guid>
-      <description>
-        <![CDATA[<h1>IntroToBurp writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>開啟burp suite</strong>
-<img src="/images/IntroToBurp/1.webp" alt="image">
-<strong>打開題目網頁</strong>
-<img src="/images/IntroToBurp/2.webp" alt="image">
-<strong>輸入表單內容,並送出</strong>
-<img src="/images/IntroToBurp/3.webp" alt="image">
-<strong>進到opt驗證網頁</strong>
-<img src="/images/IntroToBurp/4.webp" alt="image">
-<strong>設定攔截</strong>
-<img src="/images/IntroToBurp/5.webp" alt="image">
-<strong>隨意填寫opt內容,並送出</strong>
-<img src="/images/IntroToBurp/6.webp" alt="image">
-<strong>查看抓包內容</strong>
-<img src="/images/IntroToBurp/7.webp" alt="image">
-<strong>更改封包裡opt key,並送出</strong>
-<img src="/images/IntroToBurp/8.webp" alt="image">
-<strong>發現網頁噴出錯誤訊息flag</strong>
-<img src="/images/IntroToBurp/9.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Unminify writeup</title>
-      <link>https://www.zhienw.com/post/unminify/</link>
-      <pubDate>Wed, 22 Apr 2026 21:36:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/unminify/</guid>
-      <description>
-        <![CDATA[<h1>Unminify writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>打開題目網頁</strong>
-<img src="/images/Unminify/1.webp" alt="image">
-<strong>在網頁原始碼找到flag</strong>
-<img src="/images/Unminify/2.webp" alt="image"></p>
-<blockquote>
-<p>取得flag</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{pr3tty_c0d3_51d374f0}
-</span></span></code></pre></div></blockquote>
-<h2 id="提交flag">
-<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
-提交flag
-</h2><p><img src="/images/Unminify/3.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>WebDecode writeup</title>
-      <link>https://www.zhienw.com/post/webdecode/</link>
-      <pubDate>Tue, 21 Apr 2026 21:10:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/webdecode/</guid>
-      <description>
-        <![CDATA[<h1>WebDecode writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>打開題目網頁</strong>
-<img src="/images/WebDecode/1.webp" alt="image">
-<strong>在網頁About頁面的原始碼中發現一個奇怪的字串</strong>
-<img src="/images/WebDecode/2.webp" alt="image">
-<strong>使用網站將cookie base64解碼</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">toolbox</span><span class="o">.</span><span class="n">itsec</span><span class="o">.</span><span class="n">tamu</span><span class="o">.</span><span class="n">edu</span>
-</span></span></code></pre></div><p><img src="/images/WebDecode/3.webp" alt="image"></p>
-<blockquote>
-<p>取得flag</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{web_succ3ssfully_d3c0ded_1f832615}
-</span></span></code></pre></div></blockquote>
-<h2 id="提交flag">
-<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
-提交flag
-</h2><p><img src="/images/WebDecode/4.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-21</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Cookie Monster Secret Recipe writeup</title>
-      <link>https://www.zhienw.com/post/cookie_monster_secret_recipe/</link>
-      <pubDate>Tue, 21 Apr 2026 20:40:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/cookie_monster_secret_recipe/</guid>
-      <description>
-        <![CDATA[<h1>Cookie Monster Secret Recipe writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>打開題目網頁</strong>
-<img src="/images/Cookie_Monster_Secret_Recipe/1.webp" alt="image">
-<strong>隨便輸入一組帳密</strong>
-<img src="/images/Cookie_Monster_Secret_Recipe/2.webp" alt="image">
-<strong>查看cookie</strong>
-<img src="/images/Cookie_Monster_Secret_Recipe/3.webp" alt="image">
-<strong>使用網站將cookie base64解碼</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">toolbox</span><span class="o">.</span><span class="n">itsec</span><span class="o">.</span><span class="n">tamu</span><span class="o">.</span><span class="n">edu</span>
-</span></span></code></pre></div><p><img src="/images/Cookie_Monster_Secret_Recipe/4.webp" alt="image"></p>
-<blockquote>
-<p>取得flag</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{c00k1e_m0nster_l0ves_c00kies_B3AD94C2}
-</span></span></code></pre></div></blockquote>
-<h2 id="提交flag">
-<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
-提交flag
-</h2><p><img src="/images/Cookie_Monster_Secret_Recipe/5.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-21</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>head-dump writeup</title>
-      <link>https://www.zhienw.com/post/head-dump/</link>
-      <pubDate>Tue, 21 Apr 2026 20:00:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/head-dump/</guid>
-      <description>
-        <![CDATA[<h1>head-dump writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is-heap-dump堆疊轉儲">
-<a class="header-anchor" href="#what-is-heap-dump%e5%a0%86%e7%96%8a%e8%bd%89%e5%84%b2"></a>
-What is heap-dump（堆疊轉儲）?
-</h2><p>Heap Dump為一個執行中的程式進行「記憶體瞬間快照」,記錄了在某個特定時間點，程式的記憶體（Heap）裡到底裝了哪些東西。這就像是你在玩遊戲時突然按下「暫停」，並把當時場景上所有的角色、道具、數值全部記錄下來存成檔案。
-開發者通常在遇到以下情況時，會去「拍這張記憶體快照」：</p>
-        
-        <hr><p>本文2026-04-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-21</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>SSIT_1 writeup</title>
-      <link>https://www.zhienw.com/post/ssit_1/</link>
-      <pubDate>Tue, 21 Apr 2026 11:00:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/ssit_1/</guid>
-      <description>
-        <![CDATA[<h1>SSIT_1 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is-ssitserver-side-template-injection">
-<a class="header-anchor" href="#what-is-ssitserver-side-template-injection"></a>
-What is SSIT(Server-Side Template Injection)?
-</h2><p>SSTI（Server-Side Template Injection，伺服器端模板注入）是一種網頁應用程式的安全漏洞。有些網頁框架常使用模板引擎（如 Jinja2、Twig、Freemarker 等）來動態產生 HTML。模板引擎允許在 HTML 中嵌入變數與邏輯。利用SSTI 漏洞可以進行以下攻擊</p>
-        
-        <hr><p>本文2026-04-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-21</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Bypass Me writeup</title>
-      <link>https://www.zhienw.com/post/bypass_me/</link>
-      <pubDate>Mon, 20 Apr 2026 11:30:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/bypass_me/</guid>
-      <description>
-        <![CDATA[<h1>Bypass Me writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="獲取與查看題目">
-<a class="header-anchor" href="#%e7%8d%b2%e5%8f%96%e8%88%87%e6%9f%a5%e7%9c%8b%e9%a1%8c%e7%9b%ae"></a>
-獲取與查看題目
-</h2><p><strong>連接題目主機</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl"><span class="c1">#題目提供連線方法</span>
-</span></span><span class="line"><span class="cl">ssh ctf-player@foggy-cliff.picoctf.net -p <span class="m">56563</span>
-</span></span><span class="line"><span class="cl">ls
-</span></span></code></pre></div><p><img src="/images/Bypass_me/1.webp" alt="image">
-<strong>查看題目</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">file bypassme.bin
-</span></span><span class="line"><span class="cl">./bypassme.bin
-</span></span></code></pre></div><p><img src="/images/Bypass_me/2.webp" alt="image">
-<strong>下載題目用做後續分析</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">scp -P 56563 ctf-player@foggy-cliff.picoctf.net:bypassme.bin ./
-</span></span></code></pre></div><p><img src="/images/Bypass_me/3.webp" alt="image"></p>
-<h2 id="使用-ida-進行靜態分析">
-<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8-ida-%e9%80%b2%e8%a1%8c%e9%9d%9c%e6%85%8b%e5%88%86%e6%9e%90"></a>
-使用 IDA 進行靜態分析
-</h2><p><strong>點選 yes</strong>
-<img src="/images/Bypass_me/4.webp" alt="image">
-<strong>程式選擇密碼儲存位置,並發現有一個函數_Z15decode_passwordPc</strong>
-<img src="/images/Bypass_me/5.webp" alt="image">
-<strong>發現程式有一個字串組合</strong></p>
-        
-        <hr><p>本文2026-04-20首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-20</p>]]>
+        <hr><p>本文2026-04-22首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
       </description>
       
         <category>picoctf</category>

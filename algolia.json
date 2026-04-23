@@ -1,5 +1,53 @@
 [
   {
+    "objectID": "4c8b87d30d64727c077f9a039fd9f8aadf255f3b",
+    "permalink": "/post/where_are_the_robots/",
+    "title": "where are the robots writeup","content": " 解題 打開題目網頁 查看robots.txt 發現robots.txt有一個網頁資訊,查看/cc6b1.html 發現flag picoCTF{ca1cu1at1ng_Mach1n3s_cc6b1} 提交flag ","date": "2026-04-23 13:45:52",
+    "updated": "2026-04-23 13:47:52"
+  }, 
+  {
+    "objectID": "cf8213a4063fb365d1b88475dbc4fb2c706a3f8b",
+    "permalink": "/post/insp3ct0r/",
+    "title": "Insp3ct0r writeup","content": " 解題 打開題目網頁 發現html程式碼中有部分flag 發現css程式碼中有部分flag 發現java script程式碼中有部分flag 取得flag\npicoCTF{tru3_d3t3ct1ve_0r_ju5t_lucky?302945a7} 提交flag ","date": "2026-04-23 13:35:52",
+    "updated": "2026-04-23 13:40:52"
+  }, 
+  {
+    "objectID": "db95746bac109e7f1b8f46fb4f793a3c07603422",
+    "permalink": "/post/logon/",
+    "title": "logon writeup","content": " 解題 打開題目網頁 使用弱密碼嘗試登入\nadmin / password\n查看網頁cookie 將cookie中admin的值改成True並重新整理 取得flag\npicoCTF{th3_c0nsp1r4cy_l1v3s_4d184b0d} 提交flag ","date": "2026-04-23 13:00:52",
+    "updated": "2026-04-23 13:30:52"
+  }, 
+  {
+    "objectID": "2a04dd52a7d06751ea7ddc3b94f8efcb497222eb",
+    "permalink": "/post/dont-use-client-side/",
+    "title": "dont-use-client-side writeup","content": " 解題 打開題目網頁 查看網頁源始碼,發現html程式碼中一個java script的程式碼在檢查密碼 將密碼照順序拼起來,取得flag\n取得flag\npicoCTF{no_clients_plz_2eb02b45} 提交flag ","date": "2026-04-23 12:30:52",
+    "updated": "2026-04-23 12:50:52"
+  }, 
+  {
+    "objectID": "241937588f0f003c64e5c40d878cb71ec5423bc6",
+    "permalink": "/post/get_ahead/",
+    "title": "GET aHEAD writeup","content": " HTTP 常見請求方法 HTTP 定義了一組請求方法，用於指示請求的目的，以及當請求成功時預期的結果。這些請求方法有時被稱為 HTTP 動詞。\n方法 (Method) 安全 (Safe) 冪等 (Idempotent) 可快取 (Cacheable) 用途描述 GET 是 是 是 請求指定資源的表示。只應檢索數據，不應包含請求內容。 HEAD 是 是 是 要求與 GET 相同的回應，但不包括回應主體 (Body)。 OPTIONS 是 是 否 描述目標資源的通信選項（如允許哪些 HTTP 方法）。 TRACE 是 是 否 在目標資源的路徑上執行消息回送測試。 PUT 否 是 否 用請求內容替換目標資源的所有當前表示。 DELETE 否 是 否 刪除指定的資源。 POST 否 否 條件的* 將實體提交給指定資源，通常導致狀態變化或副作用。 PATCH 否 否 條件的* 對資源應用部分修改。 CONNECT 否 否 否 與目標資源識別的伺服器建立隧道。 解題 開啟burp suite 開啟網頁 設定攔截 查看點選Choose Blue時的封包 查看點選Choose Red時的封包 發現他好像是用Http請求方法回傳對應結果,我們將封包轉到Repeater測試 我們嘗試其他種方法,如HEAD,即可取得flag 取得flag\npicoCTF{r3j3ct_th3_du4l1ty_8b13f07} `` 提交flag ","date": "2026-04-23 12:00:52",
+    "updated": "2026-04-23 12:30:52"
+  }, 
+  {
+    "objectID": "251fa65508882fe96901d8d256cba621db4a4fe2",
+    "permalink": "/post/scavenger_hunt/",
+    "title": "Scavenger Hunt writeup","content": " what is robots.txt ? robots.txt是一個放在網站根目錄的純文字檔案，用來告訴搜尋引擎爬蟲（如 Googlebot）哪些頁面可以抓取、哪些不行。這是一種「君子協定」,爬蟲可以選擇忽略它。常見用途包括：\n阻止搜尋引擎索引後台管理頁面 防止重複內容被收錄 指定 sitemap 的位置 通常內容： Disallow: /admin/ 就是告訴爬蟲不要進入 /admin/ 目錄。 what is .htaccess ? .htaccess是 Apache 網頁伺服器的目錄層級設定檔，全名是 \u0026ldquo;Hypertext Access\u0026rdquo;。它允許在不修改主設定檔的情況下，針對特定目錄覆寫伺服器設定。常見用途包括：\n設定 URL 重寫與重導向（例如將 HTTP 導向 HTTPS） 設定密碼保護 自訂錯誤頁面（如 404 頁面） 控制快取策略 阻擋特定 IP 等 它只適用於 Apache，Nginx 等其他伺服器不使用這個檔案。 what is .DS_Store ? .DS_Store全名是 \u0026ldquo;Desktop Services Store\u0026rdquo;，是 macOS 系統自動產生的隱藏檔案。Finder 會在你瀏覽過的每個資料夾中建立它，用來儲存資料夾的顯示偏好設定，例如:\n圖示大小 排列方式 視窗位置 背景顏色等 這個檔案它只是個人的本機設定,通常不應該被提交到 Git 版本庫中，沒有實際用途，而且可能洩漏目錄結構資訊。 解題 打開題目網頁 查看網頁源始碼,發現html程式碼中有部分flag 查看網頁源始碼,發現css程式碼中有部分flag 查看網頁源始碼,發現js程式碼中有一個提示 How can I keep Google from indexing my website? 查看robots.txt,發現部分flag及一個提示flag I think this is an apache server... can you Access the next flag? 查看.htaccess,發現部分flag及一個提示flag I love making websites on my Mac, I can Store a lot of information there. 查看.DS_Store,發現部分flag 取得flag\npicoCTF{th4ts_4_l0t_0f_pl4c3s_2_lO0k_9588550} 提交flag ","date": "2026-04-23 11:30:52",
+    "updated": "2026-04-23 11:50:52"
+  }, 
+  {
+    "objectID": "f70eaa8efbe3cd0a9963a30e68ae1efdde7e0218",
+    "permalink": "/post/cookies/",
+    "title": "Cookies writeup","content": " 解題 打開題目網頁 查看網頁cookie 嘗試改變cookie值,重新整理,發現其頁面會跟著cookie的值有所改變 繼續改變cookie值,0\u0026hellip;. 取得flag\npicoCTF{3v3ry1_l0v3s_c00k135_a4dadb49} 提交flag ","date": "2026-04-23 10:30:52",
+    "updated": "2026-04-23 10:50:52"
+  }, 
+  {
+    "objectID": "0cf84cff096ae3ac5a5bba8c8aa462f77037f5af",
+    "permalink": "/post/includes/",
+    "title": "Includes writeup","content": " 解題 打開題目網頁 使用瀏覽器工具檢視原始碼 發現java script程式碼中有部分flag 發現css程式碼中有部分flag 取得flag\npicoCTF{1nclu51v17y_1of2_f7w_2of2_b8f4b022} 提交flag ","date": "2026-04-23 08:30:52",
+    "updated": "2026-04-23 09:00:52"
+  }, 
+  {
     "objectID": "62a0b4d370d198b9e875984665d3816ad884e3b1",
     "permalink": "/post/inspect_html/",
     "title": "Inspect HTML writeup","content": " 解題 打開題目網頁 發現源始碼裡有flag 取得flag\npicoCTF{1n5p3t0r_0f_h7ml_fd5d57bd} 提交flag ","date": "2026-04-22 23:30:52",

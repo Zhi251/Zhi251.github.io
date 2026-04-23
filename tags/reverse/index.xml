@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reverse on zhi旅程</title>
-    <link>https://www.zhienw.com/tags/reverse/</link>
+    <link>http://localhost:1313/tags/reverse/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Mon, 20 Apr 2026 12:38:52 +0800</lastBuildDate>
     
     
-    <atom:link href="https://www.zhienw.com/tags/reverse/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="http://localhost:1313/tags/reverse/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>Bypass Me writeup</title>
-      <link>https://www.zhienw.com/post/bypass_me/</link>
+      <link>http://localhost:1313/post/bypass_me/</link>
       <pubDate>Mon, 20 Apr 2026 11:30:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/bypass_me/</guid>
+      <guid>http://localhost:1313/post/bypass_me/</guid>
       <description>
         <![CDATA[<h1>Bypass Me writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -54,7 +54,7 @@
 <img src="/images/Bypass_me/5.webp" alt="image">
 <strong>發現程式有一個字串組合</strong></p>
         
-        <hr><p>本文2026-04-20首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-20</p>]]>
+        <hr><p>本文2026-04-20首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-20</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -65,10 +65,10 @@
 
     <item>
       <title>Hidden Cipher 2 writeup</title>
-      <link>https://www.zhienw.com/post/hidden_cipher_2/</link>
+      <link>http://localhost:1313/post/hidden_cipher_2/</link>
       <pubDate>Sat, 18 Apr 2026 11:00:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/hidden_cipher_2/</guid>
+      <guid>http://localhost:1313/post/hidden_cipher_2/</guid>
       <description>
         <![CDATA[<h1>Hidden Cipher 2 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -108,7 +108,7 @@
 <strong>發限有一個encode_flag的函數,用數學題答案對flag進行相乘加密</strong>
 <img src="/images/Hidden_Cipher_2/8.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-18首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-20</p>]]>
+        <hr><p>本文2026-04-18首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-20</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -119,16 +119,16 @@
 
     <item>
       <title>Gatekeeper writeup</title>
-      <link>https://www.zhienw.com/post/gatekeeper/</link>
+      <link>http://localhost:1313/post/gatekeeper/</link>
       <pubDate>Mon, 20 Apr 2026 12:39:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/gatekeeper/</guid>
+      <guid>http://localhost:1313/post/gatekeeper/</guid>
       <description>
         <![CDATA[<h1>Gatekeeper writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
           
         
-        <hr><p>本文2026-04-20首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
+        <hr><p>本文2026-04-20首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -139,10 +139,10 @@
 
     <item>
       <title>vault-door-training writeup</title>
-      <link>https://www.zhienw.com/post/vault-door-training_writeup/</link>
+      <link>http://localhost:1313/post/vault-door-training_writeup/</link>
       <pubDate>Wed, 15 Apr 2026 10:05:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/vault-door-training_writeup/</guid>
+      <guid>http://localhost:1313/post/vault-door-training_writeup/</guid>
       <description>
         <![CDATA[<h1>vault-door-training writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -157,7 +157,7 @@
 </h2><p><strong>使用 intelliJ 開啟VaultDoorTraining.java</strong>
 <img src="/images/vault-door-training/6.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-15首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
+        <hr><p>本文2026-04-15首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -168,10 +168,10 @@
 
     <item>
       <title>Hidden Cipher 1 writeup</title>
-      <link>https://www.zhienw.com/post/hidden_cipher_1/</link>
+      <link>http://localhost:1313/post/hidden_cipher_1/</link>
       <pubDate>Wed, 15 Apr 2026 10:59:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/hidden_cipher_1/</guid>
+      <guid>http://localhost:1313/post/hidden_cipher_1/</guid>
       <description>
         <![CDATA[<h1>Hidden Cipher 1 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -200,7 +200,7 @@
 嘗試用upx解壓縮二進制檔案
 </h2><p>使用內建工具upx解壓縮</p>
         
-        <hr><p>本文2026-04-15首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
+        <hr><p>本文2026-04-15首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -211,10 +211,10 @@
 
     <item>
       <title>Transformation writeup</title>
-      <link>https://www.zhienw.com/post/transformation_writeup/</link>
+      <link>http://localhost:1313/post/transformation_writeup/</link>
       <pubDate>Wed, 15 Apr 2026 09:26:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/transformation_writeup/</guid>
+      <guid>http://localhost:1313/post/transformation_writeup/</guid>
       <description>
         <![CDATA[<h1>Transformation writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -237,7 +237,7 @@
 使用解碼網站嘗試破解
 </h2><p><strong>網站：</strong></p>
         
-        <hr><p>本文2026-04-15首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
+        <hr><p>本文2026-04-15首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
       </description>
       
         <category>picoctf</category>

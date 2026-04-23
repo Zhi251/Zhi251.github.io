@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Esxi on zhi旅程</title>
-    <link>https://www.zhienw.com/tags/esxi/</link>
+    <link>http://localhost:1313/tags/esxi/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Sun, 06 Apr 2025 20:01:11 +0800</lastBuildDate>
     
     
-    <atom:link href="https://www.zhienw.com/tags/esxi/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="http://localhost:1313/tags/esxi/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>ESXI憑證安裝</title>
-      <link>https://www.zhienw.com/post/esxi_certificate/</link>
+      <link>http://localhost:1313/post/esxi_certificate/</link>
       <pubDate>Mon, 06 Apr 2026 16:58:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/esxi_certificate/</guid>
+      <guid>http://localhost:1313/post/esxi_certificate/</guid>
       <description>
         <![CDATA[<h1>ESXI憑證安裝</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -43,7 +43,7 @@
 </span></span></code></pre></div><blockquote>
 <p>ertbot 2.0 之后<strong>預設已經改為產生 ECDSA (ECC) 憑證</strong>。然而 <strong>esxi使用的是rsa</strong> ,所以產生指令時要加要加 <strong>&ndash;key-type rsa</strong></p>
         
-        <hr><p>本文2026-04-06首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2025-04-06</p>]]>
+        <hr><p>本文2026-04-06首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2025-04-06</p>]]>
       </description>
       
         <category>CA Certificate</category>
