@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Picoctf on zhi旅程</title>
-    <link>http://localhost:1313/categories/picoctf/</link>
+    <link>https://www.zhienw.com/categories/picoctf/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -12,21 +12,58 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Thu, 23 Apr 2026 13:47:52 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 24 Apr 2026 23:47:52 +0800</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/categories/picoctf/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://www.zhienw.com/categories/picoctf/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
     
 
     <item>
+      <title>No FA writeup</title>
+      <link>https://www.zhienw.com/post/no_fa/</link>
+      <pubDate>Fri, 24 Apr 2026 22:47:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/no_fa/</guid>
+      <description>
+        <![CDATA[<h1>No FA writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="what-is-john-the-ripper-">
+<a class="header-anchor" href="#what-is-john-the-ripper-"></a>
+What is John the Ripper ?
+</h2><p>John the Ripper 是一款開源且強大的密碼破解工具。它最初是為 Unix 系統設計的，但現在支援數百種雜湊（Hash）和密碼類型。</p>
+<ul>
+<li>核心功能： 透過「字典攻擊」（Dictionary Attack）或「暴力破解」（Brute Force）來找回原始密碼。</li>
+<li>工作原理： 它會拿你的字典檔裡的單字，經過指定的演算法加密後，對比結果是否與目標 Hash 一致。</li>
+<li>特色：
+<ol>
+<li>自動偵測： 能自動識別 Hash 類型。</li>
+<li>多樣化轉換： 內建許多 &hellip;2john 工具（如 zip2john, ssh2john），能把壓縮檔或金鑰轉換成它能破解的格式。</li>
+</ol>
+</li>
+</ul>
+<h2 id="what-is-hashid-">
+<a class="header-anchor" href="#what-is-hashid-"></a>
+What is hashid ?
+</h2><p>當你拿到一串像hash的亂碼時，你可能不知道它是 MD5 還是 NTLM。hashid 可以幫忙識別。</p>
+        
+        <hr><p>本文2026-04-24首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-24</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
       <title>where are the robots writeup</title>
-      <link>http://localhost:1313/post/where_are_the_robots/</link>
+      <link>https://www.zhienw.com/post/where_are_the_robots/</link>
       <pubDate>Thu, 23 Apr 2026 13:45:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/where_are_the_robots/</guid>
+      <guid>https://www.zhienw.com/post/where_are_the_robots/</guid>
       <description>
         <![CDATA[<h1>where are the robots writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -49,7 +86,7 @@
 提交flag
 </h2><p><img src="/images/where_are_the_robots/5.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -60,10 +97,10 @@
 
     <item>
       <title>Insp3ct0r writeup</title>
-      <link>http://localhost:1313/post/insp3ct0r/</link>
+      <link>https://www.zhienw.com/post/insp3ct0r/</link>
       <pubDate>Thu, 23 Apr 2026 13:35:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/insp3ct0r/</guid>
+      <guid>https://www.zhienw.com/post/insp3ct0r/</guid>
       <description>
         <![CDATA[<h1>Insp3ct0r writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -81,7 +118,7 @@
 <blockquote>
 <p>取得flag</p>
         
-        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -92,10 +129,10 @@
 
     <item>
       <title>logon writeup</title>
-      <link>http://localhost:1313/post/logon/</link>
+      <link>https://www.zhienw.com/post/logon/</link>
       <pubDate>Thu, 23 Apr 2026 13:00:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/logon/</guid>
+      <guid>https://www.zhienw.com/post/logon/</guid>
       <description>
         <![CDATA[<h1>logon writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -123,7 +160,7 @@
 提交flag
 </h2><p><img src="/images/logon/6.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -134,10 +171,10 @@
 
     <item>
       <title>dont-use-client-side writeup</title>
-      <link>http://localhost:1313/post/dont-use-client-side/</link>
+      <link>https://www.zhienw.com/post/dont-use-client-side/</link>
       <pubDate>Thu, 23 Apr 2026 12:30:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/dont-use-client-side/</guid>
+      <guid>https://www.zhienw.com/post/dont-use-client-side/</guid>
       <description>
         <![CDATA[<h1>dont-use-client-side writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -158,7 +195,7 @@
 提交flag
 </h2><p><img src="/images/dont_use_client_side/3.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -169,10 +206,10 @@
 
     <item>
       <title>GET aHEAD writeup</title>
-      <link>http://localhost:1313/post/get_ahead/</link>
+      <link>https://www.zhienw.com/post/get_ahead/</link>
       <pubDate>Thu, 23 Apr 2026 12:00:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/get_ahead/</guid>
+      <guid>https://www.zhienw.com/post/get_ahead/</guid>
       <description>
         <![CDATA[<h1>GET aHEAD writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -274,7 +311,7 @@ HTTP 常見請求方法
 <strong>我們嘗試其他種方法,如HEAD,即可取得flag</strong>
 <img src="/images/GET_aHEAD/7.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -285,10 +322,10 @@ HTTP 常見請求方法
 
     <item>
       <title>Scavenger Hunt writeup</title>
-      <link>http://localhost:1313/post/scavenger_hunt/</link>
+      <link>https://www.zhienw.com/post/scavenger_hunt/</link>
       <pubDate>Thu, 23 Apr 2026 11:30:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/scavenger_hunt/</guid>
+      <guid>https://www.zhienw.com/post/scavenger_hunt/</guid>
       <description>
         <![CDATA[<h1>Scavenger Hunt writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -297,7 +334,7 @@ HTTP 常見請求方法
 what is robots.txt ?
 </h2><p>robots.txt是一個放在網站根目錄的純文字檔案，用來告訴搜尋引擎爬蟲（如 Googlebot）哪些頁面可以抓取、哪些不行。這是一種「君子協定」,爬蟲可以選擇忽略它。常見用途包括：</p>
         
-        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -308,10 +345,10 @@ what is robots.txt ?
 
     <item>
       <title>Cookies writeup</title>
-      <link>http://localhost:1313/post/cookies/</link>
+      <link>https://www.zhienw.com/post/cookies/</link>
       <pubDate>Thu, 23 Apr 2026 10:30:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/cookies/</guid>
+      <guid>https://www.zhienw.com/post/cookies/</guid>
       <description>
         <![CDATA[<h1>Cookies writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -327,7 +364,7 @@ what is robots.txt ?
 <strong>繼續改變cookie值,0&hellip;.</strong>
 <img src="/images/Cookies/4.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -338,10 +375,10 @@ what is robots.txt ?
 
     <item>
       <title>Includes writeup</title>
-      <link>http://localhost:1313/post/includes/</link>
+      <link>https://www.zhienw.com/post/includes/</link>
       <pubDate>Thu, 23 Apr 2026 08:30:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/includes/</guid>
+      <guid>https://www.zhienw.com/post/includes/</guid>
       <description>
         <![CDATA[<h1>Includes writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -365,7 +402,7 @@ what is robots.txt ?
 提交flag
 </h2><p><img src="/images/Includes/5.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-23首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
+        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -376,10 +413,10 @@ what is robots.txt ?
 
     <item>
       <title>Inspect HTML writeup</title>
-      <link>http://localhost:1313/post/inspect_html/</link>
+      <link>https://www.zhienw.com/post/inspect_html/</link>
       <pubDate>Wed, 22 Apr 2026 23:30:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/inspect_html/</guid>
+      <guid>https://www.zhienw.com/post/inspect_html/</guid>
       <description>
         <![CDATA[<h1>Inspect HTML writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -399,41 +436,7 @@ what is robots.txt ?
 提交flag
 </h2><p><img src="/images/Inspect_HTML/3.webp" alt="image"></p>
         
-        <hr><p>本文2026-04-22首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Local Authority writeup</title>
-      <link>http://localhost:1313/post/local_authority/</link>
-      <pubDate>Wed, 22 Apr 2026 23:00:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/local_authority/</guid>
-      <description>
-        <![CDATA[<h1>Local Authority writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>打開題目網頁</strong>
-<img src="/images/Local_Authority/1.webp" alt="image">
-<strong>隨意填寫表單並送出</strong>
-<img src="/images/Local_Authority/2.webp" alt="image">
-<strong>查看原始碼,發現他是本地驗證</strong>
-<img src="/images/Local_Authority/3.webp" alt="image">
-<strong>發現他驗證成功後會執行的java script指令</strong>
-<img src="/images/Local_Authority/4.webp" alt="image">
-<strong>使用主控台手動執行驗證成功後會執行的java script指令</strong>
-<img src="/images/Local_Authority/5.webp" alt="image">
-<strong>順利登入取得flag</strong>
-<img src="/images/Local_Authority/6.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-22首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
+        <hr><p>本文2026-04-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
       </description>
       
         <category>picoctf</category>

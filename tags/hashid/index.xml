@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hashid on zhi旅程</title>
+    <link>https://www.zhienw.com/tags/hashid/</link>
+    <description>Recent content from zhi旅程</description>
+    <generator>Hugo</generator>
+    <language>zh-tw</language>
+    
+    <managingEditor>ray784523@zhienw.com (Zhi Chen)</managingEditor>
+    <webMaster>ray784523@zhienw.com (Zhi Chen)</webMaster>
+    
+    <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
+    
+    <lastBuildDate>Fri, 24 Apr 2026 23:47:52 +0800</lastBuildDate>
+    
+    
+    <atom:link href="https://www.zhienw.com/tags/hashid/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>No FA writeup</title>
+      <link>https://www.zhienw.com/post/no_fa/</link>
+      <pubDate>Fri, 24 Apr 2026 22:47:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/no_fa/</guid>
+      <description>
+        <![CDATA[<h1>No FA writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="what-is-john-the-ripper-">
+<a class="header-anchor" href="#what-is-john-the-ripper-"></a>
+What is John the Ripper ?
+</h2><p>John the Ripper 是一款開源且強大的密碼破解工具。它最初是為 Unix 系統設計的，但現在支援數百種雜湊（Hash）和密碼類型。</p>
+<ul>
+<li>核心功能： 透過「字典攻擊」（Dictionary Attack）或「暴力破解」（Brute Force）來找回原始密碼。</li>
+<li>工作原理： 它會拿你的字典檔裡的單字，經過指定的演算法加密後，對比結果是否與目標 Hash 一致。</li>
+<li>特色：
+<ol>
+<li>自動偵測： 能自動識別 Hash 類型。</li>
+<li>多樣化轉換： 內建許多 &hellip;2john 工具（如 zip2john, ssh2john），能把壓縮檔或金鑰轉換成它能破解的格式。</li>
+</ol>
+</li>
+</ul>
+<h2 id="what-is-hashid-">
+<a class="header-anchor" href="#what-is-hashid-"></a>
+What is hashid ?
+</h2><p>當你拿到一串像hash的亂碼時，你可能不知道它是 MD5 還是 NTLM。hashid 可以幫忙識別。</p>
+        
+        <hr><p>本文2026-04-24首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-24</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+  </channel>
+</rss>

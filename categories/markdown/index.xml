@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Markdown on zhi旅程</title>
-    <link>http://localhost:1313/categories/markdown/</link>
+    <link>https://www.zhienw.com/categories/markdown/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Wed, 31 Dec 2025 20:12:52 +0800</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/categories/markdown/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://www.zhienw.com/categories/markdown/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>Markdown Basic Elements</title>
-      <link>http://localhost:1313/post/markdown_basic_elements/</link>
+      <link>https://www.zhienw.com/post/markdown_basic_elements/</link>
       <pubDate>Wed, 31 Dec 2025 20:12:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/markdown_basic_elements/</guid>
+      <guid>https://www.zhienw.com/post/markdown_basic_elements/</guid>
       <description>
         <![CDATA[<h1>Markdown Basic Elements</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -89,7 +89,7 @@ Unordered List (ul)
 段落
 </h3><p>Lorem ipsum dolor sit amet, <a href="">test link</a> consectetur adipiscing elit. <strong>Strong text</strong> pellentesque ligula commodo viverra vehicula. <em>Italic text</em> at ullamcorper enim. Morbi a euismod nibh. <!-- raw HTML omitted -->Underline text<!-- raw HTML omitted --> non elit nisl. <del>Deleted text</del> tristique, sem id condimentum tempus, metus lectus venenatis mauris, sit amet semper lorem felis a eros. Fusce egestas nibh at sagittis auctor. Sed ultricies ac arcu quis molestie. Donec dapibus nunc in nibh egestas, vitae volutpat sem iaculis. Curabitur sem tellus, elementum nec quam id, fermentum laoreet mi. Ut mollis ullamcorper turpis, vitae facilisis velit ultricies sit amet. Etiam laoreet dui odio, id tempus justo tincidunt id. Phasellus scelerisque nunc sed nunc ultricies accumsan.</p>
         
-        <hr><p>本文2025-12-31首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2025-12-31</p>]]>
+        <hr><p>本文2025-12-31首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2025-12-31</p>]]>
       </description>
       
         <category>markdown</category>
