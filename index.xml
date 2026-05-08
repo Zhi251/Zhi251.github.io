@@ -12,12 +12,177 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Tue, 05 May 2026 16:00:52 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2026 15:40:52 +0800</lastBuildDate>
     
     
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>File Structure Analysis</title>
+      <link>http://localhost:1313/post/file_structure_analysis/</link>
+      <pubDate>Fri, 08 May 2026 14:24:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/file_structure_analysis/</guid>
+      <description>
+        <![CDATA[<h1>File Structure Analysis</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="常見執行檔類型">
+<a class="header-anchor" href="#%e5%b8%b8%e8%a6%8b%e5%9f%b7%e8%a1%8c%e6%aa%94%e9%a1%9e%e5%9e%8b"></a>
+常見執行檔類型
+</h2><p><strong>PE (Portable &amp; Executable)</strong></p>
+<ul>
+<li>Windows</li>
+<li>副檔名：.exe、.dll、.sys</li>
+</ul>
+<p><strong>ELF (Exetutable &amp; Linkable Format)</strong></p>
+<ul>
+<li>Linux</li>
+</ul>
+<p><strong>Mach-O (Mach Object)</strong></p>
+<ul>
+<li>MacOS、IPadOS、IOS</li>
+</ul>
+<h2 id="檔案類型辨別">
+<a class="header-anchor" href="#%e6%aa%94%e6%a1%88%e9%a1%9e%e5%9e%8b%e8%be%a8%e5%88%a5"></a>
+檔案類型辨別
+</h2><p><strong>file指令查看檔案類型</strong></p>
+        
+        <hr><p>本文2026-05-08首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-08</p>]]>
+      </description>
+      
+        <category>reverse class</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Big Endianess &amp; Little Endianess</title>
+      <link>http://localhost:1313/post/endianess/</link>
+      <pubDate>Fri, 08 May 2026 10:24:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/endianess/</guid>
+      <description>
+        <![CDATA[<h1>Big Endianess & Little Endianess</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="whis-is-endianess">
+<a class="header-anchor" href="#whis-is-endianess"></a>
+Whis is Endianess
+</h2><p>電腦中儲存多位元組資料時的 <strong>位元組順序（Byte Order）</strong> 排列方式。</p>
+<h2 id="big-endianess">
+<a class="header-anchor" href="#big-endianess"></a>
+Big Endianess
+</h2><p>最高有效位元組（MSB）放在最低位址。排列方式就跟人類閱讀的順序一樣,常見於網路協定（所以又叫 Network Byte Order）、早期的 Motorola 68k 處理器、以及一些 RISC 架構如 SPARC。</p>
+        
+        <hr><p>本文2026-05-08首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-08</p>]]>
+      </description>
+      
+        <category>reverse class</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Forbidden Paths writeup</title>
+      <link>http://localhost:1313/post/forbidden_paths/</link>
+      <pubDate>Thu, 07 May 2026 07:15:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/forbidden_paths/</guid>
+      <description>
+        <![CDATA[<h1>Forbidden Paths writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目</strong>
+<img src="/images/Forbidden_Paths/1.webp" alt="image">
+<strong>題目說他拒絕絕對路徑,我們嘗試用相對路徑查詢</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">../../../../../../../../../../flag.txt
+</span></span></code></pre></div><p><img src="/images/Forbidden_Paths/2.webp" alt="image">
+<strong>成功查詢</strong>
+<img src="/images/Forbidden_Paths/3.webp" alt="image"></p>
+<blockquote>
+<p>取得flag</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{7h3_p47h_70_5ucc355_e5a6fcbc}
+</span></span></code></pre></div></blockquote>
+<h2 id="提交flag">
+<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
+提交flag
+</h2><p><img src="/images/Forbidden_Paths/3.webp" alt="image"></p>
+        
+        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Roboto Sans writeup</title>
+      <link>http://localhost:1313/post/roboto_sans/</link>
+      <pubDate>Thu, 07 May 2026 06:59:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/roboto_sans/</guid>
+      <description>
+        <![CDATA[<h1>Roboto Sans writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p><strong>打開題目</strong>
+<img src="/images/Roboto_Sans/1.webp" alt="image">
+<strong>嘗試查看robots.txt路徑,發現有疑似base64的編碼字串</strong>
+<img src="/images/Roboto_Sans/2.webp" alt="image">
+<strong>將其嘗試解碼</strong>
+<img src="/images/Roboto_Sans/3.webp" alt="image">
+<strong>嘗試進入到解碼路徑,取得flag</strong>
+<img src="/images/Roboto_Sans/4.webp" alt="image"></p>
+<blockquote>
+<p>取得flag</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{1nsp3ti0n_0f_w3bpag3s_ec95fa49}
+</span></span></code></pre></div></blockquote>
+<h2 id="提交flag">
+<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
+提交flag
+</h2><p><img src="/images/Roboto_Sans/5.webp" alt="image"></p>
+        
+        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Search source writeup</title>
+      <link>http://localhost:1313/post/search_source/</link>
+      <pubDate>Thu, 07 May 2026 06:16:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/search_source/</guid>
+      <description>
+        <![CDATA[<h1>Search source writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="what-is-httrack">
+<a class="header-anchor" href="#what-is-httrack"></a>
+What is httrack?
+</h2><p>HTTrack 是一款免費且開源的離線瀏覽工具，能將整個網站從網路下載到本機目錄，遞迴建立所有資料夾結構，並取得 HTML、圖片及其他檔案。<br>
+主要功能包含：</p>
+        
+        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
     
     
 
@@ -166,146 +331,6 @@ Whis is magic number?
 </h2><p>Magic number 是放在檔案最開頭的一組固定位元組序列，作用就像檔案的「身分證」，讓作業系統或程式能快速辨識這個檔案到底是什麼類型，而不需要依賴副檔名。各種檔案格式的 magic number 如下：</p>
         
         <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Pachinko writeup</title>
-      <link>http://localhost:1313/post/pachinko/</link>
-      <pubDate>Mon, 04 May 2026 11:54:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/pachinko/</guid>
-      <description>
-        <![CDATA[<h1>Pachinko writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is-race-condition">
-<a class="header-anchor" href="#what-is-race-condition"></a>
-What is race condition?
-</h2><p>Race Condition 是一種「時間差漏洞」。當系統在處理多個同時發生的請求時，因為步驟之間沒有做好鎖定（locking），就會產生邏輯錯誤。<br>
-例如轉帳：假設你的錢包有 100 元，轉帳流程分三步：① 檢查餘額 → ② 送出錢 → ③ 扣除餘額。<br>
-正常情況下，轉一次 100 元後餘額歸零，沒問題。但如果你同時發出兩個轉帳請求，事情就變了：<br>
-請求 A 檢查餘額：100（通過）<br>
-請求 B 檢查餘額：100（也通過，因為 A 還沒扣錢）
-請求 A 送出 100 元<br>
-請求 B 也送出 100 元<br>
-扣款才開始執行……</p>
-        
-        <hr><p>本文2026-05-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-04</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>3v@l writeup</title>
-      <link>http://localhost:1313/post/3v@l/</link>
-      <pubDate>Mon, 04 May 2026 09:53:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/3v@l/</guid>
-      <description>
-        <![CDATA[<h1>3v@l writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is-eval-">
-<a class="header-anchor" href="#what-is-eval-"></a>
-What is eval ?
-</h2><p>eval() 是 Python 的內建函式，它能將字串當作程式碼來執行，並回傳結果。它通常被用在需要動態計算表達式的場景，例如計算機應用程式、設定檔解析、或資料處理中動態執行公式。</p>
-        
-        <hr><p>本文2026-05-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-04</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>byp4ss3d writeup</title>
-      <link>http://localhost:1313/post/byp4ss3d/</link>
-      <pubDate>Sun, 03 May 2026 16:30:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/byp4ss3d/</guid>
-      <description>
-        <![CDATA[<h1>byp4ss3d writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is--htaccess">
-<a class="header-anchor" href="#what-is--htaccess"></a>
-What is  .htaccess?
-</h2><p>.htaccess 是 Apache HTTP Server 的分散式設定檔（distributed configuration file）。是一個放在目錄裡的純文字檔案，<strong>能覆寫 Apache 主設定檔（httpd.conf）中的部分指令，而且只對它所在的目錄及其子目錄生效。</strong></p>
-        
-        <hr><p>本文2026-05-03首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-03</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>SSIT 2 writeup</title>
-      <link>http://localhost:1313/post/ssit_2/</link>
-      <pubDate>Thu, 30 Apr 2026 20:56:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/ssit_2/</guid>
-      <description>
-        <![CDATA[<h1>SSIT 2 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><h3 id="檢測">
-<a class="header-anchor" href="#%e6%aa%a2%e6%b8%ac"></a>
-檢測
-</h3><p><strong>打開題目網頁</strong>
-<img src="/images/SSIT_2/1.webp" alt="image">
-<strong>對其進行SSIT漏洞測試,發現該網站使用的是jinja2(python)的腳本引擎</strong>
-<img src="/images/SSIT_2/2.webp" alt="image"></p>
-<h3 id="對其進行模板注入">
-<a class="header-anchor" href="#%e5%b0%8d%e5%85%b6%e9%80%b2%e8%a1%8c%e6%a8%a1%e6%9d%bf%e6%b3%a8%e5%85%a5"></a>
-對其進行模板注入
-</h3><p><strong>獲取該使用者帳號id,發現出現錯誤,疑似後端有進行阻擋</strong></p>
-        
-        <hr><p>本文2026-04-30首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-30</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Crack the Gate 2 writeup</title>
-      <link>http://localhost:1313/post/crack_the_gate_2/</link>
-      <pubDate>Thu, 30 Apr 2026 09:57:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/crack_the_gate_2/</guid>
-      <description>
-        <![CDATA[<h1>Crack the Gate 2 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>下載題目的密碼字典</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">wget https://challenge-files.picoctf.net/c_amiable_citadel/ee2e840feeb2448808f2e1c94b22d339de8e4d87a5ee744a960c59b7a1552829/passwords.txt
-</span></span></code></pre></div><p><strong>查看題目給的密碼辭典格式</strong>
-<img src="/images/Crack_the_Gate_2/1.webp" alt="image">
-<strong>查看封包請求格式,值得注意的是他是用json發資料的</strong>
-<img src="/images/Crack_the_Gate_2/2.webp" alt="image">
-<strong>觀察前端網頁原始碼</strong>
-<img src="/images/Crack_the_Gate_2/3.webp" alt="image">
-<strong>使用python requests模組撰寫自動嘗試登入的程式,並在第9次後暫停30秒間隔時間（保險點可以設35秒）,避免被鎖定</strong></p>
-        
-        <hr><p>本文2026-04-30首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-30</p>]]>
       </description>
       
         <category>picoctf</category>

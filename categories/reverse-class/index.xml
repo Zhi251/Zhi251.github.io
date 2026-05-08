@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reverse Class on zhi旅程</title>
+    <link>http://localhost:1313/categories/reverse-class/</link>
+    <description>Recent content from zhi旅程</description>
+    <generator>Hugo</generator>
+    <language>zh-tw</language>
+    
+    <managingEditor>ray784523@zhienw.com (Zhi Chen)</managingEditor>
+    <webMaster>ray784523@zhienw.com (Zhi Chen)</webMaster>
+    
+    <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
+    
+    <lastBuildDate>Fri, 08 May 2026 15:40:52 +0800</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/categories/reverse-class/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>File Structure Analysis</title>
+      <link>http://localhost:1313/post/file_structure_analysis/</link>
+      <pubDate>Fri, 08 May 2026 14:24:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/file_structure_analysis/</guid>
+      <description>
+        <![CDATA[<h1>File Structure Analysis</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="常見執行檔類型">
+<a class="header-anchor" href="#%e5%b8%b8%e8%a6%8b%e5%9f%b7%e8%a1%8c%e6%aa%94%e9%a1%9e%e5%9e%8b"></a>
+常見執行檔類型
+</h2><p><strong>PE (Portable &amp; Executable)</strong></p>
+<ul>
+<li>Windows</li>
+<li>副檔名：.exe、.dll、.sys</li>
+</ul>
+<p><strong>ELF (Exetutable &amp; Linkable Format)</strong></p>
+<ul>
+<li>Linux</li>
+</ul>
+<p><strong>Mach-O (Mach Object)</strong></p>
+<ul>
+<li>MacOS、IPadOS、IOS</li>
+</ul>
+<h2 id="檔案類型辨別">
+<a class="header-anchor" href="#%e6%aa%94%e6%a1%88%e9%a1%9e%e5%9e%8b%e8%be%a8%e5%88%a5"></a>
+檔案類型辨別
+</h2><p><strong>file指令查看檔案類型</strong></p>
+        
+        <hr><p>本文2026-05-08首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-08</p>]]>
+      </description>
+      
+        <category>reverse class</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Big Endianess &amp; Little Endianess</title>
+      <link>http://localhost:1313/post/endianess/</link>
+      <pubDate>Fri, 08 May 2026 10:24:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/endianess/</guid>
+      <description>
+        <![CDATA[<h1>Big Endianess & Little Endianess</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="whis-is-endianess">
+<a class="header-anchor" href="#whis-is-endianess"></a>
+Whis is Endianess
+</h2><p>電腦中儲存多位元組資料時的 <strong>位元組順序（Byte Order）</strong> 排列方式。</p>
+<h2 id="big-endianess">
+<a class="header-anchor" href="#big-endianess"></a>
+Big Endianess
+</h2><p>最高有效位元組（MSB）放在最低位址。排列方式就跟人類閱讀的順序一樣,常見於網路協定（所以又叫 Network Byte Order）、早期的 Motorola 68k 處理器、以及一些 RISC 架構如 SPARC。</p>
+        
+        <hr><p>本文2026-05-08首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-08</p>]]>
+      </description>
+      
+        <category>reverse class</category>
+      
+    </item>
+    
+  </channel>
+</rss>

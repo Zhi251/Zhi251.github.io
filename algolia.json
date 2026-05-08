@@ -1,5 +1,35 @@
 [
   {
+    "objectID": "4fd1685690bf6612ac7a6da8d82351f8f80a0b60",
+    "permalink": "/post/file_structure_analysis/",
+    "title": "File Structure Analysis","content": " 常見執行檔類型 PE (Portable \u0026amp; Executable)\nWindows 副檔名：.exe、.dll、.sys ELF (Exetutable \u0026amp; Linkable Format)\nLinux Mach-O (Mach Object)\nMacOS、IPadOS、IOS 檔案類型辨別 file指令查看檔案類型\nfile \u0026lt;filename\u0026gt; xxd 查看檔案header\nxxd -l 4 \u0026lt;filename\u0026gt; xxd補充：\n二進位轉成十六進位檔\nxxd -r filename\u0026gt;hexdump 十六進位檔反向還原成二進位檔\nxxd -r hexdump.txt original_file.bin 執行檔section結構 功能 PE ELF Mach-O 程式碼 .text .text __TEXT,__text 常數資料 .rdata .rodata __TEXT,__const / __TEXT,__cstring 可寫資料 .data .data __DATA,__data 未初始化資料 .bss .bss __DATA,__bss 入口點 address in .text _start _main / some addr readlf readelf指令 查詢檔案所有資訊\nreadelf -all \u0026lt;binary file\u0026gt; readelf指令 查詢檔案headers\nreadelf -headers \u0026lt;binary file\u0026gt; readelf指令 查詢檔案symbols\nreadelf -symbols \u0026lt;binary file\u0026gt; Whis is symbols?\n編譯器在編譯過程中會生成一張符號表。這張表儲存在執行檔（如 Linux 的 ELF 或 Windows 的 PE 檔）的特定區段中。 符號 (Symbols) 的成員包括：\n函數名稱 (Functions)： 這是最常見的符號。指向一段可以執行的程式碼路徑。 全域變數 (Global Variables)： 指向資料區段（Data Segment）中的某個位置。 靜態變數 (Static Variables)： 雖然作用域有限，但在編譯時也會被分配符號。 物件與類別 (Objects/Classes)： 在 C++ 等物件導向語言中，類別名稱與方法（Methods）也都是符號。 常數算Symbols嗎?\n全域常數 : const 關鍵字定義了一個全域或靜態的常數，它通常會被存放在二進位檔案的 .rodata（唯讀資料區段）中，並且擁有自己的符號。\n使用 #define 定義常數 ：它在編譯之前就會被「預處理器」直接替換成具體的數字。例如： #define PI 3.14\nmagic number 檔案類型 進入位置 strings strings 分析檔案中字串\nstrings filename | grep \u0026#34;picoCTF\u0026#34; ltrace ltrace 是一個 Linux 下的診斷工具，用來追蹤程式在執行時所呼叫的動態函式庫（shared library）函式以及接收到的系統訊號（signals）。 ltrace 用法\n指令 說明 ltrace ./my_program 追蹤 my_program 的函式庫呼叫 ltrace -p \u0026lt;PID\u0026gt; 附加到已執行的程序 ltrace -e malloc+free ./app 只追蹤特定函式 ltrace -c ./app 統計各函式的呼叫次數與時間 strace strace 是一個 Linux 下的診斷與除錯工具，用來追蹤程式執行時所發出的系統呼叫（system calls）以及接收到的訊號（signals）。 strace 用法\n指令 說明 strace ./my_program 追蹤程式的系統呼叫 strace -p \u0026lt;PID\u0026gt; 附加到已在執行的程序 strace -e trace=open,read ./app 只追蹤特定系統呼叫 strace -c ./app 統計各系統呼叫的次數與耗時 strace -f ./app 同時追蹤子程序（fork） ","date": "2026-05-08 14:24:52",
+    "updated": "2026-05-08 15:40:52"
+  }, 
+  {
+    "objectID": "d4b5b0df7fea140b92df22bdc29505978f8865b1",
+    "permalink": "/post/endianess/",
+    "title": "Big Endianess \u0026 Little Endianess","content": " Whis is Endianess 電腦中儲存多位元組資料時的 位元組順序（Byte Order） 排列方式。\nBig Endianess 最高有效位元組（MSB）放在最低位址。排列方式就跟人類閱讀的順序一樣,常見於網路協定（所以又叫 Network Byte Order）、早期的 Motorola 68k 處理器、以及一些 RISC 架構如 SPARC。\nLittle Endianess 最低有效位元組（LSB）放在最低位址。看起來像是「反過來放」, x86 / x86-64（Intel、AMD）的標準，也是目前個人電腦和伺服器最普遍的格式。ARM 架構則可以雙向切換（Bi-endian），但在實務中多半跑 Little Endian。\nExample 假設有一個整數他的十六進位為：0x1234567\n大端序排列為\n01 23 45 67 小端序排列為\n67 45 23 01 ","date": "2026-05-08 10:24:52",
+    "updated": "2026-05-08 10:40:52"
+  }, 
+  {
+    "objectID": "ad458aa1e76fda25fe54b00f625ded09245a7020",
+    "permalink": "/post/forbidden_paths/",
+    "title": "Forbidden Paths writeup","content": " 解題 打開題目 題目說他拒絕絕對路徑,我們嘗試用相對路徑查詢\n../../../../../../../../../../flag.txt 成功查詢 取得flag\npicoCTF{7h3_p47h_70_5ucc355_e5a6fcbc} 提交flag ","date": "2026-05-07 07:15:52",
+    "updated": "2026-05-07 08:00:52"
+  }, 
+  {
+    "objectID": "5fe9c1d9cb01ba9400a741aa0109ab69d01dfe7f",
+    "permalink": "/post/roboto_sans/",
+    "title": "Roboto Sans writeup","content": " 解題 打開題目 嘗試查看robots.txt路徑,發現有疑似base64的編碼字串 將其嘗試解碼 嘗試進入到解碼路徑,取得flag 取得flag\npicoCTF{1nsp3ti0n_0f_w3bpag3s_ec95fa49} 提交flag ","date": "2026-05-07 06:59:52",
+    "updated": "2026-05-07 07:13:52"
+  }, 
+  {
+    "objectID": "be488c313bf51b44a72ef3b33423698a4cdbee46",
+    "permalink": "/post/search_source/",
+    "title": "Search source writeup","content": " What is httrack? HTTrack 是一款免費且開源的離線瀏覽工具，能將整個網站從網路下載到本機目錄，遞迴建立所有資料夾結構，並取得 HTML、圖片及其他檔案。\n主要功能包含：\n網站鏡像（Mirroring）：完整複製一個網站的結構與內容到你的電腦上，讓你可以離線瀏覽。 保留原始結構：下載後會自動重建相對連結，離線瀏覽時可以正常點擊頁面之間的超連結。 斷點續傳：如果下載中斷，可以從上次中斷處繼續。 支援多種協定：支援 HTTP、HTTPS 和 FTP 協定。 過濾功能：可以設定規則來篩選要下載的檔案類型（例如只抓圖片、排除影片等）。 解題 打開題目 使用httrack下載整個網站原始碼\nhttrack http://saturn.picoctf.net:50025 使用grep搜尋picoCTF\ngrep -R picoCTF 取得flag\npicoCTF{1nsp3ti0n_0f_w3bpag3s_ec95fa49} 提交flag 補充常用方式 基本操作 需求場景 指令範例 說明 基本整站鏡像 httrack \u0026quot;http://www.example.com\u0026quot; -O \u0026quot;./my_site\u0026quot; 將整個網站下載到 ./my_site 目錄 更新已有的鏡像 httrack --update 在專案目錄下執行，僅下載有變動的檔案 續傳中斷的任務 httrack --continue 從上次中斷處繼續下載 檔案過濾 需求場景 指令範例 說明 只抓特定副檔名 httrack \u0026quot;URL\u0026quot; \u0026quot;+*.jpg +*.png -*.zip\u0026quot; + 表示包含、- 表示排除 只抓 HTML 骨架 httrack \u0026quot;URL\u0026quot; --skeleton 僅下載 HTML 結構，不抓圖片等資源 排除特定路徑 httrack \u0026quot;URL\u0026quot; \u0026quot;-*/admin/*\u0026quot; 排除 /admin/ 路徑下的所有頁面 只抓文件類檔案 httrack \u0026quot;URL\u0026quot; \u0026quot;+*.pdf +*.doc +*.docx -ad*\u0026quot; 僅下載 PDF 與 Word 文件 深度與速度控制 需求場景 指令範例 說明 限制抓取深度 httrack \u0026quot;URL\u0026quot; -r3 最多遞迴 3 層連結 限制連線數 httrack \u0026quot;URL\u0026quot; -%c10 同時最多 10 條連線 限制頻寬 httrack \u0026quot;URL\u0026quot; -A50000 限速約 50 KB/s，避免對目標伺服器造成負擔 設定每次請求間隔 httrack \u0026quot;URL\u0026quot; -%s 加入延遲，降低伺服器負載 進階選項 需求場景 指令範例 說明 使用代理伺服器 httrack \u0026quot;URL\u0026quot; -P proxy:port 透過指定的 Proxy 進行下載 自訂 User-Agent httrack \u0026quot;URL\u0026quot; -F \u0026quot;Mozilla/5.0\u0026quot; 偽裝瀏覽器標頭，避免被阻擋 包含外部連結 httrack \u0026quot;URL\u0026quot; --%e0 下載外部網域的連結資源 設定最大檔案大小 httrack \u0026quot;URL\u0026quot; -M100000000 限制總下載量（單位：bytes） 只抓取站內連結 httrack \u0026quot;URL\u0026quot; --stay-on-same-domain 不跟隨外部網域的超連結 過濾規則速記 符號 意義 範例 + 包含（允許下載） +*.png - 排除（禁止下載） -*.zip * 萬用字元 +*/images/* ","date": "2026-05-07 06:16:52",
+    "updated": "2026-05-07 06:50:52"
+  }, 
+  {
     "objectID": "d23d35216cc2eef64b8d2f33b49ced71d84ddac8",
     "permalink": "/post/findme/",
     "title": "findme writeup","content": " 解題 打開題目 利用題目給我帳密登陸後.發現一行訊息 I was redirected here by a friend of mine but i couldnt find anything. Help me search for flags :-) 這行訊息告訴我們過程中應改有什麼被忽略了,使用burp suite進行抓取封包查看,果然過程中有3個封包,且裡面有可疑的id,將其解析即可取得flag 取得flag\npicoCTF{G3tting_5QL_1nJ3c7I0N_l1k3_y0u_sh0ulD_e3e46aae} 提交flag ","date": "2026-05-05 15:50:52",

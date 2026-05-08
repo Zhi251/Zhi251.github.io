@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reverse Knowledge on zhi旅程</title>
+    <link>http://localhost:1313/tags/reverse-knowledge/</link>
+    <description>Recent content from zhi旅程</description>
+    <generator>Hugo</generator>
+    <language>zh-tw</language>
+    
+    <managingEditor>ray784523@zhienw.com (Zhi Chen)</managingEditor>
+    <webMaster>ray784523@zhienw.com (Zhi Chen)</webMaster>
+    
+    <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
+    
+    <lastBuildDate>Fri, 08 May 2026 10:40:52 +0800</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/tags/reverse-knowledge/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>Big Endianess &amp; Little Endianess</title>
+      <link>http://localhost:1313/post/endianess/</link>
+      <pubDate>Fri, 08 May 2026 10:24:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/endianess/</guid>
+      <description>
+        <![CDATA[<h1>Big Endianess & Little Endianess</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          
+        
+        <hr><p>本文2026-05-08首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-08</p>]]>
+      </description>
+      
+        <category>reverse class</category>
+      
+    </item>
+    
+  </channel>
+</rss>
