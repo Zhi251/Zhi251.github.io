@@ -12,12 +12,89 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Fri, 08 May 2026 15:40:52 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 13:30:52 +0800</lastBuildDate>
     
     
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>GDB</title>
+      <link>http://localhost:1313/post/gdb/</link>
+      <pubDate>Mon, 11 May 2026 13:02:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/gdb/</guid>
+      <description>
+        <![CDATA[<h1>GDB</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="簡介">
+<a class="header-anchor" href="#%e7%b0%a1%e4%bb%8b"></a>
+簡介
+</h2><p>GDB（GNU Debugger）是 GNU 計畫開發的一款命令列除錯工具，主要用來對 C、C++、Assembly 等語言編寫的程式進行除錯。它讓你可以在程式執行過程中暫停、檢查變數與記憶體狀態、逐步追蹤程式流程，進而找出程式中的 bug。</p>
+        
+        <hr><p>本文2026-05-11首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-11</p>]]>
+      </description>
+      
+        <category>reverse class</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Binary Ninja</title>
+      <link>http://localhost:1313/post/binary_ninja/</link>
+      <pubDate>Mon, 11 May 2026 11:51:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/binary_ninja/</guid>
+      <description>
+        <![CDATA[<h1>Binary Ninja</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="簡介">
+<a class="header-anchor" href="#%e7%b0%a1%e4%bb%8b"></a>
+簡介
+</h2><p>Binary Ninja 支援 x86、x86_64、ARM、PowerPC、RISC-V、MIPS 等多種架構。同時是 Disassembler 和 Decompiler，支援動態分析：Built-In Debugger，可擴充性高，提供 Python API，幫助自動化與 Plugins 編寫。</p>
+        
+        <hr><p>本文2026-05-11首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-11</p>]]>
+      </description>
+      
+        <category>reverse class</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>ELF Structure Analysis</title>
+      <link>http://localhost:1313/post/elf_structure/</link>
+      <pubDate>Mon, 11 May 2026 10:09:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/elf_structure/</guid>
+      <description>
+        <![CDATA[<h1>ELF Structure Analysis</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="elf架構">
+<a class="header-anchor" href="#elf%e6%9e%b6%e6%a7%8b"></a>
+ELF架構
+</h2><p><img src="/images/ELF_Structure_Analysis/1.webp" alt="image"></p>
+<h3 id="elf-header">
+<a class="header-anchor" href="#elf-header"></a>
+ELF Header
+</h3><p>ELF Header 位於檔案的最開頭，是整個檔案的「目錄頁」， 記錄了三類關鍵資訊：檔案類型、架構、進入點。
+<strong>magic number</strong>
+<img src="/images/ELF_Structure_Analysis/2.webp" alt="image">
+<strong>類別（Class）、資料（Data）、Version、 OS/ABI</strong>
+<img src="/images/ELF_Structure_Analysis/3.webp" alt="image"></p>
+        
+        <hr><p>本文2026-05-11首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-11</p>]]>
+      </description>
+      
+        <category>reverse class</category>
+      
+    </item>
     
     
 
@@ -245,90 +322,6 @@ What is httrack?
 <a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
 提交flag
 </h2><p><img src="/images/More_SQLi/5.webp" alt="image"></p>
-        
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>SOAP writeup</title>
-      <link>http://localhost:1313/post/soap/</link>
-      <pubDate>Tue, 05 May 2026 14:39:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/soap/</guid>
-      <description>
-        <![CDATA[<h1>SOAP writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is-xxe-injection">
-<a class="header-anchor" href="#what-is-xxe-injection"></a>
-What is XXE Injection?
-</h2><p>XXE（XML External Entity）注入是一種針對 XML 解析器的攻擊手法。XML 本身有個功能叫做實體（Entity），允許你定義「變數」來引用外部資源。<br>
-XXE 攻擊就是利用這個功能，讓伺服器去讀取它不該暴露的東西。此攻擊能用於：</p>
-        
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>No Sql Injection writeup</title>
-      <link>http://localhost:1313/post/no_sql_injection/</link>
-      <pubDate>Tue, 05 May 2026 13:00:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/no_sql_injection/</guid>
-      <description>
-        <![CDATA[<h1>No Sql Injection writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>下載題目程式碼</strong>
-<img src="/images/No_Sql_Injection/1.webp" alt="image"></p>
-<h3 id="觀察題目程式碼">
-<a class="header-anchor" href="#%e8%a7%80%e5%af%9f%e9%a1%8c%e7%9b%ae%e7%a8%8b%e5%bc%8f%e7%a2%bc"></a>
-觀察題目程式碼
-</h3><p><strong>發現有一個/admin的頁面</strong>
-<img src="/images/No_Sql_Injection/2.webp" alt="image">
-<strong>在server.js中發現伺服器資料庫使用mongo DB</strong>
-<img src="/images/No_Sql_Injection/3.webp" alt="image">
-<strong>在server.js中發現使用者帳號</strong>
-<img src="/images/No_Sql_Injection/4.webp" alt="image">
-<strong>在server.js中發現疑似把flag儲存在tocken中</strong>
-<img src="/images/No_Sql_Injection/5.webp" alt="image">
-<strong>在server.js中發現他將前端送出的帳號密碼直接串接成查詢語句,造成NoSql Injection</strong>
-<img src="/images/No_Sql_Injection/6.webp" alt="image"></p>
-        
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Trickster writeup</title>
-      <link>http://localhost:1313/post/trickster/</link>
-      <pubDate>Tue, 05 May 2026 12:00:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/trickster/</guid>
-      <description>
-        <![CDATA[<h1>Trickster writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="whis-is-magic-number">
-<a class="header-anchor" href="#whis-is-magic-number"></a>
-Whis is magic number?
-</h2><p>Magic number 是放在檔案最開頭的一組固定位元組序列，作用就像檔案的「身分證」，讓作業系統或程式能快速辨識這個檔案到底是什麼類型，而不需要依賴副檔名。各種檔案格式的 magic number 如下：</p>
         
         <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
       </description>

@@ -12,12 +12,89 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Fri, 08 May 2026 15:40:52 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 13:30:52 +0800</lastBuildDate>
     
     
     <atom:link href="http://localhost:1313/categories/reverse-class/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>GDB</title>
+      <link>http://localhost:1313/post/gdb/</link>
+      <pubDate>Mon, 11 May 2026 13:02:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/gdb/</guid>
+      <description>
+        <![CDATA[<h1>GDB</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="簡介">
+<a class="header-anchor" href="#%e7%b0%a1%e4%bb%8b"></a>
+簡介
+</h2><p>GDB（GNU Debugger）是 GNU 計畫開發的一款命令列除錯工具，主要用來對 C、C++、Assembly 等語言編寫的程式進行除錯。它讓你可以在程式執行過程中暫停、檢查變數與記憶體狀態、逐步追蹤程式流程，進而找出程式中的 bug。</p>
+        
+        <hr><p>本文2026-05-11首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-11</p>]]>
+      </description>
+      
+        <category>reverse class</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Binary Ninja</title>
+      <link>http://localhost:1313/post/binary_ninja/</link>
+      <pubDate>Mon, 11 May 2026 11:51:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/binary_ninja/</guid>
+      <description>
+        <![CDATA[<h1>Binary Ninja</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="簡介">
+<a class="header-anchor" href="#%e7%b0%a1%e4%bb%8b"></a>
+簡介
+</h2><p>Binary Ninja 支援 x86、x86_64、ARM、PowerPC、RISC-V、MIPS 等多種架構。同時是 Disassembler 和 Decompiler，支援動態分析：Built-In Debugger，可擴充性高，提供 Python API，幫助自動化與 Plugins 編寫。</p>
+        
+        <hr><p>本文2026-05-11首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-11</p>]]>
+      </description>
+      
+        <category>reverse class</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>ELF Structure Analysis</title>
+      <link>http://localhost:1313/post/elf_structure/</link>
+      <pubDate>Mon, 11 May 2026 10:09:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/elf_structure/</guid>
+      <description>
+        <![CDATA[<h1>ELF Structure Analysis</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="elf架構">
+<a class="header-anchor" href="#elf%e6%9e%b6%e6%a7%8b"></a>
+ELF架構
+</h2><p><img src="/images/ELF_Structure_Analysis/1.webp" alt="image"></p>
+<h3 id="elf-header">
+<a class="header-anchor" href="#elf-header"></a>
+ELF Header
+</h3><p>ELF Header 位於檔案的最開頭，是整個檔案的「目錄頁」， 記錄了三類關鍵資訊：檔案類型、架構、進入點。
+<strong>magic number</strong>
+<img src="/images/ELF_Structure_Analysis/2.webp" alt="image">
+<strong>類別（Class）、資料（Data）、Version、 OS/ABI</strong>
+<img src="/images/ELF_Structure_Analysis/3.webp" alt="image"></p>
+        
+        <hr><p>本文2026-05-11首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-11</p>]]>
+      </description>
+      
+        <category>reverse class</category>
+      
+    </item>
     
     
 
