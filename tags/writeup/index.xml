@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Writeup on zhi旅程</title>
-    <link>https://www.zhienw.com/tags/writeup/</link>
+    <link>http://localhost:1313/tags/writeup/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Fri, 22 May 2026 14:00:52 +0800</lastBuildDate>
     
     
-    <atom:link href="https://www.zhienw.com/tags/writeup/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="http://localhost:1313/tags/writeup/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>ret2plt writeup</title>
-      <link>https://www.zhienw.com/post/ret2plt/</link>
+      <link>http://localhost:1313/post/ret2plt/</link>
       <pubDate>Fri, 22 May 2026 13:21:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/ret2plt/</guid>
+      <guid>http://localhost:1313/post/ret2plt/</guid>
       <description>
         <![CDATA[<h1>ret2plt writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -59,7 +59,7 @@ What is GOT(Global Offset Table)?
 </h2><p>GOT 是 Linux ELF 執行檔中一個重要的資料結構,主要用來實現動態連結（Dynamic Linking）
 當程式呼叫外部函式庫的函式時(例如 printf、malloc),這些函式位於共享函式庫(如 libc.so)中。問題是:</p>
         
-        <hr><p>本文2026-05-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-22</p>]]>
+        <hr><p>本文2026-05-22首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-22</p>]]>
       </description>
       
         <category>SCIST pwn</category>
@@ -70,10 +70,10 @@ What is GOT(Global Offset Table)?
 
     <item>
       <title>rop writeup</title>
-      <link>https://www.zhienw.com/post/rop/</link>
+      <link>http://localhost:1313/post/rop/</link>
       <pubDate>Fri, 22 May 2026 12:24:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/rop/</guid>
+      <guid>http://localhost:1313/post/rop/</guid>
       <description>
         <![CDATA[<h1>rop writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -106,7 +106,7 @@ What is ROP?
 </h2><p>ROP 是一種利用程式漏洞執行惡意程式碼的攻擊手法。它主要用來繞過現代作業系統的防禦機制，特別是 DEP（Data Execution Prevention，資料執行保護）。
 <img src="/images/rop/1.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-22</p>]]>
+        <hr><p>本文2026-05-22首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-22</p>]]>
       </description>
       
         <category>SCIST pwn</category>
@@ -117,10 +117,10 @@ What is ROP?
 
     <item>
       <title>orw writeup</title>
-      <link>https://www.zhienw.com/post/orw/</link>
+      <link>http://localhost:1313/post/orw/</link>
       <pubDate>Thu, 21 May 2026 21:34:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/orw/</guid>
+      <guid>http://localhost:1313/post/orw/</guid>
       <description>
         <![CDATA[<h1>orw writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -195,7 +195,7 @@ What is ROP?
 解題思路
 </h3><p>題目只允許用部分syscall,我們用open,read,write,在username構建我們的payload,在password用overflow跳到username,將flag寫在終端機</p>
         
-        <hr><p>本文2026-05-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
+        <hr><p>本文2026-05-21首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
       </description>
       
         <category>SCIST pwn</category>
@@ -206,10 +206,10 @@ What is ROP?
 
     <item>
       <title>ret2sc writeup</title>
-      <link>https://www.zhienw.com/post/ret2sc/</link>
+      <link>http://localhost:1313/post/ret2sc/</link>
       <pubDate>Thu, 21 May 2026 20:46:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/ret2sc/</guid>
+      <guid>http://localhost:1313/post/ret2sc/</guid>
       <description>
         <![CDATA[<h1>ret2sc writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -255,7 +255,7 @@ What is ROP?
 解題思路
 </h3><p>在username構建我們的payload,在password用overflow跳到username</p>
         
-        <hr><p>本文2026-05-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
+        <hr><p>本文2026-05-21首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
       </description>
       
         <category>SCIST pwn</category>
@@ -266,10 +266,10 @@ What is ROP?
 
     <item>
       <title>greet writeup</title>
-      <link>https://www.zhienw.com/post/greet/</link>
+      <link>http://localhost:1313/post/greet/</link>
       <pubDate>Thu, 21 May 2026 19:25:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/greet/</guid>
+      <guid>http://localhost:1313/post/greet/</guid>
       <description>
         <![CDATA[<h1>greet writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -304,7 +304,7 @@ What is ROP?
 解題思路
 </h3><p>因爲gets()這個function是可以取得使用者輸入無限長度的字串,因此我們可以用overflow的方法將return的位置覆蓋成win function的位置取得shell</p>
         
-        <hr><p>本文2026-05-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
+        <hr><p>本文2026-05-21首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
       </description>
       
         <category>SCIST pwn</category>
@@ -315,10 +315,10 @@ What is ROP?
 
     <item>
       <title>Forbidden Paths writeup</title>
-      <link>https://www.zhienw.com/post/forbidden_paths/</link>
+      <link>http://localhost:1313/post/forbidden_paths/</link>
       <pubDate>Thu, 07 May 2026 07:15:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/forbidden_paths/</guid>
+      <guid>http://localhost:1313/post/forbidden_paths/</guid>
       <description>
         <![CDATA[<h1>Forbidden Paths writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -341,7 +341,7 @@ What is ROP?
 提交flag
 </h2><p><img src="/images/Forbidden_Paths/3.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-07首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
+        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -352,10 +352,10 @@ What is ROP?
 
     <item>
       <title>Roboto Sans writeup</title>
-      <link>https://www.zhienw.com/post/roboto_sans/</link>
+      <link>http://localhost:1313/post/roboto_sans/</link>
       <pubDate>Thu, 07 May 2026 06:59:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/roboto_sans/</guid>
+      <guid>http://localhost:1313/post/roboto_sans/</guid>
       <description>
         <![CDATA[<h1>Roboto Sans writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -379,7 +379,7 @@ What is ROP?
 提交flag
 </h2><p><img src="/images/Roboto_Sans/5.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-07首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
+        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -390,10 +390,10 @@ What is ROP?
 
     <item>
       <title>Search source writeup</title>
-      <link>https://www.zhienw.com/post/search_source/</link>
+      <link>http://localhost:1313/post/search_source/</link>
       <pubDate>Thu, 07 May 2026 06:16:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/search_source/</guid>
+      <guid>http://localhost:1313/post/search_source/</guid>
       <description>
         <![CDATA[<h1>Search source writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -403,7 +403,7 @@ What is httrack?
 </h2><p>HTTrack 是一款免費且開源的離線瀏覽工具，能將整個網站從網路下載到本機目錄，遞迴建立所有資料夾結構，並取得 HTML、圖片及其他檔案。<br>
 主要功能包含：</p>
         
-        <hr><p>本文2026-05-07首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
+        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -414,10 +414,10 @@ What is httrack?
 
     <item>
       <title>findme writeup</title>
-      <link>https://www.zhienw.com/post/findme/</link>
+      <link>http://localhost:1313/post/findme/</link>
       <pubDate>Tue, 05 May 2026 15:50:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/findme/</guid>
+      <guid>http://localhost:1313/post/findme/</guid>
       <description>
         <![CDATA[<h1>findme writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -434,7 +434,7 @@ What is httrack?
 <img src="/images/findme/4.webp" alt="image">
 <img src="/images/findme/5.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-05首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
+        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -445,10 +445,10 @@ What is httrack?
 
     <item>
       <title>More SQLi writeup</title>
-      <link>https://www.zhienw.com/post/more_sqli/</link>
+      <link>http://localhost:1313/post/more_sqli/</link>
       <pubDate>Tue, 05 May 2026 15:40:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/more_sqli/</guid>
+      <guid>http://localhost:1313/post/more_sqli/</guid>
       <description>
         <![CDATA[<h1>More SQLi writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -472,7 +472,7 @@ What is httrack?
 提交flag
 </h2><p><img src="/images/More_SQLi/5.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-05首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
+        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
       </description>
       
         <category>picoctf</category>

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Scist Class on zhi旅程</title>
-    <link>https://www.zhienw.com/tags/scist-class/</link>
+    <link>http://localhost:1313/tags/scist-class/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -12,21 +12,97 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Thu, 04 Jun 2026 09:00:52 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 20:00:52 +0800</lastBuildDate>
     
     
-    <atom:link href="https://www.zhienw.com/tags/scist-class/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="http://localhost:1313/tags/scist-class/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
     
 
     <item>
+      <title>SCIST2026 PWN Class - GOT Hijack</title>
+      <link>http://localhost:1313/post/scist2026/got_hijack/</link>
+      <pubDate>Thu, 04 Jun 2026 19:12:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/scist2026/got_hijack/</guid>
+      <description>
+        <![CDATA[<h1>SCIST2026 PWN Class - GOT Hijack</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="原始碼">
+<a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// gcc chal.c -o chal -z lazy
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">array</span><span class="p">[</span><span class="mh">0x100</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">init</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">menu</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;1: set</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;2: get</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mh">0x100</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">choice</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">menu</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%256s&#34;</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">choice</span> <span class="o">=</span> <span class="nf">atoi</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;idx:</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">idx</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">choice</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;value:</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%llu&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">array</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">choice</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%#llx</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">array</span><span class="p">[</span><span class="n">idx</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>這題可以發現他對陣列的越位讀寫沒有限制,可透過更改GOT表紀錄的地址,調用system got,取得shell</p>
+        
+        <hr><p>本文2026-06-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-06-04</p>]]>
+      </description>
+      
+        <category>SCIST PWN</category>
+      
+    </item>
+    
+    
+
+    <item>
       <title>SCIST2026 PWN Class - ret2plt</title>
-      <link>https://www.zhienw.com/post/scist2026/ret2plt/</link>
+      <link>http://localhost:1313/post/scist2026/ret2plt/</link>
       <pubDate>Thu, 04 Jun 2026 07:00:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/scist2026/ret2plt/</guid>
+      <guid>http://localhost:1313/post/scist2026/ret2plt/</guid>
       <description>
         <![CDATA[<h1>SCIST2026 PWN Class - ret2plt</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -68,7 +144,7 @@
 解題思路
 </h3><p>這題檔案是動態連結,可以調用程式內plt，取得shell</p>
         
-        <hr><p>本文2026-06-04首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-06-04</p>]]>
+        <hr><p>本文2026-06-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-06-04</p>]]>
       </description>
       
         <category>SCIST PWN</category>
@@ -79,10 +155,10 @@
 
     <item>
       <title>SCIST2026 PWN Class - One gadget</title>
-      <link>https://www.zhienw.com/post/scist2026/one_gadget/</link>
+      <link>http://localhost:1313/post/scist2026/one_gadget/</link>
       <pubDate>Thu, 04 Jun 2026 05:40:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/scist2026/one_gadget/</guid>
+      <guid>http://localhost:1313/post/scist2026/one_gadget/</guid>
       <description>
         <![CDATA[<h1>SCIST2026 PWN Class - One gadget</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -123,7 +199,7 @@
 </h3><p>這題檔案是動態連結,可以對libc.so.6 使用One_gadget查看取得shell的條件,並達成條件取得shell<br>
 PS : 此題有些條件會用到rbp,所以在overflow時不能在rdp中放垃圾值</p>
         
-        <hr><p>本文2026-06-04首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-06-04</p>]]>
+        <hr><p>本文2026-06-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-06-04</p>]]>
       </description>
       
         <category>SCIST PWN</category>
@@ -134,10 +210,10 @@ PS : 此題有些條件會用到rbp,所以在overflow時不能在rdp中放垃圾
 
     <item>
       <title>SCIST2026 PWN Class - ret2libc</title>
-      <link>https://www.zhienw.com/post/scist2026/ret2libc/</link>
+      <link>http://localhost:1313/post/scist2026/ret2libc/</link>
       <pubDate>Thu, 04 Jun 2026 04:40:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/scist2026/ret2libc/</guid>
+      <guid>http://localhost:1313/post/scist2026/ret2libc/</guid>
       <description>
         <![CDATA[<h1>SCIST2026 PWN Class - ret2libc</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -170,7 +246,7 @@ PS : 此題有些條件會用到rbp,所以在overflow時不能在rdp中放垃圾
 解題思路
 </h3><p>這題檔案是動態連結,可以算一下offset,調用libc.so.6的內容取得shell</p>
         
-        <hr><p>本文2026-06-04首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-06-04</p>]]>
+        <hr><p>本文2026-06-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-06-04</p>]]>
       </description>
       
         <category>SCIST PWN</category>
@@ -181,10 +257,10 @@ PS : 此題有些條件會用到rbp,所以在overflow時不能在rdp中放垃圾
 
     <item>
       <title>SCIST2026 PWN Class - ROP</title>
-      <link>https://www.zhienw.com/post/scist2026/rop/</link>
+      <link>http://localhost:1313/post/scist2026/rop/</link>
       <pubDate>Thu, 04 Jun 2026 03:37:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/scist2026/rop/</guid>
+      <guid>http://localhost:1313/post/scist2026/rop/</guid>
       <description>
         <![CDATA[<h1>SCIST2026 PWN Class - ROP</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -224,7 +300,7 @@ PS : 此題有些條件會用到rbp,所以在overflow時不能在rdp中放垃圾
 尋找需要的資訊
 </h3><p>尋找pop rax ret</p>
         
-        <hr><p>本文2026-06-04首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-06-04</p>]]>
+        <hr><p>本文2026-06-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-06-04</p>]]>
       </description>
       
         <category>SCIST PWN</category>
@@ -235,10 +311,10 @@ PS : 此題有些條件會用到rbp,所以在overflow時不能在rdp中放垃圾
 
     <item>
       <title>SCIST2026 PWN Class - ret2shellcode</title>
-      <link>https://www.zhienw.com/post/scist2026/ret2shellcode/</link>
+      <link>http://localhost:1313/post/scist2026/ret2shellcode/</link>
       <pubDate>Wed, 03 Jun 2026 16:38:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/scist2026/ret2shellcode/</guid>
+      <guid>http://localhost:1313/post/scist2026/ret2shellcode/</guid>
       <description>
         <![CDATA[<h1>SCIST2026 PWN Class - ret2shellcode</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -281,7 +357,7 @@ PS : 此題有些條件會用到rbp,所以在overflow時不能在rdp中放垃圾
 解題思路
 </h3><p>目標要輸入我們自己的shellcode,之後利用overflow的方法跳到我們shellcode儲存的地方</p>
         
-        <hr><p>本文2026-06-03首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-06-03</p>]]>
+        <hr><p>本文2026-06-03首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-06-03</p>]]>
       </description>
       
         <category>SCIST PWN</category>
@@ -292,10 +368,10 @@ PS : 此題有些條件會用到rbp,所以在overflow時不能在rdp中放垃圾
 
     <item>
       <title>SCIST2026 PWN Class - OOB</title>
-      <link>https://www.zhienw.com/post/scist2026/oob/</link>
+      <link>http://localhost:1313/post/scist2026/oob/</link>
       <pubDate>Wed, 03 Jun 2026 16:00:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/scist2026/oob/</guid>
+      <guid>http://localhost:1313/post/scist2026/oob/</guid>
       <description>
         <![CDATA[<h1>SCIST2026 PWN Class - OOB</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -341,7 +417,7 @@ PS : 此題有些條件會用到rbp,所以在overflow時不能在rdp中放垃圾
 解題思路
 </h3><p>目標要跳到win()這個function,可利用OOB的方法,將index設定超過4,使其可以到別的位置修改值,有陷阱要注意run到接近ret位置在看stack,不要輸入完馬上看</p>
         
-        <hr><p>本文2026-06-03首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-06-03</p>]]>
+        <hr><p>本文2026-06-03首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-06-03</p>]]>
       </description>
       
         <category>SCIST PWN</category>
@@ -352,10 +428,10 @@ PS : 此題有些條件會用到rbp,所以在overflow時不能在rdp中放垃圾
 
     <item>
       <title>SCIST2026 PWN Class - ret2func</title>
-      <link>https://www.zhienw.com/post/scist2026/ret2func/</link>
+      <link>http://localhost:1313/post/scist2026/ret2func/</link>
       <pubDate>Wed, 03 Jun 2026 14:46:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/scist2026/ret2func/</guid>
+      <guid>http://localhost:1313/post/scist2026/ret2func/</guid>
       <description>
         <![CDATA[<h1>SCIST2026 PWN Class - ret2func</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -386,7 +462,7 @@ PS : 此題有些條件會用到rbp,所以在overflow時不能在rdp中放垃圾
 解題思路
 </h3><p>目標要跳到shell()這個function,且因為我們要用overflow之後直接跳過去,所以需要補一個ret,去讓記憶體對齊</p>
         
-        <hr><p>本文2026-06-03首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-06-03</p>]]>
+        <hr><p>本文2026-06-03首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-06-03</p>]]>
       </description>
       
         <category>SCIST PWN</category>
