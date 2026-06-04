@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Writeup on zhi旅程</title>
-    <link>http://localhost:1313/tags/writeup/</link>
+    <link>https://www.zhienw.com/tags/writeup/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -12,21 +12,313 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Thu, 07 May 2026 08:00:52 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2026 14:00:52 +0800</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/tags/writeup/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://www.zhienw.com/tags/writeup/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
     
 
     <item>
+      <title>ret2plt writeup</title>
+      <link>https://www.zhienw.com/post/ret2plt/</link>
+      <pubDate>Fri, 22 May 2026 13:21:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/ret2plt/</guid>
+      <description>
+        <![CDATA[<h1>ret2plt writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="題目原始碼">
+<a class="header-anchor" href="#%e9%a1%8c%e7%9b%ae%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+題目原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">init</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">system</span><span class="p">(</span> <span class="s">&#34;echo &#39;Say hello to stack :D&#39;&#34;</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mh">0x30</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">gets</span><span class="p">(</span> <span class="n">buf</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="what-is-gotglobal-offset-table">
+<a class="header-anchor" href="#what-is-gotglobal-offset-table"></a>
+What is GOT(Global Offset Table)?
+</h2><p>GOT 是 Linux ELF 執行檔中一個重要的資料結構,主要用來實現動態連結（Dynamic Linking）
+當程式呼叫外部函式庫的函式時(例如 printf、malloc),這些函式位於共享函式庫(如 libc.so)中。問題是:</p>
+        
+        <hr><p>本文2026-05-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-22</p>]]>
+      </description>
+      
+        <category>SCIST pwn</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>rop writeup</title>
+      <link>https://www.zhienw.com/post/rop/</link>
+      <pubDate>Fri, 22 May 2026 12:24:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/rop/</guid>
+      <description>
+        <![CDATA[<h1>rop writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="題目原始碼">
+<a class="header-anchor" href="#%e9%a1%8c%e7%9b%ae%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+題目原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">init</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">puts</span><span class="p">(</span> <span class="s">&#34;Say hello to stack :D&#34;</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mh">0x30</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">gets</span><span class="p">(</span> <span class="n">buf</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="what-is-rop">
+<a class="header-anchor" href="#what-is-rop"></a>
+What is ROP?
+</h2><p>ROP 是一種利用程式漏洞執行惡意程式碼的攻擊手法。它主要用來繞過現代作業系統的防禦機制，特別是 DEP（Data Execution Prevention，資料執行保護）。
+<img src="/images/rop/1.webp" alt="image"></p>
+        
+        <hr><p>本文2026-05-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-22</p>]]>
+      </description>
+      
+        <category>SCIST pwn</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>orw writeup</title>
+      <link>https://www.zhienw.com/post/orw/</link>
+      <pubDate>Thu, 21 May 2026 21:34:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/orw/</guid>
+      <description>
+        <![CDATA[<h1>orw writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="題目原始碼">
+<a class="header-anchor" href="#%e9%a1%8c%e7%9b%ae%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+題目原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="c1">// gcc -fno-stack-protector -no-pie chal.c -o chal
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/mman.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;seccomp-bpf.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#define username_len 0x400
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="n">username</span><span class="p">[</span><span class="n">username_len</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">apply_seccomp</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">struct</span> <span class="n">sock_filter</span> <span class="n">filter</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">VALIDATE_ARCHITECTURE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">EXAMINE_SYSCALL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">read</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">write</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">open</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">close</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">openat</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">exit</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">exit_group</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">getdents</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">getrandom</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">brk</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">readlink</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">rt_sigreturn</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">KILL_PROCESS</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">struct</span> <span class="n">sock_fprog</span> <span class="n">prog</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="n">len</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">short</span><span class="p">)(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">filter</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">sock_filter</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="n">filter</span> <span class="o">=</span> <span class="n">filter</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nf">prctl</span><span class="p">(</span><span class="n">PR_SET_NO_NEW_PRIVS</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">perror</span><span class="p">(</span><span class="s">&#34;Seccomp Error&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nf">prctl</span><span class="p">(</span><span class="n">PR_SET_SECCOMP</span><span class="p">,</span> <span class="n">SECCOMP_MODE_FILTER</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">prog</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">perror</span><span class="p">(</span><span class="s">&#34;Seccomp Error&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">addr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)</span><span class="o">&amp;</span><span class="n">username</span> <span class="o">&amp;</span> <span class="o">~</span><span class="mh">0xfff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mprotect</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">addr</span><span class="p">,</span> <span class="mh">0x1000</span><span class="p">,</span> <span class="n">PROT_EXEC</span> <span class="o">|</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* apply_seccomp(); */</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">password</span><span class="p">[</span><span class="mi">40</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Username: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">username_len</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Password: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;Wrong username/password! Please try again.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>題目只允許用部分syscall,我們用open,read,write,在username構建我們的payload,在password用overflow跳到username,將flag寫在終端機</p>
+        
+        <hr><p>本文2026-05-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
+      </description>
+      
+        <category>SCIST pwn</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>ret2sc writeup</title>
+      <link>https://www.zhienw.com/post/ret2sc/</link>
+      <pubDate>Thu, 21 May 2026 20:46:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/ret2sc/</guid>
+      <description>
+        <![CDATA[<h1>ret2sc writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="題目原始碼">
+<a class="header-anchor" href="#%e9%a1%8c%e7%9b%ae%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+題目原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/mman.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="n">username</span><span class="p">[</span><span class="mh">0x20</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">addr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)</span><span class="o">&amp;</span><span class="n">username</span> <span class="o">&amp;</span> <span class="o">~</span><span class="mh">0xfff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">mprotect</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">addr</span><span class="p">,</span> <span class="mh">0x1000</span><span class="p">,</span> <span class="n">PROT_EXEC</span> <span class="o">|</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">password</span><span class="p">[</span><span class="mi">40</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;=== Welcome to ret2sc challenge ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;Please enter your username and password.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;Hint: Maybe the username buffer is... *too powerful*? 🤔&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Username: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Password: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;Wrong username/password! Please try again.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>在username構建我們的payload,在password用overflow跳到username</p>
+        
+        <hr><p>本文2026-05-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
+      </description>
+      
+        <category>SCIST pwn</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>greet writeup</title>
+      <link>https://www.zhienw.com/post/greet/</link>
+      <pubDate>Thu, 21 May 2026 19:25:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>https://www.zhienw.com/post/greet/</guid>
+      <description>
+        <![CDATA[<h1>greet writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="題目原始碼">
+<a class="header-anchor" href="#%e9%a1%8c%e7%9b%ae%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+題目原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">win</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">system</span><span class="p">(</span><span class="s">&#34;/bin/sh&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vuln</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;What&#39;s your name? &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">gets</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Hello, %s!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">vuln</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>因爲gets()這個function是可以取得使用者輸入無限長度的字串,因此我們可以用overflow的方法將return的位置覆蓋成win function的位置取得shell</p>
+        
+        <hr><p>本文2026-05-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
+      </description>
+      
+        <category>SCIST pwn</category>
+      
+    </item>
+    
+    
+
+    <item>
       <title>Forbidden Paths writeup</title>
-      <link>http://localhost:1313/post/forbidden_paths/</link>
+      <link>https://www.zhienw.com/post/forbidden_paths/</link>
       <pubDate>Thu, 07 May 2026 07:15:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/forbidden_paths/</guid>
+      <guid>https://www.zhienw.com/post/forbidden_paths/</guid>
       <description>
         <![CDATA[<h1>Forbidden Paths writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -49,7 +341,7 @@
 提交flag
 </h2><p><img src="/images/Forbidden_Paths/3.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
+        <hr><p>本文2026-05-07首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -60,10 +352,10 @@
 
     <item>
       <title>Roboto Sans writeup</title>
-      <link>http://localhost:1313/post/roboto_sans/</link>
+      <link>https://www.zhienw.com/post/roboto_sans/</link>
       <pubDate>Thu, 07 May 2026 06:59:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/roboto_sans/</guid>
+      <guid>https://www.zhienw.com/post/roboto_sans/</guid>
       <description>
         <![CDATA[<h1>Roboto Sans writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -87,7 +379,7 @@
 提交flag
 </h2><p><img src="/images/Roboto_Sans/5.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
+        <hr><p>本文2026-05-07首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -98,10 +390,10 @@
 
     <item>
       <title>Search source writeup</title>
-      <link>http://localhost:1313/post/search_source/</link>
+      <link>https://www.zhienw.com/post/search_source/</link>
       <pubDate>Thu, 07 May 2026 06:16:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/search_source/</guid>
+      <guid>https://www.zhienw.com/post/search_source/</guid>
       <description>
         <![CDATA[<h1>Search source writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -111,7 +403,7 @@ What is httrack?
 </h2><p>HTTrack 是一款免費且開源的離線瀏覽工具，能將整個網站從網路下載到本機目錄，遞迴建立所有資料夾結構，並取得 HTML、圖片及其他檔案。<br>
 主要功能包含：</p>
         
-        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
+        <hr><p>本文2026-05-07首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -122,10 +414,10 @@ What is httrack?
 
     <item>
       <title>findme writeup</title>
-      <link>http://localhost:1313/post/findme/</link>
+      <link>https://www.zhienw.com/post/findme/</link>
       <pubDate>Tue, 05 May 2026 15:50:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/findme/</guid>
+      <guid>https://www.zhienw.com/post/findme/</guid>
       <description>
         <![CDATA[<h1>findme writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -142,7 +434,7 @@ What is httrack?
 <img src="/images/findme/4.webp" alt="image">
 <img src="/images/findme/5.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
+        <hr><p>本文2026-05-05首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -153,10 +445,10 @@ What is httrack?
 
     <item>
       <title>More SQLi writeup</title>
-      <link>http://localhost:1313/post/more_sqli/</link>
+      <link>https://www.zhienw.com/post/more_sqli/</link>
       <pubDate>Tue, 05 May 2026 15:40:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/more_sqli/</guid>
+      <guid>https://www.zhienw.com/post/more_sqli/</guid>
       <description>
         <![CDATA[<h1>More SQLi writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -180,144 +472,7 @@ What is httrack?
 提交flag
 </h2><p><img src="/images/More_SQLi/5.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>SOAP writeup</title>
-      <link>http://localhost:1313/post/soap/</link>
-      <pubDate>Tue, 05 May 2026 14:39:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/soap/</guid>
-      <description>
-        <![CDATA[<h1>SOAP writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is-xxe-injection">
-<a class="header-anchor" href="#what-is-xxe-injection"></a>
-What is XXE Injection?
-</h2><p>XXE（XML External Entity）注入是一種針對 XML 解析器的攻擊手法。XML 本身有個功能叫做實體（Entity），允許你定義「變數」來引用外部資源。<br>
-XXE 攻擊就是利用這個功能，讓伺服器去讀取它不該暴露的東西。此攻擊能用於：</p>
-        
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>No Sql Injection writeup</title>
-      <link>http://localhost:1313/post/no_sql_injection/</link>
-      <pubDate>Tue, 05 May 2026 13:00:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/no_sql_injection/</guid>
-      <description>
-        <![CDATA[<h1>No Sql Injection writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>下載題目程式碼</strong>
-<img src="/images/No_Sql_Injection/1.webp" alt="image"></p>
-<h3 id="觀察題目程式碼">
-<a class="header-anchor" href="#%e8%a7%80%e5%af%9f%e9%a1%8c%e7%9b%ae%e7%a8%8b%e5%bc%8f%e7%a2%bc"></a>
-觀察題目程式碼
-</h3><p><strong>發現有一個/admin的頁面</strong>
-<img src="/images/No_Sql_Injection/2.webp" alt="image">
-<strong>在server.js中發現伺服器資料庫使用mongo DB</strong>
-<img src="/images/No_Sql_Injection/3.webp" alt="image">
-<strong>在server.js中發現使用者帳號</strong>
-<img src="/images/No_Sql_Injection/4.webp" alt="image">
-<strong>在server.js中發現疑似把flag儲存在tocken中</strong>
-<img src="/images/No_Sql_Injection/5.webp" alt="image">
-<strong>在server.js中發現他將前端送出的帳號密碼直接串接成查詢語句,造成NoSql Injection</strong>
-<img src="/images/No_Sql_Injection/6.webp" alt="image"></p>
-        
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Trickster writeup</title>
-      <link>http://localhost:1313/post/trickster/</link>
-      <pubDate>Tue, 05 May 2026 12:00:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/trickster/</guid>
-      <description>
-        <![CDATA[<h1>Trickster writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="whis-is-magic-number">
-<a class="header-anchor" href="#whis-is-magic-number"></a>
-Whis is magic number?
-</h2><p>Magic number 是放在檔案最開頭的一組固定位元組序列，作用就像檔案的「身分證」，讓作業系統或程式能快速辨識這個檔案到底是什麼類型，而不需要依賴副檔名。各種檔案格式的 magic number 如下：</p>
-        
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Pachinko writeup</title>
-      <link>http://localhost:1313/post/pachinko/</link>
-      <pubDate>Mon, 04 May 2026 11:54:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/pachinko/</guid>
-      <description>
-        <![CDATA[<h1>Pachinko writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is-race-condition">
-<a class="header-anchor" href="#what-is-race-condition"></a>
-What is race condition?
-</h2><p>Race Condition 是一種「時間差漏洞」。當系統在處理多個同時發生的請求時，因為步驟之間沒有做好鎖定（locking），就會產生邏輯錯誤。<br>
-例如轉帳：假設你的錢包有 100 元，轉帳流程分三步：① 檢查餘額 → ② 送出錢 → ③ 扣除餘額。<br>
-正常情況下，轉一次 100 元後餘額歸零，沒問題。但如果你同時發出兩個轉帳請求，事情就變了：<br>
-請求 A 檢查餘額：100（通過）<br>
-請求 B 檢查餘額：100（也通過，因為 A 還沒扣錢）
-請求 A 送出 100 元<br>
-請求 B 也送出 100 元<br>
-扣款才開始執行……</p>
-        
-        <hr><p>本文2026-05-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-04</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>3v@l writeup</title>
-      <link>http://localhost:1313/post/3v@l/</link>
-      <pubDate>Mon, 04 May 2026 09:53:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/3v@l/</guid>
-      <description>
-        <![CDATA[<h1>3v@l writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is-eval-">
-<a class="header-anchor" href="#what-is-eval-"></a>
-What is eval ?
-</h2><p>eval() 是 Python 的內建函式，它能將字串當作程式碼來執行，並回傳結果。它通常被用在需要動態計算表達式的場景，例如計算機應用程式、設定檔解析、或資料處理中動態執行公式。</p>
-        
-        <hr><p>本文2026-05-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-04</p>]]>
+        <hr><p>本文2026-05-05首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
       </description>
       
         <category>picoctf</category>

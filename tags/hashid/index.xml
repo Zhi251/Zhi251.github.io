@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hashid on zhi旅程</title>
-    <link>http://localhost:1313/tags/hashid/</link>
+    <link>https://www.zhienw.com/tags/hashid/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Fri, 24 Apr 2026 23:47:52 +0800</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/tags/hashid/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://www.zhienw.com/tags/hashid/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>No FA writeup</title>
-      <link>http://localhost:1313/post/no_fa/</link>
+      <link>https://www.zhienw.com/post/no_fa/</link>
       <pubDate>Fri, 24 Apr 2026 22:47:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/no_fa/</guid>
+      <guid>https://www.zhienw.com/post/no_fa/</guid>
       <description>
         <![CDATA[<h1>No FA writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -49,7 +49,7 @@ What is John the Ripper ?
 What is hashid ?
 </h2><p>當你拿到一串像hash的亂碼時，你可能不知道它是 MD5 還是 NTLM。hashid 可以幫忙識別。</p>
         
-        <hr><p>本文2026-04-24首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-24</p>]]>
+        <hr><p>本文2026-04-24首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-24</p>]]>
       </description>
       
         <category>picoctf</category>

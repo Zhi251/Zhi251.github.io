@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reverse Notes on zhi旅程</title>
-    <link>http://localhost:1313/tags/reverse-notes/</link>
+    <link>https://www.zhienw.com/tags/reverse-notes/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Mon, 11 May 2026 13:30:52 +0800</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/tags/reverse-notes/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://www.zhienw.com/tags/reverse-notes/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>GDB</title>
-      <link>http://localhost:1313/post/gdb/</link>
+      <link>https://www.zhienw.com/post/gdb/</link>
       <pubDate>Mon, 11 May 2026 13:02:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/gdb/</guid>
+      <guid>https://www.zhienw.com/post/gdb/</guid>
       <description>
         <![CDATA[<h1>GDB</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -35,7 +35,7 @@
 簡介
 </h2><p>GDB（GNU Debugger）是 GNU 計畫開發的一款命令列除錯工具，主要用來對 C、C++、Assembly 等語言編寫的程式進行除錯。它讓你可以在程式執行過程中暫停、檢查變數與記憶體狀態、逐步追蹤程式流程，進而找出程式中的 bug。</p>
         
-        <hr><p>本文2026-05-11首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-11</p>]]>
+        <hr><p>本文2026-05-11首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-11</p>]]>
       </description>
       
         <category>reverse class</category>
@@ -46,10 +46,10 @@
 
     <item>
       <title>Binary Ninja</title>
-      <link>http://localhost:1313/post/binary_ninja/</link>
+      <link>https://www.zhienw.com/post/binary_ninja/</link>
       <pubDate>Mon, 11 May 2026 11:51:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/binary_ninja/</guid>
+      <guid>https://www.zhienw.com/post/binary_ninja/</guid>
       <description>
         <![CDATA[<h1>Binary Ninja</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -58,7 +58,7 @@
 簡介
 </h2><p>Binary Ninja 支援 x86、x86_64、ARM、PowerPC、RISC-V、MIPS 等多種架構。同時是 Disassembler 和 Decompiler，支援動態分析：Built-In Debugger，可擴充性高，提供 Python API，幫助自動化與 Plugins 編寫。</p>
         
-        <hr><p>本文2026-05-11首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-11</p>]]>
+        <hr><p>本文2026-05-11首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-11</p>]]>
       </description>
       
         <category>reverse class</category>
@@ -69,10 +69,10 @@
 
     <item>
       <title>ELF Structure Analysis</title>
-      <link>http://localhost:1313/post/elf_structure/</link>
+      <link>https://www.zhienw.com/post/elf_structure/</link>
       <pubDate>Mon, 11 May 2026 10:09:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/elf_structure/</guid>
+      <guid>https://www.zhienw.com/post/elf_structure/</guid>
       <description>
         <![CDATA[<h1>ELF Structure Analysis</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -89,7 +89,7 @@ ELF Header
 <strong>類別（Class）、資料（Data）、Version、 OS/ABI</strong>
 <img src="/images/ELF_Structure_Analysis/3.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-11首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-11</p>]]>
+        <hr><p>本文2026-05-11首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-11</p>]]>
       </description>
       
         <category>reverse class</category>
@@ -100,10 +100,10 @@ ELF Header
 
     <item>
       <title>File Structure Analysis</title>
-      <link>http://localhost:1313/post/file_structure_analysis/</link>
+      <link>https://www.zhienw.com/post/file_structure_analysis/</link>
       <pubDate>Fri, 08 May 2026 14:24:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/file_structure_analysis/</guid>
+      <guid>https://www.zhienw.com/post/file_structure_analysis/</guid>
       <description>
         <![CDATA[<h1>File Structure Analysis</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -128,7 +128,7 @@ ELF Header
 檔案類型辨別
 </h2><p><strong>file指令查看檔案類型</strong></p>
         
-        <hr><p>本文2026-05-08首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-08</p>]]>
+        <hr><p>本文2026-05-08首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-08</p>]]>
       </description>
       
         <category>reverse class</category>
@@ -139,10 +139,10 @@ ELF Header
 
     <item>
       <title>Big Endianess &amp; Little Endianess</title>
-      <link>http://localhost:1313/post/endianess/</link>
+      <link>https://www.zhienw.com/post/endianess/</link>
       <pubDate>Fri, 08 May 2026 10:24:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/endianess/</guid>
+      <guid>https://www.zhienw.com/post/endianess/</guid>
       <description>
         <![CDATA[<h1>Big Endianess & Little Endianess</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -155,7 +155,7 @@ Whis is Endianess
 Big Endianess
 </h2><p>最高有效位元組（MSB）放在最低位址。排列方式就跟人類閱讀的順序一樣,常見於網路協定（所以又叫 Network Byte Order）、早期的 Motorola 68k 處理器、以及一些 RISC 架構如 SPARC。</p>
         
-        <hr><p>本文2026-05-08首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-08</p>]]>
+        <hr><p>本文2026-05-08首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-08</p>]]>
       </description>
       
         <category>reverse class</category>
