@@ -307,7 +307,7 @@
 <a class="header-anchor" href="#%e7%a2%ba%e8%aa%8d%e4%bf%9d%e8%ad%b7%e6%a9%9f%e5%88%b6"></a>
 確認保護機制
 </h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">checksec --file<span class="o">=</span>share/got 
-</span></span></code></pre></div><p><img src="/images/SCIST2026/got/1.webp" alt="image"></p>
+</span></span></code></pre></div><p><img src="/images/got/1.webp" alt="image"></p>
 <h3 id="嘗試執行">
 <a class="header-anchor" href="#%e5%98%97%e8%a9%a6%e5%9f%b7%e8%a1%8c"></a>
 嘗試執行
@@ -318,7 +318,7 @@
 </span></span><span class="line"><span class="cl">Incorrect PIN code!
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">User ID: ^C
-</span></span></code></pre></div><p><img src="/images/SCIST2026/got/2.webp" alt="image"></p>
+</span></span></code></pre></div><p><img src="/images/got/2.webp" alt="image"></p>
 <h3 id="binary-ninja分析">
 <a class="header-anchor" href="#binary-ninja%e5%88%86%e6%9e%90"></a>
 Binary Ninja分析
@@ -331,24 +331,24 @@ Binary Ninja分析
 </span></span></code></pre></div><p>分析3 :</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-TEXT" data-lang="TEXT"><span class="line"><span class="cl">00400a23                // 將讀入的字串最後的\n換成0,過程中有用到strcspn的plt
 </span></span><span class="line"><span class="cl">00400a23                user[0][strcspn(&amp;user[sx.q(var_2c)], &#34;\n&#34;) + (sx.q(var_2c) &lt;&lt; 3)] = 0
-</span></span></code></pre></div><p><img src="/images/SCIST2026/got/3.webp" alt="image"></p>
+</span></span></code></pre></div><p><img src="/images/got/3.webp" alt="image"></p>
 <h3 id="尋找需要的資訊">
 <a class="header-anchor" href="#%e5%b0%8b%e6%89%be%e9%9c%80%e8%a6%81%e7%9a%84%e8%b3%87%e8%a8%8a"></a>
 尋找需要的資訊
 </h3><p>尋找admin_shell function位置</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">objdump -d got <span class="p">|</span>grep -A <span class="m">10</span> <span class="s2">&#34;&lt;admin_shell&gt;&#34;</span>
-</span></span></code></pre></div><p><img src="/images/SCIST2026/got/4.webp" alt="image"></p>
+</span></span></code></pre></div><p><img src="/images/got/4.webp" alt="image"></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0000000000400924 &lt;admin_shell&gt;:
 </span></span></code></pre></div><p>尋找strcspn在got表的位置</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">gdb ./got
 </span></span><span class="line"><span class="cl">b main
 </span></span><span class="line"><span class="cl">run
 </span></span><span class="line"><span class="cl">got strcspn
-</span></span></code></pre></div><p><img src="/images/SCIST2026/got/5.webp" alt="image"></p>
+</span></span></code></pre></div><p><img src="/images/got/5.webp" alt="image"></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[0x601038] strcspn@GLIBC_2.2.5 -&gt; 0x400736 (strcspn@plt+6) ◂— push 4
 </span></span></code></pre></div><p>尋找user陣列的位置</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">p <span class="p">&amp;</span>user
-</span></span></code></pre></div><p><img src="/images/SCIST2026/got/6.webp" alt="image"></p>
+</span></span></code></pre></div><p><img src="/images/got/6.webp" alt="image"></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">$</span><span class="mi">1</span> <span class="o">=</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">data</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span> <span class="o">*</span><span class="p">)</span> <span class="mh">0x6010c0</span> <span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span>
 </span></span></code></pre></div><p>計算USER ID</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0x601038-0x6010c0=-0x88
@@ -390,7 +390,7 @@ Binary Ninja分析
 </span></span></code></pre></div><h3 id="flag">
 <a class="header-anchor" href="#flag"></a>
 flag
-</h3><p><img src="/images/SCIST2026/got/7.webp" alt="image"></p>
+</h3><p><img src="/images/got/7.webp" alt="image"></p>
 </div><footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
       <a
         class="article-tag-list-link"

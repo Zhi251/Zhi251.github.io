@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SCIST Pwn on zhi旅程</title>
+    <title>SCIST PWN on zhi旅程</title>
     <link>https://www.zhienw.com/categories/scist-pwn/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
@@ -47,7 +47,7 @@
 <a class="header-anchor" href="#%e7%a2%ba%e8%aa%8d%e4%bf%9d%e8%ad%b7%e6%a9%9f%e5%88%b6"></a>
 確認保護機制
 </h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">checksec --file<span class="o">=</span>share/got 
-</span></span></code></pre></div><p><img src="/images/SCIST2026/got/1.webp" alt="image"></p>
+</span></span></code></pre></div><p><img src="/images/got/1.webp" alt="image"></p>
 <h3 id="嘗試執行">
 <a class="header-anchor" href="#%e5%98%97%e8%a9%a6%e5%9f%b7%e8%a1%8c"></a>
 嘗試執行
@@ -58,7 +58,7 @@
 </span></span><span class="line"><span class="cl">Incorrect PIN code!
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">User ID: ^C
-</span></span></code></pre></div><p><img src="/images/SCIST2026/got/2.webp" alt="image"></p>
+</span></span></code></pre></div><p><img src="/images/got/2.webp" alt="image"></p>
         
         <hr><p>本文2026-06-06首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-06-06</p>]]>
       </description>
