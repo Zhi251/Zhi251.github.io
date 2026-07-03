@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on zhi旅程</title>
-    <link>https://www.zhienw.com/tags/python/</link>
+    <link>http://localhost:1313/tags/python/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Tue, 28 Apr 2026 11:40:52 +0800</lastBuildDate>
     
     
-    <atom:link href="https://www.zhienw.com/tags/python/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>Pwntools</title>
-      <link>https://www.zhienw.com/post/pwn-tools/</link>
+      <link>http://localhost:1313/post/pwn-tools/</link>
       <pubDate>Tue, 28 Apr 2026 11:30:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/pwn-tools/</guid>
+      <guid>http://localhost:1313/post/pwn-tools/</guid>
       <description>
         <![CDATA[<h1>Pwntools</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -161,7 +161,7 @@ ELF 分析
 </span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span></span></code></pre></div>
         
-        <hr><p>本文2026-04-28首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-04-28</p>]]>
+        <hr><p>本文2026-04-28首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-28</p>]]>
       </description>
       
         <category>Web tools</category>

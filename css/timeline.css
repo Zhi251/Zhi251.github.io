@@ -1,0 +1,177 @@
+/* ============================================================
+   歸檔時間軸 - 沿用主題色彩變數，自動支援深色模式
+   ============================================================ */
+
+.tl-outer { overflow: hidden; }
+
+.tl {
+  position: relative;
+  padding: 10px 24px 18px 32px;
+}
+/* 主軸線 */
+.tl::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--color-link), var(--color-border) 90%);
+}
+
+/* ---------- 年份 ---------- */
+.tl-year {
+  position: relative;
+  margin: 26px 0 16px;
+}
+.tl-year:first-child { margin-top: 6px; }
+.tl-year::before {
+  content: "";
+  position: absolute;
+  left: -27px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-link);
+  box-shadow: 0 0 0 4px var(--color-wrap), 0 0 8px var(--color-link);
+}
+.tl-year-badge {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .03em;
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-link), var(--red-0, var(--color-link)));
+  padding: 5px 16px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px var(--color-hover-shadow);
+}
+
+/* ---------- 項目 ---------- */
+.tl-item {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  align-items: stretch;
+  margin-bottom: 14px;
+}
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: -26px;
+  top: 20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-wrap);
+  border: 2px solid var(--color-link);
+  box-shadow: 0 0 0 3px var(--color-wrap);
+  transition: transform .2s, background .2s;
+  z-index: 1;
+}
+.tl-item:hover::before {
+  background: var(--color-link);
+  transform: scale(1.25);
+}
+
+.tl-card {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: var(--color-wrap);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 13px 16px;
+  box-shadow: var(--shadow-card);
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+.tl-item:hover .tl-card {
+  transform: translateX(4px);
+  border-color: var(--color-link);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.tl-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.tl-date {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-link);
+  font-family: var(--font-code, monospace);
+  letter-spacing: .02em;
+}
+.tl-chip {
+  font-size: 11px;
+  color: var(--color-default);
+  background: var(--color-background);
+  border-radius: 6px;
+  padding: 2px 9px;
+}
+
+.tl-title {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--color-default);
+  text-decoration: none;
+  transition: color .2s;
+  word-break: break-word;
+}
+.tl-title:hover { color: var(--color-link); }
+.tl-title-disabled { color: var(--grey-9); cursor: not-allowed; }
+.tl-lock {
+  display: block;
+  font-size: 12px;
+  color: var(--grey-9);
+  margin-top: 4px;
+}
+
+.tl-desc {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--grey-9);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tl-cover {
+  flex: 0 0 auto;
+  width: 92px;
+  align-self: stretch;
+  border-radius: 10px;
+  overflow: hidden;
+  display: block;
+}
+.tl-cover img {
+  width: 100%;
+  height: 100%;
+  min-height: 72px;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s;
+}
+.tl-item:hover .tl-cover img { transform: scale(1.07); }
+
+/* ---------- RWD ---------- */
+@media screen and (max-width: 560px) {
+  .tl { padding: 8px 14px 14px 28px; }
+  .tl::before { left: 9px; }
+  .tl-year::before { left: -25px; }
+  .tl-item::before { left: -24px; }
+  .tl-cover { width: 70px; }
+  .tl-title { font-size: 15px; }
+}
+@media screen and (max-width: 400px) {
+  .tl-cover { display: none; }
+}

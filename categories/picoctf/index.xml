@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Picoctf on zhi旅程</title>
-    <link>https://www.zhienw.com/categories/picoctf/</link>
+    <link>http://localhost:1313/categories/picoctf/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -12,21 +12,100 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Thu, 07 May 2026 08:00:52 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2026 21:33:52 +0800</lastBuildDate>
     
     
-    <atom:link href="https://www.zhienw.com/categories/picoctf/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="http://localhost:1313/categories/picoctf/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
     
 
     <item>
+      <title>PIE TIME writeup</title>
+      <link>http://localhost:1313/post/pie_time/</link>
+      <pubDate>Fri, 03 Jul 2026 20:33:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/pie_time/</guid>
+      <description>
+        <![CDATA[<h1>PIE TIME writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="原始碼">
+<a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;signal.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">segfault_handler</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Segfault Occurred, incorrect address.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">win</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">FILE</span> <span class="o">*</span><span class="n">fptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;You won!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Open file
+</span></span></span><span class="line"><span class="cl">  <span class="n">fptr</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="s">&#34;flag.txt&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">fptr</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Cannot open file.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// Read contents from file
+</span></span></span><span class="line"><span class="cl">  <span class="n">c</span> <span class="o">=</span> <span class="nf">fgetc</span><span class="p">(</span><span class="n">fptr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span> <span class="p">(</span><span class="n">c</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">printf</span> <span class="p">(</span><span class="s">&#34;%c&#34;</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">c</span> <span class="o">=</span> <span class="nf">fgetc</span><span class="p">(</span><span class="n">fptr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">fclose</span><span class="p">(</span><span class="n">fptr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">signal</span><span class="p">(</span><span class="n">SIGSEGV</span><span class="p">,</span> <span class="n">segfault_handler</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// _IONBF = Unbuffered
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Address of main: %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">main</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">val</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Enter the address to jump to, ex =&gt; 0x12345: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%lx&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Your input: %lx</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">foo</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="p">)())</span><span class="n">val</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">foo</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>PIE保護機制會讓每次程式運行時位置不同,但每個函數間的相對位置offset不會改變,題目輸出main的真實位置,只要加上main與win的offset就能跳到那裡<br>
+PS : 因為是用scanf讀取所以用hex(main_addr).encode()</p>
+        
+        <hr><p>本文2026-07-03首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-07-03</p>]]>
+      </description>
+      
+        <category>Picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
       <title>Forbidden Paths writeup</title>
-      <link>https://www.zhienw.com/post/forbidden_paths/</link>
+      <link>http://localhost:1313/post/forbidden_paths/</link>
       <pubDate>Thu, 07 May 2026 07:15:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/forbidden_paths/</guid>
+      <guid>http://localhost:1313/post/forbidden_paths/</guid>
       <description>
         <![CDATA[<h1>Forbidden Paths writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -49,7 +128,7 @@
 提交flag
 </h2><p><img src="/images/Forbidden_Paths/3.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-07首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
+        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -60,10 +139,10 @@
 
     <item>
       <title>Roboto Sans writeup</title>
-      <link>https://www.zhienw.com/post/roboto_sans/</link>
+      <link>http://localhost:1313/post/roboto_sans/</link>
       <pubDate>Thu, 07 May 2026 06:59:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/roboto_sans/</guid>
+      <guid>http://localhost:1313/post/roboto_sans/</guid>
       <description>
         <![CDATA[<h1>Roboto Sans writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -87,7 +166,7 @@
 提交flag
 </h2><p><img src="/images/Roboto_Sans/5.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-07首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
+        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -98,10 +177,10 @@
 
     <item>
       <title>Search source writeup</title>
-      <link>https://www.zhienw.com/post/search_source/</link>
+      <link>http://localhost:1313/post/search_source/</link>
       <pubDate>Thu, 07 May 2026 06:16:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/search_source/</guid>
+      <guid>http://localhost:1313/post/search_source/</guid>
       <description>
         <![CDATA[<h1>Search source writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -111,7 +190,7 @@ What is httrack?
 </h2><p>HTTrack 是一款免費且開源的離線瀏覽工具，能將整個網站從網路下載到本機目錄，遞迴建立所有資料夾結構，並取得 HTML、圖片及其他檔案。<br>
 主要功能包含：</p>
         
-        <hr><p>本文2026-05-07首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
+        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -122,10 +201,10 @@ What is httrack?
 
     <item>
       <title>findme writeup</title>
-      <link>https://www.zhienw.com/post/findme/</link>
+      <link>http://localhost:1313/post/findme/</link>
       <pubDate>Tue, 05 May 2026 15:50:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/findme/</guid>
+      <guid>http://localhost:1313/post/findme/</guid>
       <description>
         <![CDATA[<h1>findme writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -142,7 +221,7 @@ What is httrack?
 <img src="/images/findme/4.webp" alt="image">
 <img src="/images/findme/5.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-05首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
+        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -153,10 +232,10 @@ What is httrack?
 
     <item>
       <title>More SQLi writeup</title>
-      <link>https://www.zhienw.com/post/more_sqli/</link>
+      <link>http://localhost:1313/post/more_sqli/</link>
       <pubDate>Tue, 05 May 2026 15:40:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/more_sqli/</guid>
+      <guid>http://localhost:1313/post/more_sqli/</guid>
       <description>
         <![CDATA[<h1>More SQLi writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -180,7 +259,7 @@ What is httrack?
 提交flag
 </h2><p><img src="/images/More_SQLi/5.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-05首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
+        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -191,10 +270,10 @@ What is httrack?
 
     <item>
       <title>SOAP writeup</title>
-      <link>https://www.zhienw.com/post/soap/</link>
+      <link>http://localhost:1313/post/soap/</link>
       <pubDate>Tue, 05 May 2026 14:39:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/soap/</guid>
+      <guid>http://localhost:1313/post/soap/</guid>
       <description>
         <![CDATA[<h1>SOAP writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -204,7 +283,7 @@ What is XXE Injection?
 </h2><p>XXE（XML External Entity）注入是一種針對 XML 解析器的攻擊手法。XML 本身有個功能叫做實體（Entity），允許你定義「變數」來引用外部資源。<br>
 XXE 攻擊就是利用這個功能，讓伺服器去讀取它不該暴露的東西。此攻擊能用於：</p>
         
-        <hr><p>本文2026-05-05首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
+        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -215,10 +294,10 @@ XXE 攻擊就是利用這個功能，讓伺服器去讀取它不該暴露的東�
 
     <item>
       <title>No Sql Injection writeup</title>
-      <link>https://www.zhienw.com/post/no_sql_injection/</link>
+      <link>http://localhost:1313/post/no_sql_injection/</link>
       <pubDate>Tue, 05 May 2026 13:00:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/no_sql_injection/</guid>
+      <guid>http://localhost:1313/post/no_sql_injection/</guid>
       <description>
         <![CDATA[<h1>No Sql Injection writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -241,7 +320,7 @@ XXE 攻擊就是利用這個功能，讓伺服器去讀取它不該暴露的東�
 <strong>在server.js中發現他將前端送出的帳號密碼直接串接成查詢語句,造成NoSql Injection</strong>
 <img src="/images/No_Sql_Injection/6.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-05首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
+        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -252,10 +331,10 @@ XXE 攻擊就是利用這個功能，讓伺服器去讀取它不該暴露的東�
 
     <item>
       <title>Trickster writeup</title>
-      <link>https://www.zhienw.com/post/trickster/</link>
+      <link>http://localhost:1313/post/trickster/</link>
       <pubDate>Tue, 05 May 2026 12:00:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/trickster/</guid>
+      <guid>http://localhost:1313/post/trickster/</guid>
       <description>
         <![CDATA[<h1>Trickster writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -264,7 +343,7 @@ XXE 攻擊就是利用這個功能，讓伺服器去讀取它不該暴露的東�
 Whis is magic number?
 </h2><p>Magic number 是放在檔案最開頭的一組固定位元組序列，作用就像檔案的「身分證」，讓作業系統或程式能快速辨識這個檔案到底是什麼類型，而不需要依賴副檔名。各種檔案格式的 magic number 如下：</p>
         
-        <hr><p>本文2026-05-05首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
+        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -275,10 +354,10 @@ Whis is magic number?
 
     <item>
       <title>Pachinko writeup</title>
-      <link>https://www.zhienw.com/post/pachinko/</link>
+      <link>http://localhost:1313/post/pachinko/</link>
       <pubDate>Mon, 04 May 2026 11:54:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/pachinko/</guid>
+      <guid>http://localhost:1313/post/pachinko/</guid>
       <description>
         <![CDATA[<h1>Pachinko writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -294,30 +373,7 @@ What is race condition?
 請求 B 也送出 100 元<br>
 扣款才開始執行……</p>
         
-        <hr><p>本文2026-05-04首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-04</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>3v@l writeup</title>
-      <link>https://www.zhienw.com/post/3v@l/</link>
-      <pubDate>Mon, 04 May 2026 09:53:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/3v@l/</guid>
-      <description>
-        <![CDATA[<h1>3v@l writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is-eval-">
-<a class="header-anchor" href="#what-is-eval-"></a>
-What is eval ?
-</h2><p>eval() 是 Python 的內建函式，它能將字串當作程式碼來執行，並回傳結果。它通常被用在需要動態計算表達式的場景，例如計算機應用程式、設定檔解析、或資料處理中動態執行公式。</p>
-        
-        <hr><p>本文2026-05-04首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-04</p>]]>
+        <hr><p>本文2026-05-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-04</p>]]>
       </description>
       
         <category>picoctf</category>

@@ -3,7 +3,7 @@
   lang="zh-tw" 
   data-theme-mode="auto"
   >
-  <head><meta charset="utf-8" />
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -14,7 +14,7 @@
   name="description"
   content="Inspect HTML writeup picoctf"
 /><script>
-  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://www.zhienw.com/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"http://localhost:1313/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
   
 </script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,14 +35,14 @@
     as="font"
     type="font/woff2"
     crossorigin="anonymous"
-  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
+  /><link rel="stylesheet" href="/css/loader.css" />
 <meta property="og:type" content="website" />
   <meta property="og:title" content="Inspect HTML writeup | Zhi Chen" />
   <meta
     property="og:description"
     content="Inspect HTML writeup picoctf"
   />
-  <meta property="og:url" content="https://www.zhienw.com/post/inspect_html/" />
+  <meta property="og:url" content="http://localhost:1313/post/inspect_html/" />
   <meta
     property="og:site_name"
     content="zhi旅程"
@@ -55,7 +55,7 @@
   <meta property="article:published_time" content="2026-04-22T23:30:52&#43;08:00" />
   <meta property="article:modified_time" content="2026-04-22T23:50:52&#43;08:00" /><meta property="article:tag" content="writeuppicoctfWeb Exploitation" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="/images/Inspect_HTML/cover.webp" />
-<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.f115512d5d18163a9d06b3be1a1aa6c545dd5976a6caeaf3f295adceece2470d.css" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.css" />
 <link
     rel="preload"
     as="style"
@@ -131,6 +131,9 @@
       </span><span class="main-nav-link-wrap">
         <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
         <a class="main-nav-link" href="/link">連結</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="security icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/security">資安小工具</a>
       </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
   </nav>
   <nav id="sub-nav" aria-label="Secondary navigation"></nav></div>
@@ -171,7 +174,7 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">66</div>
+    <div>文章</div><div class="sidebar-state-number">68</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分類</div>
@@ -241,6 +244,14 @@
       ></a>
       <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
       <div class="sidebar-menu-link">連結</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/security"
+        aria-label="資安小工具"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="security icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">資安小工具</div>
     </div></div>
 </div><div class="sidebar-btn-wrapper" style="position:static">
             <div class="sidebar-toc-btn current"></div>
@@ -394,7 +405,7 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">66</div>
+    <div>文章</div><div class="sidebar-state-number">68</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分類</div>
@@ -464,6 +475,14 @@
       ></a>
       <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
       <div class="sidebar-menu-link">連結</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/security"
+        aria-label="資安小工具"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="security icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">資安小工具</div>
     </div></div>
 </div></div><div class="sidebar-btn-wrapper">
         <div class="sidebar-toc-btn current"></div>
@@ -473,7 +492,7 @@
     src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
     integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
     src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
-    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous" ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script><script>
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" ></script><script src="/js/aos.js" ></script><script>
     var aosInit = () => {
       AOS.init({
         duration: 1000,
@@ -487,7 +506,7 @@
     } else {
       aosInit();
     }
-  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script><script
+  </script><script src="/js/pjax_main.js" data-pjax></script><script
     src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
     integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
   if (window.firework) {
@@ -503,11 +522,11 @@
         window.REIMU_POST = {
           author: "Zhi Chen",
           title: "Inspect HTML writeup",
-          url: "https:\/\/www.zhienw.com\/post\/inspect_html\/",
+          url: "http:\/\/localhost:1313\/post\/inspect_html\/",
           description: "Inspect HTML writeup picoctf",
-          cover: "https:\/\/www.zhienw.com\/images\/Inspect_HTML\/cover.webp",
+          cover: "http:\/\/localhost:1313\/images\/Inspect_HTML\/cover.webp",
         };
-      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+      </script><script src="/js/insert_highlight.js" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
           if (_$$(`${gallery} ${children}`).length > 0) {
             new PhotoSwipeLightbox({
               gallery,

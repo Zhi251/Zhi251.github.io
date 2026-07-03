@@ -1,0 +1,945 @@
+<!doctype html>
+<html
+  lang="zh-tw" 
+  data-theme-mode="auto"
+  >
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  資安小工具 | Zhi Chen
+</title>
+<meta
+  name="description"
+  content="進制換算、編碼解碼、Hash 計算、工程計算器"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"http://localhost:1313/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="資安小工具 | Zhi Chen" />
+  <meta
+    property="og:description"
+    content="進制換算、編碼解碼、Hash 計算、工程計算器"
+  />
+  <meta property="og:url" content="http://localhost:1313/security/" />
+  <meta
+    property="og:site_name"
+    content="zhi旅程"
+  />
+  <meta
+    property="og:image"
+    content="/"
+  />
+  <meta property="article:author" content="Zhi Chen" />
+  <meta property="article:published_time" content="2026-06-20T15:00:00&#43;08:00" />
+  <meta property="article:modified_time" content="2026-06-20T15:00:00&#43;08:00" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.css"
+    integrity="sha384-5TcZemv2l/9On385z///&#43;d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/gitalk@1.8.0/dist/gitalk.css"
+    integrity="sha384-X7z7PUv2B67D8sPJyzDyGZSco1ADwmdI7ed4eCGtTKkClfyDFpPL9WgAn9XVr/Io" crossorigin="anonymous"/><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css"
+    integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj&#43;vDDLIL&#43;xBGQU/voDBY5XE2lVh" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><img src="/images/witch.png" alt="loading" /></div><div class="loading-word">在資安領域掙扎中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章沒有找到對應的語言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="home icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/">首頁</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="archives icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/archives">歸檔</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="about icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/about">關於</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/link">連結</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/images/home_icon.png" alt="security icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/security">資安小工具</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav></div>
+<header id="header" aria-label="Site header"><picture><source media="(max-width: 479px)" srcset="/images/banner-600w.webp"><source media="(max-width: 799px)" srcset="/images/banner-800w.webp"><source media="(min-width: 800px)" srcset="/images/banner.webp"><img  fetchpriority="high" src="/images/banner.webp" alt="資安小工具"></picture><img alt="資安小工具" style="visibility: hidden;"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">資安小工具</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          class="sidebar-left"
+            ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container "><meting-js
+        theme="var(--color-link)"
+        id="17632140526"server="netease"type="playlist"fixed="false"loop="all"order="list"preload="auto"volume="0.7"mutex="true"list-folded="true">
+      </meting-js><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="Zhi Chen"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Zhi Chen</div>
+  <div class="sidebar-description">拿著腳本的神</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">68</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分類</div>
+    <div class="sidebar-state-number">
+      8
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>標籤</div>
+    <div class="sidebar-state-number">21</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discordapp.com/users/gha00000"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:ray784523@zhienw.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/zhi251"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首頁"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首頁</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="歸檔"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">歸檔</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="關於"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">關於</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/link"
+        aria-label="連結"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">連結</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/security"
+        aria-label="資安小工具"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="security icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">資安小工具</div>
+    </div></div>
+</div>
+  </div><div class="sidebar-widget"><div class="widget-wrapper">
+    <div
+      class="widget-wrap"
+      data-aos="fade-up"
+    >
+      <div style="display: flex; justify-content: space-between;">
+        <h3 class="widget-title">分類</h3></div>
+      <div class="widget">
+        <ul class="category-list"><li class="category-list-item">
+                <a class="category-list-link" href="/categories/ca-certificate/" 
+                  title="CA Certificate"
+                  >CA Certificate</a
+                >
+              </li><li class="category-list-item">
+                <a class="category-list-link" href="/categories/docker/" 
+                  title="Docker"
+                  >Docker</a
+                >
+              </li><li class="category-list-item">
+                <a class="category-list-link" href="/categories/markdown/" 
+                  title="Markdown"
+                  >Markdown</a
+                >
+              </li><li class="category-list-item">
+                <a class="category-list-link" href="/categories/picoctf/" 
+                  title="Picoctf"
+                  >Picoctf</a
+                >
+              </li><li class="category-list-item">
+                <a class="category-list-link" href="/categories/reverse-class/" 
+                  title="Reverse Class"
+                  >Reverse Class</a
+                >
+              </li><li class="category-list-item">
+                <a class="category-list-link" href="/categories/scist-pwn/" 
+                  title="SCIST Pwn"
+                  >SCIST Pwn</a
+                >
+              </li><li class="category-list-item">
+                <a class="category-list-link" href="/categories/secure-network-access-control/" 
+                  title="Secure Network Access Control"
+                  >Secure Network Access Control</a
+                >
+              </li><li class="category-list-item">
+                <a class="category-list-link" href="/categories/web-tools/" 
+                  title="Web Tools"
+                  >Web Tools</a
+                >
+              </li></ul>
+      </div>
+    </div>
+  </div><div class="widget-wrapper">
+    <div
+      class="widget-wrap"
+      data-aos="fade-up"
+    >
+      <div style="display: flex; justify-content: space-between;">
+        <h3 class="widget-title">標籤</h3><a class="widget-link" href="/tags/">查看更多</a></div>
+      <div class="widget">
+        <ul class="tag-list" itemprop="keywords"><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/ca-certificate/"
+                  aria-label="Tag: CA Certificate"
+                  title="CA Certificate"
+                >
+                  CA Certificate
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/docker/"
+                  aria-label="Tag: Docker"
+                  title="Docker"
+                >
+                  Docker
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/esxi/"
+                  aria-label="Tag: Esxi"
+                  title="Esxi"
+                >
+                  Esxi
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/flask-session-cookie/"
+                  aria-label="Tag: Flask Session Cookie"
+                  title="Flask Session Cookie"
+                >
+                  Flask Session Cookie
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/hashid/"
+                  aria-label="Tag: Hashid"
+                  title="Hashid"
+                >
+                  Hashid
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/install_doc/"
+                  aria-label="Tag: Install_doc"
+                  title="Install_doc"
+                >
+                  Install_doc
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/john-the-ripper/"
+                  aria-label="Tag: John the Ripper"
+                  title="John the Ripper"
+                >
+                  John the Ripper
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/markdown/"
+                  aria-label="Tag: Markdown"
+                  title="Markdown"
+                >
+                  Markdown
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/picoctf/"
+                  aria-label="Tag: Picoctf"
+                  title="Picoctf"
+                >
+                  Picoctf
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/pwn/"
+                  aria-label="Tag: Pwn"
+                  title="Pwn"
+                >
+                  Pwn
+                </a>
+              </li></ul>
+      </div>
+    </div>
+  </div><div class="widget-wrapper">
+  <div
+    class="widget-wrap"
+    data-aos="fade-up"
+  >
+    <h3 class="widget-title">標籤雲</h3><div class="widget tagcloud"><a
+            style="font-size:10px"
+            href="/tags/ca-certificate/"
+            aria-label="Tag: CA Certificate"
+            >CA Certificate</a
+          ><a
+            style="font-size:10px"
+            href="/tags/docker/"
+            aria-label="Tag: Docker"
+            >Docker</a
+          ><a
+            style="font-size:10px"
+            href="/tags/esxi/"
+            aria-label="Tag: Esxi"
+            >Esxi</a
+          ><a
+            style="font-size:10px"
+            href="/tags/flask-session-cookie/"
+            aria-label="Tag: Flask Session Cookie"
+            >Flask Session Cookie</a
+          ><a
+            style="font-size:10px"
+            href="/tags/hashid/"
+            aria-label="Tag: Hashid"
+            >Hashid</a
+          ><a
+            style="font-size:10px"
+            href="/tags/install_doc/"
+            aria-label="Tag: Install_doc"
+            >Install_doc</a
+          ><a
+            style="font-size:10px"
+            href="/tags/john-the-ripper/"
+            aria-label="Tag: John the Ripper"
+            >John the Ripper</a
+          ><a
+            style="font-size:10px"
+            href="/tags/markdown/"
+            aria-label="Tag: Markdown"
+            >Markdown</a
+          ><a
+            style="font-size:10px"
+            href="/tags/picoctf/"
+            aria-label="Tag: Picoctf"
+            >Picoctf</a
+          ><a
+            style="font-size:10px"
+            href="/tags/pwn/"
+            aria-label="Tag: Pwn"
+            >Pwn</a
+          ><a
+            style="font-size:10px"
+            href="/tags/python/"
+            aria-label="Tag: Python"
+            >Python</a
+          ><a
+            style="font-size:10px"
+            href="/tags/rdp/"
+            aria-label="Tag: RDP"
+            >RDP</a
+          ><a
+            style="font-size:10px"
+            href="/tags/reverse/"
+            aria-label="Tag: Reverse"
+            >Reverse</a
+          ><a
+            style="font-size:10px"
+            href="/tags/reverse-notes/"
+            aria-label="Tag: Reverse Notes"
+            >Reverse Notes</a
+          ><a
+            style="font-size:10px"
+            href="/tags/scist/"
+            aria-label="Tag: SCIST"
+            >SCIST</a
+          ><a
+            style="font-size:10px"
+            href="/tags/scist-class/"
+            aria-label="Tag: Scist Class"
+            >Scist Class</a
+          ><a
+            style="font-size:10px"
+            href="/tags/self-signed-certificate/"
+            aria-label="Tag: Self-Signed Certificate"
+            >Self-Signed Certificate</a
+          ><a
+            style="font-size:10px"
+            href="/tags/ssh-local-port-forwarding/"
+            aria-label="Tag: SSH Local Port Forwarding"
+            >SSH Local Port Forwarding</a
+          ><a
+            style="font-size:10px"
+            href="/tags/web-exploitation/"
+            aria-label="Tag: Web Exploitation"
+            >Web Exploitation</a
+          ><a
+            style="font-size:10px"
+            href="/tags/web-tools/"
+            aria-label="Tag: Web Tools"
+            >Web Tools</a
+          ></div>
+  </div>
+</div><div class="widget-wrapper">
+    <div
+      class="widget-wrap"
+      data-aos="fade-up"
+    >
+      <h3 class="widget-title">最新文章</h3>
+      <div class="widget">
+        <ul><li>
+              <a href="/post/pie_time/" title="PIE TIME writeup">PIE TIME writeup</a>
+            </li><li>
+              <a href="/post/mathter/" title="mathter writeup">mathter writeup</a>
+            </li><li>
+              <a href="/post/got/" title="got writeup">got writeup</a>
+            </li><li>
+              <a href="/post/scist2026/got_hijack/" title="SCIST2026 PWN Class - GOT Hijack">SCIST2026 PWN Class - GOT Hijack</a>
+            </li><li>
+              <a href="/post/scist2026/ret2plt/" title="SCIST2026 PWN Class - ret2plt">SCIST2026 PWN Class - ret2plt</a>
+            </li></ul>
+      </div>
+    </div>
+  </div></div></div></aside>
+<section id="main" aria-label="Main content"><link rel="stylesheet" href="/css/security.css">
+<div class="st-app" id="sec-tools">
+  <header class="st-hero">
+    <div class="st-hero-badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+    </div>
+    <div class="st-hero-text">
+      <h1 class="st-hero-title">資安小工具</h1>
+      <p class="st-hero-sub">進制換算、編碼解碼、Hash 計算、工程計算器</p>
+      <span class="st-hero-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="m9 12 2 2 4-4"/></svg>
+        全程瀏覽器本機運算，資料不會上傳
+      </span>
+    </div>
+  </header>
+
+  <nav class="st-tabs" role="tablist">
+    <button class="st-tab is-active" data-tab="base" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10"/><path d="M7 16h10"/><path d="m13 4-2 16"/></svg>
+      <span>進制換算</span>
+    </button>
+    <button class="st-tab" data-tab="codec" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      <span>編碼解碼</span>
+    </button>
+    <button class="st-tab" data-tab="hash" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
+      <span>Hash 計算</span>
+    </button>
+    <button class="st-tab" data-tab="calc" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8" y2="11"/><line x1="12" y1="11" x2="12" y2="11"/><line x1="16" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="8" y2="15"/><line x1="12" y1="15" x2="12" y2="15"/><line x1="16" y1="15" x2="16" y2="18"/></svg>
+      <span>計算器</span>
+    </button>
+  </nav>
+
+  
+  <section class="st-panel is-active" data-panel="base">
+    <div class="st-card">
+      <div class="st-field">
+        <label class="st-label" for="base-input">輸入數值</label>
+        <div class="st-inline">
+          <input class="st-field-input st-mono" id="base-input" type="text" placeholder="輸入要轉換的數字" autocomplete="off" spellcheck="false">
+          <select class="st-select" id="base-from">
+            <option value="2">二進制 (2)</option>
+            <option value="8">八進制 (8)</option>
+            <option value="10" selected>十進制 (10)</option>
+            <option value="16">十六進制 (16)</option>
+            <option value="custom">自訂進制</option>
+          </select>
+          <input class="st-select st-num" id="base-from-custom" type="number" min="2" max="36" value="36" style="display:none" title="來源進制 (2-36)">
+        </div>
+        <div class="st-error" id="base-error"></div>
+      </div>
+
+      <div class="st-results">
+        <div class="st-result"><span class="st-tag">二進制</span><input class="st-out st-mono" id="base-bin" readonly><button class="st-copy" data-copy="base-bin" title="複製"></button></div>
+        <div class="st-result"><span class="st-tag">八進制</span><input class="st-out st-mono" id="base-oct" readonly><button class="st-copy" data-copy="base-oct" title="複製"></button></div>
+        <div class="st-result"><span class="st-tag">十進制</span><input class="st-out st-mono" id="base-dec" readonly><button class="st-copy" data-copy="base-dec" title="複製"></button></div>
+        <div class="st-result"><span class="st-tag">十六進制</span><input class="st-out st-mono" id="base-hex" readonly><button class="st-copy" data-copy="base-hex" title="複製"></button></div>
+        <div class="st-result">
+          <span class="st-tag st-tag-custom">自訂<input class="st-num st-num-inline" id="base-to-custom" type="number" min="2" max="36" value="36" title="目標進制 (2-36)"></span>
+          <input class="st-out st-mono" id="base-cus" readonly><button class="st-copy" data-copy="base-cus" title="複製"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="st-panel" data-panel="codec">
+    <div class="st-card">
+      <div class="st-card-head">
+        <span class="st-card-title">Base64</span>
+        <div class="st-actions">
+          <button class="st-btn" data-codec="base64" data-mode="encode" type="button">編碼 →</button>
+          <button class="st-btn st-btn-ghost" data-codec="base64" data-mode="decode" type="button">← 解碼</button>
+        </div>
+      </div>
+      <textarea class="st-textarea st-mono" data-codec-in="base64" placeholder="輸入文字 / Base64"></textarea>
+      <div class="st-out-wrap">
+        <textarea class="st-textarea st-mono is-out" data-codec-out="base64" readonly placeholder="結果"></textarea>
+        <button class="st-copy" data-copy-el="base64" title="複製"></button>
+      </div>
+    </div>
+
+    <div class="st-card">
+      <div class="st-card-head">
+        <span class="st-card-title">HEX 十六進位</span>
+        <div class="st-actions">
+          <label class="st-mini">分隔
+            <select class="st-select st-select-sm" data-codec-sep="hex">
+              <option value="space">空格</option>
+              <option value="">無</option>
+              <option value=":">冒號</option>
+            </select>
+          </label>
+          <button class="st-btn" data-codec="hex" data-mode="encode" type="button">編碼 →</button>
+          <button class="st-btn st-btn-ghost" data-codec="hex" data-mode="decode" type="button">← 解碼</button>
+        </div>
+      </div>
+      <textarea class="st-textarea st-mono" data-codec-in="hex" placeholder="輸入文字 / HEX"></textarea>
+      <div class="st-out-wrap">
+        <textarea class="st-textarea st-mono is-out" data-codec-out="hex" readonly placeholder="結果"></textarea>
+        <button class="st-copy" data-copy-el="hex" title="複製"></button>
+      </div>
+    </div>
+
+    <div class="st-card">
+      <div class="st-card-head">
+        <span class="st-card-title">URL Encode</span>
+        <div class="st-actions">
+          <button class="st-btn" data-codec="url" data-mode="encode" type="button">編碼 →</button>
+          <button class="st-btn st-btn-ghost" data-codec="url" data-mode="decode" type="button">← 解碼</button>
+        </div>
+      </div>
+      <textarea class="st-textarea st-mono" data-codec-in="url" placeholder="輸入文字 / URL 編碼字串"></textarea>
+      <div class="st-out-wrap">
+        <textarea class="st-textarea st-mono is-out" data-codec-out="url" readonly placeholder="結果"></textarea>
+        <button class="st-copy" data-copy-el="url" title="複製"></button>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="st-panel" data-panel="hash">
+    <div class="st-card">
+      <div class="st-field">
+        <label class="st-label" for="hash-input">輸入文字</label>
+        <textarea class="st-textarea st-mono" id="hash-input" placeholder="輸入要計算雜湊的文字（即時計算）"></textarea>
+      </div>
+      <div class="st-results">
+        <div class="st-result"><span class="st-tag st-tag-hash">MD5</span><input class="st-out st-mono" id="hash-md5" readonly><button class="st-copy" data-copy="hash-md5" title="複製"></button></div>
+        <div class="st-result"><span class="st-tag st-tag-hash">SHA1</span><input class="st-out st-mono" id="hash-sha1" readonly><button class="st-copy" data-copy="hash-sha1" title="複製"></button></div>
+        <div class="st-result"><span class="st-tag st-tag-hash">SHA256</span><input class="st-out st-mono" id="hash-sha256" readonly><button class="st-copy" data-copy="hash-sha256" title="複製"></button></div>
+        <div class="st-result"><span class="st-tag st-tag-hash">SHA512</span><input class="st-out st-mono" id="hash-sha512" readonly><button class="st-copy" data-copy="hash-sha512" title="複製"></button></div>
+      </div>
+    </div>
+
+    <div class="st-card">
+      <div class="st-card-head"><span class="st-card-title">HMAC</span></div>
+      <div class="st-inline">
+        <select class="st-select" id="hmac-algo">
+          <option value="MD5">HMAC-MD5</option>
+          <option value="SHA1">HMAC-SHA1</option>
+          <option value="SHA256" selected>HMAC-SHA256</option>
+          <option value="SHA512">HMAC-SHA512</option>
+        </select>
+        <input class="st-field-input st-mono" id="hmac-key" type="text" placeholder="金鑰 (Key)" autocomplete="off">
+      </div>
+      <div class="st-result st-result-wide"><span class="st-tag st-tag-hash">結果</span><input class="st-out st-mono" id="hmac-out" readonly><button class="st-copy" data-copy="hmac-out" title="複製"></button></div>
+    </div>
+  </section>
+
+  
+  <section class="st-panel" data-panel="calc">
+    <div class="st-card st-calc">
+      <div class="st-screen">
+        <div class="st-screen-expr st-mono" id="calc-expr"></div>
+        <input class="st-screen-entry st-mono" id="calc-entry" readonly value="0">
+        <div class="st-screen-bases">
+          <div class="st-screen-row"><span class="st-screen-tag">BIN</span><span class="st-screen-val st-mono" id="calc-bin">0</span></div>
+          <div class="st-screen-row"><span class="st-screen-tag">OCT</span><span class="st-screen-val st-mono" id="calc-oct">0</span></div>
+          <div class="st-screen-row"><span class="st-screen-tag">DEC</span><span class="st-screen-val st-mono" id="calc-dec">0</span></div>
+          <div class="st-screen-row"><span class="st-screen-tag">HEX</span><span class="st-screen-val st-mono" id="calc-hex">0</span></div>
+        </div>
+      </div>
+
+      <div class="st-basebar" role="tablist">
+        <button class="st-basebtn" data-base="2" type="button">BIN</button>
+        <button class="st-basebtn" data-base="8" type="button">OCT</button>
+        <button class="st-basebtn is-active" data-base="10" type="button">DEC</button>
+        <button class="st-basebtn" data-base="16" type="button">HEX</button>
+      </div>
+
+      <div class="st-keys">
+        <button class="st-key is-op" data-op="&" type="button">AND</button>
+        <button class="st-key is-op" data-op="|" type="button">OR</button>
+        <button class="st-key is-op" data-op="^" type="button">XOR</button>
+        <button class="st-key is-op" data-op="~" type="button">NOT</button>
+        <button class="st-key is-fn" data-action="clear" type="button">C</button>
+
+        <button class="st-key is-op" data-op="<<" type="button">&lt;&lt;</button>
+        <button class="st-key is-op" data-op=">>" type="button">&gt;&gt;</button>
+        <button class="st-key is-digit" data-digit="D" type="button">D</button>
+        <button class="st-key is-digit" data-digit="E" type="button">E</button>
+        <button class="st-key is-digit" data-digit="F" type="button">F</button>
+
+        <button class="st-key is-digit" data-digit="A" type="button">A</button>
+        <button class="st-key is-digit" data-digit="B" type="button">B</button>
+        <button class="st-key is-digit" data-digit="C" type="button">C</button>
+        <button class="st-key is-digit" data-digit="7" type="button">7</button>
+        <button class="st-key is-digit" data-digit="8" type="button">8</button>
+
+        <button class="st-key is-digit" data-digit="9" type="button">9</button>
+        <button class="st-key is-op" data-op="/" type="button">÷</button>
+        <button class="st-key is-digit" data-digit="4" type="button">4</button>
+        <button class="st-key is-digit" data-digit="5" type="button">5</button>
+        <button class="st-key is-digit" data-digit="6" type="button">6</button>
+
+        <button class="st-key is-op" data-op="*" type="button">×</button>
+        <button class="st-key is-digit" data-digit="1" type="button">1</button>
+        <button class="st-key is-digit" data-digit="2" type="button">2</button>
+        <button class="st-key is-digit" data-digit="3" type="button">3</button>
+        <button class="st-key is-op" data-op="-" type="button">−</button>
+
+        <button class="st-key is-digit st-key-zero" data-digit="0" type="button">0</button>
+        <button class="st-key is-fn" data-action="back" type="button">⌫</button>
+        <button class="st-key is-op" data-op="+" type="button">+</button>
+        <button class="st-key is-eq" data-action="equals" type="button">=</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="/js/crypto-js.min.js"></script>
+<script src="/js/security.js"></script></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2025-2026<span class="footer-info-sep rotate"></span>
+      Zhi Chen
+    </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="Zhi Chen"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Zhi Chen</div>
+  <div class="sidebar-description">拿著腳本的神</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">68</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分類</div>
+    <div class="sidebar-state-number">
+      8
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>標籤</div>
+    <div class="sidebar-state-number">21</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discordapp.com/users/gha00000"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:ray784523@zhienw.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/zhi251"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首頁"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首頁</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="歸檔"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">歸檔</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="關於"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">關於</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/link"
+        aria-label="連結"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="link icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">連結</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/security"
+        aria-label="資安小工具"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/images/home_icon.png" alt="security icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">資安小工具</div>
+    </div></div>
+</div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" ></script><script src="/js/aos.js" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "Zhi Chen",
+          title: "資安小工具",
+          url: "http:\/\/localhost:1313\/security\/",
+          description: "進制換算、編碼解碼、Hash 計算、工程計算器",
+          cover: "http:\/\/localhost:1313\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script></div>
+</div><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script
+    src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js"
+    integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr&#43;h5UfruuRL/aORyw&#43;5&#43;HZoU6e" crossorigin="anonymous"></script><script>
+    if (window.matchMedia('(max-width: 959px)').matches) {
+      const meting = _$('meting-js');
+      if (meting) {
+        meting.setAttribute('fixed', 'true');
+        const aside = meting.parentNode?.parentNode;
+        if (aside?.tagName === 'ASIDE') {
+          meting.parentNode.removeChild(meting);
+          document.body.appendChild(meting);
+        }
+      }
+    }
+  </script><script
+    src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js"
+    integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8&#43;0maanw1S/IyB&#43;Y4JG&#43;ZDU7GpKE8" crossorigin="anonymous"></script></body>
+</html>

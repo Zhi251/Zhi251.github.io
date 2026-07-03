@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SCIST on zhi旅程</title>
-    <link>https://www.zhienw.com/tags/scist/</link>
+    <link>http://localhost:1313/tags/scist/</link>
     <description>Recent content from zhi旅程</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
@@ -12,21 +12,188 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Sat, 06 Jun 2026 05:00:52 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2026 21:50:52 +0800</lastBuildDate>
     
     
-    <atom:link href="https://www.zhienw.com/tags/scist/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="http://localhost:1313/tags/scist/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
     
 
     <item>
+      <title>mathter writeup</title>
+      <link>http://localhost:1313/post/mathter/</link>
+      <pubDate>Mon, 08 Jun 2026 21:10:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/mathter/</guid>
+      <description>
+        <![CDATA[<h1>mathter writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="原始碼">
+<a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">win1</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">check</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">check</span> <span class="o">==</span> <span class="mh">0xdeadbeef</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">FILE</span> <span class="o">*</span><span class="n">fp</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="s">&#34;/home/mathter/flag&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">fp</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">char</span> <span class="n">flag</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nf">fgets</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">flag</span><span class="p">),</span> <span class="n">fp</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="kt">size_t</span> <span class="n">len</span> <span class="o">=</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">flag</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">flag</span><span class="p">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">flag</span><span class="p">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">len</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="kt">size_t</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">len</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">mid</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nf">putchar</span><span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">putchar</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Failed to open flag file.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Sorry, wrong argument. Try again!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">win2</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">check</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">check</span> <span class="o">==</span> <span class="mh">0xcafebabe</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">FILE</span> <span class="o">*</span><span class="n">fp</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="s">&#34;/home/mathter/flag&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">fp</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">char</span> <span class="n">flag</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nf">fgets</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">flag</span><span class="p">),</span> <span class="n">fp</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="kt">size_t</span> <span class="n">len</span> <span class="o">=</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">flag</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">flag</span><span class="p">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">flag</span><span class="p">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">                    <span class="n">len</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="kt">size_t</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">len</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nf">putchar</span><span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">putchar</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Failed to open flag file.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Sorry, wrong argument. Try again!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">goodbye</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">response</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Are you sure you want to leave? [Y/n]</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">gets</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;y&#39;</span> <span class="o">||</span> <span class="n">response</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;Y&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Goodbye!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">calculator</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">input</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span> 
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">op</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Enter an operation and two numbers (e.g., 1 + 1) : &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fgets</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">input</span><span class="p">),</span> <span class="n">stdin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;q&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Exiting calculator...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nf">sscanf</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="s">&#34;%d %c %d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">op</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">switch</span> <span class="p">(</span><span class="n">op</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="sc">&#39;+&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d + %d = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="sc">&#39;-&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d - %d = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="sc">&#39;*&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d * %d = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="sc">&#39;/&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d / %d = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Error: Division by zero!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Invalid operation!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Invalid input format. Please use the format: 1 + 1</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34; __        __   _                            _          __  __       _   _     _            </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34; </span><span class="se">\\</span><span class="s"> </span><span class="se">\\</span><span class="s">      / /__| | ___ ___  _ __ ___   ___  | |_ ___   |  </span><span class="se">\\</span><span class="s">/  | __ _| |_| |__ | |_ ___ _ __ </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;  </span><span class="se">\\</span><span class="s"> </span><span class="se">\\</span><span class="s"> /</span><span class="se">\\</span><span class="s"> / / _ </span><span class="se">\\</span><span class="s"> |/ __/ _ </span><span class="se">\\</span><span class="s">| &#39;_ ` _ </span><span class="se">\\</span><span class="s"> / _ </span><span class="se">\\</span><span class="s"> | __/ _ </span><span class="se">\\</span><span class="s">  | |</span><span class="se">\\</span><span class="s">/| |/ _` | __| &#39;_ </span><span class="se">\\</span><span class="s">| __/ _ </span><span class="se">\\</span><span class="s"> &#39;__|</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;   </span><span class="se">\\</span><span class="s"> V  V /  __/ | (_| (_) | | | | | |  __/ | || (_) | | |  | | (_| | |_| | | | ||  __/ |   </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;    </span><span class="se">\\</span><span class="s">_/</span><span class="se">\\</span><span class="s">_/ </span><span class="se">\\</span><span class="s">___|_|</span><span class="se">\\</span><span class="s">___</span><span class="se">\\</span><span class="s">___/|_| |_| |_|</span><span class="se">\\</span><span class="s">___|  </span><span class="se">\\</span><span class="s">__</span><span class="se">\\</span><span class="s">___/  |_|  |_|</span><span class="se">\\</span><span class="s">__,_|</span><span class="se">\\</span><span class="s">__|_| |_|</span><span class="se">\\</span><span class="s">__</span><span class="se">\\</span><span class="s">___|_|</span><span class="se">\n\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">calculator</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="nf">goodbye</span><span class="p">()){</span>
+</span></span><span class="line"><span class="cl">	    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//gcc -static -o mathter -no-pie -fno-stack-protector -z now -z relro mathter.c
+</span></span></span></code></pre></div><h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>在goodbye function有用get函數可以進行overflow,並且利用pop rdi設定參數,分別跳到win1、win2 funtion取得2段flag<br>
+PS : 這題要注意的是在取overflow起點時會碰到rax-4,要用該位置+4設為起點<br>
+PS : 要覆蓋的位置不要找成main函數的return</p>
+        
+        <hr><p>本文2026-06-08首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-06-08</p>]]>
+      </description>
+      
+        <category>SCIST pwn</category>
+      
+    </item>
+    
+    
+
+    <item>
       <title>got writeup</title>
-      <link>https://www.zhienw.com/post/got/</link>
+      <link>http://localhost:1313/post/got/</link>
       <pubDate>Sat, 06 Jun 2026 04:19:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/got/</guid>
+      <guid>http://localhost:1313/post/got/</guid>
       <description>
         <![CDATA[<h1>got writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -60,7 +227,7 @@
 </span></span><span class="line"><span class="cl">User ID: ^C
 </span></span></code></pre></div><p><img src="/images/got/2.webp" alt="image"></p>
         
-        <hr><p>本文2026-06-06首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-06-06</p>]]>
+        <hr><p>本文2026-06-06首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-06-06</p>]]>
       </description>
       
         <category>SCIST pwn</category>
@@ -71,10 +238,10 @@
 
     <item>
       <title>ret2plt writeup</title>
-      <link>https://www.zhienw.com/post/ret2plt/</link>
+      <link>http://localhost:1313/post/ret2plt/</link>
       <pubDate>Fri, 22 May 2026 13:21:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/ret2plt/</guid>
+      <guid>http://localhost:1313/post/ret2plt/</guid>
       <description>
         <![CDATA[<h1>ret2plt writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -107,7 +274,7 @@ What is GOT(Global Offset Table)?
 </h2><p>GOT 是 Linux ELF 執行檔中一個重要的資料結構,主要用來實現動態連結（Dynamic Linking）
 當程式呼叫外部函式庫的函式時(例如 printf、malloc),這些函式位於共享函式庫(如 libc.so)中。問題是:</p>
         
-        <hr><p>本文2026-05-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-22</p>]]>
+        <hr><p>本文2026-05-22首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-22</p>]]>
       </description>
       
         <category>SCIST pwn</category>
@@ -118,10 +285,10 @@ What is GOT(Global Offset Table)?
 
     <item>
       <title>rop writeup</title>
-      <link>https://www.zhienw.com/post/rop/</link>
+      <link>http://localhost:1313/post/rop/</link>
       <pubDate>Fri, 22 May 2026 12:24:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/rop/</guid>
+      <guid>http://localhost:1313/post/rop/</guid>
       <description>
         <![CDATA[<h1>rop writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -154,7 +321,7 @@ What is ROP?
 </h2><p>ROP 是一種利用程式漏洞執行惡意程式碼的攻擊手法。它主要用來繞過現代作業系統的防禦機制，特別是 DEP（Data Execution Prevention，資料執行保護）。
 <img src="/images/rop/1.webp" alt="image"></p>
         
-        <hr><p>本文2026-05-22首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-22</p>]]>
+        <hr><p>本文2026-05-22首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-22</p>]]>
       </description>
       
         <category>SCIST pwn</category>
@@ -165,10 +332,10 @@ What is ROP?
 
     <item>
       <title>orw writeup</title>
-      <link>https://www.zhienw.com/post/orw/</link>
+      <link>http://localhost:1313/post/orw/</link>
       <pubDate>Thu, 21 May 2026 21:34:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/orw/</guid>
+      <guid>http://localhost:1313/post/orw/</guid>
       <description>
         <![CDATA[<h1>orw writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -243,7 +410,7 @@ What is ROP?
 解題思路
 </h3><p>題目只允許用部分syscall,我們用open,read,write,在username構建我們的payload,在password用overflow跳到username,將flag寫在終端機</p>
         
-        <hr><p>本文2026-05-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
+        <hr><p>本文2026-05-21首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
       </description>
       
         <category>SCIST pwn</category>
@@ -254,10 +421,10 @@ What is ROP?
 
     <item>
       <title>ret2sc writeup</title>
-      <link>https://www.zhienw.com/post/ret2sc/</link>
+      <link>http://localhost:1313/post/ret2sc/</link>
       <pubDate>Thu, 21 May 2026 20:46:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/ret2sc/</guid>
+      <guid>http://localhost:1313/post/ret2sc/</guid>
       <description>
         <![CDATA[<h1>ret2sc writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -303,7 +470,7 @@ What is ROP?
 解題思路
 </h3><p>在username構建我們的payload,在password用overflow跳到username</p>
         
-        <hr><p>本文2026-05-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
+        <hr><p>本文2026-05-21首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
       </description>
       
         <category>SCIST pwn</category>
@@ -314,10 +481,10 @@ What is ROP?
 
     <item>
       <title>greet writeup</title>
-      <link>https://www.zhienw.com/post/greet/</link>
+      <link>http://localhost:1313/post/greet/</link>
       <pubDate>Thu, 21 May 2026 19:25:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>https://www.zhienw.com/post/greet/</guid>
+      <guid>http://localhost:1313/post/greet/</guid>
       <description>
         <![CDATA[<h1>greet writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
@@ -352,7 +519,7 @@ What is ROP?
 解題思路
 </h3><p>因爲gets()這個function是可以取得使用者輸入無限長度的字串,因此我們可以用overflow的方法將return的位置覆蓋成win function的位置取得shell</p>
         
-        <hr><p>本文2026-05-21首發於<a href='https://www.zhienw.com/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
+        <hr><p>本文2026-05-21首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
       </description>
       
         <category>SCIST pwn</category>
