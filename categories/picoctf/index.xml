@@ -12,12 +12,254 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Fri, 03 Jul 2026 21:33:52 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2026 10:30:52 +0800</lastBuildDate>
     
     
     <atom:link href="http://localhost:1313/categories/picoctf/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>Echo Escape 1</title>
+      <link>http://localhost:1313/post/echo_escape_1/</link>
+      <pubDate>Mon, 10 Aug 2026 10:08:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/echo_escape_1/</guid>
+      <description>
+        <![CDATA[<h1>Echo Escape 1</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="原始碼">
+<a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">win</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">FILE</span> <span class="o">*</span><span class="n">fp</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="s">&#34;flag.txt&#34;</span><span class="p">,</span> <span class="s">&#34;rb&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">fp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">perror</span><span class="p">(</span><span class="s">&#34;[!] Failed to open flag.txt&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">size_t</span> <span class="n">n</span> <span class="o">=</span> <span class="nf">fread</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span> <span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fwrite</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Welcome to the secure echo service!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Please enter your name: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">128</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Hello, %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Thank you for using our service.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>利用read(0, buf, 128)的oevrflow 跳到win function 取得flag</p>
+        
+        <hr><p>本文2026-08-10首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-10</p>]]>
+      </description>
+      
+        <category>Picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>format string 0</title>
+      <link>http://localhost:1313/post/format_string_0/</link>
+      <pubDate>Sun, 09 Aug 2026 17:08:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/format_string_0/</guid>
+      <description>
+        <![CDATA[<h1>format string 0</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="what-is-format-string-vulnerability格式化字串漏洞">
+<a class="header-anchor" href="#what-is-format-string-vulnerability%e6%a0%bc%e5%bc%8f%e5%8c%96%e5%ad%97%e4%b8%b2%e6%bc%8f%e6%b4%9e"></a>
+What is Format String Vulnerability（格式化字串漏洞）?
+</h2><p>Format String Vulnerability（格式化字串漏洞） 是一種常見於 C/C++ 程式的漏洞，通常發生在程式把「使用者輸入」直接丟給 printf()、fprintf()、sprintf() 這類格式化輸出函式。<br>
+例如printf危險的寫法是</p>
+        
+        <hr><p>本文2026-08-09首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-09</p>]]>
+      </description>
+      
+        <category>Picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>heap 0 writeup</title>
+      <link>http://localhost:1313/post/heap_0/</link>
+      <pubDate>Sun, 09 Aug 2026 16:33:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/heap_0/</guid>
+      <description>
+        <![CDATA[<h1>heap 0 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="原始碼">
+<a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#define FLAGSIZE_MAX 64
+</span></span></span><span class="line"><span class="cl"><span class="c1">// amount of memory allocated for input_data
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define INPUT_DATA_SIZE 5
+</span></span></span><span class="line"><span class="cl"><span class="c1">// amount of memory allocated for safe_var
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define SAFE_VAR_SIZE 5
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">num_allocs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">safe_var</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">input_data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">check_win</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">safe_var</span><span class="p">,</span> <span class="s">&#34;bico&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">YOU WIN</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// Print flag
+</span></span></span><span class="line"><span class="cl">        <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="n">FLAGSIZE_MAX</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">FILE</span> <span class="o">*</span><span class="n">fd</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="s">&#34;flag.txt&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fgets</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">FLAGSIZE_MAX</span><span class="p">,</span> <span class="n">fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span><span class="c1">//強制輸出到螢幕
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Looks like everything is still secure!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">No flage for you :(</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">print_menu</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">1. Print Heap:</span><span class="se">\t\t</span><span class="s">(print the current state of the heap)&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="s">&#34;</span><span class="se">\n</span><span class="s">2. Write to buffer:</span><span class="se">\t</span><span class="s">(write to your own personal block of data &#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="s">&#34;on the heap)&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="s">&#34;</span><span class="se">\n</span><span class="s">3. Print safe_var:</span><span class="se">\t</span><span class="s">(I&#39;ll even let you look at my variable on &#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="s">&#34;the heap, &#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="s">&#34;I&#39;m confident it can&#39;t be modified)&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="s">&#34;</span><span class="se">\n</span><span class="s">4. Print Flag:</span><span class="se">\t\t</span><span class="s">(Try to print the flag, good luck)&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="s">&#34;</span><span class="se">\n</span><span class="s">5. Exit</span><span class="se">\n\n</span><span class="s">Enter your choice: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">Welcome to heap0!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;I put my data on the heap so it should be safe from any tampering.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Since my data isn&#39;t on the stack I&#39;ll even let you write whatever &#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="s">&#34;info you want to the heap, I already took care of using malloc for &#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="s">&#34;you.</span><span class="se">\n\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">input_data</span> <span class="o">=</span> <span class="nf">malloc</span><span class="p">(</span><span class="n">INPUT_DATA_SIZE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">strncpy</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="s">&#34;pico&#34;</span><span class="p">,</span> <span class="n">INPUT_DATA_SIZE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">safe_var</span> <span class="o">=</span> <span class="nf">malloc</span><span class="p">(</span><span class="n">SAFE_VAR_SIZE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">strncpy</span><span class="p">(</span><span class="n">safe_var</span><span class="p">,</span> <span class="s">&#34;bico&#34;</span><span class="p">,</span> <span class="n">SAFE_VAR_SIZE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">write_buffer</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Data for buffer: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%s&#34;</span><span class="p">,</span> <span class="n">input_data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">print_heap</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Heap State:</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;+-------------+----------------+</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;[*] Address   -&gt;   Heap Data   </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;+-------------+----------------+</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;[*]   %p  -&gt;   %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">input_data</span><span class="p">,</span> <span class="n">input_data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;+-------------+----------------+</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;[*]   %p  -&gt;   %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">safe_var</span><span class="p">,</span> <span class="n">safe_var</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;+-------------+----------------+</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Setup
+</span></span></span><span class="line"><span class="cl">    <span class="nf">init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">print_heap</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">choice</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">print_menu</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">rval</span> <span class="o">=</span> <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">choice</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">rval</span> <span class="o">==</span> <span class="n">EOF</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">	    <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">rval</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//printf(&#34;Invalid input. Please enter a valid choice.\n&#34;);
+</span></span></span><span class="line"><span class="cl">            <span class="c1">//fflush(stdout);
+</span></span></span><span class="line"><span class="cl">            <span class="c1">// Clear input buffer
+</span></span></span><span class="line"><span class="cl">            <span class="c1">//while (getchar() != &#39;\n&#39;);
+</span></span></span><span class="line"><span class="cl">            <span class="c1">//continue;
+</span></span></span><span class="line"><span class="cl">	    <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="p">(</span><span class="n">choice</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// print heap
+</span></span></span><span class="line"><span class="cl">            <span class="nf">print_heap</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">write_buffer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// print safe_var
+</span></span></span><span class="line"><span class="cl">            <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n\n</span><span class="s">Take a look at my variable: safe_var = %s</span><span class="se">\n\n</span><span class="s">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">safe_var</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Check for win condition
+</span></span></span><span class="line"><span class="cl">            <span class="nf">check_win</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="mi">5</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// exit
+</span></span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Invalid choice</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>利用選項 1 列出 2個heap位置,利用選項2 用heap overflow 從 input_data 寫入,將 safe_var 的 字串改掉,再選項 4 呼叫 check_win() ,印出flag</p>
+        
+        <hr><p>本文2026-08-09首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-09</p>]]>
+      </description>
+      
+        <category>Picoctf</category>
+      
+    </item>
     
     
 
@@ -284,96 +526,6 @@ What is XXE Injection?
 XXE 攻擊就是利用這個功能，讓伺服器去讀取它不該暴露的東西。此攻擊能用於：</p>
         
         <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>No Sql Injection writeup</title>
-      <link>http://localhost:1313/post/no_sql_injection/</link>
-      <pubDate>Tue, 05 May 2026 13:00:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/no_sql_injection/</guid>
-      <description>
-        <![CDATA[<h1>No Sql Injection writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>下載題目程式碼</strong>
-<img src="/images/No_Sql_Injection/1.webp" alt="image"></p>
-<h3 id="觀察題目程式碼">
-<a class="header-anchor" href="#%e8%a7%80%e5%af%9f%e9%a1%8c%e7%9b%ae%e7%a8%8b%e5%bc%8f%e7%a2%bc"></a>
-觀察題目程式碼
-</h3><p><strong>發現有一個/admin的頁面</strong>
-<img src="/images/No_Sql_Injection/2.webp" alt="image">
-<strong>在server.js中發現伺服器資料庫使用mongo DB</strong>
-<img src="/images/No_Sql_Injection/3.webp" alt="image">
-<strong>在server.js中發現使用者帳號</strong>
-<img src="/images/No_Sql_Injection/4.webp" alt="image">
-<strong>在server.js中發現疑似把flag儲存在tocken中</strong>
-<img src="/images/No_Sql_Injection/5.webp" alt="image">
-<strong>在server.js中發現他將前端送出的帳號密碼直接串接成查詢語句,造成NoSql Injection</strong>
-<img src="/images/No_Sql_Injection/6.webp" alt="image"></p>
-        
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Trickster writeup</title>
-      <link>http://localhost:1313/post/trickster/</link>
-      <pubDate>Tue, 05 May 2026 12:00:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/trickster/</guid>
-      <description>
-        <![CDATA[<h1>Trickster writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="whis-is-magic-number">
-<a class="header-anchor" href="#whis-is-magic-number"></a>
-Whis is magic number?
-</h2><p>Magic number 是放在檔案最開頭的一組固定位元組序列，作用就像檔案的「身分證」，讓作業系統或程式能快速辨識這個檔案到底是什麼類型，而不需要依賴副檔名。各種檔案格式的 magic number 如下：</p>
-        
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Pachinko writeup</title>
-      <link>http://localhost:1313/post/pachinko/</link>
-      <pubDate>Mon, 04 May 2026 11:54:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/pachinko/</guid>
-      <description>
-        <![CDATA[<h1>Pachinko writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is-race-condition">
-<a class="header-anchor" href="#what-is-race-condition"></a>
-What is race condition?
-</h2><p>Race Condition 是一種「時間差漏洞」。當系統在處理多個同時發生的請求時，因為步驟之間沒有做好鎖定（locking），就會產生邏輯錯誤。<br>
-例如轉帳：假設你的錢包有 100 元，轉帳流程分三步：① 檢查餘額 → ② 送出錢 → ③ 扣除餘額。<br>
-正常情況下，轉一次 100 元後餘額歸零，沒問題。但如果你同時發出兩個轉帳請求，事情就變了：<br>
-請求 A 檢查餘額：100（通過）<br>
-請求 B 檢查餘額：100（也通過，因為 A 還沒扣錢）
-請求 A 送出 100 元<br>
-請求 B 也送出 100 元<br>
-扣款才開始執行……</p>
-        
-        <hr><p>本文2026-05-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-04</p>]]>
       </description>
       
         <category>picoctf</category>
