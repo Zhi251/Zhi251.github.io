@@ -52,8 +52,8 @@
     content="/images/gatekeeper/cover.webp"
   />
   <meta property="article:author" content="Zhi Chen" />
-  <meta property="article:published_time" content="2026-04-20T12:39:52&#43;08:00" />
-  <meta property="article:modified_time" content="2026-04-15T12:38:52&#43;08:00" /><meta property="article:tag" content="writeuppicoctfreverse" /><meta name="twitter:card" content="summary" />
+  <meta property="article:published_time" content="2026-08-11T16:39:52&#43;08:00" />
+  <meta property="article:modified_time" content="2026-08-11T17:30:52&#43;08:00" /><meta property="article:tag" content="writeuppicoctfreverse" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="/images/gatekeeper/cover.webp" />
 <link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.css" />
 <link
@@ -155,7 +155,16 @@
       data-aos="fade-up"
     ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目錄</h3>
 <div class="sidebar-toc-wrapper toc-div-class">
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#用ida-逆向題目">用IDA 逆向題目</a></li>
+    <li><a href="#解題方法">解題方法</a></li>
+    <li><a href="#取得被翻轉並加料的flag">取得被翻轉並加料的flag</a></li>
+    <li><a href="#還原腳本">還原腳本</a></li>
+    <li><a href="#flag">flag</a></li>
+    <li><a href="#小筆記">小筆記</a></li>
+  </ul>
+</nav>
 </div></div>
           <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
   <img
@@ -169,7 +178,7 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">71</div>
+    <div>文章</div><div class="sidebar-state-number">73</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分類</div>
@@ -266,18 +275,18 @@
     class="article-date-link icon-calendar"
     data-aos="zoom-in"
   >
-    <time datetime="2026-04-20 12:39:52 &#43;0800 CST" itemprop="datePublished"
-      >2026-04-20</time
+    <time datetime="2026-08-11 16:39:52 &#43;0800 CST" itemprop="datePublished"
+      >2026-08-11</time
     >
     <time style="display: none;" id="post-update-time"
-      >2026-04-15</time
+      >2026-08-11</time
     >
   </span><span
       class="article-date-link icon-calendar-plus"
       data-aos="zoom-in"
     >
-      <time datetime="2026-04-15 12:38:52 &#43;0800 CST" itemprop="dateModified"
-        >2026-04-15</time
+      <time datetime="2026-08-11 17:30:52 &#43;0800 CST" itemprop="dateModified"
+        >2026-08-11</time
       >
     </span></div>
 <div class="article-category"><a
@@ -286,7 +295,159 @@
       data-aos="zoom-in"
       >PICOCTF</a
     ></div>
-</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"></div><footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="用ida-逆向題目">
+<a class="header-anchor" href="#%e7%94%a8ida-%e9%80%86%e5%90%91%e9%a1%8c%e7%9b%ae"></a>
+用IDA 逆向題目
+</h2><p>逆向main函數
+<img src="/images/gatekeeper/1.webp" alt="image">
+逆向reveal_flag函數
+<img src="/images/gatekeeper/2.webp" alt="image"></p>
+<h2 id="解題方法">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%96%b9%e6%b3%95"></a>
+解題方法
+</h2><p>根據逆向結果,進入reveal_flag條件為：</p>
+<ol>
+<li>大於999</li>
+<li>小於9999</li>
+<li>位數等於3
+因此用普通的十進位無法進入，我們可以用十六進位(FFF)來進入該函數
+接著會取得被翻轉並加料的flag,我們利用python腳本還原</li>
+</ol>
+<h2 id="取得被翻轉並加料的flag">
+<a class="header-anchor" href="#%e5%8f%96%e5%be%97%e8%a2%ab%e7%bf%bb%e8%bd%89%e4%b8%a6%e5%8a%a0%e6%96%99%e7%9a%84flag"></a>
+取得被翻轉並加料的flag
+</h2><p>輸入FFF
+<img src="/images/gatekeeper/3.webp" alt="image"></p>
+<h2 id="還原腳本">
+<a class="header-anchor" href="#%e9%82%84%e5%8e%9f%e8%85%b3%e6%9c%ac"></a>
+還原腳本
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PYTHON" data-lang="PYTHON"><span class="line"><span class="cl"><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;}4cdftc_oc_ip6f47ftc_oc_ipa_99ftc_oc_ip9_TGftc_oc_ip_xehftc_oc_ip_tigftc_oc_ipid_3ftc_oc_ip{FTCftc_oc_ipocipftc_oc_ip&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">str</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;ftc_oc_ip&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">str</span><span class="o">=</span><span class="nb">str</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</span></span></code></pre></div><p><img src="/images/gatekeeper/4.webp" alt="image"></p>
+<h2 id="flag">
+<a class="header-anchor" href="#flag"></a>
+flag
+</h2><p><img src="/images/gatekeeper/5.webp" alt="image"></p>
+<h2 id="小筆記">
+<a class="header-anchor" href="#%e5%b0%8f%e7%ad%86%e8%a8%98"></a>
+小筆記
+</h2><table>
+  <thead>
+      <tr>
+          <th>函式</th>
+          <th>所屬</th>
+          <th>功能</th>
+          <th>備註</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>fopen(path, mode)</code></td>
+          <td>stdio.h</td>
+          <td>打開檔案，回傳檔案指標（stream）</td>
+          <td><code>&quot;r&quot;</code> = 唯讀模式</td>
+      </tr>
+      <tr>
+          <td><code>fseek(stream, offset, whence)</code></td>
+          <td>stdio.h</td>
+          <td>移動檔案讀取位置（指標）</td>
+          <td>whence: <code>SEEK_SET</code>=0（從檔頭）、<code>SEEK_CUR</code>=1（從目前位置）、<code>SEEK_END</code>=2（從檔尾）；offset 為偏移量</td>
+      </tr>
+      <tr>
+          <td><code>ftell(stream)</code></td>
+          <td>stdio.h</td>
+          <td>回傳目前讀取指標位置（距檔頭的 byte 數）</td>
+          <td>常搭配 <code>fseek(…SEEK_END)</code> 算出檔案總大小</td>
+      </tr>
+      <tr>
+          <td><code>rewind(stream)</code></td>
+          <td>stdio.h</td>
+          <td>把讀取指標重置回檔案開頭（位置 0）</td>
+          <td>等同 <code>fseek(stream, 0, SEEK_SET)</code></td>
+      </tr>
+      <tr>
+          <td><code>malloc(size)</code></td>
+          <td>stdlib.h</td>
+          <td>動態配置一塊指定大小的記憶體，回傳指標</td>
+          <td>用完需搭配 <code>free()</code> 釋放</td>
+      </tr>
+      <tr>
+          <td><code>fread(ptr, size, nmemb, stream)</code></td>
+          <td>stdio.h</td>
+          <td>從檔案讀取資料到緩衝區</td>
+          <td>size=每單位大小(byte)，nmemb=要讀幾個單位</td>
+      </tr>
+      <tr>
+          <td><code>fclose(stream)</code></td>
+          <td>stdio.h</td>
+          <td>關閉檔案，釋放檔案指標資源</td>
+          <td>開了檔案一定要關</td>
+      </tr>
+      <tr>
+          <td><code>free(ptr)</code></td>
+          <td>stdlib.h</td>
+          <td>釋放 <code>malloc</code> 配置的記憶體</td>
+          <td>避免 memory leak</td>
+      </tr>
+      <tr>
+          <td><code>putchar(c)</code></td>
+          <td>stdio.h</td>
+          <td>印出單一字元</td>
+          <td><code>putchar(10)</code> = 印出 <code>\n</code>（LF, 0x0A）</td>
+      </tr>
+      <tr>
+          <td><code>puts(str)</code></td>
+          <td>stdio.h</td>
+          <td>印出字串並自動換行</td>
+          <td>與 <code>printf</code> 不同，會自動加 <code>\n</code></td>
+      </tr>
+      <tr>
+          <td><code>printf(fmt, ...)</code></td>
+          <td>stdio.h</td>
+          <td>格式化輸出字串</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>fflush(stream)</code></td>
+          <td>stdio.h</td>
+          <td>強制把緩衝區內容立刻輸出</td>
+          <td><code>fflush(stdout)</code> 常用於確保 <code>printf</code> 內容先顯示再等待輸入</td>
+      </tr>
+      <tr>
+          <td><code>__isoc99_scanf(fmt, ...)</code></td>
+          <td>stdio.h</td>
+          <td>格式化讀取輸入</td>
+          <td>反組譯常見命名，其實就是 <code>scanf</code>；<code>&quot;%31s&quot;</code> 表示最多讀 31 個字元</td>
+      </tr>
+      <tr>
+          <td><code>strlen(s)</code></td>
+          <td>string.h</td>
+          <td>計算字串長度（不含 <code>\0</code>）</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>atoi(s)</code></td>
+          <td>stdlib.h</td>
+          <td>把字串轉成整數（10 進位）</td>
+          <td>遇到非數字字元會停止轉換</td>
+      </tr>
+      <tr>
+          <td><code>strtol(s, endptr, base)</code></td>
+          <td>stdlib.h</td>
+          <td>把字串依指定進位（base）轉成 long 整數</td>
+          <td>base=16 即當十六進位解析；比 <code>atoi</code> 更彈性、可指定進位制</td>
+      </tr>
+      <tr>
+          <td><code>__readfsqword(0x28u)</code></td>
+          <td>編譯器內建</td>
+          <td>讀取 Stack Canary（金絲雀值）</td>
+          <td>用來偵測 buffer overflow，配合 <code>fs:0x28</code> 存取 TLS</td>
+      </tr>
+  </tbody>
+</table>
+</div><footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
       <a
         class="article-tag-list-link"
         href="/tags/writeup"
@@ -314,29 +475,29 @@
     aria-label="Article navigation"
     data-aos="fade-up"
   ><div class="article-nav-link-wrap left"><img
-            data-src="/images/Bypass_me/cover.webp"
+            data-src="/images/Echo_Escape_1/cover.webp"
             data-sizes="auto"
-            alt="Bypass Me writeup"
+            alt="Echo Escape 1"
             class="lazyload"
           /><a
-          href="/post/bypass_me/"
-          aria-label="前一篇:Bypass Me writeup"
-          title="前一篇:Bypass Me writeup"
+          href="/post/echo_escape_1/"
+          aria-label="前一篇:Echo Escape 1"
+          title="前一篇:Echo Escape 1"
         ></a>
         <div class="article-nav-caption">前一篇</div>
-        <h3 class="article-nav-title">Bypass Me writeup</h3>
+        <h3 class="article-nav-title">Echo Escape 1</h3>
       </div><div class="article-nav-link-wrap right"><img
-            data-src="/images/SSIT_1/cover.webp"
+            data-src="/images/Echo_Escape_2/cover.webp"
             data-sizes="auto"
-            alt="SSIT 1 writeup"
+            alt="Echo Escape 2"
             class="lazyload"
           /><a
-          href="/post/ssit_1/"
-          aria-label="後一篇:SSIT 1 writeup"
-          title="後一篇:SSIT 1 writeup"
+          href="/post/echo_escape_2/"
+          aria-label="後一篇:Echo Escape 2"
+          title="後一篇:Echo Escape 2"
         ></a>
         <div class="article-nav-caption">後一篇</div>
-        <h3 class="article-nav-title">SSIT 1 writeup</h3>
+        <h3 class="article-nav-title">Echo Escape 2</h3>
       </div></nav></article><section id="comments" data-aos="fade-up">
 <div class="comment-header"><h2 class="comment-title">說些什麼吧！</h2>
   <div class="comment-selector">
@@ -366,7 +527,16 @@
       </div><nav id="mobile-nav" aria-label="Mobile navigation">
   <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目錄</h3>
 <div class="sidebar-toc-wrapper toc-div-class">
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#用ida-逆向題目">用IDA 逆向題目</a></li>
+    <li><a href="#解題方法">解題方法</a></li>
+    <li><a href="#取得被翻轉並加料的flag">取得被翻轉並加料的flag</a></li>
+    <li><a href="#還原腳本">還原腳本</a></li>
+    <li><a href="#flag">flag</a></li>
+    <li><a href="#小筆記">小筆記</a></li>
+  </ul>
+</nav>
 </div></div>
         <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
   <img
@@ -380,7 +550,7 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">71</div>
+    <div>文章</div><div class="sidebar-state-number">73</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分類</div>
